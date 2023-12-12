@@ -1,0 +1,7 @@
+mixin ics-item(args={})
+    a(href="#").ics-item
+        +lazy-img({
+            wrap_mod: 'ics-item__img',
+            img: args.img,
+        })
+        .ics-item__title=args.title

@@ -1,0 +1,97 @@
+mixin search-results-card(args={})
+	+include-style('mixin__search-results-card')
+	+include-style('mixin__product-card')
+	.search-results-card(class= args.mod)
+		.search-results-card__labels
+			if (!args.noLabel)
+				<div class="product-card__label product-card__discount">-12%</div>
+				<div class="product-card__label product-card__label--blue">Новинка</div>
+				<div class="product-card__label product-card__label--green">Хит</div>
+				<div class="product-card__label product-card__label--orange">Акция</div>
+				<div class="product-card__label product-card__label--pink">Рекомендуем</div>
+		.search-results-card__image
+			if (args.img)
+				img(src="/local/templates/html" + args.img, alt="")
+			else
+				img(src="/local/templates/html/images/search-result-card.png" alt="")
+		.search-results-card__content
+			if (args.title)
+				a(href='#').search-results-card__title= args.title
+			else
+				a(href='#').search-results-card__title Умные часы Huawei Watch GT 3 Elegant 42 мм
+			.search-results-card__row
+				.search-results-card__code Артикул:14515.4
+				if (args.search)
+					.search-results-card__status
+						if (args.type==1 || args.basket)
+							<div class="product-card__availability product-card__availability--available">В наличии</div>
+		.search-results-card__price-wrap
+			if (args.type==1)
+				<div class="product-card__price-current product-card__price--discount fz-16">205.00 BYN</div>
+				<div class="product-card__price-old fz-15">244.00 BYN</div>
+			if (args.type==2)
+				<div class="product-card__price-current fz-16">Нет в продаже</div>
+			if (args.type==3)
+				<div class="product-card__price-current fz-16">Нет в продаже</div>
+			if (args.type==4)
+				<div class="product-card__price-current fz-16">244.00 BYN</div>
+			if (args.type==5)
+				<div class="product-card__price-current fz-16">244.00 BYN</div>
+		if (!args.search)
+			.search-results-card__status
+				if (args.type==1)
+					<div class="product-card__availability product-card__availability--available">В наличии</div>
+				if (args.type==2)
+					<div class="product-card__availability product-card__availability--order">Под заказ</div>
+				if (args.type==3)
+					<div class="product-card__availability product-card__availability--order">Под заказ</div>
+				if (args.type==4)
+					<div class="product-card__availability product-card__availability--out">Снят с производства</div>
+				if (args.type==5)
+					<div class="product-card__availability product-card__availability--order">Под заказ</div>
+		.search-results-card__control(class=args.type==3 ? 'search-results-card__control--col' : '')
+			if (args.type==1)
+				if (args.cart==true)
+					//- +counter()
+					.search-results-card__delete
+						+icon('i-close')(style="width: 24px; height: 24px")
+				else
+					//- +counter()
+					.basketData-msg-wrap
+						<small class="basketData-msg" x-html="product['MSG_COUNTER']">шт на сумму 1&nbsp;610 руб.</small>
+					if (!args.search)
+						.search-results-card__add-to-cart
+							+icon('i-cart-3')(style="width:26; height: 26px")
+							.search-results-card__count 2
+			if (args.type==2)
+				a(href='#').btn.btn--wide Посмотреть аналоги
+			if (args.type==3)
+				if (args.cart==true)
+					+counter()
+					.search-results-card__delete
+						+icon('i-close')(style="width: 24px; height: 24px")
+				else
+					a(href='#').btn.btn--wide Подробнее
+					a(href='#').search-results-card__link Сообщить о поступлении
+			if (args.type==4)
+				+counter()
+				.basketData-msg-wrap.red
+					<small class="basketData-msg" x-html="product['MSG_COUNTER']">шт на сумму 1&nbsp;610 руб.</small>
+				if (!args.search)
+					.btn.btn--color Под заказ
+			if (args.type==5)
+				if (args.cart==true)
+					//- +counter()
+
+					.search-results-card__delete
+						+icon('i-close')(style="width: 24px; height: 24px")
+				else
+					//- +counter()
+
+					if (!args.search)
+						.search-results-card__add-to-cart
+							+icon('i-cart-3')(style="width:26; height: 26px")
+							.search-results-card__count 2
+		if (args.search)
+			.search-results-card__remove
+				+icon('i-close-2')(style="width: 24px; height: 24px")

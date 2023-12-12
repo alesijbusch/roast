@@ -1,0 +1,230 @@
++include-style('compare')
++include-script('compare')
+
+script
+
+mixin compare-card(args={})
+    .compare-card
+        .compare-card__inner
+            .compare-card__remove
+                +icon('i-remove')(style="width:14px; height:14px")
+            .compare-card__header
+                .compare-card__img
+                    +lazy-img({
+                        img: args.img
+                    })
+            .compare-card__body
+                a(href='#').compare-card__title=args.title
+                span.compare-card__price=args.price
+                .compare-card__btn.btn В корзину
+
+mixin compare-col(args={})
+    .compare-col(class=args.class_column)
+        .compare-cell__header
+            .compare-cell__header-img
+                +lazy-img({
+                    img: 'product-card-3.jpg'
+                })
+            .compare-cell__header-title Смартфон
+            +icon('i-remove')(style="width:12px; height:12px")
+
+        each i in args.list
+            .compare-cell
+                +icon('i-remove')(style="width:12px; height:12px")
+                span.compare-cell__prop.muted=i.prop
+                .compare-cell__val=i.val
+
+.compare-badges(x-data="{active: false}")
+    .switch(@click="active = !active") показать бейдж
+    a(href='').compare-badge(:class="active? 'active': ''")
+        .compare-badge__left
+            +lazy-img({
+                img: 'product-card-3.jpg'
+            })
+        .compare-badge__right
+            .compare-badge__title В сравнении
+            span Винтовые гвозди
+        +icon('i-close')(style="width:16px; height:16px")
+
+    a(href='').compare-badge(:class="active? 'active': ''")
+        .compare-badge__left
+            +lazy-img({
+                img: 'product-card-4.jpg'
+            })
+        .compare-badge__right
+            .compare-badge__title В сравнении
+            span Смартфон Apple
+        +icon('i-close')(style="width:16px; height:16px")
+
+.compare.container
+    .compare-inner(x-data="{tab: 1}")
+        .compare-tabs
+            .compare-tabs__item(@click="tab=1" :class="tab==1 ? 'active': ''")
+                span Смартфоны
+                span 6
+            .compare-tabs__item(@click="tab=2" :class="tab==2 ? 'active': ''")
+                span Инструмент
+                span 2
+        .compare-header
+            .compare-header__left
+                .compare-switch
+                    label
+                        span.switch
+                            input( type="checkbox")
+                            span.slider.round
+                        span Только отличия
+
+            .compare-header__right Очистить сравнение
+        .compare-table
+            .compare-overflow(x-show="tab==1")
+                .compare-overflow__top
+                    +splide({
+                        mod: 'js-splide-compare-products'
+                    })
+                        each item in [1,2]
+                            +splide-slide()
+                                +compare-card({
+                                    title: 'Смартфон Nika premiun B500',
+                                    img: 'product-card-1.jpg', price: '42 000р'
+                                })
+                            +splide-slide()
+                                +compare-card({
+                                    title: 'Смартфон Apple B500',
+                                    img: 'product-card-2.jpg', price: '42 000р'
+                                })
+                            +splide-slide()
+                                +compare-card({
+                                    title: 'Смартфон Nika premiun B500',
+                                    img: 'product-card-3.jpg', price: '42 000р'
+                                })
+                            +splide-slide()
+                                +compare-card({
+                                    title: 'Смартфон Apple B500',
+                                    img: 'product-card-4.jpg', price: '42 000р'
+                                })
+                            +splide-slide()
+                                +compare-card({
+                                    title: 'Смартфон Nika premiun B500',
+                                    img: 'product-card-1.jpg', price: '42 000р'
+                                })
+                            +splide-slide()
+                                +compare-card({
+                                    title: 'Смартфон Apple B500',
+                                    img: 'product-card-2.jpg', price: '42 000р'
+                                })
+
+
+
+
+                .compare-overflow__bottom
+                    +splide({
+                        mod: 'js-splide-compare-col'
+                    })
+                        each item in [1,2]
+                            +splide-slide()
+                                +compare-col({
+                                    list: [
+                                        {
+                                            prop: 'Количество СИМ-карт',
+                                            val: '2'
+                                        },
+                                        {
+                                            prop: 'Оперативная память (RAM), Gb',
+                                            val: '14'
+                                        },
+                                        {
+                                            prop: 'Разрешение основной камеры, МП',
+                                            val: '12'
+                                        },
+                                    ],
+                                    class_column: 'first'
+
+                                })
+                            +splide-slide()
+                                +compare-col({
+                                    list: [
+                                        {
+                                            prop: 'Количество СИМ-карт',
+                                            val: '1'
+                                        },
+                                        {
+                                            prop: 'Оперативная память (RAM), Gb',
+                                            val: '64'
+                                        },
+                                        {
+                                            prop: 'Разрешение основной камеры, МП',
+                                            val: '48'
+                                        },
+                                    ]
+                                })
+                            +splide-slide()
+                                +compare-col({
+                                    list: [
+                                        {
+                                            prop: 'Количество СИМ-карт',
+                                            val: '2'
+                                        },
+                                        {
+                                            prop: 'Оперативная память (RAM), Gb',
+                                            val: '14'
+                                        },
+                                        {
+                                            prop: 'Разрешение основной камеры, МП',
+                                            val: '12'
+                                        },
+                                    ]
+
+                                })
+                            +splide-slide()
+                                +compare-col({
+                                    list: [
+                                        {
+                                            prop: 'Количество СИМ-карт',
+                                            val: '1'
+                                        },
+                                        {
+                                            prop: 'Оперативная память (RAM), Gb',
+                                            val: '64'
+                                        },
+                                        {
+                                            prop: 'Разрешение основной камеры, МП',
+                                            val: '48'
+                                        },
+                                    ]
+                                })
+                            +splide-slide()
+                                +compare-col({
+                                    list: [
+                                        {
+                                            prop: 'Количество СИМ-карт',
+                                            val: '2'
+                                        },
+                                        {
+                                            prop: 'Оперативная память (RAM), Gb',
+                                            val: '14'
+                                        },
+                                        {
+                                            prop: 'Разрешение основной камеры, МП',
+                                            val: '12'
+                                        },
+                                    ]
+
+                                })
+                            +splide-slide()
+                                +compare-col({
+                                    list: [
+                                        {
+                                            prop: 'Количество СИМ-карт',
+                                            val: '1'
+                                        },
+                                        {
+                                            prop: 'Оперативная память (RAM), Gb',
+                                            val: '64'
+                                        },
+                                        {
+                                            prop: 'Разрешение основной камеры, МП',
+                                            val: '48'
+                                        },
+                                    ]
+                                })
+

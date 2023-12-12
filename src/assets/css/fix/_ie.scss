@@ -1,0 +1,22 @@
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  html {
+    height: 0;
+  }
+  body {
+    height: auto;
+  }
+  .wrapper {
+    height: auto;
+  }
+  .main {
+    flex: none;
+  }
+  .main {
+    flex: none;
+  }
+}
+// Стили, которые будут работать только в Edge
+@supports (display:-ms-grid) {
+
+}
+

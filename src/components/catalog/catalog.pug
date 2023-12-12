@@ -1,0 +1,70 @@
++include-style('catalog')
+
+-
+    var items = [
+        {img: 'cat-1.png', title: 'Текстиль'},
+        {img: 'cat-2.png', title: 'Декор'},
+        {img: 'cat-3.png', title: 'Посуда Инвентарь'},
+        {img: 'cat-4.png', title: 'Инвентарь Инвентарь'},
+        {img: 'cat-5.png', title: 'Освещение'},
+    ]
+
+.catalog
+    .container
+        .catalog__inner
+            .top-description Интернет-магазин предлагает вам товары для дома, дачи и сада. Тут найдется инвентарь для полива растений, текстиль на любой случай и декор для создания уюта. С помощью этих товаров вы сможете выполнить работу, украсить комнату и позаботиться о садовых растениях без особого труда.
+            .catalog__sections
+                .catalog__sections-inner
+                    each item in items
+                        +ics-item(item)
+            include ../catalog-filters/catalog-filters
+        .main-row
+            .main-row__aside
+                .sticky-block
+                    include ../slide-block/slide-block-1
+            .main-row__main
+                include ../filters-panel/filters-panel
+                .catalog__grid
+                    each item in [1,2,3,4,5]
+                        +product-card({
+                            title: 'Умные часы Bambo-900',
+                            in_basket: true,
+                            timer: '2023-06-16 14:06:00',
+                            badges: 1,
+                            no_rating: true,
+                            offers: true
+                        })
+                        +product-card({
+                            title: 'Классическая помада Fior 133 Беспечный розовый',
+                            in_basket: false,
+                            timer: false,
+                            badges: 2,
+                        })
+                        +product-card({
+                            title: 'Обеденная тарелка Shouldplat',
+                            in_basket: false,
+                            timer: '2023-01-16 14:06:00',
+                            badges: 3,
+                        })
+                        +product-card({
+                            title: 'Обеденная тарелка Shouldplat',
+                            in_basket: false,
+                            timer: false,
+                            badges: 2,
+                        })
+                        +product-card({
+                            title: 'Умные часы Bambo-900',
+                            in_basket: true,
+                            timer: '2023-01-16 14:06:00',
+                            badges: 1,
+                        })
+                .catalog__more
+                    .btn.btn-transparent.btn-wave Загрузить еще
+                    br
+                    br
+                    .btn.btn-transparent.btn-wave.preloader Загрузить еще
+                .catalog__pagination
+                    include ../pagination/pagination
+                .catalog__info
+                    p Для обустройства дома и дачи найдутся подходящее постельное белье, элементы интерьера и кухонный текстиль. Товары в нашем каталоге сортируются с помощью «умного фильтра» — вы сможете найти все нужное в считанные минуты. На страницах сайта вы увидите описание товаров, технические характеристики и даже инструкции по эксплуатации.
+                    p Получить и оплатить заказ можно в пунктах выдачи товаров или при доставке курьером. Возникли вопросы? Напишите нам в онлайн-чат или свяжитесь по телефону. Удачных покупок!

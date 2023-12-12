@@ -1,0 +1,141 @@
+@import "src/assets/css/vars_mixins/vars_mixins";
+
+.slide-block {
+	&__head {
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		fill: var(--fill_dark_light);
+		color: $white_text_black;
+		color: var(--white_text_black);
+
+		.icon {
+			transform: rotate(180deg);
+			transition: transform 0.3s;
+		}
+	}
+	&__body {
+		overflow: hidden;
+		height: auto;
+		padding-top: 13px;
+		transition: height 0.3s, padding-top 0.3s;
+
+		.nav {
+		}
+		.nav-list {
+		}
+		.nav-item {
+			margin-bottom: 3px;
+		}
+		.nav-link {
+			color: #222;
+			color: var(--white_text_black);
+			display: inline-flex;
+			align-items: center;
+
+			.icon {
+				fill: var(--fill_dark_light);
+				transform: rotate(90deg);
+				margin-right: 5px;
+			}
+
+			.nav-item-name {
+				padding: 4px 8px;
+			}
+
+			&:hover{
+				color: #000;
+				color: var(--fill_dark_lite_hover);
+			}
+		}
+		.nav-item.active {
+			.nav-link {
+				font-weight: 500;
+				border-radius: 8px;
+				background-color: var(--darkgrey_bg_black);
+
+				.icon {
+					display: none;
+				}
+			}
+		}
+		.nav-lvl2 {
+			padding-top: 3px;
+			padding-left: 12px;
+		}
+		.nav-lvl2-item {
+			padding-bottom: 3px;
+		}
+		.nav-lvl2-item.active {
+			.nav-lvl2-link {
+				font-weight: 500;
+				border-radius: 8px;
+				background-color: var(--darkgrey_bg_black);
+			}
+		}
+		.nav-lvl2-link {
+			padding: 4px 8px;
+			color: #222;
+			color: var(--white_text_black);
+
+			&:hover {
+				color: #000;
+				color: var(--fill_dark_lite_hover);
+			}
+		}
+	}
+
+	&.closed {
+		.slide-block {
+			&__head {
+				.icon {
+					transform: rotate(0deg);
+				}
+			}
+			&__body {
+				height: 0px;
+				padding-top: 0px;
+			}
+		}
+	}
+
+
+	&--right{
+		margin-bottom: 32px;
+		.nav-item{
+			&-name{
+				padding: 4px 8px;
+			}
+
+			&.active{
+				&:hover{
+					
+				}
+				.nav-item-name{
+					-webkit-border-radius: 8px;
+					-moz-border-radius: 8px;
+					border-radius: 8px;
+					//background-color: #f4f4f4;
+					pointer-events: none;
+					background-color: var(--darkgrey_bg_black);
+					//background-color: red;
+				}
+			}
+		}
+
+	}
+}
+
+// 1199.75
+@media (max-width: $lg) {
+}
+// 991.75
+@media (max-width: $md) {
+}
+// 767.75
+@media (max-width: $sm) {
+}
+// 600.75
+@media (max-width: $xs) {
+}

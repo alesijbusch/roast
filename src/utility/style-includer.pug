@@ -1,0 +1,59 @@
+//- подключение общих критических стилей
+mixin style-includer()
+	if (PROJECT_MODE !== 'dev')
+		.
+			#{''}
+		.
+			<!--<?=$APPLICATION->ShowHead();?>-->
+
+		each item in componentsList
+			if (item !== 'pages-viget')
+				.
+					<!--Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/components-template/#{item}/style.css");-->
+
+		each item in componentsList
+			link(rel='stylesheet' href= dir + 'components-template/' + item + '/style.css' as='style' onload="this.onload=null;this.rel='stylesheet'")
+
+
+//- Подключение критический стилей отдельных компонентов
+mixin componentsCriticalStyles-includer()
+
+	each item in componentsCriticalList
+		link(rel="stylesheet" href= '../../html/css/' + item + '/style.css' inline)
+
+
+//- Подключение скриптов отдельных компонентов
+mixin componentsScripts-includer()
+	if (PROJECT_NAME !== '')
+		script(src= dir + '/concat/' + pageName + '_html.js' defer)
+	else if (PROJECT_MODE !== 'dev')
+		each item in componentsScriptsList
+			script(src= dir + '/components-template/' + item + '/script.min.js' defer)
+
+		.
+			#{''}
+
+
+		.
+
+			<!--Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/alpinejs/alpine.min.js");-->
+			<!--Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/vendor/lazyload.min.js");-->
+
+		each item in vendorScriptsList
+			.
+				<!--Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/vendor/#{item}");-->
+
+		.
+			<!--Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/app.min.js");-->
+
+		each item in componentsScriptsList
+
+			if (item !== 'pages-viget' && item !== 'validation')
+				.
+					<!--Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/components-template/#{item}/script.min.js");-->
+
+//- Подключение скриптов отдельных вендоров
+mixin vendorScripts-includer()
+
+	each item in vendorScriptsList
+		script(src=`./js/vendor/${item}` defer)

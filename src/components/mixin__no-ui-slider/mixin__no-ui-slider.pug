@@ -1,0 +1,10 @@
+mixin no-ui-slider(args={})
+    +include-style('mixin__no-ui-slider')
+    +include-script('mixin__no-ui-slider')
+    .no-ui-slider.js-no-ui-slider(data-min="0" data-max="8500" data-from="150" data-to="7700")&attributes(attributes)
+        if(args.title)
+            .no-ui-slider__title=args.title
+        .no-ui-slider__inputs
+            input(type="text").no-ui-slider__input-from
+            input(type="text").no-ui-slider__input-to
+        .no-ui-slider__ranges

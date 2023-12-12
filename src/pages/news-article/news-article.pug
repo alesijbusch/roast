@@ -1,0 +1,26 @@
+extends ../../layout/layout
+
+block vars
+    - var pageTitle = 'Услуги'
+    - var pageBodyClass = 'header-opacity'
+    - var dir = './'
+
+
+block premain
+    include ../../components/page-hero/page-hero
+
+block main
+    include ../../components/news-article/news-article
+
+
+block pageModal
+
+
+block componentsCriticalStyles
+    +componentsCriticalStyles-includer()
+block vendorScripts
+    +vendorScripts-includer()
+block componentsStyles
+    +style-includer()
+block componentsScripts
+    +componentsScripts-includer()

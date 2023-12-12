@@ -1,0 +1,70 @@
+@import "src/assets/css/vars_mixins/vars_mixins";
+
+@media (min-width: 601px) {
+  .page-hero {
+    padding-top: 42%;
+    margin-bottom: 48px;
+    position: relative;
+    min-height: 320px;
+
+    &__inner {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 3;
+    }
+    &:before {
+      content: "";
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+      background-color: rgba(0,0,0,0.4);
+      position: absolute;
+    }
+    &__img img {
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 100%;
+      width: 100%;
+    }
+    .container {
+      position: relative;
+      z-index: 2;
+    }
+  }
+
+}
+.page-top__title{
+  color:  #fff;
+}
+
+
+// 1199.75
+@media (max-width: $lg) {}
+// 991.75
+@media (max-width: $md) {}
+// 767.75
+@media (max-width: $sm) {}
+// 600.75
+@media (max-width: $xs) {
+  .page-hero {
+    min-height: auto;
+    padding-top: 0;
+    &::before {
+      display: none;
+    }
+    &__img {
+      display: none;
+    }
+    &__inner {
+      position: static;
+    }
+  }
+}

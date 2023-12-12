@@ -1,0 +1,94 @@
+@import "src/assets/css/vars_mixins/vars_mixins";
+
+.brand {
+  &__info {
+    display: flex;
+    border: 1px solid #ededed;
+    border-color: var(--stroke_black);
+    border-radius: 8px;
+    padding: 39px 30px 41px 81px;
+    margin-bottom: 40px;
+  }
+
+  &__info-img-wrap {
+    position: relative;
+    margin-right: 82px;
+    padding: 10px;
+    background: #fff;
+    border-radius: 8px;
+  }
+  &__info-img {
+    width: 142px;
+    height: 60px;
+    position: relative;
+    vertical-align: top;
+    display: inline-block;
+    overflow: hidden;
+	  img{
+		  width: 100%;
+		  height: 100%;object-fit: contain;
+	  }
+  }
+  &__info-content {
+    &.opened {
+      .brand__info-content-inner {
+        -webkit-line-clamp: unset;
+        -moz-line-clamp: unset;
+      }
+    }
+  }
+  &__info-content-inner {
+    color: #555;
+    color: var(--basic_text_black);
+    //-webkit-line-clamp: 4;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-line-clamp: 4;
+	  -webkit-line-clamp: 4;
+    overflow: hidden;
+    line-height: calc(1em + 10px);
+	  margin-bottom: 10px;
+  }
+  &__info-more span {
+    color: var(--fill_dark_lite_hover);
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 0.15em;
+    text-decoration-thickness: 1px;
+    text-decoration-skip-ink: none;
+  }
+  &__info-link {
+    margin-top: 25px;
+    padding: 4px 8px;
+    color: #222;
+    color: var(--white_text_black);
+    background-color: rgba(136,136,136,.1);
+    background-color: var(--darkgrey_bg_black);
+    border-radius: 8px;
+
+    &:hover {
+      color: #000;
+      color: var(--fill_dark_lite_hover);
+    }
+  }
+}
+
+// 1199.75
+@media (max-width: $lg) {}
+// 991.75
+@media (max-width: $md) {}
+// 767.75
+@media (max-width: $sm) {
+  .brand {
+    &__info {
+      flex-direction: column;
+      padding: 32px;
+      align-items: flex-start;
+    }
+  }
+}
+// 600.75
+@media (max-width: $xs) {}

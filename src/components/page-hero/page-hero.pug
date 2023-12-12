@@ -1,0 +1,21 @@
++include-style('page-hero')
+
+.page-hero
+    picture.page-hero__img
+        source(srcset=SITE_TEMPLATE_PATH + 'images/page-hero.jpg' media='(min-width: 768px)')
+        source(srcset=SITE_TEMPLATE_PATH + 'images/page-hero.jpg' media='(min-width: 426px)')
+        source(srcset=SITE_TEMPLATE_PATH + 'images/page-hero.jpg' media='(min-width: 0px)')
+        img.ib-slide__bg(src=SITE_TEMPLATE_PATH + 'images/page-hero.jpg' alt='page-hero')
+    .page-hero__inner
+        .container
+            .page-top
+                +breadcrumbs({
+                    content2: 'Услуги',
+                    href_content2: '',
+                    content3: 'Монтаж оборудования'
+                })
+                .page-top__header
+                    h1.page-top__title Монтаж оборудования
+                    a(href="#").page-top__rss
+                        svg(height="14" width="14" fill='inherit' viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg")
+                            <path d="M1531,255a1,1,0,0,0,1-1v-1a10,10,0,0,1,10-10h1a1,1,0,1,0,0-2h-1a12,12,0,0,0-12,12v1A1,1,0,0,0,1531,255Zm12-9h-1a7,7,0,0,0-7,7v1a1,1,0,1,0,2,0v-1a5,5,0,0,1,5-5h1A1,1,0,0,0,1543,246Zm-1,5a2,2,0,1,0,2,2A2,2,0,0,0,1542,251Z" transform="translate(-1530 -241)" />

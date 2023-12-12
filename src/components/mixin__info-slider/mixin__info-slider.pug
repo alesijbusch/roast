@@ -1,0 +1,13 @@
+
+mixin info-slider(args={})
+	+include-style('mixin__info-slider')
+	.info-slider(x-data="{open:false}" @click="open = ! open" :class="open ? 'active' : ''")
+		.info-slider__header
+			.info-slider__title Стоимость доставки
+			.info-slider__toggle
+				+icon('i-arrow-down')(style="width:8px; height:8px")
+		.info-slider__content(
+			x-show="open"
+			x-transition:enter-start="start"
+ 			x-transition:leave-end="start"
+		) В стоимость заказа может быть включена цена доставки

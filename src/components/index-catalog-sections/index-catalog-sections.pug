@@ -1,0 +1,24 @@
++include-style('index-catalog-sections')
+-
+    var items=[
+        {img:'cat-1.png',title:'Товары для дома и дачи'},
+        {img:'cat-2.png',title:'Посуда'},
+        {img:'cat-3.png',title:'Инструменты'},
+        {img:'cat-4.png',title:'Отделочные материалы'},
+        {img:'cat-5.png',title:'Телефоны и смарт-часы'},
+        {img:'cat-6.png',title:'Одежда'},
+        {img:'cat-7.png',title:'Спорт и отдых'},
+        {img:'cat-8.png',title:'Автотовары'},
+        {img:'cat-9.png',title:'Хобби и творчество'},
+        {img:'cat-10.png',title:'Мебель'},
+    ]
+
+.index-catalog-sections
+    .container
+        .index-catalog-sections__inner
+            each item in items
+                +ics-item(item)
+            a(href="/catalog").ics-item.ics-item--btn
+                .ics-item__img
+                    +icon('i-arrow-right')(style="height:12px;width:12px")
+                .ics-item__title Весь каталог

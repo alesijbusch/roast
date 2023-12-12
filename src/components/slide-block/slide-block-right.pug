@@ -1,0 +1,12 @@
++include-style('slide-block')
+
+.slide-block
+    .slide-block__body
+        +nav({
+            mod: 'slide-block--right',
+            list: [
+                {name: 'Все публикации', active: true},
+                {name: 'Обзоры товаров',},
+                {name: 'Публикации',},
+            ]
+        })

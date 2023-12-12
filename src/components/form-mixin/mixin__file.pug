@@ -1,0 +1,16 @@
+mixin file(args = {})
+	+include-style('form-mixin')
+	+include-script('form-mixin')
+
+	- var id = args.id || Math.floor(Math.random() * 9999999999);
+
+	.form-group(class= args.mod)
+		.uploader
+			input.form-control(
+				type= 'file',
+				id= 'ID' + id,
+				name= args.name || 'NAME' + id,
+				value= ''
+				)
+			span.filename Прикрепить изображение (не более 1 мб)
+

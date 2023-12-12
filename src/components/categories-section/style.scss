@@ -1,0 +1,39 @@
+@import "src/assets/css/vars_mixins/vars_mixins";
+
+.categories-section {
+  padding-top: 80px;
+  &__inner {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(3,1fr);
+  }
+}
+
+// 1199.75
+@media (max-width: $lg) {
+  .categories-section {
+    &__inner {
+      grid-template-columns: repeat(2,1fr);
+    }
+  }
+}
+// 991.75
+@media (max-width: $md) {
+
+}
+// 767.75
+@media (max-width: $sm) {}
+// 600.75
+@media (max-width: $xs) {
+  .categories-section {
+    padding-top: 40px;
+
+    &__inner {
+      display: flex;
+      grid-gap: 0;
+      overflow: auto;
+      padding: 15px 24px!important;
+      margin: -15px -24px!important;
+    }
+  }
+}

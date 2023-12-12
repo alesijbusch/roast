@@ -1,0 +1,26 @@
+extends ../../layout/layout
+
+block vars
+	- var pageTitle = 'Главная'
+	- var pageBodyClass = 'index'
+	- var dir = './'
+
+
+block premain
+
+block main
+	.container
+		br
+		h1 UI Kit
+		include ../../components/ui-kit/ui-kit
+
+block pageModal
+
+block componentsCriticalStyles
+	+componentsCriticalStyles-includer()
+block vendorScripts
+	+vendorScripts-includer()
+block componentsStyles
+	+style-includer()
+block componentsScripts
+	+componentsScripts-includer()

@@ -1,0 +1,24 @@
+extends ../../layout/layout
+
+block vars
+    - var pageTitle = '404'
+    - var pageBodyClass = ''
+    - var dir = './'
+
+
+block premain
+
+
+block main
+    include ../../components/404/404
+    include ../../components/viewed-section/viewed-section
+block pageModal
+
+block componentsCriticalStyles
+    +componentsCriticalStyles-includer()
+block vendorScripts
+    +vendorScripts-includer()
+block componentsStyles
+    +style-includer()
+block componentsScripts
+    +componentsScripts-includer()

@@ -1,0 +1,97 @@
+@import "src/assets/css/vars_mixins/vars_mixins";
+
+$min: 220px;
+$max: 100%;
+
+
+.a-select{
+	position: relative;
+	//width: 200px;
+	display: inline-block;
+	font-size: 16px;
+	max-width: $max;
+	min-width: $min;
+	&__title{
+		span{
+			color: #f25353;
+		}
+
+	}
+	&__header{
+		transition: all ease .3s;
+		border-radius: 8px;
+		background-color: var(--input_bg_color);
+		border: 1px solid var(--input_border_color);
+		height: 47px;
+		display: flex;
+		align-items: center;
+		position: relative;
+		&-val{
+			padding: 5px 13px;
+		}
+	}
+	&__trigger{
+		border-radius: 0 5px 5px 0;
+		position: absolute;
+		right: 5px;
+		top: 0;
+		padding: 0 5px;
+		height: 100%;
+		line-height: 2;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		.icon{
+			transition: all ease .3s;
+		}
+		&.active{
+			.icon{
+				transform: rotate(180deg);
+			}
+		}
+	}
+	&__list{
+		z-index: 1;
+		position: absolute;
+		right: 0;
+		left: 0;
+		margin-top: 5px;
+		border-radius: 8px;
+		background: var(--card_bg_black);
+		text-align: left;
+		transition: all ease .3s;
+		padding: 6px;
+		&.active{
+			box-shadow: 0 5px 30px rgba(34,34,34,0.1);
+
+		}
+
+
+		&-item{
+			padding: 5px 7px;
+			border-radius: 8px;
+			height: 40px;
+			display: flex;
+			align-items: center;
+			cursor: auto;
+			transition: all ease .3s;
+			@media (min-width: $md){
+				&:hover:not(.a-select__list-item.active){
+					cursor: pointer;
+					background-color: var(--light2_bg_black);
+					color: var(--fill_dark_lite_hover);
+
+				}
+			}
+			&:not(:last-child){
+				margin-bottom: 2px;
+			}
+
+			&.active{
+				font-weight: 600;
+				background-color: var(--darkgrey_bg_black);
+			}
+		}
+	}
+}

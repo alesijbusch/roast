@@ -1,0 +1,110 @@
+@import "src/assets/css/vars_mixins/vars_mixins";
+
+.sales-section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  background: $darkerblack_bg_black;
+  background: var(--darkerblack_bg_black);
+
+  &__header {
+    margin-bottom: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+  &__inner {
+    display: grid;
+    gap: 24px 40px;
+    grid-template-columns: repeat(3,1fr);
+  }
+}
+
+.sales-item {
+  &__img-wrap {
+    position: relative;
+    padding-top: 67%;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  &__img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  &__badges {
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    left: 16px;
+    bottom: 20px;
+  }
+  &__content {
+    padding: 15px 16px 0;
+  }
+  &__title {
+    color: $white_text_black;
+    color: var(--white_text_black);
+    font-size: 1.125rem;
+    line-height: calc(1em + 7px);
+    font-weight: 500;
+	  @media (max-width: $xs - 1) {
+		  font-size: 16px;
+	  }
+  }
+  &__text {
+    margin-top: 8px;
+    font-size: .875rem;
+    line-height: calc(1em + 7px);
+  }
+
+  &:hover {
+    .sales-item__title {
+      color: #000;
+      color: var(--fill_dark_lite_hover);
+    }
+  }
+}
+
+// 1199.75
+@media (max-width: $lg) {}
+// 991.75
+@media (max-width: $md) {
+  .sales-section {
+    &__inner {
+      grid-template-columns: repeat(2,1fr);
+    }
+  }
+}
+// 767.75
+@media (max-width: $sm) {
+  .sales-section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+// 600.75
+@media (max-width: $xs) {
+  .sales-section {
+    &__inner {
+      display: flex;
+      grid-gap: 0;
+      overflow: auto;
+      padding: 15px 24px!important;
+      margin: -15px -24px!important;
+    }
+  }
+
+  .sales-item {
+    width: 260px;
+    min-width: 260px;
+    &:not(:last-child) {
+      margin-right: 24px;
+    }
+  }
+}

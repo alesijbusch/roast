@@ -1,0 +1,14 @@
++include-style('a-select')
+
+.a-select(x-data="{val: 'First', items: ['First', 'Second', 'Third'], show: false}")
+    .form-group
+        .a-select__title.form-control-label.form-control-label--small Заголовок <span>*</span>
+        input(x-model='val' type='hidden' name='mySelect').form-control
+        .a-select__header(@click='show = true' @keydown.enter='show = !show' tabindex='3')
+            .a-select__header-val(x-text='val')
+            .a-select__trigger(:class="{'active': show}")
+                +icon('i-arrow-down')(style="width:7px;height:5px;")
+        .a-select__body(x-show='show' x-cloak='')
+            .a-select__list(@click.away='show = false' :class="{'active': show}")
+                template(x-for='item in items')
+                    .a-select__list-item(@click='val = item; show = false' :class="{'active': val == item}" x-text='item')

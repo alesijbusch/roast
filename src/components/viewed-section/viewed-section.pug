@@ -1,0 +1,92 @@
++include-style('viewed-section')
++include-script('viewed-section')
+
+-
+    var itemsShort = [
+        {
+            img: 'viewed-item-1.png',
+            price: '1&nbsp;900 ₽/шт',
+            title: 'Подвесной светильник Goodles',
+            badge: true,
+        },
+        {
+            img: 'viewed-item-2.png',
+            price: '2&nbsp;900 ₽/шт',
+            title: 'Потолочный светильник Fario',
+        },
+    ]
+    var items = [
+        {
+            img: 'viewed-item-1.png',
+            price: '1&nbsp;900 ₽/шт',
+            title: 'Подвесной светильник Goodles',
+            badge: true,
+        },
+        {
+            img: 'viewed-item-2.png',
+            price: '2&nbsp;900 ₽/шт',
+            title: 'Потолочный светильник Fario',
+        },
+        {
+            img: 'viewed-item-3.png',
+            price: '1&nbsp;900 ₽/шт',
+            title: 'Накладной светильник Niaol',
+        },
+        {
+            img: 'viewed-item-4.jpg',
+            price: '2&nbsp;500 ₽/шт',
+            title: 'Покрывало Мятный',
+        },
+        {
+            img: 'viewed-item-5.jpg',
+            price: '2&nbsp;600 ₽/шт',
+            title: 'Наземный уличный фонарь Venovi',
+        },
+        {
+            img: 'viewed-item-1.png',
+            price: '1&nbsp;900 ₽/шт',
+            title: 'Подвесной светильник Goodles',
+        },
+        {
+            img: 'viewed-item-2.png',
+            price: '2&nbsp;900 ₽/шт',
+            title: 'Потолочный светильник Fario',
+        },
+        {
+            img: 'viewed-item-3.png',
+            price: '1&nbsp;900 ₽/шт',
+            title: 'Накладной светильник Niaol',
+        },
+        {
+            img: 'viewed-item-4.jpg',
+            price: '2&nbsp;500 ₽/шт',
+            title: 'Покрывало Мятный',
+        },
+        {
+            img: 'viewed-item-5.jpg',
+            price: '2&nbsp;600 ₽/шт',
+            title: 'Наземный уличный фонарь Venovi',
+        },
+    ]
+.viewed-section
+    .container
+        .viewed-section__header
+            h3.section-title
+                span Вы смотрели
+        +splide({
+            mod: 'viewed-section__slider js-splide-viewed'
+        })
+            each item in items
+                +splide-slide()
+                    a(href="#").viewed-item
+                        .viewed-item__img-wrap
+                            +lazy-img-splide({
+                                mod: 'viewed-item__img',
+                                src: item.img,
+                                alt: item.title
+                            })
+                            if(item.badge)
+                                .viewed-item__badges
+                                    .badge.badge--yellow -10%
+                        .viewed-item__price!=item.price
+                        .viewed-item__title=item.title

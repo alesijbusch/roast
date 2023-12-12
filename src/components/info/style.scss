@@ -1,0 +1,10 @@
+@import "src/assets/css/vars_mixins/vars_mixins";
+
+.info {
+  padding-bottom: 80px;
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 24px;
+  }
+}

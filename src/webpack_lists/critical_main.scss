@@ -1,0 +1,13 @@
+//common
+@import "../assets/css/common/reset";
+@import "../assets/css/common/fonts";
+@import "../assets/css/common/main";
+@import "../assets/css/common/grid";
+
+
+//fix
+@import "../assets/css/fix/ie";
+@import "../assets/css/fix/ios";
+@import "../assets/css/fix/nojs-fix";
+@import "../assets/css/fix/print";
+@import "../assets/css/fix/bitrix-fix";

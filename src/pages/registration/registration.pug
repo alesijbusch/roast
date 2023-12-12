@@ -1,0 +1,125 @@
+extends ../../layout/layout
+
+block vars
+    - var pageTitle = 'Главная'
+    - var pageBodyClass = ''
+    - var dir = './'
+
+
+block premain
+    .container
+        .page-top.page-top--center
+            +breadcrumbs({
+                content2: 'Авторизация',
+                content3: 'Регистрация',
+            })
+            .page-top__header
+                h1.page-top__title Регистрация
+
+
+block main
+    .main-inner
+        .container
+            .form-block-container
+                form.form-block
+                    include  ../../components/a-select/a-select
+                    +input({
+                        fg_mod: 'form-group--margin',
+                        label_mod: 'form-control-label--small',
+                        label: 'Фамилия Имя Отчество',
+                        type: 'text',
+                        placeholder: false,
+                        required: true,
+                        pattern: false,
+                        validation: {
+                            message: 'Обязательное поле',
+                            regexp: 'Неверный формат',
+                            emailaddress: ' ',
+                            identical: false
+                        }
+                    })
+                    +input({
+                        fg_mod: 'form-group--margin',
+                        label_mod: 'form-control-label--small',
+                        label: 'E-mail',
+                        type: 'email',
+                        placeholder: false,
+                        required: true,
+                        pattern: false,
+                        validation: {
+                            message: 'Обязательное поле',
+                            regexp: 'Неверный формат',
+                            emailaddress: ' ',
+                            identical: false
+                        }
+                    })
+                        .form-group__description Является также логином для входа на сайт
+                    +input({
+                        fg_mod: 'form-group--margin',
+                        label_mod: 'form-control-label--small',
+                        label: 'Телефон',
+                        type: 'text',
+                        placeholder: false,
+                        required: true,
+                        pattern: false,
+                        validation: {
+                            message: 'Обязательное поле',
+                            regexp: 'Неверный формат',
+                            emailaddress: ' ',
+                            identical: false
+                        }
+                    })
+                    +input({
+                        fg_mod: 'form-group--margin',
+                        label_mod: 'form-control-label--small',
+                        xType: "showPass ? 'text' : 'password'",
+                        label: 'Пароль',
+                        type: 'text',
+                        placeholder: false,
+                        required: true,
+                        pattern: false,
+                        validation: {
+                            message: 'Обязательное поле',
+                            regexp: 'Неверный формат',
+                            emailaddress: ' ',
+                            identical: false
+                        }
+                    })(x-data="{showPass: false}" )
+                        .show-pass(@click="showPass = !showPass" x-cloak)
+                            +icon('i-show-pass')(style="width:20px; height:20px")(x-show="!showPass")
+                            +icon('i-show-pass-2')(style="width:20px; height:20px")(x-show="showPass")
+                        .form-group__description Длина пароля не менее 6 символов
+                    +input({
+                        fg_mod: 'form-group--margin',
+                        label_mod: 'form-control-label--small',
+                        xType: "showPass ? 'text' : 'password'",
+                        label: 'Подтверждение пароля',
+                        type: 'text',
+                        placeholder: false,
+                        required: true,
+                        pattern: false,
+                        validation: {
+                            message: 'Обязательное поле',
+                            regexp: 'Неверный формат',
+                            emailaddress: ' ',
+                            identical: false
+                        }
+                    })(x-data="{showPass: false}" )
+                        .show-pass(@click="showPass = !showPass" x-cloak)
+                            +icon('i-show-pass')(style="width:20px; height:20px")(x-show="!showPass")
+                            +icon('i-show-pass-2')(style="width:20px; height:20px")(x-show="showPass")
+                    .form-block__submit
+                        button(type="submit").btn.btn-lg.btn--primary Зарегестрироваться
+                    .policy-block
+                        <span> Продолжая, вы соглашаетесь с <a href="#" target="_blank">политикой конфиденциальности</a></span>
+                include ../../components/auth-service/auth-service
+block pageModal
+
+block componentsCriticalStyles
+    +componentsCriticalStyles-includer()
+block vendorScripts
+    +vendorScripts-includer()
+block componentsStyles
+    +style-includer()
+block componentsScripts
+    +componentsScripts-includer()

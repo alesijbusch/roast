@@ -1,0 +1,42 @@
++include-style('services')
+
+-
+	var items = [
+		{
+			img: 'service-1.jpg',
+			title: 'Монтаж оборудования',
+			btn: 'Заказать услугу'
+		},
+		{
+			img: 'service-2.jpg',
+			title: 'Сборка мебели',
+			btn: 'Подробнее'
+		},
+		{
+			img: 'service-3.jpg',
+			title: 'Ремонт техники',
+			btn: 'Заказать услугу'
+		}
+	]
+
+.services
+	.container
+		.main-row
+			.main-row__aside
+				.sticky-block
+					include ../slide-block/slide-block-2
+			.main-row__main
+				.top-description Специализируемся на услугах различных направлений — выполняем установку, монтаж и настройку оборудования из каталога нашего интернет-магазина. А также предлагаем воспользоваться системой кредитования для того, чтобы вы смогли приобрести необходимый товар или услугу прямо сейчас. Выполняем работы в день заказа, делаем все быстро и качественно!
+				.services__grid
+					each item in items
+						.service-item
+							+lazy-img({
+								wrap_mod: 'service-item__img-wrap',
+								link: true,
+								img: item.img,
+							})
+							.service-item__content
+								a(href='#').service-item__title=item.title
+								.service-item__btn
+									.btn(data-toggle="modal" data-target="#modal-feedback")=item.btn
+

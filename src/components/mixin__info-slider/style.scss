@@ -1,0 +1,46 @@
+@import "src/assets/css/vars_mixins/vars_mixins";
+
+.info-slider {
+	border: 1px solid #dadada;
+	border-color: var(--input_border_color);
+	border-radius: 8px;
+
+	padding: 6px 14px;
+	margin: 17px 0 15px 0;
+	background: #fff;
+	background-color: var(--input_bg_color);
+	&__title {
+		color: var(--white_text_black);
+	}
+	&__header {
+		padding: 3px 0 4px;
+		display: flex;
+		align-items: center;
+		gap: 5px;
+		justify-content: space-between;
+	}
+	&__toggle {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		fill: var(--white_text_black);
+	}
+	&__content {
+		max-height: 70px;
+		overflow: hidden;
+		transition: all 0.3s ease;
+		&.start {
+			max-height: 0px;
+		}
+	}
+	&.active {
+		.info-slider__toggle {
+			transform: rotate(-180deg);
+		}
+	}
+	&:hover {
+		@media (min-width: 1024px) {
+			cursor: pointer;
+		}
+	}
+}

@@ -1,0 +1,50 @@
++include-style('sales-section')
+
+-
+    var items = [
+        {
+            img: 'sales-item-1.jpg',
+            badges: 'до -50%',
+            title: 'Черная пятница: скидки до 50%',
+            text: 'С 25 ноября по 2 октября',
+        },
+        {
+            img: 'sales-item-2.jpg',
+            badges: '-20%',
+            title: 'Скидка 20% на все автотовары',
+            text: 'До конца 2022 года',
+        },
+        {
+            img: 'sales-item-3.jpg',
+            badges: false,
+            title: 'При покупке ударной дрели набор сверл в подарок',
+            text: 'До конца августа',
+        },
+    ]
+
+.sales-section
+    .container
+        .sales-section__header
+            h3.section-title
+                a(href="#").section-title__link
+                    span Акции
+                    span.icon-wrap
+                        +icon('i-arrow-right')(style="height:12px;width:12px")
+        .sales-section__inner
+            each item in items
+                .sales-item
+                    +lazy-img({
+                        link: true,
+                        wrap_mod: 'sales-item__img-wrap',
+                        img_mod: 'sales-item__img',
+                        img: item.img
+                    })
+                        if(item.badges)
+                            .sales-item__badges
+                                .badge.badge--yellow=item.badges
+                                .badge.badge--gray.badge--countdown
+                                    img(src="/html/images/sale-fire.svg" alt="badge")
+                                    +countdown('06.16.2023 14:06:00')
+                    .sales-item__content
+                        a(href="#").sales-item__title=item.title
+                        .sales-item__text=item.text

@@ -1,0 +1,33 @@
+extends ../../layout/layout
+
+block vars
+	- var pageTitle = 'Главная'
+	- var pageBodyClass = ''
+	- var dir = './'
+
+
+block premain
+	include ../../components/index-banners/index-banners
+	include ../../components/index-catalog-sections/index-catalog-sections
+
+block main
+	include ../../components/index-tabs/index-tabs
+	include ../../components/brands-slider/brands-slider
+	include ../../components/categories-section/categories-section
+	include ../../components/tizers-section/tizers-section
+	include ../../components/sales-section/sales-section
+	include ../../components/products-slider/products-slider
+	include ../../components/blog-section/blog-section
+	include ../../components/vk-section/vk-section
+	include ../../components/viewed-section/viewed-section
+
+block pageModal
+
+block componentsCriticalStyles
+	+componentsCriticalStyles-includer()
+block vendorScripts
+	+vendorScripts-includer()
+block componentsStyles
+	+style-includer()
+block componentsScripts
+	+componentsScripts-includer()

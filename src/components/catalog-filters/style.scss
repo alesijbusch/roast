@@ -1,0 +1,40 @@
+@import 'src/assets/css/vars_mixins/vars_mixins';
+
+
+.catalog-filters {
+	margin-bottom: 32px;
+
+	&__inner {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		@media (max-width: $sm - 1) {
+			margin-right: -15px;
+			overflow: auto;
+			flex-wrap: nowrap;
+			@include scroll();
+		}
+	}
+}
+
+.catalog-filter {
+	padding: 0 12px;
+	height: 34px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--white_text_black);
+	transition: background-color ease .3s;
+	background-color: var(--darkerblack_bg_black);
+	font-size: 14px;
+	border-radius: 50px;
+
+	&:hover {
+		color: var(--theme-base-color);
+		background-color: var(--opacity_dark_lite_hover);
+	}
+
+	span {
+		white-space: nowrap;
+	}
+}

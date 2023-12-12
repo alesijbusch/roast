@@ -1,0 +1,12 @@
+@import "src/assets/css/vars_mixins/vars_mixins";
+
+.lazy-img-wrap {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	&.loaded .preloader {
+		display: none;
+	}
+}

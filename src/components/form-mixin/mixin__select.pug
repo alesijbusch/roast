@@ -1,0 +1,61 @@
+mixin select(args={})
+    +include-style('form-mixin')
+    .select(class=args.mod
+        x-data="{isOpenedSelect: false}"
+        :class="isOpenedSelect ? 'opened' : ''"
+        @click.away="isOpenedSelect = false")
+        .select__header(@click="isOpenedSelect = ! isOpenedSelect")
+            .select__title!=args.title
+                +icon('i-arrow-down')(style="height:5px;width:7px")
+        .select__body
+            ul.select__body-list
+                each item in args.list
+                    li(class=item.active ? 'active' : '')
+                        span=item.name
+
+
+mixin custom-select(args = {})
+    +include-script('form-mixin')
+    - var id = args.id || Math.floor(Math.random() * 9999999999);
+    .form-group.form-group-select(class= args.fg_mod)
+        if (args.label)
+            label.form-control-label(for= 'ID' + id class= args.label_mod)= args.label || 'label' 
+                if (args.label_desc)
+                    span.field-label-descr= args.label_desc
+                if (args.required)
+                    span.label-required *
+        .custom-select(class= args.mod)
+            input(
+                type="text",
+                required= args.required ? true : false,
+                id= 'ID' + id,
+                name= args.name || 'NAME' + id,
+                data-bv-live=args.validation.live || 'enabled'
+                data-bv-notempty-message= args.validation && args.validation.message || 'Заполните поле',
+                data-bv-regexp-message= args.validation.regexp || 'Неверный формат!!!!!',
+                data-bv-stringLength-message= args.validation && args.validation.stringLength || ' ',
+                data-bv-emailaddress-message= ' ',
+                data-bv-identical= args.validation && args.validation.identical && 'true',
+                data-bv-identical-field= args.validation && args.validation.identical && args.validation.identical.field,
+                data-bv-identical-message= args.validation && args.validation.identical && args.validation.identical.message,
+                data-bv-callback= args.validation && args.validation.callback && 'true',
+                data-bv-callback-field= args.validation && args.validation.callback && args.validation.callback.field,
+                data-bv-callback-message= args.validation && args.validation.callback && args.validation.callback.message,
+            ).custom-select__input.form-control
+            .custom-select__header
+                .custom-select__trigger
+                    +icon('i-arrow-small')(style="width:10px; height: 10px")
+                if (args.default)
+                    .custom-select__selected= args.default
+                else
+                    .custom-select__selected= args.items[0].text || args.items[0].value
+            .custom-select__overflow
+                ul.custom-select__list
+                    each item, index in args.items
+                        if (!args.default)
+                            if (index == 0)
+                                li.custom-select__list-item.selected(value=item.value data-value=item.value data-url= item.url data-color=item.color data-deliveryCenter=item.center data-counter= item.counter class=item.class)!=item.text || item.value
+                            else
+                                li.custom-select__list-item(value=item.value data-value=item.value data-url= item.url data-color=item.color data-deliveryCenter=item.center data-counter= item.counter class=item.class)!=item.text || item.value
+                        else
+                            li.custom-select__list-item(value=item.value data-value=item.value data-url= item.url data-color=item.color data-deliveryCenter=item.center data-counter= item.counter class=item.class)!=item.text || item.value

@@ -1,0 +1,95 @@
++modal({
+	id: 'modal-one-click',
+	mod: 'modal-one-click',
+	title:false,
+	header: false
+})
+	div(x-data="{ success: false }")
+		.rowblock(x-show="!success")
+			.rowblock__left
+				.modal-one-click__product
+					.product-card__mid
+						a(href="#").product-card__image
+							+lazy-img({
+								img: '/product-gallery-main-1.jpg',
+								placeholder: pixel
+							})
+						.product-card__content
+							.modal-one-click__product-title Инверторная кассетная сплит-система
+							.modal-one-click__product-status.in-stock В наличии 
+							.modal-one-click__product-price 222&nbsp;000 ₽
+
+			.rowblock__right
+				.modal-title Купить в 1 клик
+				form.form-block
+					+input({
+						fg_mod:'form-group--margin',
+						label_mod: 'form-control-label--small',
+						label: 'Ваше имя',
+						type: 'text',
+						placeholder: false,
+						required: true,
+						pattern: false,
+						validation: {
+						message: 'Обязательное поле',
+						regexp: 'Неверный формат',
+						emailaddress: ' ',
+						identical: false
+						}
+					})
+					+input({
+						label: 'Телефон',
+						label_mod: 'form-control-label--small',
+						fg_mod: 'form-group--margin',
+						type: 'tel',
+						name: false,
+						small: false,
+						placeholder: '+375 (__) ___-__-__',
+						required: true,
+						pattern: 'phone',
+						validation: {
+							message: 'Заполните поле',
+							regexp: 'Неверный формат',
+							emailaddress: ' ',
+							identical: false
+						}
+					})
+					+input({
+						label: 'Email',
+						type: 'email',
+						label_mod: 'form-control-label--small',
+						fg_mod: 'form-group--margin',
+						name: false,
+						small: false,
+						placeholder: 'example@example.com',
+						required: true,
+						pattern: '[A-Za-zА-Яа-я0-9\_\-]{1,}@[A-Za-zА-Яа-я0-9\_\-]{1,}\.[A-Za-zА-Яа-я0-9]{2,}',
+						validation: {
+							message: 'Заполните поле',
+							regexp: 'Неверный формат',
+							emailaddress: ' ',
+							identical: false
+						}
+					})
+					+textarea({
+						fg_mod: 'form-group--margin',
+						label_mod: 'form-control-label--small',
+						label: 'Комментарий',
+						placeholder: ''
+					})
+					+info-slider({
+						title: 'Стоимость доставки',
+						content: 'В стоимость заказа может быть включена цена доставки',
+					})
+					.form-block__submit
+						button(type="submit").btn.btn--primary Оформить
+					.policy-block
+						<span> Продолжая, вы соглашаетесь с <a href="#" target="_blank">политикой конфиденциальности</a> и с <a href="#" target="_blank">публичной офертой</a>																	</span>
+		.modal-one-click__success(x-show="success")
+			.modal-one-click__success-title Заказ принят
+			.modal-one-click__success-descr Мы комплектуем заказ и перезвоним Вам в течении 30 минут с 09.00 до 21.00, чтобы уточнить детали доставки
+			.modal-one-click__success-image
+				<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M21.5999 0C5.89681 0 0.449934 10.5 0.224934 10.95C-0.365692 12.1313 0.168684 13.5844 1.34993 14.175C2.54056 14.7656 3.98431 14.2313 4.57493 13.05C4.61243 12.975 8.43744 5.52187 19.9499 4.875L60.4499 107.55C60.8249 108.497 61.7437 109.05 62.6999 109.05C62.9906 109.05 63.3187 109.013 63.5999 108.9L117.3 87.9C118.537 87.4219 119.128 86.0625 118.65 84.825C118.162 83.5875 116.803 82.9219 115.575 83.4L64.0499 103.575L23.8499 1.5C23.4937 0.581251 22.5843 0 21.5999 0ZM89.2499 0C88.9406 0 88.5749 0.0281251 88.2749 0.15L39.2249 19.725C37.9968 20.2125 37.3874 21.5719 37.8749 22.8L51.1499 56.175L104.7 34.875L91.4249 1.5C91.1906 0.909374 90.7312 0.478126 90.1499 0.225C89.8593 0.103125 89.5593 0 89.2499 0ZM77.1749 15.15C78.1124 15.1688 78.9843 15.7219 79.3499 16.65C79.8374 17.8781 79.2281 19.3125 77.9999 19.8L60.1499 26.85C59.8593 26.9625 59.5406 27.075 59.2499 27.075C58.2937 27.075 57.4499 26.4375 57.0749 25.5C56.5874 24.2719 57.1968 22.9125 58.4249 22.425L76.2749 15.3C76.5843 15.1781 76.8656 15.1406 77.1749 15.15ZM106.5 39.375L52.9499 60.6L66.2999 94.125C66.5343 94.7156 66.9937 95.2219 67.5749 95.475C67.8749 95.6063 68.2218 95.7 68.5499 95.7C68.8499 95.7 69.1687 95.5875 69.4499 95.475L118.5 75.975C119.728 75.4875 120.337 74.0625 119.85 72.825L106.5 39.375ZM91.4249 50.775C92.3624 50.7938 93.2343 51.3469 93.5999 52.275C94.0874 53.5031 93.4781 54.9375 92.2499 55.425L74.3999 62.55C74.1093 62.6719 73.7906 62.7 73.4999 62.7C72.5437 62.7 71.6249 62.1375 71.2499 61.2C70.7624 59.9719 71.3718 58.5375 72.5999 58.05L90.4499 51C90.7593 50.8781 91.1156 50.7656 91.4249 50.775ZM45.5999 96C38.9812 96 33.5999 101.381 33.5999 108C33.5999 114.619 38.9812 120 45.5999 120C52.2187 120 57.5999 114.619 57.5999 108C57.5999 101.381 52.2187 96 45.5999 96Z" fill="#E4E4E4"/>
+				</svg>
+

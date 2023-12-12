@@ -1,0 +1,20 @@
+@import "src/assets/css/vars_mixins/vars_mixins";
+
+
+.subscribe{
+    margin-top: 40px;
+    &-inner{
+        background-color: var(--black_bg_black);
+        border-radius: 8px;
+        border: 1px solid var(--stroke_black);
+        padding: 15px 20px 24px 20px;
+    }
+    &-title{
+       margin-bottom: 18px;
+        font-weight: 500;
+        font-size: 16px;
+    }
+    &-btn{
+        width: 100%;
+    }
+}

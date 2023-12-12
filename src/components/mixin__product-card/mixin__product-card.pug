@@ -1,0 +1,120 @@
+mixin product-card(args={})
+	+include-style('mixin__product-card')
+	+include-script('mixin__product-card')
+	.product-card-wrap
+		.product-card(class=args.offers ? 'product-card--offers':'')
+			.product-card__inner
+				.product-card__top
+					.product-card__top-badges
+						if(args.badges === 1)
+							.badge.badge--red Хит
+							.badge.badge--yellow Акция
+						if(args.badges === 2)
+							.badge.badge--red Хит
+							.badge.badge--purple Советуем
+						if(args.badges === 3)
+							.badge.badge--red Хит
+							.badge.badge--green Новинка
+						if(args.timer)
+							.badge.badge--gray.badge--countdown
+								img(src="/html/images/sale-fire.svg" alt="badge")
+								+countdown(args.timer)
+					.product-card__images.js-pr-card-imgs
+						.product-card__image.active(data-index='0')
+							span.product-card__image-span
+							+lazy-img({
+								wrap_mod: 'product-card__image-pic',
+								img: 'product-card-1.jpg'
+							})
+						.product-card__image(data-index='1')
+							span.product-card__image-span
+							+lazy-img({
+								wrap_mod: 'product-card__image-pic',
+								img: 'product-card-2.jpg'
+							})
+						.product-card__image(data-index='2')
+							span.product-card__image-span
+							+lazy-img({
+								wrap_mod: 'product-card__image-pic',
+								img: 'product-card-3.jpg'
+							})
+						.product-card__image(data-index='3')
+							span.product-card__image-span
+							+lazy-img({
+								wrap_mod: 'product-card__image-pic',
+								img: 'product-card-4.jpg'
+							})
+						.product-card__dots
+							span.active
+							span
+							span
+							span
+					.product-card__bottom-badges
+						.badge.badge--yellow -10%
+				.product-card__info
+					.product-card__prices
+						.product-card__price-new 11&nbsp;520 ₽
+						.product-card__price-old 12&nbsp;800 ₽
+					a(href="#").product-card__title=args.title
+					.product-card__info-line
+						if(args.no_rating)
+							.product-card__rating.product-card__rating--zero
+								+icon('i-star')(style="height:13px;width:13px")
+								span 0
+						else
+							.product-card__rating
+								+icon('i-star')(style="height:13px;width:13px")
+								span 4.8
+						.product-card__stock В наличии
+						.product-card__sku Арт. WR545653-39
+				.product-card__actions
+					.product-card__actions-inner
+						if(args.in_basket)
+							.product-card__btns
+								if(args.offers)
+									a(href="#").product-card__more.btn.btn-sm.btn-wave Подробнее
+								.counter.btn-wave
+									span.counter__action.counter__action--minus
+									input.counter__count(type="text" value="1" maxlength="6")
+									span.counter__action.counter__action--plus
+						if(args.loadings)
+							.product-card__btns.preloader
+								.product-card__buy.btn.btn-sm.btn-wave В корзину
+						if(!args.in_basket && !args.loading)
+							.product-card__btns
+								.product-card__buy.btn.btn-sm.btn-wave В корзину
+								if(args.offers)
+									a(href="#").product-card__more.btn.btn-sm.btn-wave Подробнее
+						.product-card__favorite.active
+							+icon('i-favorite')(style="width:18px;height:16px")
+						.product-card__compare
+							+icon('i-compare')(style="width:20px;height:16px")
+					if(args.offers)
+						.product-card__offers
+							.product-card__offers-line
+								.product-card__offers-title Цвет:
+									span 1545 Золотое очарование
+								.product-card__offers-list
+									+lazy-img({
+										wrap_mod: 'product-card__offers-item active',
+										img: 'offers-1.png'
+									})(title="1545 Золотое очарование")
+									+lazy-img({
+										wrap_mod: 'product-card__offers-item',
+										img: 'offers-2.png'
+									})(title="133 Беспечный розовый")
+									+lazy-img({
+										wrap_mod: 'product-card__offers-item',
+										img: 'offers-3.png'
+									})(title="134 Щеголять в розовом")
+									+lazy-img({
+										wrap_mod: 'product-card__offers-item',
+										img: 'offers-4.png'
+									})(title="136 Изящный фламинго")
+							.product-card__offers-line
+								.product-card__offers-title Диаметр:
+									span 110/50 мм
+								.product-card__offers-list
+									span.product-card__offers-item.text.active(title="110/50") 110/50 мм
+									span.product-card__offers-item.text(title="110") 110 мм
+									span.product-card__offers-item.text(title="50") 50 мм

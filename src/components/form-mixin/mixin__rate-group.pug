@@ -1,0 +1,14 @@
+mixin rate-group(args={})
+    +include-style('form-mixin')
+    +include-script('form-mixin')
+    .rate-group
+        input(type="radio" name=args.name value="5" id=`${args.name}-5` data-mess="Очень плохо").radio-rate
+        label(for=`${args.name}-5`).radio-rate-label
+        input(type="radio" name=args.name value="4" id=`${args.name}-4` data-mess="Плохо").radio-rate
+        label(for=`${args.name}-4`).radio-rate-label
+        input(type="radio" name=args.name value="3" id=`${args.name}-3` data-mess="Нормально").radio-rate
+        label(for=`${args.name}-3`).radio-rate-label
+        input(type="radio" name=args.name value="2" id=`${args.name}-2` data-mess="Хорошо").radio-rate
+        label(for=`${args.name}-2`).radio-rate-label
+        input(type="radio" name=args.name value="1" id=`${args.name}-1` data-mess="Отлично").radio-rate
+        label(for=`${args.name}-1`).radio-rate-label

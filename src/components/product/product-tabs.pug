@@ -1,0 +1,384 @@
+mixin lazy-video-youtube(args= {})
+    //- ПРИМЕР
+        +lazy-video-youtube({
+            src: "https://www.youtube.com/embed/djV11Xbc914",
+        }).MOD_CLASS
+    .lazy-video-youtube-wrapper
+        iframe.lazy-video.lazy-video-youtube(
+            class= args.video_mod,
+            data-src= args.src,
+            src= args.src,
+            frameborder= args.frameborder || "0",
+            allow= args.allow || "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen)&attributes(attributes)
+
+
++include-style('content')
+-
+    var items = [
+        {title: 'Стиль', text: 'Спортивный'},
+        {title: 'Материал браслета', text: 'Силикон'},
+        {title: 'Вид стекла', text: 'Пластик'},
+        {title: 'Работа от аккумулятора, часов', text: '168'},
+        {title: 'Водостойкость', text: 'ATM: 1'},
+        {title: 'Время полной зарядки, мин', text: '150'},
+    ]
+.tabs-nav-v2
+    .tabs-nav-v2__list
+        .tabs-nav-v2__item(:class="{'active': activeTab === 'text'}" @click="activeTab = 'text'") Описание
+        .tabs-nav-v2__item Отзывы (7)
+        .tabs-nav-v2__item Характеристики
+        .tabs-nav-v2__item Документы
+        .tabs-nav-v2__item(:class="{'active': activeTab === 'video'}" @click="activeTab = 'video'") Видео
+        .tabs-nav-v2__item Оплата
+        .tabs-nav-v2__item Доставка
+.tabs-container-v2
+    // Описание
+    .tabs-container-v2__item(:class="{'hidden': activeTab !== 'text'}")
+        .content
+            p Часы Bambo-900 имеют стальной корпус и повышенный уровень водонепроницаемости. Отлично подойдут активным людям, которые любят спорт и следят за своим здоровьем. Часы мониторят ваш сон, сколько километров вы прошли и сколько калорий потратили.
+            p Вы можете просматривать всю информацию на часах или в специальном приложении на смартфоне. Часы быстро заряжаются и отлично смотрятся на руке. Есть возможность менять ремешок и самостоятельно загружать понравившийся циферблат.
+    // Отзывы
+    .tabs-container-v2__item(:class="{'hidden': activeTab !== 'reviews'}")
+        .p-tab-review(x-data="{isOpenedAddComment: false}")
+            .p-tab-review__header
+                .p-tab-review__title Отзывы
+                .p-tab-review__count 7 отзывов
+            .p-tab-review__body
+                .p-tab-review__left
+                    .p-tab-review__photos
+                        .p-tab-review__photos-title Фотографии покупателей
+                        .p-tab-review__photos-list.photos-grid-gallery
+                            +lazy-img({
+                                img: `review-1.jpeg`,
+                                link: true,
+                            })
+                            +lazy-img({
+                                img: `review-2.jpeg`,
+                                link: true,
+                            })
+                            +lazy-img({
+                                img: `review-3.jpeg`,
+                                link: true,
+                            })(data-count-375="8")
+                            +lazy-img({
+                                img: `review-4.jpeg`,
+                                link: true,
+                            })(data-count-420="7")
+                            +lazy-img({
+                                img: `review-5.jpeg`,
+                                link: true,
+                            })(data-count-xs="6")
+                            +lazy-img({
+                                img: `review-1.jpeg`,
+                                link: true,
+                            })(data-count-sm="5")
+                            +lazy-img({
+                                img: `review-2.jpeg`,
+                                link: true,
+                            })
+                            +lazy-img({
+                                img: `review-3.jpeg`,
+                                link: true,
+                            })(data-count-md="3")
+                            +lazy-img({
+                                img: `review-4.jpeg`,
+                                link: true,
+                            })
+                            +lazy-img({
+                                img: `review-5.jpeg`,
+                                link: true,
+                            })(data-count-xl="1")
+                    .p-tab-review__filters
+                        +select({
+                            title: 'Сначала позитивные',
+                            with_links: true,
+                            list: [
+                                {name: 'Сначала позитивные', active: true},
+                                {name: 'Сначала негативные'},
+                                {name: 'Сначала старые'},
+                                {name: 'Сначала новые'},
+                                {name: 'Сначала полезные'},
+                            ]
+                        })
+                        +select({
+                            title: 'С любым рейтингом',
+                            with_links: true,
+                            list: [
+                                {name: 'С любым рейтингом', active: true},
+                                {name: '1 звезда'},
+                                {name: '2 звезды'},
+                                {name: '3 звезды'},
+                                {name: '4 звезды'},
+                                {name: '5 звезд'},
+                            ]
+                        })
+                        +checkbox({
+                            mod: '',
+                            label: 'С фото',
+                            value: '',
+                            name: 'with_photo'
+                        })(checked)
+                        +checkbox({
+                            mod: '',
+                            label: 'С текстом',
+                            value: '',
+                            name: 'with_text'
+                        })
+                    .p-tab-review__comments
+                        .comment-add-form(:class="isOpenedAddComment ? 'opened' : ''")
+                            form.comment-form
+                                +input({
+                                    mod: '',
+                                    label: 'Ваше имя',
+                                    required: true,
+                                })
+                                +input({
+                                    mod: '',
+                                    label: 'E-mail',
+                                    required: false,
+                                })
+                                .form-group
+                                    label.form-control-label Ваша оценка
+                                        span.label-required *
+                                    .rate-group-wrap
+                                        +rate-group({name: 'rate'})
+                                        .rate-group-wrap__text Без оценки
+                                +textarea({
+                                    mod: 'comment-form__full',
+                                    label: 'Достоинства',
+                                    required: false,
+                                })
+                                +textarea({
+                                    mod: 'comment-form__full',
+                                    label: 'Недостатки',
+                                    required: false,
+                                })
+                                +textarea({
+                                    mod: 'comment-form__full',
+                                    label: 'Комментарий',
+                                    required: false,
+                                })
+                                .files.comment-form__full
+                                    .files__list
+                                        +file({
+                                            mod: 'comment-form__full',
+                                        })
+                                    template.file-template
+                                        .files__list
+                                            +file({
+                                                mod: 'comment-form__full',
+                                            })
+                                    .files__btn(@click="") Еще один файл
+
+                                .comment-form__full
+                                    button.btn Опубликовать отзыв
+                        .comment
+                            .comment__header
+                                .comment__header-inner
+                                    .comment__title Петр Иванов
+                                    .comment__date 11 июля, 14:04
+                                .comment__rating
+                                    .comment__stars
+                                        +icon('i-star')(width="16" height="16").filled
+                                        +icon('i-star')(width="16" height="16").filled
+                                        +icon('i-star')(width="16" height="16").filled
+                                        +icon('i-star')(width="16" height="16")
+                                        +icon('i-star')(width="16" height="16")
+                                    .comment__info Товар куплен в магазине
+                            .comment__main(x-data="{isOpenedComment: false}")
+                                .comment__main-item(data-label="Достоинства") Стильные, все понятно по функциям
+                                .comment__main-item(data-label="Недостатки") Нет
+                                .comment__main-item(data-label="Комментарий") Покупкой доволен, очень легко и быстро подключил к телефону. Но еще не все функции настроил. Посмотрим, что будет дальше
+                                .comment__main-photos
+                                    .comment__main-photos-title Фото
+                                    .comment__main-photos-list.photos-grid-gallery
+                                        +lazy-img({
+                                            wrap_mod: 'comment__photo',
+                                            img: `review-1.jpeg`,
+                                            link: true,
+                                        })
+                                        +lazy-img({
+                                            wrap_mod: 'comment__photo',
+                                            img: `review-2.jpeg`,
+                                            link: true,
+                                        })
+                                        +lazy-img({
+                                            wrap_mod: 'comment__photo',
+                                            img: `review-3.jpeg`,
+                                            link: true,
+                                        })(data-count-375="2")
+                                        +lazy-img({
+                                            wrap_mod: 'comment__photo',
+                                            img: `review-4.jpeg`,
+                                            link: true,
+                                        })(data-count-420="1")
+                                        +lazy-img({
+                                            wrap_mod: 'comment__photo',
+                                            img: `review-5.jpeg`,
+                                            link: true,
+                                        })
+                                .comment__main-meta
+                                    .comment__main-meta-rating
+                                        a(href="#")
+                                            +icon('i-like')(style="width:20px;height:22px")
+                                            span 1
+                                        a(href="#")
+                                            +icon('i-like')(style="width:20px;height:22px;transform:scale(-1,-1)")
+                                            span 0
+                                    .comment__main-meta-link(@click="isOpenedComment = !isOpenedComment") Комментировать
+                                .comment__main-form(:class="isOpenedComment ? 'opened' : ''")
+                                    form.comment-form
+                                        +input({
+                                            mod: '',
+                                            label: 'Ваше имя',
+                                            required: true,
+                                        })
+                                        +input({
+                                            mod: '',
+                                            label: 'E-mail',
+                                            required: false,
+                                        })
+                                        +textarea({
+                                            mod: 'comment-form__full',
+                                            label: 'Комментарий',
+                                            required: false,
+                                        })
+                                        .comment-form__full
+                                            button.btn Опубликовать отзыв
+                .p-tab-review__right
+                    .grid-list.grid-list--review
+                        .grid-list__item
+                            .grid-list__item-inner
+                                .grid-list__item-rating.grid-list__item-rating--filled
+                                    +icon('i-star')(width="28" height="28")
+                                    span 4.9
+                                .btn.btn-wide(@click="isOpenedAddComment = !isOpenedAddComment") Добавить отзыв
+
+    // Характеристики
+    .tabs-container-v2__item(:class="{'hidden': activeTab !== 'options'}")
+        table.p-tab-props
+            tbody
+                each item in items
+                    tr
+                        td=item.title
+                        td=item.text
+    //Видео
+    .tabs-container-v2__item(:class="{'hidden': activeTab !== 'video'}")
+        .p-tab-video
+            h3 Одно видео
+            .video-section.video-section--one
+                .video-section__item
+                    +lazy-video-youtube({
+                        src: 'https://www.youtube.com/embed/hAwFl9PuhHQ'
+                    })
+            h3 Два видео
+            .video-section.video-section--two
+                .video-section__item
+                    +lazy-video-youtube({
+                        src: 'https://www.youtube.com/embed/hAwFl9PuhHQ'
+                    })
+                .video-section__item
+                    +lazy-video-youtube({
+                        src: 'https://www.youtube.com/embed/hAwFl9PuhHQ'
+                    })
+            h3 Три видео
+            .video-section.video-section--three
+                .video-section__item
+                    +lazy-video-youtube({
+                        src: 'https://www.youtube.com/embed/hAwFl9PuhHQ'
+                    })
+                .video-section__item
+                    +lazy-video-youtube({
+                        src: 'https://www.youtube.com/embed/hAwFl9PuhHQ'
+                    })
+                .video-section__item
+                    +lazy-video-youtube({
+                        src: 'https://www.youtube.com/embed/hAwFl9PuhHQ'
+                    })
+            h3 Четыре видео
+            .video-section.video-section--four
+                .video-section__item
+                    +lazy-video-youtube({
+                        src: 'https://www.youtube.com/embed/hAwFl9PuhHQ'
+                    })
+                .video-section__item
+                    +lazy-video-youtube({
+                        src: 'https://www.youtube.com/embed/hAwFl9PuhHQ'
+                    })
+                .video-section__item
+                    +lazy-video-youtube({
+                        src: 'https://www.youtube.com/embed/hAwFl9PuhHQ'
+                    })
+                .video-section__item
+                    +lazy-video-youtube({
+                        src: 'https://www.youtube.com/embed/hAwFl9PuhHQ'
+                    })
+            h4 Пять видео
+            .video-section.video-section--five
+                .video-section__item
+                    +lazy-video-youtube({
+                        src: 'https://www.youtube.com/embed/hAwFl9PuhHQ'
+                    })
+                .video-section__item
+                    +lazy-video-youtube({
+                        src: 'https://www.youtube.com/embed/hAwFl9PuhHQ'
+                    })
+                .video-section__item
+                    +lazy-video-youtube({
+                        src: 'https://www.youtube.com/embed/hAwFl9PuhHQ'
+                    })
+                .video-section__item
+                    +lazy-video-youtube({
+                        src: 'https://www.youtube.com/embed/hAwFl9PuhHQ'
+                    })
+                .video-section__item
+                    +lazy-video-youtube({
+                        src: 'https://www.youtube.com/embed/hAwFl9PuhHQ'
+                    })
+
+    // Документы
+    .tabs-container-v2__item(:class="{'hidden': activeTab !== 'docs'}")
+        .p-tab-docs
+            .p-tab-docs__item
+                .p-tab-docs__item-icon
+                    i.file-type.file-type--word
+                .p-tab-docs__item-content
+                    a(href="#" download).p-tab-docs__item-title Договор куплипродажи
+                    .p-tab-docs__item-size 6 Кб
+            .p-tab-docs__item
+                .p-tab-docs__item-icon
+                    i.file-type.file-type--pdf
+                .p-tab-docs__item-content
+                    a(href="#" download).p-tab-docs__item-title Обзор товара
+                    .p-tab-docs__item-size 15,4 Кб
+            .p-tab-docs__item
+                .p-tab-docs__item-icon
+                    i.file-type.file-type--excel
+                .p-tab-docs__item-content
+                    a(href="#" download).p-tab-docs__item-title Характеристики товара
+                    .p-tab-docs__item-size 18 байт
+            .p-tab-docs__item
+                .p-tab-docs__item-icon
+                    i.file-type.file-type--word
+                .p-tab-docs__item-content
+                    a(href="#" download).p-tab-docs__item-title Обзор товара
+                    .p-tab-docs__item-size 0 байт
+
+    // Оплата
+    .tabs-container-v2__item.hidden
+        .content
+            p Оплачивайте покупки удобным способом. В интернет-магазине доступно 3 варианта оплаты:
+            ol
+                li Наличные при самовывозе или доставке курьером. Специалист свяжется с вами в день доставки, чтобы уточнить время и заранее подготовить сдачу с любой купюры. Вы подписываете товаросопроводительные документы, вносите денежные средства, получаете товар и чек.
+                li Безналичный расчет при самовывозе или оформлении в интернет-магазине: карты МИР, Visa и MasterCard. Чтобы оплатить покупку, система перенаправит вас на сервер системы ASSIST. Здесь нужно ввести номер карты, срок действия и имя держателя.
+                li ЮMoney при онлайн-заказе. Для совершения покупки система перенаправит вас на страницу платежного сервиса. Здесь необходимо заполнить форму по инструкции.
+    // Доставка
+    .tabs-container-v2__item.hidden
+        .content
+            p Экономьте время на получении заказа. В интернет-магазине доступно 4 варианта доставки:
+            ol
+                li Курьерская доставка работает с 9.00 до 19.00. Когда товар поступит на склад, курьерская служба свяжется для уточнения деталей. Специалист предложит выбрать удобное время доставки и уточнит адрес. Осмотрите упаковку на целостность и соответствие указанной комплектации.
+                li Самовывоз из магазина. Список торговых точек для выбора появится в корзине. Когда заказ поступит на склад, вам придет уведомление. Для получения заказа обратитесь к сотруднику в кассовой зоне и назовите номер.
+                li Постамат. Когда заказ поступит на точку, на ваш телефон или e-mail придет уникальный код. Заказ нужно оплатить в терминале постамата. Срок хранения — 3 дня.
+                li Почтовая доставка через почту России. Когда заказ придет в отделение, на ваш адрес придет извещение о посылке. Перед оплатой вы можете оценить состояние коробки: вес, целостность. Вскрывать коробку самостоятельно вы можете только после оплаты заказа. Один заказ может содержать не больше 10 позиций и его стоимость не должна превышать 100 000 р.

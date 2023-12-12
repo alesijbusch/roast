@@ -1,0 +1,204 @@
+form.product-popup(x-data="{step:2}")
+    .popup-close
+        +icon('i-close')(width="16px" height="16px")
+    .popup-header(x-show="step===2 || step===1")
+        .popup-img
+            +lazy-img({
+                wrap_mod: '',
+                img: 'product-card-2.jpg'
+            })
+        .popup-header__title
+            .popup-header__product Топка Invicta Milos 700 с шибером
+            span
+                b 2 173.00 руб.
+    .popup-body
+        .popup-step1(x-show="step===1" x-cloak)
+            .popup-calc
+                .popup-banks
+                    .popup-bank.active Беларусбанк
+                    .popup-bank Белагропромбанк
+                    .popup-bank Приорбанк
+                    .popup-bank Сбербанк
+                .popup-sale
+                    .popup-title Рассрочка
+                    .popup-sale__range
+                        .popup-range
+                            .popup-range__title 5%
+                            .popup-range__subtitle Первый взнос
+                            .popup-range__input
+                                +no-ui-slider({
+                                    title: 'Розничная цена'
+                                })
+
+                            .popup-range__pay
+                                .popup-range__pay-first Ежемесячный платеж:
+                                .popup-range__pay-cost 287.00 руб.
+                        .popup-range
+                            .popup-range__title 4 месяца
+                            .popup-range__subtitle Срок
+                            .popup-range__input
+                                +no-ui-slider({
+                                    title: 'Оптовая цена'
+                                })
+                            .popup-range__pay
+                                .popup-range__pay-first Первый платеж:
+                                   span 214.00 руб.
+                                .popup-range__pay-first Итого:
+                                    span 2214.00 руб.
+            .popup-debit
+                .popup-title Кредитная карта
+                .popup-table
+                    .popup-table__row
+                        .popup-table__col
+                        .popup-table__col Название
+                        .popup-table__col В месяц, руб
+                        .popup-table__col Итого, руб
+                    .popup-table__row(x-data="{checked: false}" :class="{'active': checked}")
+                        .popup-table__col
+                            +radio({
+                                name: 'creditCard'
+                            })( @change="checked=!checked")
+                        .popup-table__col
+                            +lazy-img({
+                               img: 'product-card-1.jpg',
+                               wrap_mod: 'debit-card'
+                            })
+                            span Халва (2 мес.)
+                        .popup-table__col 1034.50
+                        .popup-table__col 2145.56
+                    .popup-table__row(x-data="{checked: false}" :class="{'active': checked}")
+                        .popup-table__col
+                            +radio({
+                                name: 'creditCard',
+
+                            })( @change="checked=!checked")
+                        .popup-table__col
+                            +lazy-img({
+                               img: 'product-card-1.jpg',
+                               wrap_mod: 'debit-card'
+                            })
+                            span Магнит (4 мес.)
+                        .popup-table__col 1034.50
+                        .popup-table__col 2145.56
+                    .popup-table__row(x-data="{checked: false}"  :class="{'active': checked}")
+                        .popup-table__col
+                            +radio({
+                                name: 'creditCard',
+
+                            })( @change="checked=!checked")
+                        .popup-table__col
+                            +lazy-img({
+                               img: 'product-card-1.jpg',
+                               wrap_mod: 'debit-card'
+                            })
+                            span Карта покупок (3 мес.)
+                        .popup-table__col 1034.50
+                        .popup-table__col 2145.56
+        .popup-step2(x-show="step===2" x-cloak)
+            .return-btn(@click="step=1")
+                +icon('i-arrow-left')(width="18px" height="16px")
+                span Вернуться
+            .popup-title Введите ваши данные
+            .popup-form
+
+                +input({
+                    fg_mod: 'form-group--margin',
+                    label_mod: 'form-control-label--small',
+                    label: 'Имя',
+                    type: 'text',
+                    placeholder: 'Фамилия Имя Отчество',
+                    required: true,
+                    pattern: false,
+                    validation: {
+                        message: 'Обязательное поле',
+                        regexp: 'Неверный формат',
+                        emailaddress: ' ',
+                        identical: false
+                    }
+                })
+
+                +input({
+                    fg_mod: 'form-group--margin',
+                    label_mod: 'form-control-label--small',
+                    label: 'Телефон',
+                    type: 'text',
+                    placeholder: '+375 (XX)-XXX-XX-XX',
+                    required: true,
+                    pattern: false,
+                    validation: {
+                        message: 'Обязательное поле',
+                        regexp: 'Неверный формат',
+                        emailaddress: ' ',
+                        identical: false
+                    }
+                })
+
+
+                +input({
+                    fg_mod: 'form-group--margin',
+                    label_mod: 'form-control-label--small',
+                    label: 'Паспорт',
+                    type: 'text',
+                    placeholder: 'Серия и номер',
+                    required: false,
+                    pattern: false,
+                    validation: {
+                        message: 'Обязательное поле',
+                        regexp: 'Неверный формат',
+                        emailaddress: ' ',
+                        identical: false
+                    }
+                })
+
+
+                +input({
+                    fg_mod: 'form-group--margin',
+                    label_mod: 'form-control-label--small',
+                    label: 'Дата выдачи',
+                    type: 'text',
+                    placeholder: 'Когда и кем выдан',
+                    required: false,
+                    pattern: false,
+                    validation: {
+                        message: 'Обязательное поле',
+                        regexp: 'Неверный формат',
+                        emailaddress: ' ',
+                        identical: false
+                    }
+                })
+
+                +input({
+                    fg_mod: 'form-group--margin',
+                    label_mod: 'form-control-label--small',
+                    label: 'Адрес',
+                    type: 'text',
+                    placeholder: 'Адрес прописки',
+                    required: false,
+                    pattern: false,
+                    validation: {
+                        message: 'Обязательное поле',
+                        regexp: 'Неверный формат',
+                        emailaddress: ' ',
+                        identical: false
+                    }
+                })
+        .popup-step3(x-show="step===3" x-cloak)
+            +lazy-img({
+                img: 'popup-img.png',
+                wrap_mod: 'finish'
+            })
+            .popup-title Ваш запрос на рассрочку успешно отправлен
+            p В ближайшее время менеджер свяжется с Вами
+            .popup-finish Закрыть окно [X]
+
+
+
+
+
+    .popup-footer
+        .btn(@click="step=2" x-show="step===1")
+            span Оформить
+            +icon('i-arrow-left')(width="18px" height="16px")
+        .btn(x-show="step===2" @click="step=3" x-cloak)
+            span Отправить
+

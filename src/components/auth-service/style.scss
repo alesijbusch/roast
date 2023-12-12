@@ -1,0 +1,25 @@
+@import "src/assets/css/vars_mixins/vars_mixins";
+
+.auth-service {
+	&__title {
+		font-weight: 400;
+		text-align: center;
+		padding: 33px 0 15px 0;
+		font-size: 0.875rem;
+		line-height: calc(1em + 7px);
+	}
+	&__list {
+		display: flex;
+		gap: 8px;
+	}
+	&__item {
+		width: 100%;
+		min-width: 48px;
+		height: 48px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 8px;
+		background-color: var(--light, #f4f4f4) var(--dark, #343434);
+	}
+}

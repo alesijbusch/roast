@@ -1,0 +1,19 @@
+mixin alpine-select(args={})
+	+include-style('mixin__alpine-select')
+	//- +include-script('mixin__alpine-select')
+	- var id = args.id || Math.floor(Math.random() * 9999999999);
+	.search-select(class=args.mod x-data=args.xData :class=args.xWrapClass @click=args.xWrapClick)
+		.form-group
+			input(type="text" id='ID' + id x-model=args.xModel @keyup.debounce.1000ms="$store.geocoder.fetching()" x-data=args.xDataInput @change=args.xChange).form-control
+			if (args.label)
+				label.form-control-label(for='ID' + id) Введите город или найдите его в списке
+			.search-select__loader(:class="$store.geocoder.isLoading ? 'preloader' : ''")
+		.search-select__list(x-show=args.xListShow)
+			.search-select__scroll(x-data="")
+				template(x-for=args.xFor)
+					div.search-select__item(
+						:class=args.xClass
+						@click=args.xClick 
+					)
+						div.search-select__name(x-text=args.xName)
+						div.search-select__descr(x-text=args.xDescr)

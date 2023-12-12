@@ -1,0 +1,39 @@
+@import "src/assets/css/vars_mixins/vars_mixins";
+
+.index-catalog-sections {
+  border-bottom: 1px solid $stroke_black;
+  border-bottom: 1px solid var(--stroke_black);
+  padding-top: 40px;
+  padding-bottom: 80px;
+
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+    gap: 12px;
+	  @media (max-width: $xs - 1) {
+		  .ics-item{
+			  max-width: none;
+			  width: 100%;
+		  }
+
+	  }
+  }
+
+
+}
+
+// 1199.75
+@media (max-width: $lg) {}
+// 991.75
+@media (max-width: $md) {}
+// 767.75
+@media (max-width: $sm) {
+  .index-catalog-sections {
+    padding-bottom: 40px;
+  }
+}
+// 600.75
+@media (max-width: $xs) {
+
+}

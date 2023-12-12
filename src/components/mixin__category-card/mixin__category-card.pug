@@ -1,0 +1,19 @@
+mixin category-card(args={})
+    +include-style('mixin__category-card')
+    .category-card
+        a(href="#link").category-card__link
+        +lazy-img({
+            wrap_mod: 'category-card__bg',
+            link: false,
+            img: args.img,
+        })
+        .category-card__content
+            .category-card__text=args.text
+            .category-card__title=args.title
+            .category-card__bottom
+                if(args.tags)
+                    each tag in args.tags
+                        span.category-card__tag=tag
+                if(args.links)
+                    each link in args.links
+                        a(href="#link2").category-card__links=link

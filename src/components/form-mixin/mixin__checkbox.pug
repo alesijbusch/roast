@@ -1,0 +1,11 @@
+mixin checkbox(args={})
+	+include-style('form-mixin')
+	- var id = Math.floor(Math.random() * 9999999999)
+
+	.form-group(class= args.mod)
+		.checkbox(class= args.checkbox_mod)
+			input(type='checkbox', id= 'ID' + id, value=args.value, name=args.name)&attributes(attributes)
+			label(for= 'ID' + id)!= args.label
+				block
+		if (args.descr)
+			.form-group__description= args.descr

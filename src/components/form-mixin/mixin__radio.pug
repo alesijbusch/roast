@@ -1,0 +1,9 @@
+mixin radio(args={})
+	+include-style('form-mixin')
+	- var id = Math.floor(Math.random() * 9999999999)
+
+	.form-group(class= args.mod)
+		.radio
+			input(type='radio', id= 'ID' + id, value=args.value, name=args.name)&attributes(attributes)
+			label(for= 'ID' + id)!= args.label
+				block

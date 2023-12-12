@@ -1,0 +1,30 @@
+.product-gallery
+	.product-gallery__inner
+		.product-gallery__sliders-wrap
+			.product-gallery__sliders
+				.product-gallery__thumbs
+					.splide#thumbnail-carousel
+						.splide__track
+							ul.splide__list
+								li.splide__slide
+									img(src=SITE_TEMPLATE_PATH + 'images/product-gallery-thumb-1.jpg' alt='thumb')
+								each i in [2,3,4,5,6,7,8,9]
+									li.splide__slide
+										+lazy-img-splide({
+											src: `product-gallery-thumb-3.jpg`,
+											alt: 'thumb'
+										})
+				.product-gallery__main
+					.splide#main-carousel
+						.splide__track
+							ul.splide__list
+								li.splide__slide
+									.splide__slide-img-wrap
+										img(src=SITE_TEMPLATE_PATH + 'images/product-gallery-main-1.jpg' alt='main')
+								each i in [2,3,4]
+									li.splide__slide
+										.splide__slide-img-wrap
+											+lazy-img-splide({
+												src: `product-gallery-main-${i}.jpg`,
+												alt: 'main'
+											})

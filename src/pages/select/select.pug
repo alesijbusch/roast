@@ -1,0 +1,40 @@
+extends ../../layout/layout
+
+block vars
+    - var pageTitle = 'Select'
+    - var pageBodyClass = ''
+    - var dir = './'
+
+
+block premain
+    .container
+        .page-top.page-top--center
+            +breadcrumbs({
+                content2: 'Авторизация',
+                content3: 'Регистрация',
+            })
+            .page-top__header
+                h1.page-top__title Регистрация
+
+
+block main
+    .main-inner
+        .container
+            .form-block-container
+                form.form-block
+
+                    include ../../components/a-select/a-select
+
+
+                    .form-block__submit
+                        button(type="submit").btn.btn-lg.btn--primary Зарегестрироваться
+block pageModal
+
+block componentsCriticalStyles
+    +componentsCriticalStyles-includer()
+block vendorScripts
+    +vendorScripts-includer()
+block componentsStyles
+    +style-includer()
+block componentsScripts
+    +componentsScripts-includer()

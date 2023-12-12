@@ -1,0 +1,115 @@
+include ../utility/_globalVars
+include ../utility/_mixins
+include ../utility/_functions
+
+block vars
+    - var pageTitle
+    - var pageBodyClass
+    - var dir
+
+- var componentsList = [] //список имен всех компонентов
+- var componentsCriticalList = [] // список имен компонентов, стили которых нужно подключить инлайного в head
+- var componentsScriptsList = [] // список имен компонентов, скрипты которых нужно подключить на страницу. они не должны подключаться в main.js
+- var vendorScriptsList = [] // список имен вендоров, скрипты которых нужно подключить на страницу. они не должны подключаться в main.js
+
+doctype html
+html(lang='ru-RU')
+    head
+        meta(charset='UTF-8')
+        meta(name='format-detection' content='telephone=no')
+        meta(name='viewport' content='width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1.0')
+        meta(name='description' content='')
+        title= pageTitle
+
+        link(rel="icon" type="image/png" href="/html/favicons/favicon.ico" sizes="48x48")
+        link(rel="icon" type="image/png" href="/html/favicons/apple-touch-icon.png" sizes="57x57")
+        link(rel="icon" type="image/png" href="/html/favicons/apple-touch-icon-72x72.png" sizes="72x72")
+        link(rel="icon" type="image/png" href="/html/favicons/apple-touch-icon-114x114.png" sizes="114x114")
+        link(rel="apple-touch-icon" href="/html/favicons/apple-touch-icon-114x114.png" sizes="180x180")
+
+        link(rel="preload" href="/html/fonts/inter-v8-latin_cyrillic-ext-500.woff2" as="font" type="font/woff2" crossorigin="anonymous")
+        link(rel="preload" href="/html/fonts/inter-v8-latin_cyrillic-ext-600.woff2" as="font" type="font/woff2" crossorigin="anonymous")
+        link(rel="preload" href="/html/fonts/inter-v8-latin_cyrillic-ext-700.woff2" as="font" type="font/woff2" crossorigin="anonymous")
+        link(rel="preload" href="/html/fonts/inter-v8-latin_cyrillic-ext-regular.woff2" as="font" type="font/woff2" crossorigin="anonymous")
+
+        // Стили для всех страниц
+        link(href="/html/critical.css" rel="stylesheet")
+        //- Подключение критических стилей отдельных страниц
+        block componentsCriticalStyles
+
+    body.theme-default(
+        class=pageBodyClass
+        x-data="{ isMobileSearchVisible: false, isMobilePhonesVisible: false, isMobileNavVisible: false, isOpenedFilterPanel: false }"
+        :class="[(isMobilePhonesVisible || isMobileSearchVisible || isMobileNavVisible) ? 'overflow' : '']"
+    )
+        script.
+            if (localStorage.getItem('themeDark') === 'true') {
+                document.body.classList.add('theme-dark');
+            } else {
+                document.body.classList.remove('theme-dark');
+            }
+
+        .wrapper
+            include ../components/header/header
+
+            block premain
+
+            main.main
+                block main
+
+            include ../components/footer/footer
+            .overlay(@click="isMobileSearchVisible = false, isMobilePhonesVisible = false, isMobileNavVisible = false, isOpenedFilterPanel = false"
+                :class="(isMobilePhonesVisible || isMobileSearchVisible || isMobileNavVisible || isOpenedFilterPanel) ? 'visible' : ''")
+
+        .modals-list.js-modals-list
+            // Модальные окна всех страниц
+            include ../components/modal/one-click-buy/modal-one-click-buy
+            include ../components/modal/feedback/modal-feedback
+            include ../components/modal/auth/modal-auth
+            // Модальные окна этой страницы
+            block pageModal
+
+        // Виджет для перехода по всем страницам проекта
+        include ../components/pages-viget/pages-viget
+
+        // Либы, используемые на всех страницах
+        script(src="./js/vendor/lazyload.min.js" defer)
+        script(src="./js/vendor/splide.min.js" defer)
+
+        // Либы, используемые только на этой странице
+        block vendorScripts
+
+        block scripts
+
+        // Скрипты для всех страниц
+        script(src="./js/app.min.js" defer)
+
+        // Скрипты компонентов этой страницы
+        block componentsScripts
+
+        // Стили компонентов этой страницы
+        block componentsStyles
+        script(src="./js/alpinejs/alpine.min.js" defer)
+
+        script(defer).
+
+            var lightBtn = document.getElementById('theme-selector-light');
+            var darkBtn = document.getElementById('theme-selector-dark');
+
+            if (localStorage.getItem('themeDark') === 'true') {
+                darkBtn.classList.add('current');
+            } else {
+                lightBtn.classList.add('current');
+            }
+            lightBtn.addEventListener('click', function () {
+                this.classList.add('current');
+                darkBtn.classList.remove('current');
+                document.body.classList.remove('theme-dark');
+                localStorage.setItem('themeDark', false);
+            });
+            darkBtn.addEventListener('click', function () {
+                this.classList.add('current');
+                lightBtn.classList.remove('current');
+                document.body.classList.add('theme-dark');
+                localStorage.setItem('themeDark', true);
+            })

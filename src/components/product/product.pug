@@ -1,0 +1,12 @@
++include-style('product')
++include-script('product')
+
+.container.product
+    .product__top
+        include ./product-gallery
+        include ./product-main
+    include ./product-collections
+    .product__section(x-data="{activeTab: 'text'}")
+        include ./product-tabs
+    //.product__section
+    //    include ./product-popup

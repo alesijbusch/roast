@@ -1,0 +1,49 @@
++include-style('video-review')
++include-script('video-review')
+
+-
+    var items = [
+        {
+            img: 'https://i.ytimg.com/vi/CgPtStmP6wA/hqdefault.jpg',
+            title: '5 новинок из Идейного Центра — большой апгрейд Аспро: Максимум 2.0.0',
+            video_id: 'CgPtStmP6wA'
+        },
+        {
+            img: 'https://i.ytimg.com/vi/v9kB3O9pLIk/hqdefault.jpg',
+            title: 'Просто запустите свой сайт. Скидка до 20% на Аспро и 1С-Битрикс',
+            video_id: 'v9kB3O9pLIk'
+        },
+        {
+            img: 'https://i.ytimg.com/vi/pMFWnx8yHQ8/hqdefault.jpg',
+            title: 'Презентация решения Аспро: Лайтшоп',
+            video_id: 'pMFWnx8yHQ8'
+        },
+        {
+            img: 'https://i.ytimg.com/vi/34_3rxpjR6Q/hqdefault.jpg',
+            title: 'Презентация нового решения Аспро — 20 июля в 14:00',
+            video_id: '34_3rxpjR6Q'
+        },
+    ]
+
+.video-review
+    .container
+        .video-review__header
+            h3.section-title
+                a(href="#").section-title__link
+                    span Видеоотзывы
+                    span.icon-wrap
+                        +icon('i-arrow-right')(style="height:12px;width:12px")
+        .video-review__inner
+            each item in items
+                .video-review-item
+                    +lazy-img({
+                        link: false,
+                        wrap_mod: 'video-review-item__img-wrap',
+                        img_mod: 'video-review-item__img',
+                        img: item.img,
+                        http: true,
+                    })(data-video-id=item.video_id)
+                        span(id='youtube-player-id-'+item.video_id).video-review-item__video
+                    a(href="#").video-review-item__title=item.title
+                    .video-review-item__period 16.08.2022
+

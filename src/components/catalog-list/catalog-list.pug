@@ -1,0 +1,30 @@
++include-style('catalog-list')
+
+-
+    var items=[
+        {img:'cat-list.png',title:'Товары для дома и дачи'},
+        {img:'cat-list.png',title:'Строительство и ремонт'},
+        {img:'cat-list.png',title:'Электроника'},
+        {img:'cat-list.png',title:'Одежда'},
+        {img:'cat-list.png',title:'Обувь'},
+        {img:'cat-list.png',title:'Красота и здоровье'},
+        {img:'cat-list.png',title:'Спорт и отдых'},
+        {img:'cat-list.png',title:'Автотовары'},
+        {img:'cat-list.png',title:'Хобби и творчество'},
+        {img:'cat-list.png',title:'Аксессуары'},
+        {img:'cat-list.png',title:'Туризм и рыбалка'},
+        {img:'cat-list.png',title:'Детские товары'},
+        {img:'cat-list.png',title:'Мебель'},
+        {img:'cat-list.png',title:'Товары для животных'},
+        {img:'cat-list.png',title:'Климатическая техника'},
+    ]
+
+.container
+    .catalog-list
+        each item in items
+            a(href='#').catalog-list__item
+                +lazy-img({
+                    wrap_mod: 'catalog-list__img',
+                    img: item.img
+                })
+                .catalog-list__title=item.title

@@ -1,0 +1,35 @@
++include-style('brands')
+
+.brands.container
+    .brands__text Наш сайт является официальным дилером представленных торговых марок. Это означает, что вся продукция фирменная, никакого «серого импорта». На все товары распространяется гарантия производителя, а цены на нашем сайте соответствуют рекомендованным производителем.
+    .brands__list
+        each i in [1,2,3,4,5,6,7,8,9,10]
+            a(href="#").brands__item
+                +lazy-img({
+                    wrap_mod: 'brands__item-img',
+                    img: `brand-${i}.png`
+                })
+    .brands__filters
+        .brands__filter
+            .brands__filter-chip.active Все
+            each i in ['C','D','F','G','K','L','M','N','P','R','T','V']
+                .brands__filter-chip=i
+        .brands__filter
+            each i in ['А','В','Д','Ж','М','Н','О','П','С']
+                .brands__filter-chip=i
+
+    .brands__filter-list
+        .brands__filter-list-item
+            .letter C
+            .list
+                a(href="#") Castor
+        .brands__filter-list-item
+            .letter D
+            .list
+                a(href="#") Desti
+                a(href="#") Ducharme
+                a(href="#") Desti
+                a(href="#") Ducharme
+                a(href="#") Desti
+                a(href="#") Ducharme
+

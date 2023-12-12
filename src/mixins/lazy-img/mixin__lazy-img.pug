@@ -1,0 +1,24 @@
+mixin lazy-img(args={})
+	//-
+		+lazy-img({
+			img: IMGSRC,
+			placeholder: pixel,
+			img_mod: IMGCLASS,
+			wrap_mod: WRAPCLASS,
+			link: false,
+			aria_label: false,
+		})
+	-
+		if (!args.http) {
+			args.img = !args.http && args.img === pixel ? pixel : SITE_TEMPLATE_PATH + 'images/' + args.img
+			args.placeholder = !args.http && args.placeholder === pixel ? pixel : SITE_TEMPLATE_PATH + args.placeholder
+		}
+
+	if (args.link)
+		a.lazy-img-wrap(href=args.href || '#' class= args.wrap_mod aria-label= args.aria_label)&attributes(attributes)
+			img.lazy-img(class= args.img_mod, src=args.placeholder, data-src=args.img, alt= args.alt || 'img' title= args.title)
+			block
+	else
+		span.lazy-img-wrap(class= args.wrap_mod)&attributes(attributes)
+			img.lazy-img(class= args.img_mod, src=args.placeholder, data-src=args.img, alt= args.alt || 'img' title= args.title)
+			block

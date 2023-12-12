@@ -1,0 +1,21 @@
+mixin textarea(args = {})
+    +include-style('form-mixin')
+
+    - var id = args.id || Math.floor(Math.random() * 9999999999);
+
+    .form-group(class= args.mod)
+        if(args.label)
+            label.form-control-label(class=args.label_mod for= 'ID' + id)= args.label
+                if (args.required)
+                    span.label-required *
+        textarea.form-control(
+            rows="3"
+            id= 'ID' + id,
+            name= args.name || 'NAME' + id,
+            value= args.value,
+            placeholder= args.placeholder || ' ',
+            required= args.required,
+            readonly=args.readonly,
+        )
+        block
+

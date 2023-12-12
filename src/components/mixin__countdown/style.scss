@@ -1,0 +1,25 @@
+@import "src/assets/css/vars_mixins/vars_mixins";
+
+.countdown {
+  padding-left: 4px;
+  display: flex;
+  &__item {
+    text-transform: lowercase;
+    color: $white_text_black;
+    color: var(--white_text_black);
+    padding: 4px 3px 0 3px;
+    font-size: 12px;
+    width: auto;
+    display: inline-block;
+    position: relative;
+    line-height: 1;
+    height: 25px;
+    font-weight: 700;
+    &:not(:last-child)::after {
+      letter-spacing: -3px;
+      content: ':';
+      position: relative;
+      left: 1px;
+    }
+  }
+}

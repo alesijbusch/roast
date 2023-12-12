@@ -1,0 +1,38 @@
+extends ../../layout/layout
+
+block vars
+    - var pageTitle = 'Сравнение товаров'
+    - var pageBodyClass = ''
+    - var dir = './'
+
+
+block premain
+    .container
+        .page-top
+            +breadcrumbs({
+                content2: 'Сравнение товаров',
+                href_content2: '#',
+
+            })
+            .page-top__header
+                h1.page-top__title Сравнение товаров
+
+
+block main
+    include ../../components/compare/compare
+    include ../../components/viewed-section/viewed-section
+
+
+block pageModal
+
+block componentsCriticalStyles
+    +componentsCriticalStyles-includer()
+block vendorScripts
+    +vendorScripts-includer()
+block scripts
+    script(src="./js/vendor/nouislider.min.js" defer)
+
+block componentsStyles
+    +style-includer()
+block componentsScripts
+    +componentsScripts-includer()

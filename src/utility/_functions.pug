@@ -1,0 +1,7 @@
+-
+    //Проверяет наличие имени компонента в массиве имен и пушит, если такого имени ещё нет
+    function isInComponentsList(list, name) {
+        if (list && list.indexOf(name) === -1) {
+            list.push(name);
+        }
+    }

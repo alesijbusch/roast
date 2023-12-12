@@ -1,0 +1,86 @@
++include-style('contacts')
++include-script('contacts')
+
+.contacts.container.contacts--first
+    .contacts__left
+        +splide({
+            mod: 'js-splide-contacts'
+        })
+            each item in [1,2]
+                +splide-slide()
+                    span.contacts-slide
+                        img.contacts-slide__img(src=pixel data-splide-lazy=`/html/images/contacts-${item}.jpg` alt='contact')
+        .contacts__items
+            div
+                .contacts__item
+                    .contacts__item-title Адрес
+                    .contacts__item-text г. Челябинск, ул. Энтузиастов, 30
+                .contacts__item
+                    .contacts__item-title Режим работы
+                    .contacts__item-text Пн - Пт: 9.00 - 18.00
+                    .contacts__item-text Сб - Вс: выходные
+            div
+                .contacts__item
+                    .contacts__item-title Телефон
+                    a(href="tel:+70000000000").contacts__item-text +7 (000) 000-00-00
+                    a(href="tel:+70000000001").contacts__item-text +7 (000) 000-00-01
+                .contacts__item
+                    .contacts__item-title E-mail
+                    a(href="mailto:info@site.ru").contacts__item-text info@site.ru
+        .contacts__socials.socials
+            ul.socials__list
+                each item in ['i-vk','i-tg','i-tube']
+                    li
+                        +lazy-img({
+                            link: true,
+                            wrap_mod: 'socials__icon-wrap',
+                            img_mod: 'socials__icon',
+                            img: `socials/${item}.svg`,
+                        })
+                li
+                    +lazy-img({
+                        link: true,
+                        wrap_mod: 'socials__icon-wrap socials__icon-wrap--dark',
+                        img_mod: 'socials__icon',
+                        img: `socials/i-tiktok-dark.svg`,
+                    })
+                    +lazy-img({
+                        link: true,
+                        wrap_mod: 'socials__icon-wrap socials__icon-wrap--light',
+                        img_mod: 'socials__icon',
+                        img: `socials/i-tiktok-light.svg`,
+                    })
+                li
+                    +lazy-img({
+                        link: true,
+                        wrap_mod: 'socials__icon-wrap',
+                        img_mod: 'socials__icon',
+                        img: `socials/i-whatsapp.svg`,
+                    })
+                li
+                    +lazy-img({
+                        link: true,
+                        wrap_mod: 'socials__icon-wrap socials__icon-wrap--dark',
+                        img_mod: 'socials__icon',
+                        img: `socials/i-zen-dark.svg`,
+                    })
+                    +lazy-img({
+                        link: true,
+                        wrap_mod: 'socials__icon-wrap socials__icon-wrap--light',
+                        img_mod: 'socials__icon',
+                        img: `socials/i-zen-light.svg`,
+                    })
+                li
+                    +lazy-img({
+                        link: true,
+                        wrap_mod: 'socials__icon-wrap',
+                        img_mod: 'socials__icon',
+                        img: `socials/i-insta.svg`,
+                    })
+        .contacts__content.content
+            p Аспро: Лайтшоп — магазин полезных вещей для себя, дома, офиса и дачи. Здесь вы найдете товары под свои предпочтения: от аудиотехники и одежды до строительных материалов и велосипедов. Работаем с проверенными производителями с 2005 года. Доставляем товары точно в срок.
+            p Покупка товара проста только на первый взгляд. Нужно думать о том, как оформить доставку, кто соберет шкаф или установит кондиционер. В нашем магазине эти услуги уже продуманы. Думайте только о подборе товаров в каталоге. Для этого предлагаем комплексный подход — наша команда выполнит все задачи!
+        .contacts__btn
+            .btn.btn-bordered Свяжитесь с нами
+    .contacts__right
+        .contacts-map

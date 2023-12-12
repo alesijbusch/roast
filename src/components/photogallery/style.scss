@@ -1,0 +1,123 @@
+@import "src/assets/css/vars_mixins/vars_mixins";
+
+.photogallery {
+  padding-bottom: 80px;
+
+  &__header {
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    gap: 12px;
+
+    .lazy-img-wrap {
+      padding-bottom: 100%;
+      position: relative;
+      border-radius: 8px;
+
+      &::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0,0,0,.5);
+        color: #fff;
+        font-size: 1em;
+        height: 100%;
+        line-height: 1.417em;
+        pointer-events: none;
+        width: 100%;
+      }
+      &[data-count-xl]::after {
+        content: "+" attr(data-count-xl);
+      }
+    }
+    .lazy-img {
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+    }
+  }
+}
+
+// 1199.75
+@media (max-width: $lg) {}
+// 991.75
+@media (max-width: $md) {
+  .photogallery {
+    &__list {
+      grid-template-columns: repeat(5,1fr);
+    }
+
+    .lazy-img-wrap {
+      &[data-count-md]::after {
+        content: "+" attr(data-count-md);
+      }
+    }
+    .lazy-img-wrap:nth-child(6) {
+      display: none;
+    }
+  }
+}
+// 767.75
+@media (max-width: $sm) {
+  .photogallery {
+    &__list {
+      grid-template-columns: repeat(4,1fr);
+    }
+
+    .lazy-img-wrap {
+      &[data-count-sm]::after {
+        content: "+" attr(data-count-sm);
+      }
+    }
+    .lazy-img-wrap:nth-child(5) {
+      display: none;
+    }
+  }
+}
+// 600.75
+@media (max-width: $xs) {
+  .photogallery {
+    &__list {
+      grid-template-columns: repeat(3,1fr);
+    }
+
+    .lazy-img-wrap {
+      &[data-count-xs]::after {
+        content: "+" attr(data-count-xs);
+      }
+    }
+    .lazy-img-wrap:nth-child(4) {
+      display: none;
+    }
+  }
+}
+@media (max-width: 374.75px) {
+  .photogallery {
+    &__list {
+      grid-template-columns: repeat(2,1fr);
+    }
+
+    .lazy-img-wrap {
+      &[data-count-375]::after {
+        content: "+" attr(data-count-375);
+      }
+    }
+    .lazy-img-wrap:nth-child(3) {
+      display: none;
+    }
+  }
+}

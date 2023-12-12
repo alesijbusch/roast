@@ -1,0 +1,33 @@
+extends ../../layout/layout
+
+block vars
+    - var pageTitle = 'Акции'
+    - var pageBodyClass = ''
+    - var dir = './'
+
+
+block premain
+    .container
+        .page-top
+            +breadcrumbs({
+                content2: 'Акции',
+                href_content2: '',
+                content3: ''
+            })
+            .page-top__header
+                h1.page-top__title Акции
+
+block main
+    include ../../components/sales/sales
+
+
+block pageModal
+
+block componentsCriticalStyles
+    +componentsCriticalStyles-includer()
+block vendorScripts
+    +vendorScripts-includer()
+block componentsStyles
+    +style-includer()
+block componentsScripts
+    +componentsScripts-includer()

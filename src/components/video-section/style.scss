@@ -1,0 +1,102 @@
+@import "src/assets/css/vars_mixins/vars_mixins";
+
+.video-section {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px -14px;
+
+  margin-bottom: 30px;
+  @media (max-width: $sm - 1) {
+  margin: 0px -5px;
+  margin-bottom: 20px;
+}
+
+  &__item {
+    padding: 14px;
+    width: 100%;
+    @media (max-width: $sm - 1) {
+    padding: 5px;
+  }
+
+}
+  &--one{
+    justify-content: center;
+    .video-section__item{
+      width: 50%;
+      @media (max-width: $sm - 1) {
+      width: 100%;
+    }
+  }
+
+}
+
+  &--two {
+    .video-section__item {
+      width: 50%;
+      @media (max-width: $sm - 1) {
+      width: 100%;
+    }
+  }
+}
+
+  &--three {
+    .video-section__item {
+      width: 50%;
+      @media (max-width: $sm - 1) {
+      width: 100%;
+    }
+
+    //&:last-child {
+    //	width: 100%;
+    //}
+  }
+}
+
+  &--four {
+    .video-section__item {
+      width: 50%;
+      @media (max-width: $sm - 1) {
+      width: 100%;
+    }
+  }
+}
+
+  &--five {
+    .video-section__item {
+      width: 50%;
+      @media (max-width: $sm - 1) {
+      width: 100%;
+    }
+
+    //&:first-child {
+    //	width: 100%;
+    //}
+  }
+}
+}
+
+.lazy-video {
+  position: relative;
+  height: 500px;
+  max-width: 100%;
+
+  .lazy-video.loaded ~ .preloader {
+    display: none;
+  }
+}
+
+.lazy-video-youtube-wrapper {
+  padding-bottom: 56.25%;
+  position: relative;
+  max-width: 1920px;
+
+  .lazy-video-youtube {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+  }
+}

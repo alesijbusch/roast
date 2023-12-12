@@ -1,0 +1,47 @@
++include-style('categories-section')
+
+.categories-section
+    .container
+        .categories-section__inner
+            +category-card({
+                img: 'category-1.jpg',
+                text: 'Спорт и девайсы',
+                title: 'Умная электроника для бега',
+                tags: false,
+                links: ['Наушники', 'Смарт-часы']
+            })
+            +category-card({
+                img: 'category-2.jpg',
+                text: 'Новинка',
+                title: 'Посуда для кухни',
+                tags: ['от 2500 ₽'],
+                links: false
+            })
+            +category-card({
+                img: 'category-3.jpg',
+                text: '',
+                title: 'Все для покорения горных вершин на велосипеде',
+                tags: false,
+                links: ['Велосипеды','Экипировки']
+            })
+            +category-card({
+                img: 'category-4.jpg',
+                text: '',
+                title: 'Запчасти для мотоциклов',
+                tags: false,
+                links: ['Колодки','Масло']
+            })
+            +category-card({
+                img: 'category-5.jpg',
+                text: 'Забота и здоровье',
+                title: 'Товары для домашних животных',
+                tags: false,
+                links: ['Для кошек', 'Для собак']
+            })
+            +category-card({
+                img: 'category-6.jpg',
+                text: 'Малышам',
+                title: 'Комфортные и безопасные автокресла',
+                tags: false,
+                links: false
+            })

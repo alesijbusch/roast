@@ -1,0 +1,70 @@
+@import 'src/assets/css/vars_mixins/vars_mixins';
+
+.breadcrumbs {
+	margin-bottom: 21px;
+
+	&__item {
+		display: inline-block;
+		position: relative;
+		padding-right: 16px;
+		margin-right: -16px;
+		font-size: .8125rem;
+		line-height: calc(1em + 7px);
+		color: #999;
+
+	}
+	&__separator {
+		position: relative;
+		zoom: 1;
+		bottom: 2px;
+		display: inline-block;
+		line-height: 18px;
+		margin: 0 8px 0 12px;
+		border: none;
+		color: #ddd;
+
+		fill: var(--fill_dark_light);
+
+		svg {
+			display: block;
+		}
+		&:last-child {
+			display: none;
+		}
+	}
+}
+
+a.breadcrumbs__link {
+
+
+	font-size: .8125rem;
+	line-height: calc(1em + 7px);
+	color: #999;
+
+	@media (hover: hover) {
+		&:hover {
+			color: var(--fill_dark_lite_hover);
+		}
+	}
+}
+span.breadcrumbs__link {
+
+	@media (hover: hover) {
+		&:hover {
+			cursor: default;
+		}
+	}
+}
+
+@media (min-width: 601px) {
+	.page-hero {
+		.breadcrumbs__separator {
+			fill: #fff;
+		}
+		.breadcrumbs__item,
+		a.breadcrumbs__link {
+			color: #fff;
+		}
+	}
+}
+

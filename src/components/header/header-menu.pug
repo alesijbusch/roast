@@ -1,0 +1,69 @@
+.header-menu
+    .header-menu__inner
+        .header-menu__scroll
+            ul.header-menu__left
+                each item in [1,2,3,4,5]
+                    li.header-menu__item
+                        +lazy-img({
+                            link: true,
+                            img: 'header-menu-1.png'
+                        })
+                        .header-menu__item-content
+                            a(href="#").header-menu__item-title Товары для дома и дачи
+                            ul.header-menu__item-list(x-data="{isHeaderMenuLvl2Visible : false}"
+                                :class="isHeaderMenuLvl2Visible ? 'visible' : ''")
+                                li
+                                    a(href="#") Текстиль
+                                li
+                                    a(href="#") Декор
+                                li
+                                    a(href="#") Посуда
+                                li.has-nav.collapsed(x-data="{isHeaderMenuLvl3Visible : false}"
+                                    :class="isHeaderMenuLvl3Visible ? 'visible' : ''")
+                                    a(href="#"
+                                        :class="isHeaderMenuLvl3Visible ? 'active' : ''") Текстиль
+                                        span.icon-wrap(@click="isHeaderMenuLvl3Visible = ! isHeaderMenuLvl3Visible; event.prevent='stop'")
+                                            +icon('i-arrow-down')(style="height:5px;width:7px")
+                                    ul.lvl2
+                                        li
+                                            a(href="#") Текстиль 2
+                                        li
+                                            a(href="#") Декор 2
+                                        li
+                                            a(href="#") Посуда 2
+                                        li
+                                            a(href="#") Текстиль 2
+                                        li
+                                            a(href="#") Декор 2
+                                        li
+                                            a(href="#") Посуда 2
+                                li.collapsed
+                                    a(href="#") Декор
+                                li.more(@click="isHeaderMenuLvl2Visible = ! isHeaderMenuLvl2Visible"
+                                    :class="isHeaderMenuLvl2Visible ? 'active' : ''")
+                                    span
+                                        template(x-if="!isHeaderMenuLvl2Visible")
+                                            b Еще
+                                        template(x-if="isHeaderMenuLvl2Visible")
+                                            b Скрыть
+                                        span.icon-wrap
+                                            +icon('i-arrow-down')(style="height:5px;width:7px")
+                    li.header-menu__item
+                        +lazy-img({
+                            link: true,
+                            img: 'header-menu-1.png'
+                        })
+                        .header-menu__item-content
+                            a(href="#").header-menu__item-title Товары для дома и дачи
+                            ul.header-menu__item-list
+                                li
+                                    a(href="#") Текстиль
+                                li
+                                    a(href="#") Декор
+                                li
+                                    a(href="#") Посуда
+            .header-menu__right
+                +lazy-img({
+                    link: true,
+                    img: 'header-menu-banner.jpg'
+                })

@@ -1,0 +1,113 @@
+@import "src/assets/css/vars_mixins/vars_mixins";
+
+.index-tabs {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  background: $darkerblack_bg_black;
+  background: var(--darkerblack_bg_black);
+
+  &__header {
+    margin-bottom: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+  &__inner {}
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 24px;
+  }
+}
+
+.tabs-nav {
+  &__list {
+    white-space: nowrap;
+    display: flex;
+    margin: 0 -4px;
+    width: calc(100% + 8px);
+  }
+  &__item {
+    margin: 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: rgba(136,136,136,.1);
+    background-color: var(--darkgrey_bg_black);
+    border-radius: 8px;
+    height: 34px;
+    color: var(--white_text_black);
+    padding: 0 12px;
+    font-size: .875rem;
+    line-height: calc(1em + 7px);
+
+    &.active {
+      color: #fff;
+      background-color: #9e9e9e;
+      background-color: var(--theme-base-color);
+
+      &:hover {
+        color: #fff;
+        cursor: default;
+      }
+    }
+    &:hover {
+      color: #9e9e9e;
+      color: var(--fill_dark_lite_hover);
+    }
+  }
+}
+
+// 1199.75
+@media (max-width: $lg) {
+  .index-tabs {
+    &__grid {
+      grid-template-columns: repeat(4,1fr);
+    }
+  }
+}
+// 991.75
+@media (max-width: $md) {
+  .index-tabs {
+    &__grid {
+      grid-template-columns: repeat(3,1fr);
+    }
+  }
+}
+// 767.75
+@media (max-width: $sm) {
+  .index-tabs {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    &__header {
+      flex-wrap: wrap;
+    }
+    &__grid {
+      grid-template-columns: repeat(2,1fr);
+    }
+  }
+  .tabs-nav {
+    margin-right: -24px;
+    margin-top: 10px;
+    overflow: hidden;
+    overflow-x: auto;
+    @include scroll();
+
+    &__list {}
+  }
+}
+// 600.75
+@media (max-width: $xs) {
+  .index-tabs {
+    &__grid {
+      display: flex;
+      overflow: auto;
+      padding: 15px 24px!important;
+      margin: -15px -24px!important;
+      grid-gap: 0;
+    }
+  }
+}
+

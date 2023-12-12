@@ -1,0 +1,27 @@
++include-style('slide-block')
++include-script('slide-block')
+
+.slide-block(x-data="{isOpenedSlideBlock: true}" :class="isOpenedSlideBlock ? '' : 'closed'")
+    .slide-block__head(@click="isOpenedSlideBlock = ! isOpenedSlideBlock")
+        | Категория
+        +icon('i-arrow-down')(style="width:7px;height:5px;")
+    .slide-block__body
+        +nav({
+            mod: '',
+            list: [
+                {name: 'Товары для дома и дачи 1',name_arr: true},
+                {
+                    name: 'Товары для дома и дачи 2',
+                    name_arr: true,
+                    active: true,
+                    no_toggle: true,
+                    list: [
+                        {name: 'Текстиль'},
+                        {name: 'Декор'},
+                        {name: 'Посуда',active: true},
+                        {name: 'Инвентарь'},
+                        {name: 'Освещение'},
+                    ]
+                },
+            ]
+        })

@@ -1,0 +1,135 @@
+@import "src/assets/css/vars_mixins/vars_mixins";
+
+.share-container{
+	position: relative;
+
+	&:hover {
+		.share {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+
+	.share {
+
+
+		position: absolute;
+		top: 38px;
+		right: 12px;
+		z-index: 6;
+		background: var(--card_bg_black);
+		padding: 16px;
+		box-shadow: 0 5px 20px rgba(0, 0, 0, .1);
+		border-radius: 4px;
+		overflow: hidden;
+		opacity: 0;
+		visibility: hidden;
+		transition: all ease .3s;
+		@media (max-width: $xs - 1) {
+			//right: auto;
+			//left: auto;
+			//transform: translateX(-30%);
+		}
+
+		.ya-share2__list {
+			display: flex;
+			flex-direction: row;
+			margin: -3px;
+			max-width: calc(100vw - 32px);
+			@media (max-width: $xs - 1) {
+				width: 230px;
+				flex-wrap: wrap;
+			}
+		}
+
+		&-item {
+			margin: 0;
+			padding: 3px;
+			transition: opacity .3s ease-in-out;
+
+			.share-icon.ok {
+				background-position-x: -24px;
+
+			}
+
+			.share-icon.mail {
+				background-position-x: -120px;
+
+			}
+
+			.share-icon.tw {
+				background-position-x: -72px;
+
+			}
+
+			.share-icon.vb {
+				background-position-x: -216px;
+			}
+		}
+
+
+		.ya-share2__badge {
+			align-items: center;
+			border-radius: 4px;
+			display: flex;
+			height: 40px;
+			justify-content: center;
+			width: 40px;
+			background: var(--darkgrey_bg_black);
+
+
+
+
+
+			&:hover {
+				.share-icon {
+					opacity: 0.7;
+				}
+
+
+			}
+		}
+
+		.ya-share2__icon {
+			background-repeat: no-repeat;
+			background-position: 0 0;
+			background-size: auto!important;
+			background-image: url('/html/images/social.svg');
+			width: 20px!important;
+			height: 20px!important;
+			overflow: hidden;
+			transition: all ease .3s;
+		}
+
+		.ya-share2__item_service_vkontakte .ya-share2__icon{
+
+		}
+		.ya-share2__item_service_odnoklassniki .ya-share2__icon{
+			background-position-x: -24px;
+		}
+
+		.ya-share2__item_service_telegram .ya-share2__icon{
+			background-position-x: -168px;
+		}
+
+		.ya-share2__item_service_twitter .ya-share2__icon{
+			background-position-x: -72px;
+		}
+
+		.ya-share2__item_service_viber .ya-share2__icon{
+			background-position-x: -215px;
+		}
+
+		.ya-share2__item_service_whatsapp .ya-share2__icon{
+			background-position-x: -192px;
+		}
+
+		.ya-share2__item_service_skype .ya-share2__icon{
+			background-position-x: -624px;
+		}
+
+
+
+	}
+
+}

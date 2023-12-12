@@ -1,0 +1,32 @@
++include-style('photogallery')
+
+.photogallery
+    .container
+        .photogallery__header
+            h3.section-title
+                span Фотогалерея
+        .photogallery__list
+            +lazy-img({
+                img: `review-1.jpeg`,
+                link: true,
+            })
+            +lazy-img({
+                img: `review-2.jpeg`,
+                link: true,
+            })(data-count-375="6")
+            +lazy-img({
+                img: `review-3.jpeg`,
+                link: true,
+            })(data-count-xs="5")
+            +lazy-img({
+                img: `review-4.jpeg`,
+                link: true,
+            })(data-count-sm="4")
+            +lazy-img({
+                img: `review-5.jpeg`,
+                link: true,
+            })(data-count-md="3")
+            +lazy-img({
+                img: `review-1.jpeg`,
+                link: true,
+            })(data-count-xl="2")

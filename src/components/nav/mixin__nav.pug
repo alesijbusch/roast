@@ -1,0 +1,94 @@
+mixin nav(args= {})
+	//- ПРИМЕР
+		+nav(
+			{	modClass: 'nav--modClass',
+				big_nav: '',
+				list_hidden: '',
+				list: [
+					{   name: 'LVL_1_NAME_1-',
+						img: 'images/main-nav-0.png'},
+					{name: 'LVL_1_NAME_2',
+						list: [
+							{ name: 'LVL_2_NAME_1'},
+							{ name: 'LVL_2_NAME_2',
+								list: [
+									{name: 'LVL_3_NAME_1'},
+									{name: 'LVL_3_NAME_2'},
+								]
+							},
+						]
+					}
+				]
+			}
+		)
+
+	div.js-nav.nav(class= args.mod)
+		ul.nav-list
+			each item in args.list
+				li.nav-item(
+					class= item.mod_class
+					class= item.active && 'active'
+					class= item.list && 'has-nav'
+					x-data="{ open: false }"
+				)
+					#{item.active ? 'span' : 'a'}.nav-link(
+						href="#"
+						aria-label= item.name
+						@click="open = ! open; catalog =!catalog"
+					)
+						if(item.name_arr)
+							+icon('i-arrow-down')(style="width:7px;height:5px;")
+						span.nav-item-name!= item.name
+						if(item.list && !item.no_toggle)
+							span.nav-toggle.js-nav-toggle
+								+icon('i-arrow-down')(width="7px" height="5px")
+					if(item.list)
+						div.js-nav.nav-lvl2(:class="open ? 'is-active':''")
+							if(item.title)
+								.nav-lvl2-close(@click="isMobileNavVisible = ! isMobileNavVisible")
+									+icon('i-close')(style="height:16px;width:16px")
+								.nav-lvl2-header(@click="open = ! open; catalog =!catalog")
+									+icon('i-arrow-right')(style="width: 7px;height:12px")
+									| Назад
+								a(href="#").nav-lvl2-title=item.title
+									+icon('i-arrow-right')(style="width: 7px;height:12px")
+							ul.nav-lvl2-list
+								each item2, index in item.list
+									li.nav-lvl2-item(
+										x-data="{ open2: false }"
+										class= item2.active && 'active'
+										class= item2.list && 'has-nav'
+									)
+										#{item2.active ? 'span' : 'a'}.nav-lvl2-link(
+											href="#"
+											aria-label= item2.name
+											@click="open2 = ! open2"
+											)
+											span.nav-lvl2-item-name!= item2.name
+											if(item2.list)
+												span.nav-lvl2-toggle.js-nav-toggle
+													+icon('i-arrow-down')(width="7px" height="5px")
+										if(item2.list)
+											div.js-nav.nav-lvl3(:class="open2 ? 'is-active':''")
+												if(item2.title)
+													.nav-lvl3-close(@click="isMobileNavVisible = ! isMobileNavVisible")
+														+icon('i-close')(style="height:16px;width:16px")
+													.nav-lvl3-header(@click="open2 = ! open2")
+														+icon('i-arrow-right')(style="width: 7px;height:12px")
+														| Назад
+													a(href="#").nav-lvl3-title=item2.title
+														+icon('i-arrow-right')(style="width: 7px;height:12px")
+												ul.nav-lvl3-list
+													each item3 in item2.list
+														li.nav-lvl3-item(
+															class= item3.active && 'active'
+															class= item3.list && 'has-nav'
+														)
+															#{item3.active ? 'span' : 'a'}.nav-lvl3-link(href="#" aria-label= item3.name)
+																span.nav-lvl3-item-name!= item3.name
+			if(args.more_btn)
+				li.nav-item.nav-item--more
+					span.nav-link
+						+icon('i-dots')(style="width:15px;height:3px")
+					div.js-nav.nav-lvl2
+						ul.nav-lvl2-list.js-nav-lvl2-list--more

@@ -1,0 +1,20 @@
+mixin include-style(name)
+	<!--Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/components-template/#{name}/style.css");-->
+	-
+		isInComponentsList(componentsList, name);
+mixin include-script(name, ignore)
+	if (!ignore)
+		<!--Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/components-template/#{name}/script.min.js");-->
+	-
+		isInComponentsList(componentsScriptsList, name);
+
+mixin include-script-vendor(name)
+	<!--Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/vendor/#{name}");-->
+	-
+		isInComponentsList(vendorScriptsList, name);
+mixin include-style-ajax(name)
+	<!--<? echo "<style>".file_get_contents($_SERVER["DOCUMENT_ROOT"].SITE_TEMPLATE_PATH."/components-template/#{name}/style.css")."</style>";?>-->
+	link(rel="stylesheet" href="../../../html/components-template/" + name + "/style.css" inline)
+mixin include-script-ajax(name)
+	<!--<? echo "<script>".file_get_contents($_SERVER["DOCUMENT_ROOT"].SITE_TEMPLATE_PATH . "/components-template/#{name}/script.min.js")."</script>";?>-->
+	script(src="../../../html/components-template/" +name + "/script.min.js" inline)

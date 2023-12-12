@@ -1,0 +1,123 @@
+@import "src/assets/css/vars_mixins/vars_mixins";
+
+.vk-section {
+  padding-bottom: 80px;
+
+  &__header {
+    margin-bottom: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+  &__inner {
+    display: grid;
+    gap: 40px 24px;
+    grid-template-columns: repeat(4,1fr);
+  }
+}
+
+.vk-item {
+  display: block;
+  padding: 24px 20px;
+  background: #fff;
+  background: var(--card_bg_black);
+  border: 1px solid #ededed;
+  border-color: var(--stroke_black);
+  border-radius: 12px;
+
+  &:hover .vk-item__title {
+    color: #000;
+    color: var(--fill_dark_lite_hover);
+  }
+  &__content {
+    margin-bottom: 16px;
+  }
+  &__date {
+    display: flex;
+    align-items: center;
+    color: #999;
+    font-size: .875rem;
+    line-height: calc(1em + 7px);
+  }
+  &__icon-wrap {
+    border-radius: 4px;
+    display: inline-block;
+    height: 16px;
+    margin-right: 12px;
+    width: 16px;
+  }
+  &__icon {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+  &__title {
+    line-height: calc(1em + 10px);
+    font-weight: 500;
+    color: $white_text_black;
+    color: var(--white_text_black);
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-line-clamp: 3;
+    overflow: hidden;
+    margin-top: 9px;
+  }
+  &__img-wrap {
+    position: relative;
+    padding-top: 57%;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  &__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+// 1199.75
+@media (max-width: $lg) {}
+// 991.75
+@media (max-width: $md) {
+  .vk-section {
+    &__inner {
+      grid-template-columns: repeat(2,1fr);
+    }
+  }
+}
+// 767.75
+@media (max-width: $sm) {
+  .vk-section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+// 600.75
+@media (max-width: $xs) {
+  .vk-section {
+    &__inner {
+      display: flex;
+      grid-gap: 0;
+      overflow: auto;
+      padding: 15px 24px!important;
+      margin: -15px -24px!important;
+    }
+  }
+
+  .vk-item {
+    width: 260px;
+    min-width: 260px;
+    &:not(:last-child) {
+      margin-right: 24px;
+    }
+  }
+}

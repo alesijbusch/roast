@@ -1,0 +1,73 @@
++modal({
+    id: 'modal-delivery',
+    mod: 'modal-debit modal-narrow',
+    title: 'Стоимость доставки',
+    header: true
+})
+    form.modal-delivery
+        .modal-delivery__head
+            .modal-delivery__counter
+                .modal-delivery__counter-title Количество
+
+                .counter
+                    span.counter__action.counter__action--minus
+                    input.counter__count(type="text" value="1" maxlength="6")
+                    span.counter__action.counter__action--plus
+            .modal-delivery__checkbox
+                +checkbox({
+                    label: 'Учитывать всю корзину'
+                })
+        .modal-delivery__body
+            .modal-delivery__item(x-data="{expand: false}")
+                .modal-delivery__item-head(@click="expand=!expand")
+                    .modal-delivery__item-left
+                        .modal-delivery__item-img
+                            +lazy-img({
+                                img:'product-card-2.jpg'
+                            })
+                        .modal-delivery__item-title
+                            span Почта россии
+                            | от 1 до 7 дней
+                    .modal-delivery__item-price 750 ₽
+                .modal-delivery__item-body(x-show="expand" x-cloak x-transition.scale.origin.top x-transition.scale.duration.500ms)
+                    p Экспресс-отправления EMS — это самый быстрый и удобный способ доставить письмо или посылку по России. Курьер заберет отправление в удобном для вас месте и доставит его адресату домой или в офис. Экспресс-отправление является регистрируемым, его доставку и вручение можно отследить с помощью трек-номера. В городах, где нет курьерской службы EMS, отправить и получить экспресс-отправление можно через отделение Почты России
+                    p Доставка осуществляется <b><i>в течение недели</i></b> в удобное для вас время.
+                    .modal-delivery__item-pay
+                        | Способы оплаты:
+                        .modal-delivery__item-payment Наличный расчет
+                        .modal-delivery__item-payment Яндекс.Деньги
+                        .modal-delivery__item-payment Банковский перевод
+            .modal-delivery__item(x-data="{expand: false}")
+                .modal-delivery__item-head(@click="expand=!expand")
+                    .modal-delivery__item-left
+
+                        .modal-delivery__item-title
+                            span Доставка курьером
+                            | от 1 до 7 дней
+                    .modal-delivery__item-price 750 ₽
+                .modal-delivery__item-body(x-show="expand" x-cloak x-transition.scale.origin.top x-transition.scale.duration.500ms)
+                    p Экспресс-отправления EMS — это самый быстрый и удобный способ доставить письмо или посылку по России. Курьер заберет отправление в удобном для вас месте и доставит его адресату домой или в офис. Экспресс-отправление является регистрируемым, его доставку и вручение можно отследить с помощью трек-номера. В городах, где нет курьерской службы EMS, отправить и получить экспресс-отправление можно через отделение Почты России
+                    p Доставка осуществляется <b><i>в течение недели</i></b> в удобное для вас время.
+                    .modal-delivery__item-pay
+                        | Способы оплаты:
+                        .modal-delivery__item-payment Наличный расчет
+                        .modal-delivery__item-payment Яндекс.Деньги
+                        .modal-delivery__item-payment Банковский перевод
+
+
+            .modal-delivery__item(x-data="{expand: false}")
+                .modal-delivery__item-head(@click="expand=!expand")
+                    .modal-delivery__item-left
+
+                        .modal-delivery__item-title
+                            span Самовывоз
+                    .modal-delivery__item-price 750 ₽
+                .modal-delivery__item-body(x-show="expand" x-cloak x-transition.scale.origin.top x-transition.scale.duration.500ms)
+                    p Вы можете <b><i>самостоятельно</i></b> забрать заказ из нашего магазина.
+                    .modal-delivery__item-pay
+                        | Способы оплаты:
+                        .modal-delivery__item-payment Наличный расчет
+                        .modal-delivery__item-payment Яндекс.Деньги
+                        .modal-delivery__item-payment Банковский перевод
+
+

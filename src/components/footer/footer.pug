@@ -1,0 +1,126 @@
++include-style('footer')
++include-style('form-mixin')
++include-script('footer')
+
+-
+	var footer = [
+		{
+			no_link: true,
+			title: 'Интернет-магазин',
+			list: ['Каталог','Акции','Бренды','Услуги']
+		},
+		{
+			title: 'Компания',
+			list: ['О компании', 'Лицензии', 'Отзывы', 'Документы']
+		},
+		{
+			active: true,
+			title: 'Информация',
+			list: ['Реквизиты', 'Магазины', 'Возможности']
+		},
+		{
+			title: 'Помощь',
+			list: ['Условия оплаты', 'Условия доставки', 'Гарантия на товар', 'Вопрос - ответ', 'Обзоры']
+		},
+	]
+
+footer.footer
+	.container
+		.footer__inner
+			.footer__left
+				.footer__left-top
+					.subscribe-block
+						.subscribe-block__left Подписаться <br> на новости и акции
+						form.subscribe-block__right
+							input(type="email" placeholder='E-mail').form-control
+							button.btn.btn-wave Подписаться
+				.footer__left-bottom
+					each item in footer
+						.footer__left-item(
+							x-data="{ width: window.innerWidth, breakpoint: 767, isOpened: window.innerWidth > 767 }"
+							@resize.window.debounce.100="width = window.innerWidth; isOpened = width > breakpoint"
+							:class="isOpened ? 'opened' : ''"
+							)
+							if(item.no_link)
+								.footer__left-item-title(@click="isOpened = !isOpened")
+									span=item.title
+									+icon('i-arrow-down')(style="width:7px;height:5px")
+							else
+								.footer__left-item-title(@click="isOpened = !isOpened")
+									a(href="#" class=item.active ? 'active' : '')=item.title
+									+icon('i-arrow-down')(style="width:7px;height:5px")
+							ul.footer__left-item-list
+								each i in item.list
+									li
+										a(href="#")=i
+			.footer__right
+				.footer__title Контакты
+				.footer__info
+					.footer__dropdown
+						include ../header/header-phones
+					a(href='mailto:chel.no-reply@aspro-demo.ru').footer__item chel.no-reply@aspro-demo.ru
+					.footer__item Челябинск, ул. Лермонтова 21, 3 этаж, офис 4
+					.footer__socials.socials
+						ul.socials__list
+							each item in ['i-vk','i-tg','i-tube']
+								li
+									+lazy-img({
+										link: true,
+										wrap_mod: 'socials__icon-wrap',
+										img_mod: 'socials__icon',
+										img: `socials/${item}.svg`,
+									})
+							li
+								+lazy-img({
+									link: true,
+									wrap_mod: 'socials__icon-wrap socials__icon-wrap--dark',
+									img_mod: 'socials__icon',
+									img: `socials/i-tiktok-dark.svg`,
+								})
+								+lazy-img({
+									link: true,
+									wrap_mod: 'socials__icon-wrap socials__icon-wrap--light',
+									img_mod: 'socials__icon',
+									img: `socials/i-tiktok-light.svg`,
+								})
+							li
+								+lazy-img({
+									link: true,
+									wrap_mod: 'socials__icon-wrap',
+									img_mod: 'socials__icon',
+									img: `socials/i-whatsapp.svg`,
+								})
+							li
+								+lazy-img({
+									link: true,
+									wrap_mod: 'socials__icon-wrap socials__icon-wrap--dark',
+									img_mod: 'socials__icon',
+									img: `socials/i-zen-dark.svg`,
+								})
+								+lazy-img({
+									link: true,
+									wrap_mod: 'socials__icon-wrap socials__icon-wrap--light',
+									img_mod: 'socials__icon',
+									img: `socials/i-zen-light.svg`,
+								})
+							li
+								+lazy-img({
+									link: true,
+									wrap_mod: 'socials__icon-wrap',
+									img_mod: 'socials__icon',
+									img: `socials/i-insta.svg`,
+								})
+	.container
+		.footer__bottom
+			.footer__bottom-inner
+				.footer__bottom-copy © 2022 Интернет-магазин Лайтшоп
+				ul.footer__bottom-pays
+					each i in [1,3,2,12,13,6,15,18,14]
+						li
+							+lazy-img({
+								img: `pay/pay-${i}.svg`
+							})
+				.footer__bottom-links
+					a(href="#") Конфиденциальность
+					a(href="#") Оферта
+				a(href="#").footer__bottom-dev Разработано в

@@ -1,0 +1,60 @@
++include-style('blog-section')
+
+-
+    var items = [
+        {
+            img: 'blog-1.jpg',
+            title: 'Свежий взгляд на наш интернет-магазин!',
+            text: 'Новости',
+            date: '28 июня 2022',
+        },
+        {
+            img: 'blog-2.jpg',
+            title: 'Что лучше: коляска-люлька или коляска-трансформер',
+            text: 'Советы покупателям',
+            date: '24 июня 2022',
+        },
+        {
+            img: 'blog-3.jpg',
+            title: 'Как сделать букет своими руками',
+            text: 'Советы покупателям',
+            date: '23 июня 2022',
+        },
+        {
+            img: 'blog-4.jpg',
+            title: 'Какие продукты необходимы для здоровья кошки',
+            text: 'Советы покупателям',
+            date: '22 июня 2022',
+        },
+        {
+            img: 'blog-5.jpg',
+            title: 'Новое поступление товаров для спальни',
+            text: 'Обзоры товаров',
+            date: '27 октября 2021',
+        },
+    ]
+
+.blog-section
+    .container
+        .blog-section__header
+            h3.section-title
+                a(href="#").section-title__link
+                    span Блог
+                    span.icon-wrap
+                        +icon('i-arrow-right')(style="height:12px;width:12px")
+        .blog-section__inner
+            each item in items
+                .blog-item
+                    +lazy-img({
+                        link: true,
+                        wrap_mod: 'blog-item__img-wrap',
+                        img_mod: 'blog-item__img',
+                        img: item.img,
+                    })
+                    .blog-item__content
+                        a(href="#").blog-item__title=item.title
+                        .blog-item__bottom
+                            .blog-item__text=item.text
+                            span.blog-item__sep /
+                            .blog-item__date=item.date
+

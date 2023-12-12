@@ -1,0 +1,8 @@
+mixin countdown(timer)
+    +include-style('mixin__countdown')
+    +include-script('mixin__countdown')
+
+    span.countdown.js-countdown(data-active-to=timer)
+        span.countdown__item.days 0
+        span.countdown__item.hours 0
+        span.countdown__item.minutes 0

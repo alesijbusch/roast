@@ -1,0 +1,37 @@
+extends ../../layout/layout
+
+block vars
+	- var pageTitle = 'Каталог'
+	- var pageBodyClass = ''
+	- var dir = './'
+
+
+block premain
+	.container
+		.page-top
+			+breadcrumbs({
+				content2: 'Каталог',
+				href_content2: '#',
+				content3: 'Товары для дома и дачи'
+			})
+			.page-top__header
+				h1.page-top__title Товары для дома и дачи
+				.page-top__count 32 товара
+
+block main
+	include ../../components/catalog/catalog
+	include ../../components/viewed-section/viewed-section
+
+block pageModal
+
+block componentsCriticalStyles
+	+componentsCriticalStyles-includer()
+block vendorScripts
+	+vendorScripts-includer()
+block scripts
+	script(src="./js/vendor/nouislider.min.js" defer)
+
+block componentsStyles
+	+style-includer()
+block componentsScripts
+	+componentsScripts-includer()

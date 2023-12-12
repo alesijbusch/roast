@@ -1,0 +1,36 @@
+extends ../../layout/layout
+
+block vars
+    - var pageTitle = 'Контакты-2'
+    - var pageBodyClass = ''
+    - var dir = './'
+
+
+block premain
+    .container
+        .page-top
+            +breadcrumbs({
+                content2: 'Контакты',
+                href_content2: '',
+                content3: ''
+            })
+            .page-top__header
+                h1.page-top__title Контакты
+
+block main
+    include ../../components/contacts/contacts-old
+    .container
+        a(href="#").return-btn
+            +icon('i-arrow-left')(width="16" height="10")
+            | Вернуться к списку
+
+block pageModal
+
+block componentsCriticalStyles
+    +componentsCriticalStyles-includer()
+block vendorScripts
+    +vendorScripts-includer()
+block componentsStyles
+    +style-includer()
+block componentsScripts
+    +componentsScripts-includer()

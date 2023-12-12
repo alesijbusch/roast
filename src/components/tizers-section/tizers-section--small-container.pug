@@ -1,0 +1,52 @@
++include-style('tizers-section')
+
+-
+    var items = [
+        {
+            link: true,
+            img: 'tizer-2.svg',
+            title: 'Клиентский сервис',
+            text: 'Отвечаем на вопросы покупателей в течение 10 минут',
+        },
+        {
+            link: false,
+            img: 'tizer-3.svg',
+            title: 'Бонусы за покупки',
+            text: 'Дарим подарки и скидки до 70% всем покупателям',
+        },
+
+        {
+            link: false,
+            img: 'tizer-5.svg',
+            title: 'Гарантия качества',
+            text: 'Соответствуем требованиям и стандартам качества',
+        },
+        {
+            link: false,
+            img: 'tizer-6.svg',
+            title: 'Доставка в срок',
+            text: 'Оперативная доставка и выгрузка',
+        },
+    ]
+.tizers-section.tizers-section--content
+    .container.container--sm
+        .tizers-section__inner
+            each item in items
+                if(item.link)
+                    a(href="#").ts-item
+                        +lazy-img({
+                            img: item.img,
+                            wrap_mod: 'ts-item__img',
+                        })
+                        .ts-item__content
+                            .ts-item__title=item.title
+                            .ts-item__text=item.text
+                else
+                    .ts-item
+                        +lazy-img({
+                            img: item.img,
+                            wrap_mod: 'ts-item__img',
+                        })
+                        .ts-item__content
+                            .ts-item__title=item.title
+                            .ts-item__text=item.text

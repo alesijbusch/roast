@@ -1,0 +1,353 @@
++include-style('filters-panel')
+
+mixin filter-item(args={})
+    if(args.single_checkbox)
+        // toggle
+        .filter-item-toggle
+            input(type="checkbox" name="" id="toggle1")
+            label.filter-item(for="toggle1")
+                .filter-item__header
+                    .filter-item__title!=args.title
+                    .filter-item__remove
+                        +icon('i-close')(style="width:8px;height:8px")
+
+            span
+    else
+        .filter-item(
+            class=args.mod
+            x-data="{isOpenedFilterItem: false, isOpenedPartList: false}"
+            :class="[isOpenedFilterItem ? 'opened' : '', isOpenedPartList ? 'opened-part-list' : '']"
+            @click.away="isOpenedFilterItem = false")
+            .filter-item__header(@click="isOpenedFilterItem = ! isOpenedFilterItem")
+                .filter-item__title
+                    span!=args.title
+                    +icon('i-arrow-down')(style="height:5px;width:7px")
+                .filter-item__remove
+                    +icon('i-close')(style="width:8px;height:8px")
+            .filter-item__body
+                .filter-item__body-list
+                    block
+                if(args.hint)
+                    .filter-item__body-hint
+                        .hint(x-data="{isHintOpened: false}"
+                            :class="isHintOpened ? 'opened' : ''"
+                            @click.away="isHintOpened = false")
+                            .hint__icon(@click="isHintOpened = ! isHintOpened") ?
+                            .hint__text Примечание
+                            .hint__body Пример подсказки
+
+.filters-panel-relative
+    .filters-panel-relative__top
+        .filters-panel-btn.filters-panel-btn--active-filter(@click="isOpenedFilterPanel = ! isOpenedFilterPanel")
+            span.icon-wrap
+                +icon('i-filter')(width="12" height="10")
+            span Фильтр
+        +select({
+            title: 'Сначала непопулярные',
+            with_links: true,
+            list: [
+                {name: 'С начала алфавита'},
+                {name: 'С конца алфавита'},
+                {name: 'Сначала популярные'},
+                {name: 'Сначала непопулярные', active: true},
+                {name: 'Сначала дешевые'},
+                {name: 'Сначала дорогие'},
+                {name: 'По возрастанию наличия'},
+                {name: 'По убыванию наличия'},
+            ]
+        })
+    .filters-panel(:class="isOpenedFilterPanel ? 'opened' : ''")
+        .filters-panel__header
+            .filters-panel-btn.filters-panel-btn--active-filter
+                span.icon-wrap
+                    +icon('i-filter')(width="12" height="10")
+                span Фильтр
+            .filters-panel__header-close(@click="isOpenedFilterPanel = false")
+                +icon('i-close')(width="14" height="14")
+        form.filters-panel__inner
+            +select({
+                title: 'Сначала непопулярные',
+                with_links: true,
+                list: [
+                    {name:'С начала алфавита'},
+                    {name:'С конца алфавита'},
+                    {name:'Сначала популярные'},
+                    {name:'Сначала непопулярные', active: true},
+                    {name:'Сначала дешевые'},
+                    {name:'Сначала дорогие'},
+                    {name:'По возрастанию наличия'},
+                    {name:'По убыванию наличия'},
+                ]
+            })
+            +filter-item({
+                title: 'Цена'
+            })
+                +no-ui-slider({
+                    title: 'Розничная цена'
+                })
+                +no-ui-slider({
+                    title: 'Оптовая цена'
+                })
+            +filter-item({
+                mod: 'filter-item--checkboxes active',
+                title: 'Наши предложения <span class="count">: 1</span>'
+            })
+                +checkbox({
+                    mod: '',
+                    label: 'Хит (<b>3</b>)',
+                    value: '',
+                    name: 'offers'
+                })(checked)
+                +checkbox({
+                    mod: '',
+                    label: 'Акция (<b>1</b>)',
+                    value: '',
+                    name: 'offers'
+                })(disabled)
+            +filter-item({
+                mod: 'filter-item--checkboxes',
+                title: 'Бренд'
+            })
+                +checkbox({
+                    mod: '',
+                    label: 'Desti (<b>6</b>)',
+                    value: '',
+                    name: 'brand'
+                })
+                +checkbox({
+                    mod: '',
+                    label: 'Gold Swan (<b>6</b>)',
+                    value: '',
+                    name: 'brand'
+                })
+                .filter-item__body-list-part
+                    +checkbox({
+                        mod: '',
+                        label: 'Mastio (<b>4</b>)',
+                        value: '',
+                        name: 'brand'
+                    })
+                    +checkbox({
+                        mod: '',
+                        label: 'Rey (<b>4</b>)',
+                        value: '',
+                        name: 'brand'
+                    })
+                    +checkbox({
+                        mod: '',
+                        label: 'Textilec (<b>6</b>)',
+                        value: '',
+                        name: 'brand'
+                    })
+                    +checkbox({
+                        mod: '',
+                        label: 'Андромеда (<b>6</b>)',
+                        value: '',
+                        name: 'brand'
+                    })
+                template(x-if="!isOpenedPartList")
+                    .filter-item__body-list-more(@click="isOpenedPartList = ! isOpenedPartList") Показать все
+                template(x-if="isOpenedPartList")
+                    .filter-item__body-list-more(@click="isOpenedPartList = ! isOpenedPartList") Свернуть
+            +filter-item({
+                single_checkbox: true,
+                title: 'В наличии (1)'
+            })
+            +filter-item({
+                mod: 'filter-item--checkboxes',
+                title: 'Тип',
+                hint: true
+            })
+                +radio({
+                    mod: '',
+                    label: 'Все',
+                    value: '',
+                    name: 'type'
+                })
+                +radio({
+                    mod: '',
+                    label: 'Каскадные (<b>6</b>)',
+                    value: '',
+                    name: 'type'
+                })
+                .filter-item__body-list-part
+                    +radio({
+                        mod: '',
+                        label: 'Кемпинговый (<b>6</b>)',
+                        value: '',
+                        name: 'type'
+                    })
+                    +radio({
+                        mod: '',
+                        label: 'Наземный (<b>6</b>)',
+                        value: '',
+                        name: 'type'
+                    })
+                    +radio({
+                        mod: '',
+                        label: 'Накладной (<b>6</b>)',
+                        value: '',
+                        name: 'type'
+                    })
+                    +radio({
+                        mod: '',
+                        label: 'Настенный (<b>6</b>)',
+                        value: '',
+                        name: 'type'
+                    })
+                    +radio({
+                        mod: '',
+                        label: 'Подвесной (<b>2</b>)',
+                        value: '',
+                        name: 'type'
+                    })
+                    +radio({
+                        mod: '',
+                        label: 'Подвесные (<b>6</b>)',
+                        value: '',
+                        name: 'type'
+                    })
+                    +radio({
+                        mod: '',
+                        label: 'Потолочные (<b>6</b>)',
+                        value: '',
+                        name: 'type'
+                    })
+                    +radio({
+                        mod: '',
+                        label: 'С пультом управления (<b>6</b>)',
+                        value: '',
+                        name: 'type'
+                    })
+                    +radio({
+                        mod: '',
+                        label: 'Светодиодные (<b>6</b>)',
+                        value: '',
+                        name: 'type'
+                    })
+                template(x-if="!isOpenedPartList")
+                    .filter-item__body-list-more(@click="isOpenedPartList = ! isOpenedPartList") Показать все
+                template(x-if="isOpenedPartList")
+                    .filter-item__body-list-more(@click="isOpenedPartList = ! isOpenedPartList") Свернуть
+            +filter-item({
+                mod: 'filter-item--checkboxes',
+                title: 'Цвет'
+            })
+                +checkbox({
+                    mod: '',
+                    checkbox_mod: 'checkbox--img',
+                    label: 'Зеленый (<b>6</b>)',
+                    value: '',
+                    name: 'color'
+                })
+                    +lazy-img({
+                        wrap_mod: 'checkbox__img',
+                        img: 'offers-1.png'
+                    })
+                +checkbox({
+                    mod: '',
+                    checkbox_mod: 'checkbox--img',
+                    label: 'Красный (<b>2</b>)',
+                    value: '',
+                    name: 'color'
+                })
+                    +lazy-img({
+                        wrap_mod: 'checkbox__img',
+                        img: 'offers-2.png'
+                    })
+            +filter-item({
+                mod: 'filter-item--checkboxes',
+                title: 'Материал'
+            })
+                +checkbox({
+                    mod: '',
+                    label: 'Алюминий (<b>6</b>)',
+                    value: '',
+                    name: 'material'
+                })
+                +checkbox({
+                    mod: '',
+                    label: 'Дерево (<b>6</b>)',
+                    value: '',
+                    name: 'material'
+                })
+                .filter-item__body-list-part
+                    +checkbox({
+                        mod: '',
+                        label: 'Искусственный мех (<b>6</b>)',
+                        value: '',
+                        name: 'material'
+                    })
+                    +checkbox({
+                        mod: '',
+                        label: 'Махра (<b>6</b>)',
+                        value: '',
+                        name: 'material'
+                    })
+                    +checkbox({
+                        mod: '',
+                        label: 'Металл (<b>6</b>)',
+                        value: '',
+                        name: 'material'
+                    })
+                    +checkbox({
+                        mod: '',
+                        label: 'Мрамор (<b>6</b>)',
+                        value: '',
+                        name: 'material'
+                    })
+                    +checkbox({
+                        mod: '',
+                        label: 'Натуральное волокно (<b>6</b>)',
+                        value: '',
+                        name: 'material'
+                    })
+                    +checkbox({
+                        mod: '',
+                        label: 'Нержавеющая сталь (<b>6</b>)',
+                        value: '',
+                        name: 'material'
+                    })
+                    +checkbox({
+                        mod: '',
+                        label: 'Перо (<b>6</b>)',
+                        value: '',
+                        name: 'material'
+                    })
+                template(x-if="!isOpenedPartList")
+                    .filter-item__body-list-more(@click="isOpenedPartList = ! isOpenedPartList") Показать все
+                template(x-if="isOpenedPartList")
+                    .filter-item__body-list-more(@click="isOpenedPartList = ! isOpenedPartList") Свернуть
+            +filter-item({
+                title: 'Общая мощность, Вт'
+            })
+                +no-ui-slider({
+                    title: false
+                })
+            +filter-item({
+                title: 'Объем, мл'
+            })
+                +no-ui-slider({
+                    title: false
+                })
+            +filter-item({
+                mod: 'filter-item--row',
+                title: 'Цвет'
+            })
+                each item in [1,2,3,4,1,2,3,4,1,2]
+                    +checkbox({
+                        mod: '',
+                        checkbox_mod: 'checkbox--img',
+                        label: '',
+                        value: '',
+                        name: 'color2'
+                    })
+                        +lazy-img({
+                            wrap_mod: 'checkbox__img',
+                            img: `offers-${item}.png`
+                        })
+            .filters-panel__btns
+                button.btn Показать 3
+                button.filters-panel__btn Очистить фильтр
+
+

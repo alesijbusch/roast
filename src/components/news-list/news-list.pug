@@ -1,0 +1,56 @@
++include-style('news-list')
+
+-
+    var items = [
+        {
+            img: 'service-1.jpg',
+            title: 'Свежий взгляд на наш интернет-магазин!',
+            btn: 'Заказать услугу'
+        },        {
+            img: 'service-1.jpg',
+            title: 'Свежий взгляд на наш интернет-магазин!',
+            btn: 'Заказать услугу'
+        },
+        {
+            img: 'service-2.jpg',
+            title: 'Что лучше: коляска-люлька или коляска-трансформер',
+            btn: 'Подробнее'
+        },
+        {
+            img: 'service-2.jpg',
+            title: 'Что лучше: коляска-люлька или коляска-трансформер',
+            btn: 'Подробнее'
+        },
+        {
+            img: 'service-3.jpg',
+            title: 'Как сделать букет своими руками',
+            btn: 'Заказать услугу'
+        }
+    ]
+
+.news
+    .container
+        .main-row
+            .main-row__main
+                .news-list
+                    each item in items
+
+                        .news-card
+                            .news-card__img
+                                +lazy-img({
+                                    wrap_mod: 'service-item__img-wrap',
+                                    link: true,
+                                    img: item.img,
+                                })
+                            .news-card__content
+                                a(href='#').news-card__title=item.title
+                                .news-card__footer
+                                    .news-card__tag
+                                        span Советы покупателям
+                                        span /
+                                        span 23 июня 2022
+            .main-row__aside.main-row__aside--right
+                .sticky-block
+                    include ../slide-block/slide-block-right
+                    include ../aside-targets/aside-targets
+                    include ../subscribe-block/subscribe-block

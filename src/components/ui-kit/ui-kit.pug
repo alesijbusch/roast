@@ -1,0 +1,93 @@
+-
+	var icons = [
+		'i-arrow-down',
+		'i-arrow-right',
+		'i-attention',
+		'i-burger',
+		'i-burger-2',
+		'i-cart',
+		'i-close',
+		'i-compare',
+		'i-delivery',
+		'i-dots',
+		'i-favorite',
+		'i-filter',
+		'i-gift',
+		'i-in-stock',
+		'i-no-stock',
+		'i-phone',
+		'i-remove',
+		'i-search',
+		'i-share',
+		'i-star',
+		'i-user',
+		'i-wallet',
+		'i-show-pass'
+	]
+hr
+h2 Иконки
+hr
+div(style="display:flex;flex-wrap:wrap;gap:15px;")
+	each icon in icons
+		.ui-kit-icon
+			+icon(icon)
+			span=icon
+<br><br><br>
+hr
+h2 Кнопки mixins/btn
+hr
+div(style="display:flex;flex-wrap:wrap;gap:15px;")
+	a(href="#").link link
+	a(href="#").link.disabled link.disabled
+	a(href="#").link.link--md link link--md
+br
+div(style="display:flex;flex-wrap:wrap;gap:15px;")
+	a(href="#").link-arrs
+		span link-arrs
+		+icon('i-arrow-triple')(style="width: 15px; height: 9px")
+	a(href="#").link-arrs.disabled
+		span link-arrs.disabled
+		+icon('i-arrow-triple')(style="width: 15px; height: 9px")
+br
+div(style="display:flex;flex-wrap:wrap;gap:15px;")
+	button.btn btn
+br
+div(style="display:flex;flex-wrap:wrap;gap:15px;")
+	button.btn.btn--primary btn--primary
+	button(disabled).btn.btn--primary btn--primary:disabled
+	button.btn.btn--primary.preloader btn--primary.preloader
+br
+div(style="display:flex;flex-wrap:wrap;gap:15px;")
+	button.btn.btn--primary2 btn--primary2
+	button(disabled).btn.btn--primary2 btn--primary2:disabled
+	button.btn.btn--primary2.preloader btn--primary2.preloader
+br
+div(style="display:flex;flex-wrap:wrap;gap:15px;")
+	button.btn.btn--bordered btn--bordered
+	button(disabled).btn.btn--bordered btn--bordered:disabled
+	button.btn.btn--bordered.preloader btn--bordered.preloader
+br
+div(style="display:flex;flex-wrap:wrap;gap:15px;")
+	button.btn.btn--primary.btn--sm btn--sm
+	button.btn.btn--primary.btn--md btn--md
+<br><br><br>
+
+style.
+	.ui-kit-icon {
+		white-space: nowrap;
+		width: 100px;
+		flex-shrink: 0;
+		margin: 10px;
+		text-align: center;
+	}
+	.ui-kit-icon .icon {
+		display: block;
+		width: 40px;
+		height: 40px;
+		margin: 0 auto 10px;
+		fill: #000;
+	}
+
+
+
+

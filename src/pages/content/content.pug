@@ -1,0 +1,31 @@
+extends ../../layout/layout
+
+block vars
+	- var pageTitle = 'Текстовая'
+	- var pageBodyClass = 'header-opacity'
+	- var dir = './'
+
+
+block premain
+	include ../../components/page-hero/page-hero
+	include ../../components/line-content/line-content
+
+block main
+	include ../../components/tabs-section/tabs-section
+	include ../../components/tizers-section/tizers-section--small-container
+	include ../../components/products-slider/products-slider--small-container
+	.container.container--sm
+		a(href="#").return-btn
+			+icon('i-arrow-left')(width="16" height="10")
+			| Назад к списку
+
+block pageModal
+
+block componentsCriticalStyles
+	+componentsCriticalStyles-includer()
+block vendorScripts
+	+vendorScripts-includer()
+block componentsStyles
+	+style-includer()
+block componentsScripts
+	+componentsScripts-includer()
