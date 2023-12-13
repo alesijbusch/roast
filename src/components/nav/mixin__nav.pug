@@ -29,6 +29,7 @@ mixin nav(args= {})
 					class= item.mod_class
 					class= item.active && 'active'
 					class= item.list && 'has-nav'
+					class= item.accent && 'accent'
 					x-data="{ open: false }"
 				)
 					#{item.active ? 'span' : 'a'}.nav-link(
@@ -38,6 +39,9 @@ mixin nav(args= {})
 					)
 						if(item.name_arr)
 							+icon('i-arrow-down')(style="width:7px;height:5px;")
+						if(item.accent)
+							span.nav-speaker
+								+icon('i-speaker')(width="13px" height="14px")
 						span.nav-item-name!= item.name
 						if(item.list && !item.no_toggle)
 							span.nav-toggle.js-nav-toggle

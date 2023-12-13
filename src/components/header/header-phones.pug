@@ -1,80 +1,84 @@
-a(href="tel:+71000000000").header-phones__link +7 100 000-00-00
-+icon('i-arrow-down')(width="7px" height="5px").header-phones__icon
-.header-phones__dropdown
+a(href="tel:7744").header-phones__link 
+    +icon('i-phone')(style="width:12px; height:12px")
+    | 7744 
+    span (A1, МТС)
+a(href="tel:+375333003334").header-phones__link +375 33 300-33-34
+//- +icon('i-arrow-down')(width="7px" height="5px").header-phones__icon
+//- .header-phones__dropdown
 
-    .header-phones__dropdown-inner
-        .header-phones__dropdown-mobile-title
-            span Телефоны
-            span.icon-wrap(@click="isMobilePhonesVisible = ! isMobilePhonesVisible")
-                +icon('i-close')(style="height:16px;width:16px")
-        .header-phones__dropdown-phone
-            a(href="tel:+71000000000").header-phones__dropdown-phone-link +7 100 000-00-00
-                span.header-phones__dropdown-phone-descr Отдел продаж
-        .header-phones__dropdown-phone
-            a(href="tel:+71000000001").header-phones__dropdown-phone-link +7 100 000-00-01
-                span.header-phones__dropdown-phone-descr Бухгалтерия
-        .header-phones__dropdown-phone
-            a(href="tel:+71000000002").header-phones__dropdown-phone-link +7 100 000-00-02
-                span.header-phones__dropdown-phone-descr Директор
-        .header-phones__dropdown-phone
-            .btn.btn-wide.btn-sm.btn-wave Заказать звонок
-    .header-phones__dropdown-inner
-        .header-phones__dropdown-item
-            .header-phones__dropdown-item-title E-mail
-            a(href="mailto:chel.no-reply@aspro-demo.ru").header-phones__dropdown-item-value chel.no-reply@aspro-demo.ru
-        .header-phones__dropdown-item
-            .header-phones__dropdown-item-title Адрес
-            .header-phones__dropdown-item-value Челябинск, ул. Лермонтова 21, 3 этаж, офис 4
-        .header-phones__dropdown-item
-            .header-phones__dropdown-item-title Режим работы
-            .header-phones__dropdown-item-value Пн - Вс: 11.00 - 19.00
-        .header-phones__dropdown-item.socials
-            ul.socials__list
-                each item in ['i-vk','i-tg','i-tube']
-                    li
-                        +lazy-img({
-                            link: true,
-                            wrap_mod: 'socials__icon-wrap',
-                            img_mod: 'socials__icon',
-                            img: `socials/${item}.svg`,
-                        })
-                li
-                    +lazy-img({
-                        link: true,
-                        wrap_mod: 'socials__icon-wrap socials__icon-wrap--dark',
-                        img_mod: 'socials__icon',
-                        img: `socials/i-tiktok-dark.svg`,
-                    })
-                    +lazy-img({
-                        link: true,
-                        wrap_mod: 'socials__icon-wrap socials__icon-wrap--light',
-                        img_mod: 'socials__icon',
-                        img: `socials/i-tiktok-light.svg`,
-                    })
-                li
-                    +lazy-img({
-                        link: true,
-                        wrap_mod: 'socials__icon-wrap',
-                        img_mod: 'socials__icon',
-                        img: `socials/i-whatsapp.svg`,
-                    })
-                li
-                    +lazy-img({
-                        link: true,
-                        wrap_mod: 'socials__icon-wrap socials__icon-wrap--dark',
-                        img_mod: 'socials__icon',
-                        img: `socials/i-zen-dark.svg`,
-                    })
-                    +lazy-img({
-                        link: true,
-                        wrap_mod: 'socials__icon-wrap socials__icon-wrap--light',
-                        img_mod: 'socials__icon',
-                        img: `socials/i-zen-light.svg`,
-                    })
-                li
-                    +lazy-img({
-                        link: true,
-                        wrap_mod: 'socials__icon-wrap',
-                        img_mod: 'socials__icon',
-                        img: `socials/i-insta.svg`,
-                    })
+//-     .header-phones__dropdown-inner
+//-         .header-phones__dropdown-mobile-title
+//-             span Телефоны
+//-             span.icon-wrap(@click="isMobilePhonesVisible = ! isMobilePhonesVisible")
+//-                 +icon('i-close')(style="height:16px;width:16px")
+//-         .header-phones__dropdown-phone
+//-             a(href="tel:+71000000000").header-phones__dropdown-phone-link +7 100 000-00-00
+//-                 span.header-phones__dropdown-phone-descr Отдел продаж
+//-         .header-phones__dropdown-phone
+//-             a(href="tel:+71000000001").header-phones__dropdown-phone-link +7 100 000-00-01
+//-                 span.header-phones__dropdown-phone-descr Бухгалтерия
+//-         .header-phones__dropdown-phone
+//-             a(href="tel:+71000000002").header-phones__dropdown-phone-link +7 100 000-00-02
+//-                 span.header-phones__dropdown-phone-descr Директор
+//-         .header-phones__dropdown-phone
+//-             .btn.btn-wide.btn-sm.btn-wave Заказать звонок
+//-     .header-phones__dropdown-inner
+//-         .header-phones__dropdown-item
+//-             .header-phones__dropdown-item-title E-mail
+//-             a(href="mailto:chel.no-reply@aspro-demo.ru").header-phones__dropdown-item-value chel.no-reply@aspro-demo.ru
+//-         .header-phones__dropdown-item
+//-             .header-phones__dropdown-item-title Адрес
+//-             .header-phones__dropdown-item-value Челябинск, ул. Лермонтова 21, 3 этаж, офис 4
+//-         .header-phones__dropdown-item
+//-             .header-phones__dropdown-item-title Режим работы
+//-             .header-phones__dropdown-item-value Пн - Вс: 11.00 - 19.00
+//-         .header-phones__dropdown-item.socials
+//-             ul.socials__list
+//-                 each item in ['i-vk','i-tg','i-tube']
+//-                     li
+//-                         +lazy-img({
+//-                             link: true,
+//-                             wrap_mod: 'socials__icon-wrap',
+//-                             img_mod: 'socials__icon',
+//-                             img: `socials/${item}.svg`,
+//-                         })
+//-                 li
+//-                     +lazy-img({
+//-                         link: true,
+//-                         wrap_mod: 'socials__icon-wrap socials__icon-wrap--dark',
+//-                         img_mod: 'socials__icon',
+//-                         img: `socials/i-tiktok-dark.svg`,
+//-                     })
+//-                     +lazy-img({
+//-                         link: true,
+//-                         wrap_mod: 'socials__icon-wrap socials__icon-wrap--light',
+//-                         img_mod: 'socials__icon',
+//-                         img: `socials/i-tiktok-light.svg`,
+//-                     })
+//-                 li
+//-                     +lazy-img({
+//-                         link: true,
+//-                         wrap_mod: 'socials__icon-wrap',
+//-                         img_mod: 'socials__icon',
+//-                         img: `socials/i-whatsapp.svg`,
+//-                     })
+//-                 li
+//-                     +lazy-img({
+//-                         link: true,
+//-                         wrap_mod: 'socials__icon-wrap socials__icon-wrap--dark',
+//-                         img_mod: 'socials__icon',
+//-                         img: `socials/i-zen-dark.svg`,
+//-                     })
+//-                     +lazy-img({
+//-                         link: true,
+//-                         wrap_mod: 'socials__icon-wrap socials__icon-wrap--light',
+//-                         img_mod: 'socials__icon',
+//-                         img: `socials/i-zen-light.svg`,
+//-                     })
+//-                 li
+//-                     +lazy-img({
+//-                         link: true,
+//-                         wrap_mod: 'socials__icon-wrap',
+//-                         img_mod: 'socials__icon',
+//-                         img: `socials/i-insta.svg`,
+//-                     })

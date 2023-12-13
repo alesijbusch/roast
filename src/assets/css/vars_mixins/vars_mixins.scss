@@ -6,26 +6,23 @@ $sm: 767.75px;
 $xs: 600.75px;
 
 // 1199.75
-@media (max-width: $lg) {}
+@media (max-width: $lg) {
+}
 // 991.75
-@media (max-width: $md) {}
+@media (max-width: $md) {
+}
 // 767.75
-@media (max-width: $sm) {}
+@media (max-width: $sm) {
+}
 // 600.75
-@media (max-width: $xs) {}
-
-
+@media (max-width: $xs) {
+}
 
 // FONTS
 $f-size: 16px;
 
 // 400 500 600 700 - основной шрифт
-$f-main: 'Inter',
-Arial,
-Verdana,
-sans-serif;
-
-
+$f-main: "Inter", Arial, Verdana, sans-serif;
 
 // COLORS
 
@@ -41,6 +38,12 @@ $darkerblack_bg_black: #f8f8f8;
 
 $light-800: #999;
 
+// COLORS new
+
+$accent: #8a6048;
+$basic_black: #000000;
+$basic_white: #ffffff;
+$basic_text: #757575;
 
 // Z-INDEX
 $z-overlay: 5;
@@ -66,4 +69,3 @@ $z-filters-panel: 999;
     border-radius: 5px;
   }
 }
-
