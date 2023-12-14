@@ -3,124 +3,146 @@
 +include-script('footer')
 
 -
-	var footer = [
-		{
-			no_link: true,
-			title: 'Интернет-магазин',
-			list: ['Каталог','Акции','Бренды','Услуги']
-		},
-		{
-			title: 'Компания',
-			list: ['О компании', 'Лицензии', 'Отзывы', 'Документы']
-		},
-		{
-			active: true,
-			title: 'Информация',
-			list: ['Реквизиты', 'Магазины', 'Возможности']
-		},
-		{
-			title: 'Помощь',
-			list: ['Условия оплаты', 'Условия доставки', 'Гарантия на товар', 'Вопрос - ответ', 'Обзоры']
-		},
-	]
+	//- var footer = [
+	//- 	{
+	//- 		no_link: false,
+	//- 		title: 'каталог',
+	//- 		list: ['Кофе','Чай','Аксессуары','Зеленый кофе','Гранола','Капсулы','Дрип-пакеты','Оборудование']
+	//- 	},
+	//- 	{
+	//- 		title: 'Услуги',
+	//- 		list: ['Аренда кофемашин', 'Брендированный кофе', 'Оптовые поставки']
+	//- 	},
+	//- 	{
+	//- 		active: true,
+	//- 		title: 'Информация',
+	//- 		list: ['Компания', 'Опт', 'Статьи']
+	//- 	},
+	//- ]
 
 footer.footer
 	.container
 		.footer__inner
 			.footer__left
-				.footer__left-top
-					.subscribe-block
-						.subscribe-block__left Подписаться <br> на новости и акции
-						form.subscribe-block__right
-							input(type="email" placeholder='E-mail').form-control
-							button.btn.btn-wave Подписаться
+				//- .footer__left-top
+				//- 	.subscribe-block
+				//- 		.subscribe-block__left Подписаться <br> на новости и акции
+				//- 		form.subscribe-block__right
+				//- 			input(type="email" placeholder='E-mail').form-control
+				//- 			button.btn.btn-wave Подписаться
 				.footer__left-bottom
-					each item in footer
-						.footer__left-item(
+					//- each item in footer
+					//- 	.footer__left-item(
+					//- 		x-data="{ width: window.innerWidth, breakpoint: 767, isOpened: window.innerWidth > 767 }"
+					//- 		@resize.window.debounce.100="width = window.innerWidth; isOpened = width > breakpoint"
+					//- 		:class="isOpened ? 'opened' : ''"
+					//- 		)
+					//- 		if(item.no_link)
+					//- 			.footer__left-item-title(@click="isOpened = !isOpened")
+					//- 				span=item.title
+					//- 				+icon('i-arrow-down')(style="width:7px;height:5px")
+					//- 		else
+					//- 			.footer__left-item-title(@click="isOpened = !isOpened")
+					//- 				a(href="#" class=item.active ? 'active' : '')=item.title
+					//- 				+icon('i-arrow-down')(style="width:7px;height:5px")
+					//- 		ul.footer__left-item-list
+					//- 			each i in item.list
+					//- 				li
+					//- 					a(href="#")=i
+
+					.footer__left-item
+						.footer__left-item-opened(
 							x-data="{ width: window.innerWidth, breakpoint: 767, isOpened: window.innerWidth > 767 }"
 							@resize.window.debounce.100="width = window.innerWidth; isOpened = width > breakpoint"
 							:class="isOpened ? 'opened' : ''"
 							)
-							if(item.no_link)
-								.footer__left-item-title(@click="isOpened = !isOpened")
-									span=item.title
-									+icon('i-arrow-down')(style="width:7px;height:5px")
-							else
-								.footer__left-item-title(@click="isOpened = !isOpened")
-									a(href="#" class=item.active ? 'active' : '')=item.title
-									+icon('i-arrow-down')(style="width:7px;height:5px")
+							.footer__left-item-title(@click="isOpened = !isOpened")
+								span каталог
+								+icon('i-arrow-down')(style="width:7px;height:5px")
 							ul.footer__left-item-list
-								each i in item.list
-									li
-										a(href="#")=i
+								li
+									a(href="#") Кофе
+								li
+									a(href="#") Чай
+								li
+									a(href="#") Аксессуары
+								li
+									a(href="#") Зеленый кофе			
+								li
+									a(href="#") Гранола
+								li
+									a(href="#") Капсулы
+								li
+									a(href="#") Дрип-пакеты
+								li
+									a(href="#") Оборудование
+					.footer__left-item
+						.footer__left-item-opened(
+							x-data="{ width: window.innerWidth, breakpoint: 767, isOpened: window.innerWidth > 767 }"
+							@resize.window.debounce.100="width = window.innerWidth; isOpened = width > breakpoint"
+							:class="isOpened ? 'opened' : ''"
+							)
+							.footer__left-item-title(@click="isOpened = !isOpened")
+								a(href="#" class='active') Услуги
+								+icon('i-arrow-down')(style="width:7px;height:5px")
+							ul.footer__left-item-list
+								li
+									a(href="#") Аренда кофемашин
+								li
+									a(href="#") Брендированный кофе
+								li
+									a(href="#") Оптовые поставки
+						.footer__left-item-opened(
+							x-data="{ width: window.innerWidth, breakpoint: 767, isOpened: window.innerWidth > 767 }"
+							@resize.window.debounce.100="width = window.innerWidth; isOpened = width > breakpoint"
+							:class="isOpened ? 'opened' : ''"
+							)
+							.footer__left-item-title(@click="isOpened = !isOpened")
+								a(href="#") Информация
+								+icon('i-arrow-down')(style="width:7px;height:5px")
+							ul.footer__left-item-list
+								li
+									a(href="#") Компания
+								li
+									a(href="#") Опт
+								li
+									a(href="#") Статьи
 			.footer__right
 				.footer__title Контакты
 				.footer__info
-					.footer__dropdown
-						include ../header/header-phones
-					a(href='mailto:chel.no-reply@aspro-demo.ru').footer__item chel.no-reply@aspro-demo.ru
-					.footer__item Челябинск, ул. Лермонтова 21, 3 этаж, офис 4
-					.footer__socials.socials
-						ul.socials__list
-							each item in ['i-vk','i-tg','i-tube']
-								li
-									+lazy-img({
-										link: true,
-										wrap_mod: 'socials__icon-wrap',
-										img_mod: 'socials__icon',
-										img: `socials/${item}.svg`,
-									})
+					.footer__item 
+						+icon('i-phone-footer]')(style="width:19px;height:19px")
+						a(href="tel:+375333003334") +375 33 300-33-34
+					.footer__item 
+						+icon('i-email]')(style="width:19px;height:19px")
+						a(href="mailto:info@roast.by") info@roast.by
+					.footer__item 
+						+icon('i-address')(style="width:19px;height:19px")
+						span г. Минск, ул. Белинского 23 (вход в кофейню BlackMill)
+					.footer__item 
+						+icon('i-clock')(style="width:19px;height:19px")
+						.footer__item-group
+							span Время работы: пн-пт с 8:00 до 20:00, сб-вск с 9:00 до 21:00 (самовывоз)
+							span Заказы через сайт — круглосуточно.
+					.footer__socials
+						ul.footer__socials-list
 							li
-								+lazy-img({
-									link: true,
-									wrap_mod: 'socials__icon-wrap socials__icon-wrap--dark',
-									img_mod: 'socials__icon',
-									img: `socials/i-tiktok-dark.svg`,
-								})
-								+lazy-img({
-									link: true,
-									wrap_mod: 'socials__icon-wrap socials__icon-wrap--light',
-									img_mod: 'socials__icon',
-									img: `socials/i-tiktok-light.svg`,
-								})
+								a(href="#" target="_blank")
+									+icon('i-telegram')(style="width:30px;height:30px") 
 							li
-								+lazy-img({
-									link: true,
-									wrap_mod: 'socials__icon-wrap',
-									img_mod: 'socials__icon',
-									img: `socials/i-whatsapp.svg`,
-								})
+								a(href="#" target="_blank")
+									+icon('i-instagram')(style="width:30px;height:30px") 
 							li
-								+lazy-img({
-									link: true,
-									wrap_mod: 'socials__icon-wrap socials__icon-wrap--dark',
-									img_mod: 'socials__icon',
-									img: `socials/i-zen-dark.svg`,
-								})
-								+lazy-img({
-									link: true,
-									wrap_mod: 'socials__icon-wrap socials__icon-wrap--light',
-									img_mod: 'socials__icon',
-									img: `socials/i-zen-light.svg`,
-								})
-							li
-								+lazy-img({
-									link: true,
-									wrap_mod: 'socials__icon-wrap',
-									img_mod: 'socials__icon',
-									img: `socials/i-insta.svg`,
-								})
+								a(href="#" target="_blank")
+									+icon('i-tiktok')(style="width:30px;height:30px") 				
 	.container
 		.footer__bottom
 			.footer__bottom-inner
-				.footer__bottom-copy © 2022 Интернет-магазин Лайтшоп
+				.footer__bottom-copy 2023 © Roast.by — магазин свежего кофе! Общество с ограниченной ответственностью «ИммаСтар Компани» УНП 191334329 зарегистрирован 22.10.2010 Минским горисполкомом 223237, Минская обл., Червенский р-н, Валевачский с/с, а/г Черноградь, ул. Молодежная, 6, п. 2 Торговый реестр № 565900 от 11.10.2023
 				ul.footer__bottom-pays
-					each i in [1,3,2,12,13,6,15,18,14]
+					each i in [1,3,2,4,5,6,7,7,9]
 						li
 							+lazy-img({
-								img: `pay/pay-${i}.svg`
+								img: `pays/pay-${i}.png`
 							})
-				.footer__bottom-links
-					a(href="#") Конфиденциальность
-					a(href="#") Оферта
-				a(href="#").footer__bottom-dev Разработано в
+							//- +icon('i-tiktok')(style="width:30px;height:30px") 
