@@ -7,6 +7,8 @@
   &__block {
     overflow: hidden;
     background: #fff;
+    -webkit-box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.05);
     &.order-1 {
       order: 1;
     }
@@ -512,8 +514,8 @@
     width: 46px;
     height: 46px;
     position: absolute;
-    top: 25px;
-    right: 24px;
+    top: 0;
+    right: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -535,7 +537,7 @@
     flex-direction: column;
     width: 100%;
     max-width: 375px;
-    padding: 32px 32px 48px;
+    padding: 32px 25px 15px 20px;
     min-height: 100vh;
     &.catalog {
       .cat-open {
@@ -548,6 +550,16 @@
   }
   &__item {
     padding: 26px 0 0;
+  }
+  &__item-title {
+    display: block;
+    color: $basic_black;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    text-decoration: none;
+    margin-bottom: 15px;
   }
   &__item-value {
     padding: 9px 0;
@@ -567,14 +579,29 @@
       }
     }
   }
+
   &__item-value-link {
-    font-size: 1.125rem;
-    line-height: calc(1em + 7px);
-    color: #222;
-    color: var(--white_text_black);
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    color: $basic_black;
+    margin-bottom: 10px;
     &:active {
-      color: var(--fill_dark_lite_hover);
+      color: $basic_black;
     }
+    svg {
+      margin-right: 7px;
+    }
+  }
+  &__item-value-dop {
+    color: $accent;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
   }
   &__item-value-text {
     color: #999;
@@ -592,7 +619,27 @@
     background: var(--stroke_black);
     margin: 26px 0 0;
   }
-
+  &__search {
+    padding: 26px 0 0;
+    .btn--search {
+      padding: 10px 15px 10px 5px;
+      border-radius: 0;
+      background-color: transparent;
+    }
+    .search .form-control {
+      border-radius: 0;
+      background-color: #f8f8f8;
+      padding: 13px 90px 13px 15px;
+      padding-right: 90px;
+      ::placeholder {
+        color: #acacac;
+      }
+    }
+    .search .form-control:focus + .search__btns .btn--search {
+      background-color: transparent;
+      fill: #000;
+    }
+  }
   .nav-lvl2-list,
   .nav-lvl3s-list {
     overflow: auto;
@@ -608,31 +655,48 @@ a.mobile-nav__item-value {
 }
 .mobile-nav__menu {
   .nav-item {
-    font-size: 18px;
+    font-size: 16px;
   }
   a {
     color: var(--white_text_black);
   }
+
   .nav-item.active .nav-link {
-    color: #000;
-    color: var(--fill_dark_lite_hover);
+    color: $accent;
+  }
+  .nav-item.accent .nav-link {
+    color: $accent;
+    justify-content: start;
+    svg {
+      margin-right: 10px;
+      width: 19px !important;
+      height: 19px !important;
+    }
+    .nav-toggle {
+      display: none;
+    }
   }
   .nav-link {
-    color: #222;
-    color: var(--white_text_black);
+    color: $basic_black;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 0;
+    padding-bottom: 10px;
     width: 100%;
     &:active,
     &:hover {
-      color: var(--theme-base-color);
+      color: $accent;
       .nav-item-name {
-        color: var(--theme-base-color);
+        color: $accent;
       }
     }
   }
+  // li .nav-link {
+  //   padding-bottom: 10px;
+  //   &:last-child {
+  //     padding-bottom: 0;
+  //   }
+  // }
   .nav-toggle {
     fill: #222;
     fill: var(--white_text_black);
@@ -708,7 +772,7 @@ a.mobile-nav__item-value {
     margin: 27px 0 8px 0;
     font-size: 1.125rem;
     line-height: calc(1em + 7px);
-    font-weight: 700;
+    font-weight: 600;
     align-items: center;
     display: flex;
     height: 28px;
@@ -721,16 +785,16 @@ a.mobile-nav__item-value {
     }
     &:hover,
     &:active {
-      color: var(--fill_dark_lite_hover);
+      color: $accent;
       .icon {
-        stroke: var(--fill_dark_lite_hover);
+        stroke: $accent;
       }
     }
   }
   .nav-lvl3-item,
   .nav-lvl2-item {
-    padding: 10px 0;
-    font-size: 15px;
+    padding: 5px 0;
+    font-size: 16px;
   }
   .nav-lvl3-link,
   .nav-lvl2-link {
@@ -739,9 +803,9 @@ a.mobile-nav__item-value {
     justify-content: space-between;
     &:active,
     &:hover {
-      color: var(--theme-base-color);
+      color: $accent;
       span {
-        color: var(--theme-base-color);
+        color: $accent;
       }
     }
   }
