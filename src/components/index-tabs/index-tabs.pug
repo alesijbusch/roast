@@ -1,51 +1,13 @@
 +include-style('index-tabs')
 
 .index-tabs
-    .container
-        .index-tabs__header
-            h3.section-title
-                a(href="#").section-title__link
-                    span Лучшие предложения
-                    span.icon-wrap
-                        +icon('i-arrow-right')(style="height:12px;width:12px")
-            .tabs-nav
-                .tabs-nav__list
-                    .tabs-nav__item.active Хит
-                    .tabs-nav__item Советуем
-                    .tabs-nav__item Новинка
-                    .tabs-nav__item Акция
-        .index-tabs__inner
-            .index-tabs__grid
-                each item in [1,2]
-                    +product-card({
-                        title: 'Умные часы Bambo-900',
-                        in_basket: true,
-                        timer: '2023-06-16 14:06:00',
-                        badges: 1,
-                    })
-                    +product-card({
-                        title: 'Классическая помада Fior 133 Беспечный розовый',
-                        loadings: true,
-                        in_basket: false,
-                        timer: false,
-                        badges: 2,
-                    })
-                    +product-card({
-                        title: 'Обеденная тарелка Shouldplat',
-                        in_basket: false,
-                        timer: '2023-01-16 14:06:00',
-                        badges: 3,
-                        offers: true
-                    })
-                    +product-card({
-                        title: 'Обеденная тарелка Shouldplat',
-                        in_basket: false,
-                        timer: false,
-                        badges: 2,
-                    })
-                    +product-card({
-                        title: 'Умные часы Bambo-900',
-                        in_basket: true,
-                        timer: '2023-01-23 14:06:00',
-                        badges: 1,
-                    })
+  .container
+    .index-tabs__header
+      h3.section-title
+        span Мы рекомендуем
+      .tabs-nav
+        .tabs-nav__list
+          .tabs-nav__item.active Кофе
+          .tabs-nav__item Чай
+          .tabs-nav__item Аксессуары
+    include ../../components/products-slider/products-slider-notitle

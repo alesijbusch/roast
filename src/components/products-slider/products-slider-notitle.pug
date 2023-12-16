@@ -1,0 +1,28 @@
++include-style('products-slider')
++include-script('products-slider')
+
+// offers не выводятся
+.products-slider
+	+splide({
+		mod: 'products-slider__slider js-splide-products'
+	})
+		each item in [1,2]
+			+splide-slide()
+				+product-card2({
+					title: 'Бразилия Велосо Колекта',
+					in_basket: true,
+					no_rating: true,
+					badges: 2,
+				})
+			+splide-slide()
+				+product-card2({
+					title: 'Бразилия Велосо Колекта',
+					in_basket: false,
+					badges: 1,
+				})
+			+splide-slide()
+				+product-card2({
+					title: 'Бразилия Велосо Колекта',
+					in_basket: false,
+					badges: 1,
+				})

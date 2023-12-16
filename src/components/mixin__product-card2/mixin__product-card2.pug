@@ -1,0 +1,127 @@
+mixin product-card2(args={})
+	+include-style('mixin__product-card2')
+	+include-script('mixin__product-card2')
+	.product-block
+		.product-block__badges
+			if(args.badges === 1)
+				+lazy-img({
+					link: false,
+					wrap_mod: 'product-block__badge-wrap',
+					img_mod: '.product-block__badge__icon',
+					img: `i-present.svg`,
+				})
+				+lazy-img({
+					link: false,
+					wrap_mod: 'product-block__badge-wrap',
+					img_mod: '.product-block__badge__icon',
+					img: `i-good.svg`,
+				})
+				+lazy-img({
+					link: false,
+					wrap_mod: 'product-block__badge-wrap',
+					img_mod: '.product-block__badge__icon',
+					img: `i-sale.svg`,
+				})
+				+lazy-img({
+					link: false,
+					wrap_mod: 'product-block__badge-wrap',
+					img_mod: '.product-block__badge__icon',
+					img: `i-cartt.svg`,
+				})
+				+lazy-img({
+					link: false,
+					wrap_mod: 'product-block__badge-wrap',
+					img_mod: '.product-block__badge__icon',
+					img: `i-review.svg`,
+				})
+			if(args.badges === 2)
+				+lazy-img({
+					link: false,
+					wrap_mod: 'product-block__badge-wrap',
+					img_mod: '.product-block__badge__icon',
+					img: `i-present.svg`,
+				})
+				+lazy-img({
+					link: false,
+					wrap_mod: 'product-block__badge-wrap',
+					img_mod: '.product-block__badge__icon',
+					img: `i-good.svg`,
+				})
+		.product-block__inner
+			.product-block__top
+				a(href="#").product-block__title=args.title
+				.product-block__subtitle Выпечка, Кленовый сироп, Макадамия
+			.product-block__body
+				.product-block__body-left 
+					.product-block__body-group
+						.product-block__rating
+							if(args.no_rating)
+								.product-block__stars
+									+icon('i-star')(width="16" height="16").filled
+									+icon('i-star')(width="16" height="16").filled
+									+icon('i-star')(width="16" height="16").filled
+									+icon('i-star')(width="16" height="16")
+									+icon('i-star')(width="16" height="16")
+							else
+								.product-block__stars
+									+icon('i-star')(width="16" height="16")
+									+icon('i-star')(width="16" height="16")
+									+icon('i-star')(width="16" height="16")
+									+icon('i-star')(width="16" height="16")
+									+icon('i-star')(width="16" height="16")
+						.product-block__review
+							+icon('i-review')(style="height:14px;width:14px")
+							span 0 
+							span.dn отзывов
+					.product-block__grid
+						.product-block__grid__item
+							.product-block__grid__item-title Кислотность
+							.product-block__grid__item-line.filled-1
+						.product-block__grid__item
+							.product-block__grid__item-title Плотность
+							.product-block__grid__item-line.filled-2
+				.product-block__body-right
+					.product-block__img-wrap
+						+lazy-img({
+							wrap_mod: '.product-block__img',
+							img: 'product.png'
+							})
+			.product-block__grid
+				.product-block__grid__group
+					.product-block__grid__item.select
+						.product-block__grid__item-title Степень помола
+						.product-block__grid__item-select
+							+select({
+								title: 'Не обжаривать',
+								with_links: true,
+								list: [
+									{name: 'Не обжаривать', active: true},
+									{name: 'Не молоть '},
+									{name: 'Турка '},
+									{name: 'Френч-пресс '},
+									{name: 'Эспрессо крупно'},
+									{name: 'Эспрессо мелко '},
+								]
+							})
+					.product-block__grid__item
+						.product-block__grid__item-title Масса 
+						ul.product-block__grid__item-row
+							li.active 200
+							li 1000
+			.product-block__action
+				.product-block__prices
+					.product-block__price 45.30&nbsp;руб.
+				.product-block__favorite
+					+icon('i-favorite')(style="height:21px;width:19px")
+				.product-block__compare
+					+icon('i-compare')(style="width:20px;height:16px")
+				if(args.in_basket)
+					.product-block__btns
+						.product-block__buy.btn.btn-sm.btn-wave 
+							+icon('i-cart')(style="width:15px;height:15px")
+							span Купить
+				else
+					.product-block__counter.counter.btn-wave
+						span.counter__action.counter__action--minus
+						input.counter__count(type="text" value="1" maxlength="6")
+						span.counter__action.counter__action--plus
