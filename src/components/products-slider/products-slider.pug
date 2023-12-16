@@ -3,47 +3,30 @@
 
 // offers не выводятся
 .products-slider
-    .container
-        .products-slider__header
-            h3.section-title
-                span Вам также может понравиться
-        +splide({
-            mod: 'products-slider__slider js-splide-products'
-        })
-            each item in [1,2]
-                +splide-slide()
-                    +product-card({
-                        title: 'Умные часы Bambo-900',
-                        in_basket: true,
-                        timer: '2023-06-16 14:06:00',
-                        badges: 1,
-                        no_rating: true,
-                    })
-                +splide-slide()
-                    +product-card({
-                        title: 'Классическая помада Fior 133 Беспечный розовый',
-                        in_basket: false,
-                        timer: false,
-                        badges: 2,
-                    })
-                +splide-slide()
-                    +product-card({
-                        title: 'Обеденная тарелка Shouldplat',
-                        in_basket: false,
-                        timer: '2023-01-16 14:06:00',
-                        badges: 3,
-                    })
-                +splide-slide()
-                    +product-card({
-                        title: 'Обеденная тарелка Shouldplat',
-                        in_basket: false,
-                        timer: false,
-                        badges: 2,
-                    })
-                +splide-slide()
-                    +product-card({
-                        title: 'Умные часы Bambo-900',
-                        in_basket: true,
-                        timer: '2023-01-16 14:06:00',
-                        badges: 1,
-                    })
+	.container
+		.products-slider__header
+			h3.section-title
+				span Мы рекомендуем
+		+splide({
+			mod: 'products-slider__slider js-splide-products'
+		})
+			each item in [1,2]
+				+splide-slide()
+					+product-card2({
+						title: 'Бразилия Велосо Колекта',
+						in_basket: true,
+						no_rating: true,
+						badges: 2,
+					})
+				+splide-slide()
+					+product-card2({
+						title: 'Бразилия Велосо Колекта',
+						in_basket: false,
+						badges: 1,
+					})
+				+splide-slide()
+					+product-card2({
+						title: 'Бразилия Велосо Колекта',
+						in_basket: false,
+						badges: 1,
+					})

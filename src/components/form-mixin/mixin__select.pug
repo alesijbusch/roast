@@ -5,7 +5,8 @@ mixin select(args={})
         :class="isOpenedSelect ? 'opened' : ''"
         @click.away="isOpenedSelect = false")
         .select__header(@click="isOpenedSelect = ! isOpenedSelect")
-            .select__title!=args.title
+            .select__title
+                span!=args.title
                 +icon('i-arrow-down')(style="height:5px;width:7px")
         .select__body
             ul.select__body-list
