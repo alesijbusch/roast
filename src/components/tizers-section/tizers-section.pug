@@ -1,51 +1,79 @@
 +include-style('tizers-section')
 
 -
-    var items = [
-        {
-            link: true,
-            img: 'tizer-1.svg',
-            title: 'Быстрая доставка',
-            text: 'Бережно доставляем товары по России за 24 часа',
-        },
-        {
-            link: true,
-            img: 'tizer-2.svg',
-            title: 'Клиентский сервис',
-            text: 'Отвечаем на вопросы покупателей в течение 10 минут',
-        },
-        {
-            link: false,
-            img: 'tizer-3.svg',
-            title: 'Бонусы за покупки',
-            text: 'Дарим подарки и скидки до 70% всем покупателям',
-        },
-        {
-            link: false,
-            img: 'tizer-4.svg',
-            title: 'Доступные цены',
-            text: 'Работаем напрямую с ведущими производителями',
-        },
-    ]
-.tizers-section
-    .container
-        .tizers-section__inner
-            each item in items
-                if(item.link)
-                    a(href="#").ts-item
-                        +lazy-img({
-                            img: item.img,
-                            wrap_mod: 'ts-item__img',
-                        })
-                        .ts-item__content
-                            .ts-item__title=item.title
-                            .ts-item__text=item.text
-                else
-                    .ts-item
-                        +lazy-img({
-                            img: item.img,
-                            wrap_mod: 'ts-item__img',
-                        })
-                        .ts-item__content
-                            .ts-item__title=item.title
-                            .ts-item__text=item.text
+  var items = [
+    {
+      link: false,
+      img: 'tizer-1.svg',
+      title: 'Современное производство',
+      text: 'Конвекционный ростер IMF, традиционный ростер Giesen и колорсортер',
+    },
+    {
+      link: false,
+      img: 'tizer-2.svg',
+      title: 'Бесплатная доставка',
+      text: 'Курьером по Минску, транспортной компанией и почтой по РБ',
+    },
+    {
+      link: false,
+      img: 'tizer-3.svg',
+      title: 'Накопительная система',
+      text: 'Постоянная скидка за покупкидо 20%',
+    },
+    {
+      link: false,
+      img: 'tizer-4.svg',
+      title: 'Бонусы за покупки',
+      text: 'При покупке 5 пачек —подарок!',
+    },
+    {
+      link: false,
+      img: 'tizer-5.svg',
+      title: 'Постоянное обучение',
+      text: 'Постоянно в поисках и готовы делиться новыми знаниями с вами в нашем блоге',
+    },
+    {
+      link: false,
+      img: 'tizer-6.svg',
+      title: 'Публикуем все отзывы',
+      text: 'Мы публикуем все отзывы без исключения - открыты к любым предложениям и критике',
+    },
+    {
+      link: false,
+      img: 'tizer-7.svg',
+      title: 'Гарантия качества',
+      text: 'Вернем деньги или заменим кофе, если вам не понравится',
+    },
+    {
+      link: false,
+      img: 'tizer-8.svg',
+      title: 'Мы всегда на стороне покупателя',
+      text: 'Меняем кофе или возвращаем деньги по первой просьбе',
+    },
+  ]
+.tizers-section.tizers-section_btn
+  .container
+    h3.section-title
+      span Преимущества Roast.by
+    .tizers-section__inner
+      each item in items
+        if(item.link)
+          a(href="#").ts-item
+            +lazy-img({
+              img: item.img,
+              wrap_mod: 'ts-item__img',
+            })
+            .ts-item__content
+              .ts-item__title=item.title
+              .ts-item__text=item.text
+        else
+          .ts-item
+            +lazy-img({
+              img: item.img,
+              wrap_mod: 'ts-item__img',
+            })
+            .ts-item__content
+              .ts-item__title=item.title
+              .ts-item__text=item.text
+      .btn.btn-wide Показать еще 
+        span 5
