@@ -2,12 +2,12 @@
 +include-script('brands-slider')
 
 .brands-slider
-    .container
-        +splide({
-            mod: 'brands-slider__slider js-splide-brands'
-        })
-            each item in [1,2,3,4,5,6,7,8,9,10]
-                +splide-slide()
-                    a(href="#").brands-slider__link
-                        span.brands-slider__img-wrap
-                            img.brands-slider__img(src=pixel data-splide-lazy=`/html/images/brand-${item}.png` alt='brand')
+  .container
+    +splide({
+      mod: 'brands-slider__slider js-splide-brands'
+    })
+      each item in [1,2,3,4,5,6,4,2,3,1]
+        +splide-slide()
+          a(href="#").brands-slider__link
+            span.brands-slider__img-wrap
+              img.brands-slider__img(src=pixel data-splide-lazy=`/html/images/brand-${item}.png` alt='brand')
