@@ -1,0 +1,55 @@
++include-style('article-timer')
+
+.article-timer
+  .container
+    .article-timer__inner
+      .article-timer__left
+        .article-timer__left-group
+          .article-timer__article-title Последние статьи
+          a(href="#").article-timer__article-arrow 
+            span Все статьи
+            +icon('article-arrow')(width="12" height="10")
+        ul.article-timer__article-list 
+          li.article-timer__article-item
+            a(href="#")  
+              span.date 07.10.2023
+              span.title Экология и ROAST
+          li.article-timer__article-item 
+            a(href="#")
+              span.date 02.10.2023
+              span.title Как заваривают пуэр?
+          li.article-timer__article-item 
+            a(href="#")
+              span.date 12.08.2023
+              span.title Кофе с молоком: за и против?
+          li.article-timer__article-item 
+            a(href="#")
+              span.date 02.10.2023
+              span.title Не только арабика и робуста: сорта и виды кофе     
+      .article-timer__right
+        .article-timer__timer-top
+          .article-timer__timer-icon 
+            +icon('i-timer')(width="30" height="30")
+          .article-timer__timer-descr
+            span.small по понедельникам и четвергам
+            span.big Обжариваем кофе
+        .article-timer__timer-bottom
+          .article-timer__timer-title До обжарки осталось
+          .timer-block
+            .timer-block__number
+              span.num 2
+              span дня
+            .timer-block__colon
+              +icon('i-colon')(width="3" height="16")
+            .timer-block__number
+              span.num  01
+              span часов
+            .timer-block__colon
+              +icon('i-colon')(width="3" height="16")
+            .timer-block__number
+              span.num  40
+              span минут    
+          .article-timer__timer-text 
+            span Ближайшая доставка по Минску
+            span 20.10.2023
+
