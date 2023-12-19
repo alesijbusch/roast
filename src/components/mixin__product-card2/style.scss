@@ -175,16 +175,19 @@
     width: 42px;
     cursor: pointer;
     transition: background 0.3s;
+    svg path {
+      transition: 0.3s;
+    }
     &:hover {
       background: $accent;
-      svg {
-        fill: #fff;
+      svg path {
+        stroke: #fff;
       }
     }
     &.active {
       background: $basic_black;
-      svg {
-        fill: #fff;
+      svg path {
+        stroke: #fff;
       }
     }
   }
@@ -199,6 +202,10 @@
       padding: 10px 35px;
       font-size: 15px;
       height: 42px;
+
+      svg path {
+        stroke: #fff;
+      }
       @media (max-width: 1280px) {
         padding: 10px 21px;
       }

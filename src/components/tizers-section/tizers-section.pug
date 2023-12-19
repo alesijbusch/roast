@@ -1,4 +1,5 @@
 +include-style('tizers-section')
++include-script('tizers-section')
 
 -
   var items = [
@@ -55,7 +56,7 @@
   .container
     h3.section-title
       span Преимущества Roast.by
-    .tizers-section__inner
+    .tizers-section__inner#tizers-section_list
       each item in items
         if(item.link)
           a(href="#").ts-item
@@ -75,5 +76,5 @@
             .ts-item__content
               .ts-item__title=item.title
               .ts-item__text=item.text
-      .btn.btn-wide Показать еще 
+      .btn.btn-wide.tizers-section__btn Показать еще 
         span 5

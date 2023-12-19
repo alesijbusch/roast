@@ -82,6 +82,9 @@ body.overflow {
       .nav-link {
         color: $accent;
       }
+      .nav-toggle {
+        display: none;
+      }
     }
     .nav-link {
       cursor: default;
@@ -434,8 +437,15 @@ body.overflow {
       .header__main-item-icon-wrap {
         fill: $accent;
       }
+      .header__main-item-icon-wrap svg {
+        path {
+          stroke: $accent;
+        }
+      }
     }
-
+    .header__main-item-icon-wrap svg path {
+      transition: all ease 0.3s;
+    }
     span {
       font-size: 0.875rem;
       line-height: calc(1rem + 3px);

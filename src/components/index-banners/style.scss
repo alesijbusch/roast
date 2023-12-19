@@ -1,7 +1,6 @@
 @import "src/assets/css/vars_mixins/vars_mixins";
 
 .index-banners {
-  padding-bottom: 32px;
   &__slider {
   }
   .splide__slide {
@@ -15,23 +14,35 @@
   }
   .splide__arrow--prev {
     left: auto;
-    right: 60px;
+    right: 85px;
   }
   .splide__arrow--next {
     right: 50px;
   }
   .splide__pagination {
-    left: auto;
-    right: 130px;
-    bottom: 30px;
+    position: absolute;
+    left: 0;
+    right: auto;
+    bottom: 25px;
+    .splide__pagination__page {
+      width: 7px;
+      height: 7px;
+      background-color: #757575;
+      &.is-active {
+        background-color: #fff;
+        transform: scale(1);
+      }
+    }
   }
 }
 
 .ib-slide {
   overflow: hidden;
-  height: 460px;
+  height: 644px;
   position: relative;
-
+  .container {
+    height: 100%;
+  }
   &__link {
     position: absolute;
     top: 0;
@@ -41,7 +52,6 @@
     z-index: 1;
   }
   &__bg {
-    border-radius: 8px;
     height: 100%;
     width: 100%;
     position: absolute;
@@ -54,40 +64,47 @@
   }
   &__inner {
     display: flex;
-    align-items: center;
-    padding: 0 32px;
+    flex-direction: column;
+    justify-content: space-between;
     height: 100%;
+
+    padding: 120px 0 160px;
   }
   &__content {
-    padding-left: 48px;
-    max-width: 50%;
-    flex: 1 0 50%;
+    max-width: 33%;
+    // max-width: 50%;
+    // flex: 1 0 50%;
   }
   &__title {
     position: relative;
     z-index: 1;
-    font-size: 2.1875vw; // 42px
-    font-size: clamp(1.6rem, 2.1875vw, 2.625rem);
-    line-height: calc(1em + 10px);
-    font-weight: 500;
+    font-size: 42px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 50px;
     color: #fff;
   }
   &__text {
     position: relative;
-    margin-top: 14px;
+    margin-top: 16px;
     color: #fff;
-    line-height: 162.5%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
   }
   &__btns {
-    margin: 5px 0 0;
+    margin: 25px 0 0;
     display: flex;
     flex-wrap: wrap;
+    @media (max-width: $xs) {
+      flex-wrap: nowrap;
+    }
 
     .btn {
       position: relative;
       z-index: 4;
       margin-right: 20px;
-      margin-top: 20px;
     }
     .btn-white {
       border-color: #fff;
@@ -106,6 +123,40 @@
     position: absolute;
     bottom: 0;
     left: 0;
+  }
+  &__bottom {
+    position: absolute;
+    z-index: 13;
+    display: flex;
+    gap: 40px;
+    bottom: 70px;
+    .ib-slide__btn {
+      display: flex;
+      gap: 20px;
+      padding: 17px 40px 17px 30px;
+      border-radius: 90px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      &-group {
+        display: flex;
+        flex-direction: column;
+        .small {
+          font-size: 10px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 18px;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          opacity: 0.5;
+        }
+        .big {
+          font-size: 18px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 26px;
+        }
+      }
+    }
   }
 }
 
@@ -128,46 +179,188 @@
   opacity: 1;
 }
 
+.container_pos {
+  position: relative;
+}
+.container_wrap {
+  @media (max-width: 1400px) {
+    max-width: 100%;
+  }
+}
+.slider-product {
+  width: 377px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 2;
+  background: #fff;
+  // @media (max-width: 1400px) {
+  //   right: 32px;
+  // }
+  // @media (max-width: $lg) {
+  //   right: 0;
+  // }
+  &__block {
+    position: relative;
+    height: 644px;
+    padding: 77px 0 98px;
+    background: #f8f8f8;
+  }
+  &__top {
+    padding-top: 54px;
+    background: url("/src/assets/images/ellipse.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  &__bottom {
+    margin-top: 20px;
+    padding: 0 33px;
+  }
+  &__badge {
+    position: absolute;
+    top: 35px;
+    left: 40px;
+    padding: 3px 10px 3px 10px;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    background: #2c2c2c;
+    color: #fff;
+  }
+  &-wrap {
+    padding: 0 33px;
+    img {
+      max-width: 100%;
+      margin: 0 auto;
+      display: block;
+    }
+  }
+  &__title {
+    color: #000;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 28px;
+    margin-bottom: 5px;
+  }
+  &__price {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    color: #000;
+  }
+  .slider-product-page {
+    position: absolute;
+    bottom: 28px;
+    right: 77px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    .item {
+      color: #000;
+      font-size: 18px;
+    }
+    .slash,
+    .page {
+      color: #acacac;
+      font-size: 14px;
+    }
+  }
+}
+
 // 1199.75
 @media (max-width: $lg) {
+  .ib-slide__content {
+    max-width: 55%;
+  }
 }
 // 991.75
 @media (max-width: $md) {
+  .ib-slide__inner {
+    padding: 60px 0 250px;
+  }
+  .ib-slide__content {
+    max-width: 49%;
+  }
+  .ib-slide__title {
+    font-size: 32px;
+    line-height: 36px;
+  }
+  .ib-slide__bottom {
+    gap: 15px;
+    flex-direction: column;
+  }
 }
 // 767.75
 @media (max-width: $sm) {
   .index-banners {
     padding: 0;
+    display: flex;
+    flex-direction: column;
+
     .splide__pagination {
       left: 0;
       right: 0;
     }
     .container {
-      padding: 0;
+      padding: 0 20px;
     }
   }
+  .container_wrap {
+    order: 2;
+  }
+  .slider-product {
+    position: initial;
+    margin: 0 auto;
+  }
   .ib-slide {
-    height: auto;
+    height: 653px;
     position: relative;
-    padding-bottom: 68%;
-    picture {
-      img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        object-fit: cover;
-      }
-    }
-    &__bg {
-      border-radius: 0;
-    }
-    &__inner {
-      display: none;
-    }
+  }
+  .ib-slide__content {
+    max-width: 65%;
+  }
+  .slider-product-page {
+    display: none;
   }
 }
 // 600.75
 @media (max-width: $xs) {
+  .index-banners .container.container_wrap {
+    padding: 0;
+  }
+  .slider-product {
+    width: auto;
+  }
+  .slider-product__block {
+    height: 481px;
+    padding: 30px 20px;
+  }
+  .ib-slide__content {
+    max-width: 100%;
+  }
+  .ib-slide__bottom {
+    width: calc(100% - 40px);
+  }
+  .ib-slide__bottom .ib-slide__btn {
+    width: 100%;
+  }
+  .slider-product__top {
+    padding-top: 51px;
+    background-size: initial;
+    background-image: url("/src/assets/images/ellipse-xs.png");
+  }
+  .slider-product__badge {
+    top: 30px;
+    left: 20px;
+  }
+  .slider-product__bottom {
+    padding: 0;
+  }
+  .slider-product-page {
+    display: block;
+  }
 }

@@ -2,66 +2,123 @@
 +include-script('index-banners')
 
 .index-banners
-	.container
-		+splide({
-			mod: 'index-banners__slider js-splide-banners'
-		})
-			+splide-slide()
-				.ib-slide
-					a(href="#full_link").ib-slide__link
-					picture
-						source(srcset=SITE_TEMPLATE_PATH + 'images/index-banners-bg-1.jpg' media='(min-width: 768px)')
-						source(srcset=SITE_TEMPLATE_PATH + 'images/index-banners-bg-1-sm.jpg' media='(min-width: 426px)')
-						source(srcset=SITE_TEMPLATE_PATH + 'images/index-banners-bg-1-xs.jpg' media='(min-width: 0px)')
-						img.ib-slide__bg(src=SITE_TEMPLATE_PATH + 'images/index-banners-bg.jpg' alt='banner-bg')
-					.ib-slide__inner
-						.ib-slide__content
-							a(href="#title").ib-slide__title Велосипеды<br> для движения в городе
-							.ib-slide__text Покоряйте новые территории на велосипедах! Горные, складные, городские или двухподвесные — найдется все.
-							.ib-slide__btns
-								a(href="#btn1").btn.btn-lg.btn-wave Выбрать
-								a(href="#btn2").btn.btn-lg.btn-white.btn-wave Узнать о скидках
-						.ib-slide__img-wrap
-							picture
-								source(srcset=SITE_TEMPLATE_PATH + 'images/index-banners-1.png' media='(min-width: 768px)')
-								source(srcset=pixel media='(min-width: 0px)')
-								img.ib-slide__img(src=SITE_TEMPLATE_PATH + 'images/index-banners-1.png' alt='banner')
-			+splide-slide()
-				.ib-slide.ib-slide--light
-					a(href="#full_link").ib-slide__link
-					picture
-						source(srcset=pixel data-srcset=SITE_TEMPLATE_PATH + 'images/index-banners-bg-2.jpg' media='(min-width: 768px)')
-						source(srcset=pixel data-srcset=SITE_TEMPLATE_PATH + 'images/index-banners-bg-2-sm.jpg' media='(min-width: 426px)')
-						source(srcset=pixel data-srcset=SITE_TEMPLATE_PATH + 'images/index-banners-bg-2-xs.jpg' media='(min-width: 0px)')
-						img.ib-slide__bg(src=pixel data-src=SITE_TEMPLATE_PATH + 'images/index-banners-bg.jpg' alt='banner-bg')
-					.ib-slide__inner
-						.ib-slide__content
-							a(href="#title").ib-slide__title Неделя скидок<br> на детские товары
-							.ib-slide__text Мягкие и развивающие игрушки, коляски, автокресла и другие товары по сниженным ценам. Только до конца недели. Не упустите выгоду!
-							.ib-slide__btns
-								a(href="#btn1").btn.btn-lg.btn-wave Успеть купить
-						.ib-slide__img-wrap
-							picture
-								source(srcset=pixel data-srcset=SITE_TEMPLATE_PATH + 'images/index-banners-2.png' media='(min-width: 768px)')
-								source(srcset=pixel data-srcset=pixel media='(min-width: 0px)')
-								img.ib-slide__img( src=pixel data-src=SITE_TEMPLATE_PATH + 'images/index-banners-2.png' alt='banner')
-			+splide-slide()
-				.ib-slide
-					a(href="#full_link").ib-slide__link
-					picture
-						source(srcset=pixel data-srcset=SITE_TEMPLATE_PATH + 'images/index-banners-bg-1.jpg' media='(min-width: 768px)')
-						source(srcset=pixel data-srcset=SITE_TEMPLATE_PATH + 'images/index-banners-bg-1-sm.jpg' media='(min-width: 426px)')
-						source(srcset=pixel data-srcset=SITE_TEMPLATE_PATH + 'images/index-banners-bg-1-xs.jpg' media='(min-width: 0px)')
-						img.ib-slide__bg(src=pixel data-src=SITE_TEMPLATE_PATH + 'images/index-banners-bg.jpg' alt='banner-bg')
-					.ib-slide__inner
-						.ib-slide__content
-							a(href="#title").ib-slide__title Велосипеды<br> для движения в городе
-							.ib-slide__text Покоряйте новые территории на велосипедах! Горные, складные, городские или двухподвесные — найдется все.
-							.ib-slide__btns
-								a(href="#btn1").btn.btn-lg Выбрать
-								a(href="#btn2").btn.btn-lg.btn-white Узнать о скидках
-						.ib-slide__img-wrap
-							picture
-								source(srcset=pixel data-srcset=SITE_TEMPLATE_PATH + 'images/index-banners-1.png' media='(min-width: 768px)')
-								source(srcset=pixel data-srcset=pixel media='(min-width: 0px)')
-								img.ib-slide__img(src=pixel data-src=SITE_TEMPLATE_PATH + 'images/index-banners-1.png' alt='banner')
+	.container.container_pos.container_wrap
+		.slider-product 
+			+splide({
+			mod: 'slider-product__slider js-splide-slider-product'
+			})
+				+splide-slide()
+					.slider-product__block
+						.slider-product__badge Товар недели
+						.slider-product__top
+							//- +lazy-img({
+							//- 	link: false,
+							//- 	wrap_mod: 'slider-product-wrap',
+							//- 	img_mod: '.slider-product__img',
+							//- 	img: `slider-product.png`,
+							//- })
+							.slider-product-wrap
+								picture
+									source(srcset=SITE_TEMPLATE_PATH + 'images/slider-product.png' media='(min-width: 661px)')
+									source(srcset=SITE_TEMPLATE_PATH + 'images/slider-product-xs.png' media='(min-width: 0px)')
+									img.slider-product__img(src=SITE_TEMPLATE_PATH + 'images/slider-product.png' alt='product')
+						.slider-product__bottom
+							a(href="#").slider-product__title Бразилия Велосо Колекта
+							.slider-product__price от 41.90 руб.
+				+splide-slide()
+					.slider-product__block
+						.slider-product__badge Товар недели
+						.slider-product__top
+							.slider-product-wrap
+								picture
+									source(srcset=SITE_TEMPLATE_PATH + 'images/slider-product.png' media='(min-width: 661px)')
+									source(srcset=SITE_TEMPLATE_PATH + 'images/slider-product-xs.png' media='(min-width: 0px)')
+									img.slider-product__img(src=SITE_TEMPLATE_PATH + 'images/slider-product.png' alt='product')
+						.slider-product__bottom
+							a(href="#").slider-product__title Бразилия Велосо Колекта
+							.slider-product__price от 41.90 руб.
+				+splide-slide()
+					.slider-product__block
+						.slider-product__badge Товар недели
+						.slider-product__top
+							.slider-product-wrap
+								picture
+									source(srcset=SITE_TEMPLATE_PATH + 'images/slider-product.png' media='(min-width: 661px)')
+									source(srcset=SITE_TEMPLATE_PATH + 'images/slider-product-xs.png' media='(min-width: 0px)')
+									img.slider-product__img(src=SITE_TEMPLATE_PATH + 'images/slider-product.png' alt='product')
+						.slider-product__bottom
+							a(href="#").slider-product__title Бразилия Велосо Колекта
+							.slider-product__price от 41.90 руб.
+				+splide-slide()
+					.slider-product__block 
+						.slider-product__badge Товар недели
+						.slider-product__top
+							.slider-product-wrap
+								picture
+									source(srcset=SITE_TEMPLATE_PATH + 'images/slider-product.png' media='(min-width: 661px)')
+									source(srcset=SITE_TEMPLATE_PATH + 'images/slider-product-xs.png' media='(min-width: 0px)')
+									img.slider-product__img(src=SITE_TEMPLATE_PATH + 'images/slider-product.png' alt='product')
+						.slider-product__bottom
+							a(href="#").slider-product__title Бразилия Велосо Колекта
+							.slider-product__price от 41.90 руб.
+			.slider-product-page 
+				span.item 1
+				span.slash /
+				span.page 4
+	section.splide.js-splide.index-banners__slider.js-splide-banners(aria-label="splide basic html example")
+		.splide__track
+			ul.splide__list
+				+splide-slide()
+					.ib-slide
+						picture
+							source(srcset=SITE_TEMPLATE_PATH + 'images/index-banners-bg-1.jpg' media='(min-width: 426px)')
+							source(srcset=SITE_TEMPLATE_PATH + 'images/index-banners-bg-1-xs.jpg' media='(min-width: 0px)')
+							img.ib-slide__bg(src=SITE_TEMPLATE_PATH + 'images/index-banners-bg.jpg' alt='banner-bg')
+						.container
+							.ib-slide__inner
+								.ib-slide__content
+									a(href="#title").ib-slide__title Аксессуары для приготовления кофе
+									.ib-slide__text Кофемашины и кофеварки, воронки, чайники, фильтры, весы, кофемолки
+									.ib-slide__btns
+										a(href="#btn2").btn.btn-lg.btn-white.btn-wave Подробнее
+				+splide-slide()
+					.ib-slide
+						picture
+							source(srcset=SITE_TEMPLATE_PATH + 'images/index-banners-bg-1.jpg' media='(min-width: 426px)')
+							source(srcset=SITE_TEMPLATE_PATH + 'images/index-banners-bg-1-xs.jpg' media='(min-width: 0px)')
+							img.ib-slide__bg(src=SITE_TEMPLATE_PATH + 'images/index-banners-bg.jpg' alt='banner-bg')
+						.container
+							.ib-slide__inner
+								.ib-slide__content
+									a(href="#title").ib-slide__title Неделя скидок<br> на детские товары
+									.ib-slide__text Мягкие и развивающие игрушки, коляски, автокресла и другие товары по сниженным ценам. Только до конца недели. Не упустите выгоду!
+									.ib-slide__btns
+										a(href="#btn1").btn.btn-lg.btn-white.btn-wave Успеть купить
+				+splide-slide()
+					.ib-slide
+						picture
+							source(srcset=pixel data-srcset=SITE_TEMPLATE_PATH + 'images/index-banners-bg-1.jpg' media='(min-width: 426px)')
+							source(srcset=pixel data-srcset=SITE_TEMPLATE_PATH + 'images/index-banners-bg-1-xs.jpg' media='(min-width: 0px)')
+							img.ib-slide__bg(src=pixel data-src=SITE_TEMPLATE_PATH + 'images/index-banners-bg.jpg' alt='banner-bg')
+						.container
+							.ib-slide__inner
+								.ib-slide__content
+									a(href="#title").ib-slide__title Велосипеды<br> для движения в городе
+									.ib-slide__text Покоряйте новые территории на велосипедах! Горные, складные, городские или двухподвесные — найдется все.
+									.ib-slide__btns
+										a(href="#btn1").btn.btn-lg Выбрать
+										a(href="#btn2").btn.btn-lg.btn-white Узнать о скидках
+		.container
+			.ib-slide__bottom
+				a(href="#").ib-slide__btn
+					+icon('i-slider-btn-1')(width="38px" height="38px")
+					.ib-slide__btn-group 
+						span.small Гарантия на кофе	
+						span.big 30 дней
+				a(href="#").ib-slide__btn
+					+icon('i-slider-btn-2')(width="38px" height="38px")
+					.ib-slide__btn-group 
+						span.small цены от импортера
+						span.big Аксессуары
+		.container.container_pos
+			ul.splide__pagination.splide__pagination--ltr.index-banners_pagination(role='tablist' aria-label='Select a slide to show')
