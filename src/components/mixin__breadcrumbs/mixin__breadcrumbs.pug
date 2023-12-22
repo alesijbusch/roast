@@ -1,27 +1,27 @@
 mixin breadcrumbs(args={})
 	.breadcrumbs(itemscope itemtype="http://schema.org/BreadcrumbList")
+		.breadcrumbs__item(itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem")
+			a(href="/html/index.html" title="Главная" itemprop="item").breadcrumbs__link
+				span(itemprop="name") Главная
+				meta(itemprop="position" content="0")
+		.breadcrumbs__separator
+			+icon('i-arrow-down')(width="7px" height="5px" style="transform:rotate(-90deg)")
+		if args.content2
 			.breadcrumbs__item(itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem")
-				a(href="/html/index.html" title="Главная" itemprop="item").breadcrumbs__link
-					span(itemprop="name") Главная
-					meta(itemprop="position" content="0")
-			.breadcrumbs__separator
-				+icon('i-arrow-down')(width="7px" height="5px" style="transform:rotate(-90deg)")
+				if args.href_content2
+					a(href=args.href_content2 || '#' title=args.content2 itemprop="item").breadcrumbs__link
+						span(itemprop="name")= args.content2
+						meta(itemprop="position" content="2")
+				else
+					span(href=args.href_content2 || '#' title=args.content2 itemprop="name").breadcrumbs__link
+						span(itemprop="name")= args.content2
+						meta(itemprop="position" content="2")
 			if args.content2
-				.breadcrumbs__item(itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem")
-					if args.href_content2
-						a(href=args.href_content2 || '#' title=args.content2 itemprop="item").breadcrumbs__link
-							span(itemprop="name")= args.content2
-							meta(itemprop="position" content="2")
-					else
-						span(href=args.href_content2 || '#' title=args.content2 itemprop="name").breadcrumbs__link
-							span(itemprop="name")= args.content2
-							meta(itemprop="position" content="2")
-				if args.content2
-					.breadcrumbs__separator
-						+icon('i-arrow-down')(width="7px" height="5px" style="transform:rotate(-90deg)")
-			if args.content3
-				.breadcrumbs__item(itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem")
-					span(title=args.content3 itemprop="name").breadcrumbs__link
-						span(itemprop="name")= args.content3
-						meta(itemprop="position" content="3")
+				.breadcrumbs__separator
+					+icon('i-arrow-down')(width="7px" height="5px" style="transform:rotate(-90deg)")
+		if args.content3
+			.breadcrumbs__item(itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem")
+				span(title=args.content3 itemprop="name").breadcrumbs__link
+					span(itemprop="name")= args.content3
+					meta(itemprop="position" content="3")
 

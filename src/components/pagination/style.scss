@@ -11,11 +11,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 46px;
-    border-radius: 8px;
+    width: 44px;
+    border-radius: 50%;
 
     .icon {
-      fill: rgba(0,0,0,0.0);
+      fill: rgba(0, 0, 0, 0);
       stroke: var(--fill_dark_light);
     }
     &.is-hidden {
@@ -27,9 +27,14 @@
     }
   }
   &__btn--prev {
-    transform: scale(-1,-1);
+    transform: scale(-1, -1);
+    .icon {
+      fill: rgba(0, 0, 0, 0);
+      stroke: #acacac;
+    }
   }
-  &__btn--next {}
+  &__btn--next {
+  }
   &__list {
     margin: 0 2px;
     display: flex;
@@ -39,16 +44,23 @@
   &__item {
     margin: 0 2px;
     display: inline-block;
-    width: 46px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
     text-align: center;
-    line-height: 36px;
     text-decoration: none;
-    font-weight: 600;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 44px;
     position: relative;
-    color: #333;
-    color: var(--white_text_black);
-    border-radius: 8px;
+    color: $basic_black;
+    border-radius: 50%;
+    @media (max-width: $sm) {
+      width: 35px;
+      height: 35px;
+      line-height: 35px;
+      margin: 0;
+    }
   }
   &__item:not(.pagination__item--current) {
     &:hover {
@@ -56,7 +68,7 @@
     }
   }
   &__item--current {
-    background-color: var(--theme-base-color);
+    background-color: $basic_black;
     color: #fff;
   }
 }

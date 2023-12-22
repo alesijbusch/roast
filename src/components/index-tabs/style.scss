@@ -22,7 +22,7 @@
     gap: 20px;
   }
   .products-slider {
-    margin-bottom: 0;
+    padding-bottom: 0;
   }
 }
 
@@ -34,7 +34,6 @@
     width: calc(100% + 8px);
   }
   &__item {
-    margin: 0 4px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -92,8 +91,8 @@
     }
   }
   .tabs-nav {
-    margin-right: -24px;
-    margin-top: 20px;
+    // margin-right: -15px;
+    // margin-top: 20px;
     // overflow: hidden;
     // overflow-x: auto;
     // @include scroll();
@@ -105,6 +104,10 @@
 }
 // 600.75
 @media (max-width: $xs) {
+  .tabs-nav {
+    margin-right: -15px;
+    margin-top: 20px;
+  }
   .index-tabs {
     &__grid {
       display: flex;

@@ -37,6 +37,7 @@ window.addEventListener("load", function () {
               gap: 15,
             },
             560: {
+              type: "loop",
               perPage: 2.5,
               arrows: false,
               gap: 10,

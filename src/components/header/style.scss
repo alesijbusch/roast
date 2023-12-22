@@ -525,23 +525,22 @@
     align-items: center;
     z-index: 1;
     cursor: pointer;
-    fill: var(--fill_dark_light);
-    &:active {
-      fill: var(--fill_dark_lite_hover);
-    }
+    fill: #999;
+    // &:active {
+    //   fill: var(--fill_dark_lite_hover);
+    // }
   }
   &__inner {
     position: relative;
     //height: 100%;
     background: #fff;
-    background: var(--black_bg_black);
     //overflow: hidden;
     //overflow-y: auto;
     display: flex;
     flex-direction: column;
     width: 100%;
     max-width: 375px;
-    padding: 32px 25px 15px 20px;
+    padding: 15px 25px 15px 20px;
     min-height: 100vh;
     &.catalog {
       .cat-open {
