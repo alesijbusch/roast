@@ -1,0 +1,35 @@
+extends ../../layout/layout
+
+block vars
+	- var pageTitle = 'Кофе'
+	- var pageBodyClass = ''
+	- var dir = './'
+
+
+block premain
+	.container
+		.page-top
+			+breadcrumbs({
+				content2: 'Каталог',
+				href_content2: '#',
+				content3: 'Кофе',
+			})
+			.page-top__header
+				h1.page-top__title Кофе
+block main
+	include ../../components/catalog/catalog2
+	include ../../components/subscription/subscription
+
+block pageModal
+
+block componentsCriticalStyles
+	+componentsCriticalStyles-includer()
+block vendorScripts
+	+vendorScripts-includer()
+block scripts
+	script(src="./js/vendor/nouislider.min.js" defer)
+
+block componentsStyles
+	+style-includer()
+block componentsScripts
+	+componentsScripts-includer()

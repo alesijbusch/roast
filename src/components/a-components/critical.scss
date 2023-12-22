@@ -25,8 +25,8 @@
 }
 
 .page-top {
-  padding-top: 24px;
-  padding-bottom: 11px;
+  padding-top: 30px;
+  padding-bottom: 35px;
   position: relative;
 
   &__header {
@@ -35,18 +35,17 @@
     flex-wrap: wrap;
   }
   &__title {
-    color: $white_text_black;
-    color: var(--white_text_black);
-    font-weight: 500;
-    font-size: 1.66vw;
-    font-size: clamp(1.625rem, 1.66vw, 2rem);
+    color: $basic_black;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px;
     margin: 0;
     padding-bottom: 0;
     text-overflow: ellipsis;
     overflow: hidden;
     display: inline;
     vertical-align: middle;
-    line-height: calc(1em + 15px);
   }
   &__count {
     position: relative;
@@ -185,10 +184,9 @@
 }
 .main-row {
   display: flex;
-  padding-bottom: 80px;
-  @media (max-width: $sm - 1) {
-    padding-bottom: 50px;
-  }
+  // @media (max-width: $sm - 1) {
+  //   padding-bottom: 50px;
+  // }
   &__aside {
     width: 270px;
     margin-right: 39px;
@@ -213,11 +211,11 @@
   }
 }
 
-.catalog .main-row__main {
-  margin: 0 -24px -150px;
-  padding: 0 24px 150px;
-  //overflow: hidden;
-}
+// .catalog .main-row__main {
+//   margin: 0 -24px -150px;
+//   padding: 0 24px 150px;
+//   //overflow: hidden;
+// }
 
 .sticky-block {
   top: 112px;
