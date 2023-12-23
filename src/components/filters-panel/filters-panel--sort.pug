@@ -53,309 +53,310 @@ mixin filter-item(args={})
 				</svg>
 				span Очистить фильтр
 	.filters-panel(:class="isOpenedFilterPanel ? 'opened' : ''")
-		.filters-panel__header-mob
-			.mobile-nav__logo
-				+lazy-img({
-				wrap_mod: 'logo__img',
-				img: `logo.png`
-				})
-				.mobile-nav__info Интернет-магазин свежего кофе
-		.filters-panel__header
-			.filters-panel-btn.filters-panel-btn--active-filter
-				span.icon-wrap
-					<svg xmlns="http://www.w3.org/2000/svg" width="13" height="10" viewBox="0 0 16 12" fill="none">
-						<path d="M3.66667 6H12.3333M1.5 1H14.5M5.83333 11H10.1667" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-					</svg>
-				span Фильтр
-				span.colon : 
-			.filters-panel__header-close(@click="isOpenedFilterPanel = false")
-				+icon('i-close')(width="14" height="14")
-		form.filters-panel__inner#filters-panel__list-js
+		.filters-panel__wrap
+			.filters-panel__header-mob
+				.mobile-nav__logo
+					+lazy-img({
+					wrap_mod: 'logo__img',
+					img: `logo.png`
+					})
+					.mobile-nav__info Интернет-магазин свежего кофе
+			.filters-panel__header
+				.filters-panel-btn.filters-panel-btn--active-filter
+					span.icon-wrap
+						<svg xmlns="http://www.w3.org/2000/svg" width="13" height="10" viewBox="0 0 16 12" fill="none">
+							<path d="M3.66667 6H12.3333M1.5 1H14.5M5.83333 11H10.1667" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+					span Фильтр
+					span.colon : 
+				.filters-panel__header-close(@click="isOpenedFilterPanel = false")
+					+icon('i-close')(width="14" height="14")
+			form.filters-panel__inner#filters-panel__list-js
 
-			+filter-item({
-				title: 'Цена'
-			})
-				+no-ui-slider({
-					title: 'Розничная цена'
+				+filter-item({
+					title: 'Цена'
 				})
-				+no-ui-slider({
-					title: 'Оптовая цена'
+					+no-ui-slider({
+						title: 'Розничная цена'
+					})
+					+no-ui-slider({
+						title: 'Оптовая цена'
+					})
+				+filter-item({
+					single_checkbox: true,
+					title: 'В наличии'
 				})
-			+filter-item({
-				single_checkbox: true,
-				title: 'В наличии'
-			})
-			+filter-item({
-				mod: 'filter-item--checkboxes active',
-				title: 'Степень обжарки <span class="count">(1)</span>'
-			})
-				+checkbox({
-					mod: '',
-					label: 'Хит (<b>3</b>)',
-					value: '',
-					name: 'offers'
-				})(checked)
-				+checkbox({
-					mod: '',
-					label: 'Акция (<b>1</b>)',
-					value: '',
-					name: 'offers'
-				})(disabled)
-			+filter-item({
-				mod: 'filter-item--checkboxes',
-				title: 'Кислотность'
-			})
-				+checkbox({
-					mod: '',
-					label: 'Другой (<b>6</b>)',
-					value: '',
-					name: 'processing'
+				+filter-item({
+					mod: 'filter-item--checkboxes active',
+					title: 'Степень обжарки <span class="count">(1)</span>'
 				})
-				+checkbox({
-					mod: '',
-					label: 'Мытая (<b>6</b>)',
-					value: '',
-					name: 'processing'
-				})
-				.filter-item__body-list-part
 					+checkbox({
 						mod: '',
-						label: 'Сухая (<b>4</b>)',
+						label: 'Хит (<b>3</b>)',
+						value: '',
+						name: 'offers'
+					})(checked)
+					+checkbox({
+						mod: '',
+						label: 'Акция (<b>1</b>)',
+						value: '',
+						name: 'offers'
+					})(disabled)
+				+filter-item({
+					mod: 'filter-item--checkboxes',
+					title: 'Кислотность'
+				})
+					+checkbox({
+						mod: '',
+						label: 'Другой (<b>6</b>)',
 						value: '',
 						name: 'processing'
 					})
 					+checkbox({
 						mod: '',
-						label: 'Натуральная (<b>4</b>)',
+						label: 'Мытая (<b>6</b>)',
+						value: '',
+						name: 'processing'
+					})
+					.filter-item__body-list-part
+						+checkbox({
+							mod: '',
+							label: 'Сухая (<b>4</b>)',
+							value: '',
+							name: 'processing'
+						})
+						+checkbox({
+							mod: '',
+							label: 'Натуральная (<b>4</b>)',
+							value: '',
+							name: 'processing'
+						})
+						+checkbox({
+							mod: '',
+							label: 'Мытый (<b>6</b>)',
+							value: '',
+							name: 'processing'
+						})
+					template(x-if="!isOpenedPartList")
+						.filter-item__body-list-more(@click="isOpenedPartList = ! isOpenedPartList") Показать все
+					template(x-if="isOpenedPartList")
+						.filter-item__body-list-more(@click="isOpenedPartList = ! isOpenedPartList") Свернуть
+				+filter-item({
+					mod: 'filter-item--checkboxes',
+					title: 'Способ обработки'
+				})
+					+checkbox({
+						mod: '',
+						label: 'Другой (<b>6</b>)',
 						value: '',
 						name: 'processing'
 					})
 					+checkbox({
 						mod: '',
-						label: 'Мытый (<b>6</b>)',
+						label: 'Мытая (<b>6</b>)',
 						value: '',
 						name: 'processing'
 					})
-				template(x-if="!isOpenedPartList")
-					.filter-item__body-list-more(@click="isOpenedPartList = ! isOpenedPartList") Показать все
-				template(x-if="isOpenedPartList")
-					.filter-item__body-list-more(@click="isOpenedPartList = ! isOpenedPartList") Свернуть
-			+filter-item({
-				mod: 'filter-item--checkboxes',
-				title: 'Способ обработки'
-			})
-				+checkbox({
-					mod: '',
-					label: 'Другой (<b>6</b>)',
-					value: '',
-					name: 'processing'
+					.filter-item__body-list-part
+						+checkbox({
+							mod: '',
+							label: 'Сухая (<b>4</b>)',
+							value: '',
+							name: 'processing'
+						})
+						+checkbox({
+							mod: '',
+							label: 'Натуральная (<b>4</b>)',
+							value: '',
+							name: 'processing'
+						})
+						+checkbox({
+							mod: '',
+							label: 'Мытый (<b>6</b>)',
+							value: '',
+							name: 'processing'
+						})
+					template(x-if="!isOpenedPartList")
+						.filter-item__body-list-more(@click="isOpenedPartList = ! isOpenedPartList") Показать все
+					template(x-if="isOpenedPartList")
+						.filter-item__body-list-more(@click="isOpenedPartList = ! isOpenedPartList") Свернуть
+				+filter-item({
+					mod: 'filter-item--checkboxes',
+					title: 'Плотность'
 				})
-				+checkbox({
-					mod: '',
-					label: 'Мытая (<b>6</b>)',
-					value: '',
-					name: 'processing'
+					+checkbox({
+						mod: '',
+						label: 'Алюминий (<b>6</b>)',
+						value: '',
+						name: 'material'
+					})
+					+checkbox({
+						mod: '',
+						label: 'Дерево (<b>6</b>)',
+						value: '',
+						name: 'material'
+					})
+					.filter-item__body-list-part
+						+checkbox({
+							mod: '',
+							label: 'Искусственный мех (<b>6</b>)',
+							value: '',
+							name: 'material'
+						})
+						+checkbox({
+							mod: '',
+							label: 'Махра (<b>6</b>)',
+							value: '',
+							name: 'material'
+						})
+						+checkbox({
+							mod: '',
+							label: 'Металл (<b>6</b>)',
+							value: '',
+							name: 'material'
+						})
+						+checkbox({
+							mod: '',
+							label: 'Мрамор (<b>6</b>)',
+							value: '',
+							name: 'material'
+						})
+						+checkbox({
+							mod: '',
+							label: 'Натуральное волокно (<b>6</b>)',
+							value: '',
+							name: 'material'
+						})
+						+checkbox({
+							mod: '',
+							label: 'Нержавеющая сталь (<b>6</b>)',
+							value: '',
+							name: 'material'
+						})
+						+checkbox({
+							mod: '',
+							label: 'Перо (<b>6</b>)',
+							value: '',
+							name: 'material'
+						})
+					template(x-if="!isOpenedPartList")
+						.filter-item__body-list-more(@click="isOpenedPartList = ! isOpenedPartList") Показать все
+					template(x-if="isOpenedPartList")
+						.filter-item__body-list-more(@click="isOpenedPartList = ! isOpenedPartList") Свернуть
+				+filter-item({
+					mod: 'filter-item--checkboxes',
+					title: 'Способ обработки'
 				})
-				.filter-item__body-list-part
 					+checkbox({
 						mod: '',
-						label: 'Сухая (<b>4</b>)',
-						value: '',
-						name: 'processing'
-					})
-					+checkbox({
-						mod: '',
-						label: 'Натуральная (<b>4</b>)',
-						value: '',
-						name: 'processing'
-					})
-					+checkbox({
-						mod: '',
-						label: 'Мытый (<b>6</b>)',
-						value: '',
-						name: 'processing'
-					})
-				template(x-if="!isOpenedPartList")
-					.filter-item__body-list-more(@click="isOpenedPartList = ! isOpenedPartList") Показать все
-				template(x-if="isOpenedPartList")
-					.filter-item__body-list-more(@click="isOpenedPartList = ! isOpenedPartList") Свернуть
-			+filter-item({
-				mod: 'filter-item--checkboxes',
-				title: 'Плотность'
-			})
-				+checkbox({
-					mod: '',
-					label: 'Алюминий (<b>6</b>)',
-					value: '',
-					name: 'material'
-				})
-				+checkbox({
-					mod: '',
-					label: 'Дерево (<b>6</b>)',
-					value: '',
-					name: 'material'
-				})
-				.filter-item__body-list-part
-					+checkbox({
-						mod: '',
-						label: 'Искусственный мех (<b>6</b>)',
-						value: '',
-						name: 'material'
-					})
-					+checkbox({
-						mod: '',
-						label: 'Махра (<b>6</b>)',
-						value: '',
-						name: 'material'
-					})
-					+checkbox({
-						mod: '',
-						label: 'Металл (<b>6</b>)',
-						value: '',
-						name: 'material'
-					})
-					+checkbox({
-						mod: '',
-						label: 'Мрамор (<b>6</b>)',
-						value: '',
-						name: 'material'
-					})
-					+checkbox({
-						mod: '',
-						label: 'Натуральное волокно (<b>6</b>)',
-						value: '',
-						name: 'material'
-					})
-					+checkbox({
-						mod: '',
-						label: 'Нержавеющая сталь (<b>6</b>)',
-						value: '',
-						name: 'material'
-					})
-					+checkbox({
-						mod: '',
-						label: 'Перо (<b>6</b>)',
-						value: '',
-						name: 'material'
-					})
-				template(x-if="!isOpenedPartList")
-					.filter-item__body-list-more(@click="isOpenedPartList = ! isOpenedPartList") Показать все
-				template(x-if="isOpenedPartList")
-					.filter-item__body-list-more(@click="isOpenedPartList = ! isOpenedPartList") Свернуть
-			+filter-item({
-				mod: 'filter-item--checkboxes',
-				title: 'Способ обработки'
-			})
-				+checkbox({
-					mod: '',
-					label: 'Другой (<b>6</b>)',
-					value: '',
-					name: 'processing'
-				})
-				+checkbox({
-					mod: '',
-					label: 'Мытая (<b>6</b>)',
-					value: '',
-					name: 'processing'
-				})
-				.filter-item__body-list-part
-					+checkbox({
-						mod: '',
-						label: 'Сухая (<b>4</b>)',
+						label: 'Другой (<b>6</b>)',
 						value: '',
 						name: 'processing'
 					})
 					+checkbox({
 						mod: '',
-						label: 'Натуральная (<b>4</b>)',
+						label: 'Мытая (<b>6</b>)',
 						value: '',
 						name: 'processing'
 					})
-					+checkbox({
-						mod: '',
-						label: 'Мытый (<b>6</b>)',
-						value: '',
-						name: 'processing'
-					})
-				template(x-if="!isOpenedPartList")
-					.filter-item__body-list-more(@click="isOpenedPartList = ! isOpenedPartList") Показать все
-				template(x-if="isOpenedPartList")
-					.filter-item__body-list-more(@click="isOpenedPartList = ! isOpenedPartList") Свернуть
-			+filter-item({
-				mod: 'filter-item--checkboxes',
-				title: 'Плотность'
-			})
-				+checkbox({
-					mod: '',
-					label: 'Алюминий (<b>6</b>)',
-					value: '',
-					name: 'material'
+					.filter-item__body-list-part
+						+checkbox({
+							mod: '',
+							label: 'Сухая (<b>4</b>)',
+							value: '',
+							name: 'processing'
+						})
+						+checkbox({
+							mod: '',
+							label: 'Натуральная (<b>4</b>)',
+							value: '',
+							name: 'processing'
+						})
+						+checkbox({
+							mod: '',
+							label: 'Мытый (<b>6</b>)',
+							value: '',
+							name: 'processing'
+						})
+					template(x-if="!isOpenedPartList")
+						.filter-item__body-list-more(@click="isOpenedPartList = ! isOpenedPartList") Показать все
+					template(x-if="isOpenedPartList")
+						.filter-item__body-list-more(@click="isOpenedPartList = ! isOpenedPartList") Свернуть
+				+filter-item({
+					mod: 'filter-item--checkboxes',
+					title: 'Плотность'
 				})
-				+checkbox({
-					mod: '',
-					label: 'Дерево (<b>6</b>)',
-					value: '',
-					name: 'material'
-				})
-				.filter-item__body-list-part
 					+checkbox({
 						mod: '',
-						label: 'Искусственный мех (<b>6</b>)',
+						label: 'Алюминий (<b>6</b>)',
 						value: '',
 						name: 'material'
 					})
 					+checkbox({
 						mod: '',
-						label: 'Махра (<b>6</b>)',
+						label: 'Дерево (<b>6</b>)',
 						value: '',
 						name: 'material'
 					})
-					+checkbox({
-						mod: '',
-						label: 'Металл (<b>6</b>)',
-						value: '',
-						name: 'material'
-					})
-					+checkbox({
-						mod: '',
-						label: 'Мрамор (<b>6</b>)',
-						value: '',
-						name: 'material'
-					})
-					+checkbox({
-						mod: '',
-						label: 'Натуральное волокно (<b>6</b>)',
-						value: '',
-						name: 'material'
-					})
-					+checkbox({
-						mod: '',
-						label: 'Нержавеющая сталь (<b>6</b>)',
-						value: '',
-						name: 'material'
-					})
-					+checkbox({
-						mod: '',
-						label: 'Перо (<b>6</b>)',
-						value: '',
-						name: 'material'
-					})
-				template(x-if="!isOpenedPartList")
-					.filter-item__body-list-more(@click="isOpenedPartList = ! isOpenedPartList") Показать все
-				template(x-if="isOpenedPartList")
-					.filter-item__body-list-more(@click="isOpenedPartList = ! isOpenedPartList") Свернуть
-			.filters-panel__more
-				span Еще
-				<svg xmlns="http://www.w3.org/2000/svg" width="13" height="4" viewBox="0 0 13 4" fill="none">
-					<path fill-rule="evenodd" clip-rule="evenodd" d="M1.95632 3.31962C2.68511 3.31962 3.27592 2.72881 3.27592 2.00002C3.27592 1.27122 2.68511 0.68042 1.95632 0.68042C1.22752 0.68042 0.636719 1.27122 0.636719 2.00002C0.636719 2.72881 1.22752 3.31962 1.95632 3.31962ZM7.67458 2.00002C7.67458 2.72881 7.08377 3.31962 6.35498 3.31962C5.62619 3.31962 5.03538 2.72881 5.03538 2.00002C5.03538 1.27122 5.62619 0.68042 6.35498 0.68042C7.08377 0.68042 7.67458 1.27122 7.67458 2.00002ZM12.0732 2.00002C12.0732 2.72881 11.4824 3.31962 10.7536 3.31962C10.0248 3.31962 9.43404 2.72881 9.43404 2.00002C9.43404 1.27122 10.0248 0.68042 10.7536 0.68042C11.4824 0.68042 12.0732 1.27122 12.0732 2.00002Z" fill="#8A6048"/>
-				</svg>
-		.filters-panel__btns
-			button.btn Показать 3
-			button.filters-panel__btn 
-				<svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 10" fill="none">
-					<path fill-rule="evenodd" clip-rule="evenodd" d="M8.8436 9.65663C9.13649 9.94953 9.61137 9.94953 9.90426 9.65663C10.1972 9.36374 10.1972 8.88887 9.90426 8.59597L6.36862 5.06033L9.90392 1.52502C10.1968 1.23213 10.1968 0.757258 9.90392 0.464364C9.61103 0.171471 9.13615 0.171471 8.84326 0.464364L5.30796 3.99967L1.90426 0.595974C1.61137 0.303082 1.13649 0.303081 0.843601 0.595974C0.550707 0.888868 0.550708 1.36374 0.843601 1.65663L4.2473 5.06033L0.843262 8.46436C0.550368 8.75726 0.550368 9.23213 0.843262 9.52502C1.13615 9.81792 1.61103 9.81792 1.90392 9.52502L5.30796 6.12099L8.8436 9.65663Z" fill="#ACACAC"/>
-				</svg>
-				span Очистить фильтр
+					.filter-item__body-list-part
+						+checkbox({
+							mod: '',
+							label: 'Искусственный мех (<b>6</b>)',
+							value: '',
+							name: 'material'
+						})
+						+checkbox({
+							mod: '',
+							label: 'Махра (<b>6</b>)',
+							value: '',
+							name: 'material'
+						})
+						+checkbox({
+							mod: '',
+							label: 'Металл (<b>6</b>)',
+							value: '',
+							name: 'material'
+						})
+						+checkbox({
+							mod: '',
+							label: 'Мрамор (<b>6</b>)',
+							value: '',
+							name: 'material'
+						})
+						+checkbox({
+							mod: '',
+							label: 'Натуральное волокно (<b>6</b>)',
+							value: '',
+							name: 'material'
+						})
+						+checkbox({
+							mod: '',
+							label: 'Нержавеющая сталь (<b>6</b>)',
+							value: '',
+							name: 'material'
+						})
+						+checkbox({
+							mod: '',
+							label: 'Перо (<b>6</b>)',
+							value: '',
+							name: 'material'
+						})
+					template(x-if="!isOpenedPartList")
+						.filter-item__body-list-more(@click="isOpenedPartList = ! isOpenedPartList") Показать все
+					template(x-if="isOpenedPartList")
+						.filter-item__body-list-more(@click="isOpenedPartList = ! isOpenedPartList") Свернуть
+				.filters-panel__more
+					span Еще
+					<svg xmlns="http://www.w3.org/2000/svg" width="13" height="4" viewBox="0 0 13 4" fill="none">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M1.95632 3.31962C2.68511 3.31962 3.27592 2.72881 3.27592 2.00002C3.27592 1.27122 2.68511 0.68042 1.95632 0.68042C1.22752 0.68042 0.636719 1.27122 0.636719 2.00002C0.636719 2.72881 1.22752 3.31962 1.95632 3.31962ZM7.67458 2.00002C7.67458 2.72881 7.08377 3.31962 6.35498 3.31962C5.62619 3.31962 5.03538 2.72881 5.03538 2.00002C5.03538 1.27122 5.62619 0.68042 6.35498 0.68042C7.08377 0.68042 7.67458 1.27122 7.67458 2.00002ZM12.0732 2.00002C12.0732 2.72881 11.4824 3.31962 10.7536 3.31962C10.0248 3.31962 9.43404 2.72881 9.43404 2.00002C9.43404 1.27122 10.0248 0.68042 10.7536 0.68042C11.4824 0.68042 12.0732 1.27122 12.0732 2.00002Z" fill="#8A6048"/>
+					</svg>
+			.filters-panel__btns
+				button.btn Показать 3
+				button.filters-panel__btn 
+					<svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 10" fill="none">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M8.8436 9.65663C9.13649 9.94953 9.61137 9.94953 9.90426 9.65663C10.1972 9.36374 10.1972 8.88887 9.90426 8.59597L6.36862 5.06033L9.90392 1.52502C10.1968 1.23213 10.1968 0.757258 9.90392 0.464364C9.61103 0.171471 9.13615 0.171471 8.84326 0.464364L5.30796 3.99967L1.90426 0.595974C1.61137 0.303082 1.13649 0.303081 0.843601 0.595974C0.550707 0.888868 0.550708 1.36374 0.843601 1.65663L4.2473 5.06033L0.843262 8.46436C0.550368 8.75726 0.550368 9.23213 0.843262 9.52502C1.13615 9.81792 1.61103 9.81792 1.90392 9.52502L5.30796 6.12099L8.8436 9.65663Z" fill="#ACACAC"/>
+					</svg>
+					span Очистить фильтр
 	.filters-panel__bottom
 		.filters-panel-btn
 			span Сортировка:
