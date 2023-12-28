@@ -1,7 +1,7 @@
 extends ../../layout/layout
 
 block vars
-    - var pageTitle = 'Умные часы Bambo-900'
+    - var pageTitle = 'Фирменная смесь Roast.by'
     - var pageBodyClass = ''
     - var dir = './'
 
@@ -12,19 +12,14 @@ block premain
             +breadcrumbs({
                 content2: 'Каталог',
                 href_content2: '#',
-                content3: 'Умные часы Bambo-900'
+                content3: 'Фирменная смесь Roast.by',
+                href_content3: '#',
             })
 
 block main
     include ../../components/product/product
     include ../../components/products-slider/products-slider
-    include ../../components/photogallery/photogallery
-    .container
-        a(href="#").return-btn
-            +icon('i-arrow-left')(width="16" height="10")
-            | Назад к списку
-    include ../../components/viewed-section/viewed-section
-    include ../../components/products-slider/products-slider
+    include ../../components/subscription/subscription
 
 
 
