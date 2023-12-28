@@ -1,16 +1,14 @@
 @import "src/assets/css/vars_mixins/vars_mixins";
 
 .products-slider {
-  padding-bottom: 40px;
-
   &__header {
-    margin-bottom: 25px;
+    margin-bottom: 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
     @media (max-width: $sm - 1) {
-      margin-bottom: 11px;
+      margin-bottom: 20px;
     }
   }
   &__slider {
@@ -28,6 +26,13 @@
       }
     }
   }
+  .splide__track {
+    margin: -20px -19px 0;
+    padding: 20px 19px 110px !important;
+    @media (max-width: $md) {
+      padding: 20px 19px 60px !important;
+    }
+  }
 }
 
 // 1199.75
@@ -41,13 +46,12 @@
 }
 // 600.75
 @media (max-width: $xs) {
-  .products-slider {
-    .splide__track {
-      margin: 0 -20px;
-      padding: 0 20px !important;
-    }
-    //.splide__slide {
-    //  width: 260px;
-    //}
-  }
+  // .products-slider {
+  //   .splide__track {
+  //     padding: 20px 19px 60px !important;
+  //   }
+  //   //.splide__slide {
+  //   //  width: 260px;
+  //   //}
+  // }
 }

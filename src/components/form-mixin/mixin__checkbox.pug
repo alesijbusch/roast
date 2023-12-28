@@ -4,7 +4,7 @@ mixin checkbox(args={})
 
 	.form-group(class= args.mod)
 		.checkbox(class= args.checkbox_mod)
-			input(type='checkbox', id= 'ID' + id, value=args.value, name=args.name)&attributes(attributes)
+			input(type='checkbox', id= 'ID' + id, value=args.value, name=args.name, required= args.required,)&attributes(attributes)
 			label(for= 'ID' + id)!= args.label
 				block
 		if (args.descr)

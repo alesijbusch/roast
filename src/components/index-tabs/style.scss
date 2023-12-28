@@ -2,10 +2,8 @@
 
 .index-tabs {
   padding-top: 110px;
-  padding-bottom: 110px;
   @media (max-width: $md) {
     padding-top: 60px;
-    padding-bottom: 60px;
   }
   &__header {
     margin-bottom: 31px;
@@ -20,9 +18,6 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-  }
-  .products-slider {
-    padding-bottom: 0;
   }
 }
 
@@ -81,8 +76,7 @@
 // 767.75
 @media (max-width: $sm) {
   .index-tabs {
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 60px;
     &__header {
       flex-wrap: wrap;
     }
@@ -115,6 +109,9 @@
       padding: 15px 24px !important;
       margin: -15px -24px !important;
       grid-gap: 0;
+    }
+    &__header {
+      margin-bottom: 20px;
     }
   }
 }

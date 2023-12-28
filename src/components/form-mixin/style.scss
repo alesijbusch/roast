@@ -12,42 +12,45 @@
 }
 
 .form-control-label {
-  color: #555;
-  color: var(--basic_text_black);
-  margin-bottom: 5px;
+  color: #000;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 23px;
   display: inline-block;
   &--small {
     font-size: 0.875rem;
     line-height: calc(1em + 7px);
   }
   .label-required {
-    color: #f25353;
-    margin-left: 0;
-    margin-left: 2px;
+    // color: #f25353;
+    // margin-left: 0;
+    // margin-left: 2px;
   }
 }
 .form-control {
   color: var(--input_color);
   box-shadow: none;
-  border: 1px solid $input_border_color;
-  border-color: var(--input_border_color);
-  height: 47px;
-  padding: 6px 14px;
-  background-color: $black_bg_black;
-  background-color: var(--input_bg_color);
+  border: none;
+  height: 50px;
+  padding: 13px 15px;
+  background-color: #f8f8f8;
   font-size: 16px;
   line-height: calc(1em + 4px);
-  border-radius: 8px;
+  // border-radius: 8px;
   position: relative;
   width: 100%;
+  // &[required="required"] {
+  //   border: 1px solid #fe7c86;
+  // }
 }
 textarea.form-control {
-  min-height: 117px;
+  min-height: 90px;
 }
 .form-control:focus {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.02) inset;
-  background-color: $basic_black;
-  border-color: $basic_black;
+  // background-color: $basic_black;
+  // border-color: $basic_black;
 
   & + .search__btns .btn--search {
     background-color: $basic_black;
@@ -405,7 +408,7 @@ textarea.form-control {
     display: block;
     height: 16px;
     width: 16px;
-    background-image: url("data:image/svg+xml,%3Csvg fill='%23ccc' width='13' height='13' viewBox='0 0 13 13' xmlns='http://www.w3.org/2000/svg' id='star-13-13'%3E%3Cpath d='M6.05163 0.288589C6.23504 -0.0830334 6.76496 -0.0830334 6.94837 0.288589L8.50624 3.44518C8.57907 3.59275 8.71986 3.69504 8.88271 3.7187L12.3662 4.22488C12.7763 4.28448 12.9401 4.78846 12.6433 5.07773L10.1226 7.53479C10.0048 7.64966 9.95102 7.81516 9.97884 7.97736L10.5739 11.4468C10.6439 11.8552 10.2152 12.1667 9.84842 11.9739L6.73267 10.3358C6.58701 10.2593 6.41299 10.2593 6.26733 10.3358L3.15159 11.9739C2.78478 12.1667 2.35606 11.8552 2.42612 11.4468L3.02117 7.97736C3.04899 7.81516 2.99521 7.64966 2.87737 7.53479L0.356683 5.07773C0.0599248 4.78846 0.22368 4.28448 0.63379 4.22488L4.1173 3.7187C4.28015 3.69504 4.42093 3.59275 4.49376 3.44518L6.05163 0.288589Z'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg fill='%23E3E3E3' width='13' height='13' viewBox='0 0 13 13' xmlns='http://www.w3.org/2000/svg' id='star-13-13'%3E%3Cpath d='M6.05163 0.288589C6.23504 -0.0830334 6.76496 -0.0830334 6.94837 0.288589L8.50624 3.44518C8.57907 3.59275 8.71986 3.69504 8.88271 3.7187L12.3662 4.22488C12.7763 4.28448 12.9401 4.78846 12.6433 5.07773L10.1226 7.53479C10.0048 7.64966 9.95102 7.81516 9.97884 7.97736L10.5739 11.4468C10.6439 11.8552 10.2152 12.1667 9.84842 11.9739L6.73267 10.3358C6.58701 10.2593 6.41299 10.2593 6.26733 10.3358L3.15159 11.9739C2.78478 12.1667 2.35606 11.8552 2.42612 11.4468L3.02117 7.97736C3.04899 7.81516 2.99521 7.64966 2.87737 7.53479L0.356683 5.07773C0.0599248 4.78846 0.22368 4.28448 0.63379 4.22488L4.1173 3.7187C4.28015 3.69504 4.42093 3.59275 4.49376 3.44518L6.05163 0.288589Z'/%3E%3C/svg%3E");
     background-size: contain;
 
     &:not(:last-child) {
@@ -418,7 +421,7 @@ textarea.form-control {
       left: 0;
       right: 0;
       bottom: 0;
-      background-image: url("data:image/svg+xml,%3Csvg fill='%23ffb45b' width='13' height='13' viewBox='0 0 13 13' xmlns='http://www.w3.org/2000/svg' id='star-13-13'%3E%3Cpath d='M6.05163 0.288589C6.23504 -0.0830334 6.76496 -0.0830334 6.94837 0.288589L8.50624 3.44518C8.57907 3.59275 8.71986 3.69504 8.88271 3.7187L12.3662 4.22488C12.7763 4.28448 12.9401 4.78846 12.6433 5.07773L10.1226 7.53479C10.0048 7.64966 9.95102 7.81516 9.97884 7.97736L10.5739 11.4468C10.6439 11.8552 10.2152 12.1667 9.84842 11.9739L6.73267 10.3358C6.58701 10.2593 6.41299 10.2593 6.26733 10.3358L3.15159 11.9739C2.78478 12.1667 2.35606 11.8552 2.42612 11.4468L3.02117 7.97736C3.04899 7.81516 2.99521 7.64966 2.87737 7.53479L0.356683 5.07773C0.0599248 4.78846 0.22368 4.28448 0.63379 4.22488L4.1173 3.7187C4.28015 3.69504 4.42093 3.59275 4.49376 3.44518L6.05163 0.288589Z'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg fill='%238a6048' width='13' height='13' viewBox='0 0 13 13' xmlns='http://www.w3.org/2000/svg' id='star-13-13'%3E%3Cpath d='M6.05163 0.288589C6.23504 -0.0830334 6.76496 -0.0830334 6.94837 0.288589L8.50624 3.44518C8.57907 3.59275 8.71986 3.69504 8.88271 3.7187L12.3662 4.22488C12.7763 4.28448 12.9401 4.78846 12.6433 5.07773L10.1226 7.53479C10.0048 7.64966 9.95102 7.81516 9.97884 7.97736L10.5739 11.4468C10.6439 11.8552 10.2152 12.1667 9.84842 11.9739L6.73267 10.3358C6.58701 10.2593 6.41299 10.2593 6.26733 10.3358L3.15159 11.9739C2.78478 12.1667 2.35606 11.8552 2.42612 11.4468L3.02117 7.97736C3.04899 7.81516 2.99521 7.64966 2.87737 7.53479L0.356683 5.07773C0.0599248 4.78846 0.22368 4.28448 0.63379 4.22488L4.1173 3.7187C4.28015 3.69504 4.42093 3.59275 4.49376 3.44518L6.05163 0.288589Z'/%3E%3C/svg%3E");
       background-size: contain;
       opacity: 0;
       transition: opacity 0.3s;
@@ -439,11 +442,13 @@ textarea.form-control {
   align-items: center;
 
   &__text {
-    margin-left: 20px;
-    padding: 0 0 0 30px;
-    color: #222;
-    color: var(--white_text_black);
-    font-size: 1rem;
+    margin-left: 10px;
+    padding: 0 0 0 25px;
+    color: #000;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 23px;
     position: relative;
 
     &:before {

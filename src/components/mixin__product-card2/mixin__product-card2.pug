@@ -76,10 +76,10 @@ mixin product-card2(args={})
 					.product-block__grid
 						.product-block__grid__item
 							.product-block__grid__item-title Кислотность
-							.product-block__grid__item-line.filled-1
+							.product-block__grid__item-line(data-percent="30")
 						.product-block__grid__item
 							.product-block__grid__item-title Плотность
-							.product-block__grid__item-line.filled-2
+							.product-block__grid__item-line(data-percent="50")
 				.product-block__body-right
 					.product-block__img-wrap
 						+lazy-img({
@@ -115,6 +115,14 @@ mixin product-card2(args={})
 			.product-block__action
 				.product-block__prices
 					.product-block__price 45.30&nbsp;руб.
+					if(args.no_price_old)
+						.product-block__price-old 
+							span 48.30&nbsp;руб.
+							.discount
+								<svg xmlns="http://www.w3.org/2000/svg" width="4" height="5" viewBox="0 0 4 5" fill="none">
+									<path d="M0.5 2.5L3.5 0.334936L3.5 4.66506L0.5 2.5Z" fill="#D64A4A"></path>
+								</svg> 
+								span -10%
 				.product-block__favorite(class= args.active && 'active' )
 					<svg width="21" height="21" viewBox="0 0 23 21" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path fill-rule="evenodd" clip-rule="evenodd" d="M11.5429 4.18922C9.61684 1.90451 6.40498 1.28993 3.99174 3.38204C1.5785 5.47414 1.23875 8.97204 3.13388 11.4464C4.70955 13.5036 9.47809 17.8425 11.041 19.2469C11.2158 19.404 11.3032 19.4825 11.4052 19.5134C11.4942 19.5403 11.5916 19.5403 11.6806 19.5134C11.7826 19.4825 11.87 19.404 12.0449 19.2469C13.6077 17.8425 18.3763 13.5036 19.9519 11.4464C21.8471 8.97204 21.5488 5.45213 19.0941 3.38204C16.6394 1.31194 13.469 1.90451 11.5429 4.18922Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

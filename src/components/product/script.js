@@ -1,38 +1,26 @@
-window.addEventListener('load', function () {
-	let thumbsSlidesCount = document.querySelectorAll('#thumbnail-carousel .splide__slide').length;
-	let mainCarousel = document.querySelector('#main-carousel');
-	if (mainCarousel) {
-		let main = new Splide('#main-carousel', {
-			type: 'slide',
-			pagination: false,
-			lazyLoad: true,
-			perPage: 1,
-			breakpoints: {
-				767: {
-					arrows: false,
-					pagination: true,
-                    speed: 600,
-				},
-			}
-		});
-		let thumbnails = new Splide('#thumbnail-carousel', {
-			gap: 4,
-			rewind: true,
-			pagination: false,
-			direction: 'ttb',
-			isNavigation: true,
-			lazyLoad: true,
-			// heightRatio: 1,
-			height: '100%',
-			perPage: 6,
-			drag: thumbsSlidesCount > 6,
-		});
+window.addEventListener("load", function () {
+  let main = new Splide("#main-carousel", {
+    type: "slide",
+    pagination: true,
+    lazyLoad: true,
+    perPage: 1,
+    perMove: 1,
+    breakpoints: {
+      767: {
+        speed: 600,
+      },
+    },
+  }).mount();
 
-		main.sync(thumbnails);
-		main.mount();
-		thumbnails.mount();
-	}
+  document
+    .querySelector(".product__section-info-close")
+    .addEventListener("click", () => {
+      const nodeToRemove = document.querySelector(".product__section-info");
+      nodeToRemove.remove();
+    });
 
-
-})
-
+  document.querySelectorAll(".grid-list__item-line").forEach((block) => {
+    const percent = block.getAttribute("data-percent");
+    block.style.background = `linear-gradient(90deg, black ${percent}%, #e3e3e3 ${percent}%)`;
+  });
+});
