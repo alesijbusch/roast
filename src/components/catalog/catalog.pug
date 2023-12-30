@@ -1,70 +1,75 @@
 +include-style('catalog')
++include-script('catalog')
 
 -
-    var items = [
-        {img: 'cat-1.png', title: 'Текстиль'},
-        {img: 'cat-2.png', title: 'Декор'},
-        {img: 'cat-3.png', title: 'Посуда Инвентарь'},
-        {img: 'cat-4.png', title: 'Инвентарь Инвентарь'},
-        {img: 'cat-5.png', title: 'Освещение'},
-    ]
+	var items = [
+		{img: 'cat-1.png', title: 'Ароматизированный чай'},
+		{img: 'cat-2.png', title: 'Зеленый чай'},
+		{img: 'cat-3.png', title: 'Белый чай'},
+		{img: 'cat-4.png', title: 'Красный чай'},
+		{img: 'cat-5.png', title: 'Индийский чай'},
+		{img: 'cat-6.png', title: 'Матча'},
+		{img: 'cat-7.png', title: 'Подарочный чай'},
+		{img: 'cat-8.png', title: 'Пуэр'},
+		{img: 'cat-9.png', title: 'Травы и добавки'},
+		{img: 'cat-2.png', title: 'Ароматизированный чай'},
+		{img: 'cat-3.png', title: 'Зеленый чай'},
+		{img: 'cat-4.png', title: 'Белый чай'},
+		{img: 'cat-1.png', title: 'Красный чай'},
+	]
 
 .catalog
-    .container
-        .catalog__inner
-            .top-description Интернет-магазин предлагает вам товары для дома, дачи и сада. Тут найдется инвентарь для полива растений, текстиль на любой случай и декор для создания уюта. С помощью этих товаров вы сможете выполнить работу, украсить комнату и позаботиться о садовых растениях без особого труда.
-            .catalog__sections
-                .catalog__sections-inner
-                    each item in items
-                        +ics-item(item)
-            include ../catalog-filters/catalog-filters
-        .main-row
-            .main-row__aside
-                .sticky-block
-                    include ../slide-block/slide-block-1
-            .main-row__main
-                include ../filters-panel/filters-panel
-                .catalog__grid
-                    each item in [1,2,3,4,5]
-                        +product-card({
-                            title: 'Умные часы Bambo-900',
-                            in_basket: true,
-                            timer: '2023-06-16 14:06:00',
-                            badges: 1,
-                            no_rating: true,
-                            offers: true
-                        })
-                        +product-card({
-                            title: 'Классическая помада Fior 133 Беспечный розовый',
-                            in_basket: false,
-                            timer: false,
-                            badges: 2,
-                        })
-                        +product-card({
-                            title: 'Обеденная тарелка Shouldplat',
-                            in_basket: false,
-                            timer: '2023-01-16 14:06:00',
-                            badges: 3,
-                        })
-                        +product-card({
-                            title: 'Обеденная тарелка Shouldplat',
-                            in_basket: false,
-                            timer: false,
-                            badges: 2,
-                        })
-                        +product-card({
-                            title: 'Умные часы Bambo-900',
-                            in_basket: true,
-                            timer: '2023-01-16 14:06:00',
-                            badges: 1,
-                        })
-                .catalog__more
-                    .btn.btn-transparent.btn-wave Загрузить еще
-                    br
-                    br
-                    .btn.btn-transparent.btn-wave.preloader Загрузить еще
-                .catalog__pagination
-                    include ../pagination/pagination
-                .catalog__info
-                    p Для обустройства дома и дачи найдутся подходящее постельное белье, элементы интерьера и кухонный текстиль. Товары в нашем каталоге сортируются с помощью «умного фильтра» — вы сможете найти все нужное в считанные минуты. На страницах сайта вы увидите описание товаров, технические характеристики и даже инструкции по эксплуатации.
-                    p Получить и оплатить заказ можно в пунктах выдачи товаров или при доставке курьером. Возникли вопросы? Напишите нам в онлайн-чат или свяжитесь по телефону. Удачных покупок!
+	.container
+		.catalog__inner
+			.catalog__sections
+				.catalog__sections-inner#catalog-ics__list-js
+					each item in items
+						+ics-item(item)
+					.ics-item__more 
+						span Еще
+						<svg xmlns="http://www.w3.org/2000/svg" width="13" height="4" viewBox="0 0 13 4" fill="none">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M1.95632 3.31962C2.68511 3.31962 3.27592 2.72881 3.27592 2.00002C3.27592 1.27122 2.68511 0.68042 1.95632 0.68042C1.22752 0.68042 0.636719 1.27122 0.636719 2.00002C0.636719 2.72881 1.22752 3.31962 1.95632 3.31962ZM7.67458 2.00002C7.67458 2.72881 7.08377 3.31962 6.35498 3.31962C5.62619 3.31962 5.03538 2.72881 5.03538 2.00002C5.03538 1.27122 5.62619 0.68042 6.35498 0.68042C7.08377 0.68042 7.67458 1.27122 7.67458 2.00002ZM12.0732 2.00002C12.0732 2.72881 11.4824 3.31962 10.7536 3.31962C10.0248 3.31962 9.43404 2.72881 9.43404 2.00002C9.43404 1.27122 10.0248 0.68042 10.7536 0.68042C11.4824 0.68042 12.0732 1.27122 12.0732 2.00002Z" fill="#8A6048"/>
+						</svg>	
+			include ../catalog-filters/catalog-filters
+		.main-row
+			//- .main-row__aside
+			//- 	.sticky-block
+			//- 		include ../slide-block/slide-block-1
+			.main-row__main
+				include ../filters-panel/filters-panel--sort
+				.catalog__grid.catalog__grid_product-card
+					each item in [1,2,3,4]
+						+product-card({
+							title: 'Молочный Улун',
+							in_basket: true,
+							badges: 5,
+							offers: true,
+							no_price_old: true,
+							active: true,
+						})
+						+product-card({
+							title: 'Молочный Улун',
+							in_basket: false,
+							badges: 1,
+						})
+						+product-card({
+							title: 'Молочный Улун',
+							in_basket: true,
+							badges: 5,
+							offers: true,
+							no_price_old: true,
+							active: true,
+						})
+						+product-card({
+							title: 'Молочный Улун',
+							in_basket: false,
+							timer: false,
+							badges: 1,
+						})
+				.catalog__bottom        
+					.catalog__more
+						.btn.btn-wave Загрузить еще
+							span 12
+						.btn.btn-transparent.btn-wave.preloader Загрузить еще
+					.catalog__pagination
+						include ../pagination/pagination
