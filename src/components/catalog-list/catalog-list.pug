@@ -1,30 +1,131 @@
 +include-style('catalog-list')
++include-script('catalog-list')
 
 -
-    var items=[
-        {img:'cat-list.png',title:'Товары для дома и дачи'},
-        {img:'cat-list.png',title:'Строительство и ремонт'},
-        {img:'cat-list.png',title:'Электроника'},
-        {img:'cat-list.png',title:'Одежда'},
-        {img:'cat-list.png',title:'Обувь'},
-        {img:'cat-list.png',title:'Красота и здоровье'},
-        {img:'cat-list.png',title:'Спорт и отдых'},
-        {img:'cat-list.png',title:'Автотовары'},
-        {img:'cat-list.png',title:'Хобби и творчество'},
-        {img:'cat-list.png',title:'Аксессуары'},
-        {img:'cat-list.png',title:'Туризм и рыбалка'},
-        {img:'cat-list.png',title:'Детские товары'},
-        {img:'cat-list.png',title:'Мебель'},
-        {img:'cat-list.png',title:'Товары для животных'},
-        {img:'cat-list.png',title:'Климатическая техника'},
-    ]
+	//- var items=[
+	//- 	{img:'catalog-list-1.png',title:'Кофе', text: "У нас много вкусного кофе, а еще есть", menu: ['Свежеобжаренный', 'Зеленый', 'Дрип-пакеты']}, 
+	//- 	{img:'catalog-list-2.png',title:'Чай', text: "У нас много вкусного чая, а еще есть", menu: ['Ароматизированный чай', 'Белый чай', 'Черный чай', 'Матча']},
+	//- 	{img:'catalog-list-3.png',title:'Аксессуары', text: "У нас много аксессуаров, среди них"},
+	//- 	{img:'catalog-list-4.png',title:'Оборудование', text: "Большой выбор оборудования в интернет-магазине ROAST.BY"},
+	//- 	{img:'catalog-list-5.png',title:'Сиропы', text: "Большой выбор вкусных сиропов в интернет-магазине ROAST.BY"},
+	//- ],
+
 
 .container
-    .catalog-list
-        each item in items
-            a(href='#').catalog-list__item
-                +lazy-img({
-                    wrap_mod: 'catalog-list__img',
-                    img: item.img
-                })
-                .catalog-list__title=item.title
+	.catalog-list
+		.catalog-list__item
+			+lazy-img({
+				wrap_mod: 'catalog-list__img',
+				img: 'catalog-list-1.png'
+			})
+			.catalog-list__item-body
+				a(href='#').catalog-list__title Кофе
+				.catalog-list__text У нас много вкусного кофе, а еще есть
+				ul.catalog-list__menu.catalog-list__menu-js 
+					li.catalog-list__menu-item
+						a(href='#') Свежеобжаренный
+					li.catalog-list__menu-item
+						a(href='#') Дрип-пакеты
+					li.catalog-list__menu-item
+						a(href='#') Зеленый
+					li.catalog-list__menu-item
+						a(href='#') Подписки
+					li.catalog-list__menu-item
+						a(href='#') Капсулы
+					li.catalog-list__menu-more
+						span Еще
+						<svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6" fill="none">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M1.28033 0.987309C0.987437 0.694416 0.512563 0.694416 0.21967 0.987309C-0.0732233 1.2802 -0.0732233 1.75508 0.21967 2.04797L3.15097 4.97927C3.16106 4.99065 3.17155 5.0018 3.18245 5.0127C3.356 5.18625 3.59345 5.25696 3.81907 5.22484C3.97482 5.20303 4.12504 5.13223 4.24482 5.01246C4.25425 5.00302 4.26337 4.9934 4.2722 4.98361L7.20759 2.04821C7.50049 1.75532 7.50049 1.28045 7.20759 0.987553C6.9147 0.69466 6.43983 0.69466 6.14693 0.987553L3.71375 3.42073L1.28033 0.987309Z" fill="#8A6048"/>
+						</svg>			
+		.catalog-list__item
+			+lazy-img({
+				wrap_mod: 'catalog-list__img',
+				img: 'catalog-list-2.png'
+			})
+			.catalog-list__item-body
+				a(href='#').catalog-list__title Чай
+				.catalog-list__text У нас много вкусного чая, а еще есть
+				ul.catalog-list__menu.catalog-list__menu-js 
+					li.catalog-list__menu-item
+						a(href='#') Ароматизированный чай
+					li.catalog-list__menu-item
+						a(href='#') Индийский чай
+					li.catalog-list__menu-item
+						a(href='#') Белый чай
+					li.catalog-list__menu-item
+						a(href='#') Красный чай
+					li.catalog-list__menu-item
+						a(href='#') Черный чай
+					li.catalog-list__menu-item
+						a(href='#') Матча
+					li.catalog-list__menu-item
+						a(href='#') Черный чай
+					li.catalog-list__menu-item
+						a(href='#') Матча	
+					li.catalog-list__menu-more
+						span Еще
+						<svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6" fill="none">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M1.28033 0.987309C0.987437 0.694416 0.512563 0.694416 0.21967 0.987309C-0.0732233 1.2802 -0.0732233 1.75508 0.21967 2.04797L3.15097 4.97927C3.16106 4.99065 3.17155 5.0018 3.18245 5.0127C3.356 5.18625 3.59345 5.25696 3.81907 5.22484C3.97482 5.20303 4.12504 5.13223 4.24482 5.01246C4.25425 5.00302 4.26337 4.9934 4.2722 4.98361L7.20759 2.04821C7.50049 1.75532 7.50049 1.28045 7.20759 0.987553C6.9147 0.69466 6.43983 0.69466 6.14693 0.987553L3.71375 3.42073L1.28033 0.987309Z" fill="#8A6048"/>
+						</svg>
+		.catalog-list__item
+			+lazy-img({
+				wrap_mod: 'catalog-list__img',
+				img: 'catalog-list-3.png'
+			})
+			.catalog-list__item-body
+				a(href='#').catalog-list__title Аксессуары
+				.catalog-list__text У нас много аксессуаров, среди них
+				ul.catalog-list__menu.catalog-list__menu-js  
+					li.catalog-list__menu-item
+						a(href='#') Ручные кофемолки
+					li.catalog-list__menu-item
+						a(href='#') Весы
+					li.catalog-list__menu-item
+						a(href='#') Фильтры
+					li.catalog-list__menu-item
+						a(href='#') Воронки
+					li.catalog-list__menu-item
+						a(href='#') Кофеварка
+					li.catalog-list__menu-item
+						a(href='#') Турки
+					li.catalog-list__menu-item
+						a(href='#') Кофеварка
+					li.catalog-list__menu-item
+						a(href='#') Турки	
+					li.catalog-list__menu-more
+						span Еще
+						<svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6" fill="none">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M1.28033 0.987309C0.987437 0.694416 0.512563 0.694416 0.21967 0.987309C-0.0732233 1.2802 -0.0732233 1.75508 0.21967 2.04797L3.15097 4.97927C3.16106 4.99065 3.17155 5.0018 3.18245 5.0127C3.356 5.18625 3.59345 5.25696 3.81907 5.22484C3.97482 5.20303 4.12504 5.13223 4.24482 5.01246C4.25425 5.00302 4.26337 4.9934 4.2722 4.98361L7.20759 2.04821C7.50049 1.75532 7.50049 1.28045 7.20759 0.987553C6.9147 0.69466 6.43983 0.69466 6.14693 0.987553L3.71375 3.42073L1.28033 0.987309Z" fill="#8A6048"/>
+						</svg>
+		.catalog-list__item
+			+lazy-img({
+				wrap_mod: 'catalog-list__img',
+				img: 'catalog-list-4.png'
+			})
+			.catalog-list__item-body
+				a(href='#').catalog-list__title Оборудование
+				.catalog-list__text Большой выбор оборудования в интернет-магазине ROAST.BY
+				ul.catalog-list__menu.catalog-list__menu-js  
+					li.catalog-list__menu-item
+						a(href='#') Свежеобжаренный
+					li.catalog-list__menu-item
+						a(href='#') Зеленый
+					li.catalog-list__menu-more
+						span Еще
+						<svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6" fill="none">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M1.28033 0.987309C0.987437 0.694416 0.512563 0.694416 0.21967 0.987309C-0.0732233 1.2802 -0.0732233 1.75508 0.21967 2.04797L3.15097 4.97927C3.16106 4.99065 3.17155 5.0018 3.18245 5.0127C3.356 5.18625 3.59345 5.25696 3.81907 5.22484C3.97482 5.20303 4.12504 5.13223 4.24482 5.01246C4.25425 5.00302 4.26337 4.9934 4.2722 4.98361L7.20759 2.04821C7.50049 1.75532 7.50049 1.28045 7.20759 0.987553C6.9147 0.69466 6.43983 0.69466 6.14693 0.987553L3.71375 3.42073L1.28033 0.987309Z" fill="#8A6048"/>
+						</svg>
+		.catalog-list__item
+			+lazy-img({
+				wrap_mod: 'catalog-list__img',
+				img: 'catalog-list-5.png'
+			})
+			.catalog-list__item-body
+				a(href='#').catalog-list__title Сиропы
+				.catalog-list__text Большой выбор вкусных сиропов в интернет-магазине ROAST.BY
+				ul.catalog-list__menu#catalog-list__menu-js  
+					li.catalog-list__menu-more
+						span Еще
+						<svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6" fill="none">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M1.28033 0.987309C0.987437 0.694416 0.512563 0.694416 0.21967 0.987309C-0.0732233 1.2802 -0.0732233 1.75508 0.21967 2.04797L3.15097 4.97927C3.16106 4.99065 3.17155 5.0018 3.18245 5.0127C3.356 5.18625 3.59345 5.25696 3.81907 5.22484C3.97482 5.20303 4.12504 5.13223 4.24482 5.01246C4.25425 5.00302 4.26337 4.9934 4.2722 4.98361L7.20759 2.04821C7.50049 1.75532 7.50049 1.28045 7.20759 0.987553C6.9147 0.69466 6.43983 0.69466 6.14693 0.987553L3.71375 3.42073L1.28033 0.987309Z" fill="#8A6048"/>
+						</svg>
