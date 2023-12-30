@@ -1,31 +1,31 @@
 let productTileCardInit = () => {
   // product hover
-  let productCards = document.querySelectorAll(".product-card-wrap");
-  productCards.forEach((item) => {
-    item.addEventListener("mouseenter", function (event) {
-      let target = event.target,
-        height = target.getBoundingClientRect().height,
-        targetMiddle = target.querySelector(".product-card__info"),
-        targetMiddleHeight = targetMiddle.getBoundingClientRect().height;
+  // let productCards = document.querySelectorAll(".product-card-wrap");
+  // productCards.forEach((item) => {
+  //   item.addEventListener("mouseenter", function (event) {
+  //     let target = event.target,
+  //       height = target.getBoundingClientRect().height,
+  //       targetMiddle = target.querySelector(".product-card__info"),
+  //       targetMiddleHeight = targetMiddle.getBoundingClientRect().height;
 
-      target.setAttribute("style", `height: ${height}px;`);
-      targetMiddle.setAttribute("style", `height: ${targetMiddleHeight}px;`);
-      target.classList.add("hover");
-    });
-    item.addEventListener("mouseleave", function (event) {
-      productCards.forEach((card) => {
-        card.classList.remove("hover");
-        card.setAttribute("style", `height: auto;`);
-        card
-          .querySelector(".product-card__info")
-          .setAttribute("style", `height: auto;`);
-      });
-    });
+  //     target.setAttribute("style", `height: ${height}px;`);
+  //     targetMiddle.setAttribute("style", `height: ${targetMiddleHeight}px;`);
+  //     target.classList.add("hover");
+  //   });
+  //   item.addEventListener("mouseleave", function (event) {
+  //     productCards.forEach((card) => {
+  //       card.classList.remove("hover");
+  //       card.setAttribute("style", `height: auto;`);
+  //       card
+  //         .querySelector(".product-card__info")
+  //         .setAttribute("style", `height: auto;`);
+  //     });
+  //   });
 
-    // item.addEventListener('click', function (){
-    //     this.classList.toggle('clicked')
-    // })
-  });
+  //   // item.addEventListener('click', function (){
+  //   //     this.classList.toggle('clicked')
+  //   // })
+  // });
 
   // images gallery
   let allProductImages = document.querySelectorAll(".product-card__image");
