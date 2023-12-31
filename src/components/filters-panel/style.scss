@@ -144,7 +144,79 @@
   &__bottom {
     padding: 35px 0 15px;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    @media (max-width: $sm) {
+      gap: 0;
+      padding: 30px 0 20px;
+      border-bottom: 1px dashed #ddd;
+    }
+    .filters-panel-btn {
+      @media (max-width: $sm) {
+        display: none;
+      }
+    }
+  }
+  &__sorts {
+    display: flex;
+    gap: 20px;
+    @media (max-width: $sm) {
+      display: none;
+    }
+  }
+  &__sort {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    cursor: pointer;
+    span {
+      color: #acacac;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+    &-active {
+      span {
+        color: #000;
+      }
+      .filters-panel__sort-icon--up {
+        path {
+          &:first-child {
+            fill: #000;
+          }
+        }
+      }
+      .filters-panel__sort-icon--down {
+        path {
+          &:last-child {
+            fill: #000;
+          }
+        }
+      }
+    }
+  }
+  &__sorts-mob {
+    display: none;
+    @media (max-width: $sm) {
+      display: block;
+    }
+    .select__header {
+      padding: 4px 11px 4px 0;
+    }
+    .select__body {
+      right: auto;
+      left: 0;
+      max-width: 450px;
+      min-width: 225px;
+    }
+    .select__body-list li {
+      font-size: 15px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      padding-bottom: 10px;
+    }
   }
 }
 .filter-item {
@@ -517,7 +589,9 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-
+      padding: 15px 0;
+      border-top: 1px dashed #ddd;
+      border-bottom: 1px dashed #ddd;
       .select {
         margin-left: 28px;
       }
