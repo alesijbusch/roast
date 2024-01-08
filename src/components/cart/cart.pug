@@ -10,410 +10,397 @@
 //- br
 //- br
 mixin cart-product(args={})
-	.cart-product
-		.cart-product__image
-			+lazy-img({
-				img: args.img,
-				placeholder: pixel,
-				img_mod: '',
-				wrap_mod: '',
-				link: false,
-				aria_label: false,
-			})
-		.cart-product__content
-			.cart-product__badges
-				.badge.badge--red Хит
-				.badge.badge--yellow Акция
-				.badge.badge--purple Советуем
-			.cart-product__title= args.title
-			.cart-product__type
-				.cart-product__type-prop Тип цены:
-				.cart-product__type-val Розничная цена
-		.cart-product__counter
-			.counter.btn-wave
-				span.counter__action.counter__action--minus
-				input.counter__count(type="text" value="1" maxlength="6")
-				span.counter__action.counter__action--plus
-			.cart-product__counter-value 980 ₽/шт
-		.cart-product__price
-			.price= args.price
-		.cart-product__control
-			.cart-product__control-item 
-				+icon('i-favorite')(style="width:18px; height:18px")
-			.cart-product__control-item 
-				+icon('i-remove')(style="width:18px; height:18px")
+    .cart-product
+        .cart-product__image
+            +lazy-img({
+                img: args.img,
+                placeholder: pixel,
+                img_mod: '',
+                wrap_mod: '',
+                link: false,
+                aria_label: false,
+            })
+        .cart-product__content
+            .cart-product__title= args.title
+        .cart-product__prop
+            .cart-product__type
+                .cart-product__type-prop Масса:
+                .cart-product__type-val.active 100
+                .cart-product__type-val 2000
+            .cart-product__type
+                .cart-product__type-prop Степень помола:
+                .cart-product__type-val.active Не обжаривать
+        .cart-product__price
+            .price= args.cost
+            if(args.old)
+                .price--old= args.old
+
+        .cart-product__counter
+            .counter.btn-wave
+                span.counter__action.counter__action--minus
+                input.counter__count(type="text" value="1" maxlength="6")
+                span.counter__action.counter__action--plus
+
+        .cart-product__totalprice
+            .price= args.price
+            if(args.old)
+                .price--old= args.old
+        .cart-product__control
+            .cart-product__control-item
+                +icon('i-close')(style="width:18px; height:18px")
 .cart
-	.rowblock
-		.rowblock__left
-			.cart-products
-				+cart-product({
-					img: 'product-gallery-main-1.jpg',
-					title: 'Алекто. Диван 2-местный',
-					price: '12 740 ₽'
-				})
-				+cart-product({
-					img: 'product-gallery-main-1.jpg',
-					title: 'Алекто. Диван 2-местный',
-					price: '12 740 ₽'
-				})
-				+cart-product({
-					img: 'product-gallery-main-1.jpg',
-					title: 'Алекто. Диван 2-местный Алекто. Ди н 2-местный Алекто. Диван2местный Алекто. Диван 2-местныйsАлекто. Диван 2-местный Алекто. Диван 2-местный',
-					price: '12 740 12 740 12 74 ₽'
-				})
-			form.cart-form
-				.cart-form__block
-					.cart-form__header
-						.cart-form__title Покупатель
-						.person-type
-							+radio({
-								mod: 'form-group--person-type'
-							})(checked name="person-type")
-								.person-type__label Физическое лицо
-							+radio({
-								mod: 'form-group--person-type'
-							})( name="person-type")
-								.person-type__label Юридическое лицо
-
-					.cart-form__section
-						.cart-form__form
-							.cart-form__field.cart-form__field--2
-								+input({
-									label: 'Фамилия Имя Отчество',
-									fg_mod: 'form-group--margin',
-									label_mod: 'form-control-label--small',
-									type: 'text',
-									name: false,
-									small: false,
-									placeholder: '',
-									required: true,
-									validation: {
-										message: 'Заполните поле',
-										regexp: 'Неверный формат',
-										emailaddress: ' ',
-										identical: false
-									}
-								})
-							.cart-form__field.cart-form__field--2
-								+input({
-									label: 'Фамилия Имя Отчество',
-									fg_mod: 'form-group--margin',
-									label_mod: 'form-control-label--small',
-									type: 'text',
-									name: false,
-									small: false,
-									placeholder: '',
-									required: true,
-									validation: {
-										message: 'Заполните поле',
-										regexp: 'Неверный формат',
-										emailaddress: ' ',
-										identical: false
-									}
-								})
-							.cart-form__field.cart-form__field--2
-								+input({
-									label: 'Фамилия Имя Отчество',
-									fg_mod: 'form-group--margin',
-									label_mod: 'form-control-label--small',
-									type: 'text',
-									name: false,
-									small: false,
-									placeholder: '',
-									required: true,
-									validation: {
-										message: 'Заполните поле',
-										regexp: 'Неверный формат',
-										emailaddress: ' ',
-										identical: false
-									}
-								})
-							.cart-form__field.cart-form__field--2
-								+input({
-									label: 'Фамилия Имя Отчество',
-									fg_mod: 'form-group--margin',
-									label_mod: 'form-control-label--small',
-									type: 'text',
-									name: false,
-									small: false,
-									placeholder: '',
-									required: true,
-									validation: {
-										message: 'Заполните поле',
-										regexp: 'Неверный формат',
-										emailaddress: ' ',
-										identical: false
-									}
-								})
-							.cart-form__field.cart-form__field--2
-								+input({
-									label: 'Фамилия Имя Отчество',
-									fg_mod: 'form-group--margin',
-									label_mod: 'form-control-label--small',
-									type: 'text',
-									name: false,
-									small: false,
-									placeholder: '',
-									required: true,
-									validation: {
-										message: 'Заполните поле',
-										regexp: 'Неверный формат',
-										emailaddress: ' ',
-										identical: false
-									}
-								})
-							.cart-form__field.cart-form__field--2
-								+input({
-									label: 'Фамилия Имя Отчество',
-									fg_mod: 'form-group--margin',
-									label_mod: 'form-control-label--small',
-									type: 'text',
-									name: false,
-									small: false,
-									placeholder: '',
-									required: true,
-									validation: {
-										message: 'Заполните поле',
-										regexp: 'Неверный формат',
-										emailaddress: ' ',
-										identical: false
-									}
-								})
-							.cart-form__field.cart-form__field--2
-								+input({
-									label: 'Фамилия Имя Отчество',
-									fg_mod: 'form-group--margin',
-									label_mod: 'form-control-label--small',
-									type: 'text',
-									name: false,
-									small: false,
-									placeholder: '',
-									required: true,
-									validation: {
-										message: 'Заполните поле',
-										regexp: 'Неверный формат',
-										emailaddress: ' ',
-										identical: false
-									}
-								})
-						.cart-form__more
-							button.btn Продолжить
-				.cart-form__block(x-data="{chooseCity:false}")
-					.cart-form__header
-						.cart-form__title Способ доставки в Челябинск
-						.cart-form__city-picker(@click="chooseCity = !chooseCity") Другой город
-					.cart-form__section
-						.cart-city-picker(
-							x-show="chooseCity"
-							x-transition:enter-start="start"
-							x-transition:leave-end="start"
-							)
-							+input({
-								fg_mod: 'form-group--margin',
-								label_mod: 'form-control-label--small',
-								type: 'text',
-								name: false,
-								small: false,
-								placeholder: 'Введите название',
-								required: true,
-								validation: {
-									message: 'Заполните поле',
-									regexp: 'Неверный формат',
-									emailaddress: ' ',
-									identical: false
-								}
-							})
-							.cart-city-picker__suggestions
-								.cart-city-picker__suggestions-item.cart-form__city-picker Москва
-								.cart-city-picker__suggestions-item.cart-form__city-picker Санкт-Петербург
-								.cart-city-picker__suggestions-item.cart-form__city-picker Екатеринбург
-						.cart-form__form
-							.cart-form-radio.cart-form-radio--2
-								+radio({
-									mod: 'cart-form-radio__header'
-								})(name="delivety-type")
-									.cart-form-radio__label Почта России (EMS)
-								.cart-form-radio__body
-									.cart-form__delivery-cost 1 415.80 ₽
-									.cart-form__delivery-period от 2 до 3 раб. дней
-									.cart-form__delivery-descr Экспресс-отправления EMS — это самый быстрый и удобный способ доставить письмо или посылку по России. Курьер заберет отправление в удобном для вас месте и доставит его адресату домой или в офис. Экспресс-отправление является регистрируемым, его доставку и вручение можно отследить с помощью трек-номера. В городах, где нет курьерской службы EMS, отправить и получить экспресс-отправление можно через отделение Почты России
-							.cart-form-radio.cart-form-radio--2
-								+radio({
-									mod: 'cart-form-radio__header'
-								})(name="delivety-type")
-									.cart-form-radio__label Самовывоз
-								.cart-form-radio__body
-									.cart-form__delivery-cost бесплатно
-							.cart-form-radio.cart-form-radio--2
-								+radio({
-									mod: 'cart-form-radio__header'
-								})(name="delivety-type")
-									.cart-form-radio__label Почта России (EMS)
-								.cart-form-radio__body
-									.cart-form__delivery-cost 1 415.80 ₽
-									.cart-form__delivery-period от 2 до 3 раб. дней
-									.cart-form__delivery-descr Экспресс-отправления EMS — это самый быстрый и удобный способ доставить письмо или посылку по России. Курьер заберет отправление в удобном для вас месте и доставит его адресату домой или в офис. Экспресс-отправление является регистрируемым, его доставку и вручение можно отследить с помощью трек-номера. В городах, где нет курьерской службы EMS, отправить и получить экспресс-отправление можно через отделение Почты России
-							.cart-form-radio.cart-form-radio--2
-								+radio({
-									mod: 'cart-form-radio__header'
-								})(name="delivety-type")
-									.cart-form-radio__label Самовывоз
-								.cart-form-radio__body
-									.cart-form__delivery-cost бесплатно
-									.cart-form-selfdelivery
-										.cart-form-selfdelivery__title Выберите дополнительные услуги
-										+input({
-											label: 'Грузчики (чел./час.) (200 ₽)',
-											fg_mod: 'form-group--margin',
-											label_mod: 'form-control-label--small',
-											type: 'text',
-											name: false,
-											small: false,
-											placeholder: '',
-											required: true,
-											validation: {
-												message: 'Заполните поле',
-												regexp: 'Неверный формат',
-												emailaddress: ' ',
-												identical: false
-											}
-										})
-											.form-group__description  Поможем погрузить Ваш заказ
-										+checkbox({
-											descr: 'Поможем погрузить Ваш заказ'
-										})
-											span Подарочная упаковка (100 ₽)
-										.cart-form-selfdelivery__descr Вы можете <b>самостоятельно</b> забрать заказ из нашего магазина.
-						.cart-form__additional
-							.cart-form__subtitle Выберите адрес доставки
-							.cart-form__form
-								.cart-form__field
-									+input({
-										label: 'Фамилия Имя Отчество',
-										fg_mod: 'form-group--margin',
-										label_mod: 'form-control-label--small',
-										type: 'text',
-										name: false,
-										small: false,
-										placeholder: '',
-										required: true,
-										validation: {
-											message: 'Заполните поле',
-											regexp: 'Неверный формат',
-											emailaddress: ' ',
-											identical: false
-										}
-									})
-								.cart-form__field
-									+input({
-										label: 'Фамилия Имя Отчество',
-										fg_mod: 'form-group--margin',
-										label_mod: 'form-control-label--small',
-										type: 'text',
-										name: false,
-										small: false,
-										placeholder: '',
-										required: true,
-										validation: {
-											message: 'Заполните поле',
-											regexp: 'Неверный формат',
-											emailaddress: ' ',
-											identical: false
-										}
-									})
-								.cart-form__field
-									+input({
-										label: 'Фамилия Имя Отчество',
-										fg_mod: 'form-group--margin',
-										label_mod: 'form-control-label--small',
-										type: 'text',
-										name: false,
-										small: false,
-										placeholder: '',
-										required: true,
-										validation: {
-											message: 'Заполните поле',
-											regexp: 'Неверный формат',
-											emailaddress: ' ',
-											identical: false
-										}
-									})
-						.cart-form__more
-							button.btn Продолжить
-				.cart-form__block
-					.cart-form__header
-						.cart-form__title Способ оплаты
-					.cart-form__section
-						.cart-form__form
-							.cart-form-radio.cart-form-radio--3
-								+radio({
-									mod: 'cart-form-radio__header'
-								})(name="payment-type")
-									.cart-form-radio__label Наличный расчет
-							.cart-form-radio.cart-form-radio--3
-								+radio({
-									mod: 'cart-form-radio__header'
-								})(name="payment-type")
-									.cart-form-radio__label Яндекс.Деньги
-							.cart-form-radio.cart-form-radio--3
-								+radio({
-									mod: 'cart-form-radio__header'
-								})(name="payment-type")
-									.cart-form-radio__label Банковский перевод
-						.cart-form__more
-							button.btn Продолжить
+    .rowblock
+        .rowblock__left
+            .cart-form__block(x-data="{expand: true}")
+                .cart-form__header
+                    .cart-form__title Товары в корзине
+                    .cart-form__toggler(@click="expand=!expand")
+                        span
 
 
-		.rowblock__right
-			.cart-checkout-sticky
-				.cart-checkout-wrap
-					.cart-checkout
-						.cart-checkout__total-line.cart-checkout__total-line--totals
-							.cart-checkout__d Итого:
-							.cart-checkout__t 14 155.80 ₽
-						.cart-checkout__total-line
-							.cart-checkout__d Товаров на:
-							.cart-checkout__t 12 740 ₽
-						.cart-checkout__total-line
-							.cart-checkout__d Доставка:
-							.cart-checkout__t 1 415.80 ₽
-						.cart-checkout__promo
-							+input({
-								fg_mod: '',
-								placeholder:'Есть промокод?',
-								type: 'text',
-								name: false,
-								small: false,
-								required: true,
-								validation: {
-									message: 'Заполните поле',
-									regexp: 'Неверный формат',
-									emailaddress: ' ',
-									identical: false
-								}
-							})
-							button.cart-checkout__promo-submit
-						.cart-checkout__promo-list
-							.cart-checkout__promo-item
-								.cart-checkout__promo-item-name dsfsdf dsfs aad
-								.cart-checkout__promo-item-status
-									span.outin-stock не найден
-									.cart-checkout__promo-item-remove
-										+icon('i-close')(style="width:10px; height:10px")
-							.cart-checkout__promo-item
-								.cart-checkout__promo-item-name.in-stock dsfsdf
-								.cart-checkout__promo-item-status
-									span.in-stock найден
-									.cart-checkout__promo-item-remove
-										+icon('i-close')(style="width:10px; height:10px")
-						.cart-checkout__scroll-info
-							.cart-checkout__scroll-info-title Доставка:
-							.cart-checkout__scroll-info-value 
-								span Почта России (EMS)
-						.cart-checkout__delivery-info от 1 до 2 раб. дней
-						.cart-checkout__scroll-info
-							.cart-checkout__scroll-info-title Оплата:
-							.cart-checkout__scroll-info-value 
-								span Наличный расчет
-						.cart-checkout__submit
-							.btn.btn--primary Оформить заказ
+
+                .cart-products.cart-form__section
+                    +cart-product({
+                        img: 'product.png',
+                        title: 'Танзания Мбинга Килиманджаро АА',
+                        price: '12 740 ₽',
+                        cost: '154.12 руб/шт'
+                    })
+                    +cart-product({
+                        img: 'product.png',
+                        title: 'Танзания Мбинга Килиманджаро АА',
+                        old: '145.34 руб.',
+                        price: '123.74 руб.',
+                        cost: '154.12 руб/шт'
+                    })
+                    +cart-product({
+                        img: 'product-tea.png',
+                        title: 'Матча (Маття) Изумруд',
+                        price: '123 руб.',
+                        cost: '154.12 руб/шт'
+                    })
+
+            form.cart-form
+                .cart-form__block(x-data="{expand: true}")
+                    .cart-form__header
+                        .cart-form__title Покупатель
+                        .person-type
+                            +radio({
+                                mod: 'form-group--person-type'
+                            })(checked name="person-type")
+                                .person-type__label Физическое лицо
+                            +radio({
+                                mod: 'form-group--person-type'
+                            })( name="person-type")
+                                .person-type__label Юридическое лицо
+                        .cart-form__toggler(@click="expand=!expand")
+                            span
+
+                    .cart-form__section
+                        .cart-form__form
+                            .cart-form__field.cart-form__field--2
+                                +input({
+                                    label: 'Ф.И.О.',
+                                    fg_mod: 'form-group--margin',
+                                    label_mod: 'form-control-label--small',
+                                    type: 'text',
+                                    name: false,
+                                    small: false,
+                                    placeholder: '',
+                                    required: true,
+                                    validation: {
+                                        message: 'Заполните поле',
+                                        regexp: 'Неверный формат',
+                                        emailaddress: ' ',
+                                        identical: false
+                                    }
+                                })
+
+                            .cart-form__field.cart-form__field--2
+                                +input({
+                                    label: 'Телефон',
+                                    fg_mod: 'form-group--margin',
+                                    label_mod: 'form-control-label--small',
+                                    type: 'tel',
+                                    name: false,
+                                    small: false,
+                                    placeholder: '+375 (__) ___-__-__',
+                                    required: true,
+                                    pattern: 'phone',
+                                    validation: {
+                                        message: 'Заполните поле',
+                                        regexp: 'Неверный формат',
+                                        emailaddress: ' ',
+                                        identical: false
+                                    }
+                                })
+                            .cart-form__field.cart-form__field--2
+                                +input({
+                                    label: 'Местоположение*',
+                                    fg_mod: 'form-group--margin',
+                                    label_mod: 'form-control-label--small',
+                                    type: 'text',
+                                    name: false,
+                                    small: false,
+                                    placeholder: 'Введите название города',
+                                    required: true,
+                                    validation: {
+                                        message: 'Заполните поле',
+                                        regexp: 'Неверный формат',
+                                        emailaddress: ' ',
+                                        identical: false
+                                    }
+                                })
+                            .cart-form__field.cart-form__field--2
+                                +input({
+                                    label: 'Email',
+                                    type: 'email',
+                                    label_mod: 'form-control-label--small',
+                                    fg_mod: 'form-group--margin',
+                                    name: false,
+                                    small: false,
+                                    placeholder: 'example@example.com',
+                                    required: true,
+                                    pattern: '[A-Za-zА-Яа-я0-9\_\-]{1,}@[A-Za-zА-Яа-я0-9\_\-]{1,}\.[A-Za-zА-Яа-я0-9]{2,}',
+                                    validation: {
+                                        message: 'Заполните поле',
+                                        regexp: 'Неверный формат',
+                                        emailaddress: ' ',
+                                        identical: false
+                                    }
+                                })
+                            .policy-block
+                                +checkbox({
+                                    mod: '',
+                                    label: 'Я согласен на <a href="#"> обработку персональных данных</a>',
+                                    value: '',
+                                    name: 'policy',
+                                    required: true,
+                                })(checked)
+
+                        //.cart-form__more
+                        //    button.btn Продолжить
+                .cart-form__block-grid
+                    .cart-form__block(x-data="{chooseCity:false}")
+
+                        .cart-form__header
+                            .cart-form__title Способ доставки
+                            .cart-form__toggler
+                                span
+                        .cart-form__delivery
+                            .cart-form-radio
+                                +radio({
+                                    mod: 'cart-form-radio__header'
+                                })(name="delivety-type")
+                                    .cart-form-radio__label Самовывоз
+                                .cart-form-radio__body
+
+
+                                    .cart-form__delivery-descr Вы можете самостоятельно забрать заказ из нашего офиса-кофейни Blackmill в г. Минске
+                                    .cart-city-picker
+                                        +input({
+                                            fg_mod: 'form-group--margin',
+                                            label_mod: 'form-control-label--small',
+                                            type: 'text',
+                                            name: false,
+                                            small: false,
+                                            placeholder: 'Введите название',
+                                            required: true,
+                                            validation: {
+                                                message: 'Заполните поле',
+                                                regexp: 'Неверный формат',
+                                                emailaddress: ' ',
+                                                identical: false
+                                            }
+                                        })
+
+
+                            .cart-form-radio
+                                +radio({
+                                    mod: 'cart-form-radio__header'
+                                })(name="delivety-type")
+                                    .cart-form-radio__label Почта России (EMS)
+                                .cart-form-radio__body
+                                    .cart-form__delivery-cost 1 415.80 ₽
+                                    .cart-form__delivery-period от 2 до 3 раб. дней
+                                    .cart-form__delivery-descr Экспресс-отправления EMS — это самый быстрый и удобный способ доставить письмо или посылку по России. Курьер заберет отправление в удобном для вас месте и доставит его адресату домой или в офис. Экспресс-отправление является регистрируемым, его доставку и вручение можно отследить с помощью трек-номера. В городах, где нет курьерской службы EMS, отправить и получить экспресс-отправление можно через отделение Почты России
+                            .cart-form-radio
+                                +radio({
+                                    mod: 'cart-form-radio__header'
+                                })(name="delivety-type")
+                                    .cart-form-radio__label Самовывоз
+                                .cart-form-radio__body
+                                    .cart-form__delivery-cost бесплатно
+                            .cart-form-radio
+                                +radio({
+                                    mod: 'cart-form-radio__header'
+                                })(name="delivety-type")
+                                    .cart-form-radio__label Доставка курьером
+                                    .cart-form-radio__cost 6 руб.
+                                .cart-form-radio__body
+
+                                    .cart-form__delivery-descr Доставка курьером по г. Минску от 1 до 2 дней. Укажите в комментарии желаемое время доставки
+                            .cart-form-radio.cart-form-radio--2
+                                +radio({
+                                    mod: 'cart-form-radio__header'
+                                })(name="delivety-type")
+                                    .cart-form-radio__label Самовывоз
+                                .cart-form-radio__body
+                                    .cart-form__delivery-cost бесплатно
+                                    .cart-form-selfdelivery
+                                        .cart-form-selfdelivery__title Выберите дополнительные услуги
+                                        +input({
+                                            label: 'Грузчики (чел./час.) (200 ₽)',
+                                            fg_mod: 'form-group--margin',
+                                            label_mod: 'form-control-label--small',
+                                            type: 'text',
+                                            name: false,
+                                            small: false,
+                                            placeholder: '',
+                                            required: true,
+                                            validation: {
+                                                message: 'Заполните поле',
+                                                regexp: 'Неверный формат',
+                                                emailaddress: ' ',
+                                                identical: false
+                                            }
+                                        })
+                                            .form-group__description  Поможем погрузить Ваш заказ
+                                        +checkbox({
+                                            descr: 'Поможем погрузить Ваш заказ'
+                                        })
+                                            span Подарочная упаковка (100 ₽)
+                                        .cart-form-selfdelivery__descr Вы можете <b>самостоятельно</b> забрать заказ из нашего магазина.
+                            .cart-form__additional
+                                .cart-form__subtitle Выберите адрес доставки
+                                .cart-form__form
+                                    .cart-form__field
+                                        +input({
+                                            label: 'Фамилия Имя Отчество',
+                                            fg_mod: 'form-group--margin',
+                                            label_mod: 'form-control-label--small',
+                                            type: 'text',
+                                            name: false,
+                                            small: false,
+                                            placeholder: '',
+                                            required: true,
+                                            validation: {
+                                                message: 'Заполните поле',
+                                                regexp: 'Неверный формат',
+                                                emailaddress: ' ',
+                                                identical: false
+                                            }
+                                        })
+                                    .cart-form__field
+                                        +input({
+                                            label: 'Фамилия Имя Отчество',
+                                            fg_mod: 'form-group--margin',
+                                            label_mod: 'form-control-label--small',
+                                            type: 'text',
+                                            name: false,
+                                            small: false,
+                                            placeholder: '',
+                                            required: true,
+                                            validation: {
+                                                message: 'Заполните поле',
+                                                regexp: 'Неверный формат',
+                                                emailaddress: ' ',
+                                                identical: false
+                                            }
+                                        })
+                                    .cart-form__field
+                                        +input({
+                                            label: 'Фамилия Имя Отчество',
+                                            fg_mod: 'form-group--margin',
+                                            label_mod: 'form-control-label--small',
+                                            type: 'text',
+                                            name: false,
+                                            small: false,
+                                            placeholder: '',
+                                            required: true,
+                                            validation: {
+                                                message: 'Заполните поле',
+                                                regexp: 'Неверный формат',
+                                                emailaddress: ' ',
+                                                identical: false
+                                            }
+                                        })
+                            .cart-form__more
+                                button.btn Продолжить
+                    .cart-form__block
+                        .cart-form__header
+                            .cart-form__title Способ оплаты
+                        .cart-form__section
+                            .cart-form__form
+                                .cart-form-radio.cart-form-radio--3
+                                    +radio({
+                                        mod: 'cart-form-radio__header'
+                                    })(name="payment-type")
+                                        .cart-form-radio__label Наличный расчет
+                                .cart-form-radio.cart-form-radio--3
+                                    +radio({
+                                        mod: 'cart-form-radio__header'
+                                    })(name="payment-type")
+                                        .cart-form-radio__label Яндекс.Деньги
+                                .cart-form-radio.cart-form-radio--3
+                                    +radio({
+                                        mod: 'cart-form-radio__header'
+                                    })(name="payment-type")
+                                        .cart-form-radio__label Банковский перевод
+                            .cart-form__more
+                                button.btn Продолжить
+
+
+        .rowblock__right
+            .cart-checkout-sticky
+                .cart-checkout-wrap
+                    .cart-checkout
+                        .cart-checkout__total-line.cart-checkout__total-line--totals
+                            .cart-checkout__d Итого:
+                            .cart-checkout__t 14 155.80 ₽
+                        .cart-checkout__total-line
+                            .cart-checkout__d Товаров на:
+                            .cart-checkout__t 12 740 ₽
+                        .cart-checkout__total-line
+                            .cart-checkout__d Доставка:
+                            .cart-checkout__t 1 415.80 ₽
+                        .cart-checkout__promo
+                            +input({
+                                fg_mod: '',
+                                placeholder: 'Есть промокод?',
+                                type: 'text',
+                                name: false,
+                                small: false,
+                                required: true,
+                                validation: {
+                                    message: 'Заполните поле',
+                                    regexp: 'Неверный формат',
+                                    emailaddress: ' ',
+                                    identical: false
+                                }
+                            })
+                            button.cart-checkout__promo-submit
+                        .cart-checkout__promo-list
+                            .cart-checkout__promo-item
+                                .cart-checkout__promo-item-name dsfsdf dsfs aad
+                                .cart-checkout__promo-item-status
+                                    span.outin-stock не найден
+                                    .cart-checkout__promo-item-remove
+                                        +icon('i-close')(style="width:10px; height:10px")
+                            .cart-checkout__promo-item
+                                .cart-checkout__promo-item-name.in-stock dsfsdf
+                                .cart-checkout__promo-item-status
+                                    span.in-stock найден
+                                    .cart-checkout__promo-item-remove
+                                        +icon('i-close')(style="width:10px; height:10px")
+                        .cart-checkout__scroll-info
+                            .cart-checkout__scroll-info-title Доставка:
+                            .cart-checkout__scroll-info-value
+                                span Почта России (EMS)
+                        .cart-checkout__delivery-info от 1 до 2 раб. дней
+                        .cart-checkout__scroll-info
+                            .cart-checkout__scroll-info-title Оплата:
+                            .cart-checkout__scroll-info-value
+                                span Наличный расчет
+                        .cart-checkout__submit
+                            .btn.btn--primary Оформить заказ
