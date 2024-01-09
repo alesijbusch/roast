@@ -181,7 +181,7 @@ mixin cart-product(args={})
                         //.cart-form__more
                         //    button.btn Продолжить
                 .cart-form__block-grid
-                    .cart-form__block(x-data="{chooseCity:false}")
+                    .cart-form__block(x-data="{expand:true}")
 
                         .cart-form__header
                             .cart-form__title Способ доставки
@@ -191,7 +191,7 @@ mixin cart-product(args={})
                             .cart-form-radio
                                 +radio({
                                     mod: 'cart-form-radio__header'
-                                })(name="delivety-type")
+                                })(name="delivery-type")
                                     .cart-form-radio__label Самовывоз
                                 .cart-form-radio__body
 
@@ -215,155 +215,170 @@ mixin cart-product(args={})
                                         })
 
 
+
                             .cart-form-radio
                                 +radio({
                                     mod: 'cart-form-radio__header'
-                                })(name="delivety-type")
-                                    .cart-form-radio__label Почта России (EMS)
-                                .cart-form-radio__body
-                                    .cart-form__delivery-cost 1 415.80 ₽
-                                    .cart-form__delivery-period от 2 до 3 раб. дней
-                                    .cart-form__delivery-descr Экспресс-отправления EMS — это самый быстрый и удобный способ доставить письмо или посылку по России. Курьер заберет отправление в удобном для вас месте и доставит его адресату домой или в офис. Экспресс-отправление является регистрируемым, его доставку и вручение можно отследить с помощью трек-номера. В городах, где нет курьерской службы EMS, отправить и получить экспресс-отправление можно через отделение Почты России
-                            .cart-form-radio
-                                +radio({
-                                    mod: 'cart-form-radio__header'
-                                })(name="delivety-type")
-                                    .cart-form-radio__label Самовывоз
-                                .cart-form-radio__body
-                                    .cart-form__delivery-cost бесплатно
-                            .cart-form-radio
-                                +radio({
-                                    mod: 'cart-form-radio__header'
-                                })(name="delivety-type")
+                                })(name="delivery-type")
                                     .cart-form-radio__label Доставка курьером
                                     .cart-form-radio__cost 6 руб.
                                 .cart-form-radio__body
-
                                     .cart-form__delivery-descr Доставка курьером по г. Минску от 1 до 2 дней. Укажите в комментарии желаемое время доставки
-                            .cart-form-radio.cart-form-radio--2
+                                    .cart-city-picker
+                                        +input({
+                                            fg_mod: 'form-group--margin',
+                                            label_mod: 'form-control-label--small',
+                                            type: 'text',
+                                            label: 'Адрес доставки',
+                                            name: false,
+                                            small: false,
+                                            placeholder: 'Введите название',
+                                            required: true,
+                                            validation: {
+                                                message: 'Заполните поле',
+                                                regexp: 'Неверный формат',
+                                                emailaddress: ' ',
+                                                identical: false
+                                            }
+                                        })
+                            .cart-form-radio
                                 +radio({
                                     mod: 'cart-form-radio__header'
-                                })(name="delivety-type")
-                                    .cart-form-radio__label Самовывоз
+                                })(name="delivery-type")
+                                    .cart-form-radio__label Доставка Белпочтой
+                                    .cart-form-radio__cost Бесплатно
                                 .cart-form-radio__body
-                                    .cart-form__delivery-cost бесплатно
-                                    .cart-form-selfdelivery
-                                        .cart-form-selfdelivery__title Выберите дополнительные услуги
-                                        +input({
-                                            label: 'Грузчики (чел./час.) (200 ₽)',
-                                            fg_mod: 'form-group--margin',
-                                            label_mod: 'form-control-label--small',
-                                            type: 'text',
-                                            name: false,
-                                            small: false,
-                                            placeholder: '',
-                                            required: true,
-                                            validation: {
-                                                message: 'Заполните поле',
-                                                regexp: 'Неверный формат',
-                                                emailaddress: ' ',
-                                                identical: false
-                                            }
-                                        })
-                                            .form-group__description  Поможем погрузить Ваш заказ
-                                        +checkbox({
-                                            descr: 'Поможем погрузить Ваш заказ'
-                                        })
-                                            span Подарочная упаковка (100 ₽)
-                                        .cart-form-selfdelivery__descr Вы можете <b>самостоятельно</b> забрать заказ из нашего магазина.
-                            .cart-form__additional
-                                .cart-form__subtitle Выберите адрес доставки
-                                .cart-form__form
-                                    .cart-form__field
-                                        +input({
-                                            label: 'Фамилия Имя Отчество',
-                                            fg_mod: 'form-group--margin',
-                                            label_mod: 'form-control-label--small',
-                                            type: 'text',
-                                            name: false,
-                                            small: false,
-                                            placeholder: '',
-                                            required: true,
-                                            validation: {
-                                                message: 'Заполните поле',
-                                                regexp: 'Неверный формат',
-                                                emailaddress: ' ',
-                                                identical: false
-                                            }
-                                        })
-                                    .cart-form__field
-                                        +input({
-                                            label: 'Фамилия Имя Отчество',
-                                            fg_mod: 'form-group--margin',
-                                            label_mod: 'form-control-label--small',
-                                            type: 'text',
-                                            name: false,
-                                            small: false,
-                                            placeholder: '',
-                                            required: true,
-                                            validation: {
-                                                message: 'Заполните поле',
-                                                regexp: 'Неверный формат',
-                                                emailaddress: ' ',
-                                                identical: false
-                                            }
-                                        })
-                                    .cart-form__field
-                                        +input({
-                                            label: 'Фамилия Имя Отчество',
-                                            fg_mod: 'form-group--margin',
-                                            label_mod: 'form-control-label--small',
-                                            type: 'text',
-                                            name: false,
-                                            small: false,
-                                            placeholder: '',
-                                            required: true,
-                                            validation: {
-                                                message: 'Заполните поле',
-                                                regexp: 'Неверный формат',
-                                                emailaddress: ' ',
-                                                identical: false
-                                            }
-                                        })
-                            .cart-form__more
-                                button.btn Продолжить
-                    .cart-form__block
+
+                                    .cart-form__delivery-descr Доставка в ближайшее отделении Белпочты от 1 до 3 дней
+                                        .cart-form__delivery-post
+                                            +input({
+                                                fg_mod: 'form-group--margin',
+                                                label_mod: 'form-control-label--small',
+                                                type: 'text',
+                                                label: 'Индекс',
+                                                name: false,
+                                                small: false,
+                                                placeholder: '',
+                                                required: true,
+                                                validation: {
+                                                    message: 'Заполните поле',
+                                                    regexp: 'Неверный формат',
+                                                    emailaddress: ' ',
+                                                    identical: false
+                                                }
+                                            })
+                                            +input({
+                                                fg_mod: 'form-group--margin',
+                                                label_mod: 'form-control-label--small',
+                                                type: 'text',
+                                                label: 'Город',
+                                                name: false,
+                                                small: false,
+                                                placeholder: '',
+                                                required: true,
+                                                validation: {
+                                                    message: 'Заполните поле',
+                                                    regexp: 'Неверный формат',
+                                                    emailaddress: ' ',
+                                                    identical: false
+                                                }
+                                            })
+                                            +input({
+                                                fg_mod: 'form-group--margin',
+                                                label_mod: 'form-control-label--small',
+                                                type: 'text',
+                                                label: 'Улица, дом, квартира',
+                                                name: false,
+                                                small: false,
+                                                placeholder: '',
+                                                required: true,
+                                                validation: {
+                                                    message: 'Заполните поле',
+                                                    regexp: 'Неверный формат',
+                                                    emailaddress: ' ',
+                                                    identical: false
+                                                }
+                                            })
+                            .cart-form-radio
+                                +radio({
+                                    mod: 'cart-form-radio__header'
+                                })(name="delivery-type")
+                                    .cart-form-radio__label Доставка DPD
+                                    .cart-form-radio__cost 5.27 руб.
+                                .cart-form-radio__body
+
+                                    .cart-form__delivery-descr Доставка посылки курьером DPD до двери получателя (Минск) дн. 3 (DPD EXPRESS)
+                            .cart-form-radio
+                                +radio({
+                                    mod: 'cart-form-radio__header'
+                                })(name="delivery-type")
+                                    .cart-form-radio__label Яндекс-доставка (до 45 минут)
+                                    .cart-form-radio__cost 9 руб.
+                                .cart-form-radio__body
+
+                                    .cart-form__delivery-descr Работает только по г. Минску, после оплаты картой. Необходимо уточнить наличие кофе в офисе перед оплатой
+
+
+
+                            //.cart-form__more
+                            //    button.btn Продолжить
+                    .cart-form__block(x-data="{expand:true}")
                         .cart-form__header
                             .cart-form__title Способ оплаты
-                        .cart-form__section
-                            .cart-form__form
-                                .cart-form-radio.cart-form-radio--3
-                                    +radio({
-                                        mod: 'cart-form-radio__header'
-                                    })(name="payment-type")
-                                        .cart-form-radio__label Наличный расчет
-                                .cart-form-radio.cart-form-radio--3
-                                    +radio({
-                                        mod: 'cart-form-radio__header'
-                                    })(name="payment-type")
-                                        .cart-form-radio__label Яндекс.Деньги
-                                .cart-form-radio.cart-form-radio--3
-                                    +radio({
-                                        mod: 'cart-form-radio__header'
-                                    })(name="payment-type")
-                                        .cart-form-radio__label Банковский перевод
-                            .cart-form__more
-                                button.btn Продолжить
+                                .cart-form__toggler
+                                    span
+                        .cart-form__pay
+                            .cart-form-radio
+                                +radio({
+                                    mod: 'cart-form-radio__header'
+                                })(name="payment-type")
+                                    .cart-form-radio__label Оплата через ЕРИП (скидка 2%)
+                                .cart-form-radio__body
+                                    .cart-form__delivery-descr В вашем интернет-банкинге в разделе "Платежи": Система Расчет ЕРИП -> Интернет-магазины и сервисы -> A-Z -> R -> Roast.by, введите ваш номер заказа и оплатите его.
+                                    .policy-block
+                                        +checkbox({
+                                            mod: '',
+                                            label: 'Внутренний счет - <b>13,40 руб.</b>',
+                                            value: '',
+                                            name: 'score',
+                                            required: true,
+                                        })
+                            .cart-form-radio
+                                +radio({
+                                    mod: 'cart-form-radio__header'
+                                })(name="payment-type")
+                                    .cart-form-radio__label Оплата наличными
 
+                            .cart-form-radio
+                                +radio({
+                                    mod: 'cart-form-radio__header'
+                                })(name="payment-type")
+                                    .cart-form-radio__label QR-платежи "Оплати" (скидка 3%)
+                            .cart-form-radio
+                                +radio({
+                                    mod: 'cart-form-radio__header'
+                                })(name="payment-type")
+                                    .cart-form-radio__label Оплата картой при получении
+                            .cart-form-radio
+                                +radio({
+                                    mod: 'cart-form-radio__header'
+                                })(name="payment-type")
+                                    .cart-form-radio__label Оплата банковской картой онлайн (Google Pay)
+                        //.cart-form__more
+                        //    button.btn Продолжить
+                        //
 
         .rowblock__right
             .cart-checkout-sticky
                 .cart-checkout-wrap
                     .cart-checkout
-                        .cart-checkout__total-line.cart-checkout__total-line--totals
-                            .cart-checkout__d Итого:
-                            .cart-checkout__t 14 155.80 ₽
-                        .cart-checkout__total-line
-                            .cart-checkout__d Товаров на:
-                            .cart-checkout__t 12 740 ₽
+                        .cart-checkout__title Ваш заказ
                         .cart-checkout__total-line
                             .cart-checkout__d Доставка:
-                            .cart-checkout__t 1 415.80 ₽
+                            .cart-checkout__t Самовывоз
+                        .cart-checkout__total-line
+                            .cart-checkout__d Оплата:
+                            .cart-checkout__t Оплата через ЕРИП
                         .cart-checkout__promo
                             +input({
                                 fg_mod: '',
@@ -393,6 +408,21 @@ mixin cart-product(args={})
                                     span.in-stock найден
                                     .cart-checkout__promo-item-remove
                                         +icon('i-close')(style="width:10px; height:10px")
+
+                        .cart-checkout__total-line
+                            .cart-checkout__d Внутренний счет:
+                            .cart-checkout__t 13,40 руб.
+                        .cart-checkout__total-line
+                            .cart-checkout__d Ваша скидка 5%:
+                            .cart-checkout__t 10 руб.
+                        .cart-checkout__total-line
+                            .cart-checkout__d Промокод:
+                            .cart-checkout__t 5 руб.
+                        .cart-checkout__total-line.cart-checkout__total-line--totals
+                            .cart-checkout__d Итого:
+                            .cart-checkout__t 245.30 руб. <span class="sale">248.30 руб.</span>
+
+
                         .cart-checkout__scroll-info
                             .cart-checkout__scroll-info-title Доставка:
                             .cart-checkout__scroll-info-value

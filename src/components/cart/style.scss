@@ -113,10 +113,21 @@
 			line-height: 20px;
 			color: #757575;
 		}
+		&-post{
+			display: grid;
+			gap: 10px;
+			grid-template-columns: 120px auto;.form-group{
+			&:nth-child(3){
+				grid-column: span 2;
+			}
+		}
+		}
 	}
 
-	&__additional {
-		padding: 20px 0px;
+	&__pay{
+		.policy-block{
+			margin-top: 10px;
+		}
 	}
 
 	&__subtitle {
@@ -241,12 +252,17 @@
 
 
 .cart-checkout {
-	border: 1px solid #ececec;
-	border-color: var(--stroke_black);
-	border-radius: 3px;
-	padding: 22px 28px;
+
+	padding: 30px;
+	background: #F8F8F8;
 	display: flex;
 	flex-direction: column;
+
+	&__title{
+		font-weight: 600;
+		font-size: 1.25rem;
+		margin-bottom: 20px;
+	}
 
 	&__submit {
 		padding-top: 20px;
@@ -260,14 +276,51 @@
 		}
 	}
 
-	&__d,
-	&__t {
-		background-color: var(--black_bg_black);
-		line-height: 26px;
+	&__total-line {
+		overflow: hidden;
+		display: flex;
+		font-size: 0.9566em;
+		position: relative;
+		overflow: hidden;
+		gap: 10px;
+		margin-bottom: 6px;
+
+		&--totals {
+			margin-top: 25px;
+			font-weight: 600;
+			font-size: 1.1rem;
+			.cart-checkout__d{
+				color: #000;
+				min-width: auto;
+			}
+			.sale{
+				font-weight: normal;
+				text-decoration: line-through;
+				color: $basic_text;
+				font-size: .86rem;
+
+			}
+
+		}
+
+		&:not(.cart-checkout__total-line--totals) {
+			&:before {
+				position: absolute;
+				content: "";
+				left: 0;
+				right: 0;
+				border-bottom: 1px dashed var(--white_text_black);
+				top: 50%;
+				transform: translateY(-50%);
+				z-index: -1;
+			}
+		}
 	}
 
+
 	&__d {
-		padding-right: 10px;
+		min-width: 80px;
+		color: $basic_text;
 	}
 
 	&__t {
@@ -409,34 +462,7 @@
 		}
 	}
 
-	&__total-line {
-		overflow: hidden;
-		display: flex;
-		justify-content: space-between;
-		font-size: 0.8666em;
-		position: relative;
-		overflow: hidden;
 
-		&--totals {
-			font-weight: 700;
-			font-size: 1.2rem;
-			margin-bottom: 13px;
-			color: var(--white_text_black);
-		}
-
-		&:not(.cart-checkout__total-line--totals) {
-			&:before {
-				position: absolute;
-				content: "";
-				left: 0;
-				right: 0;
-				border-bottom: 1px dashed var(--white_text_black);
-				top: 50%;
-				transform: translateY(-50%);
-				z-index: -1;
-			}
-		}
-	}
 }
 
 .cart-form-radio {
