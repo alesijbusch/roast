@@ -356,6 +356,7 @@ textarea.form-control {
       &.active {
         cursor: default;
         font-weight: 600;
+	      pointer-events: none;
       }
       &:hover {
         color: $accent;

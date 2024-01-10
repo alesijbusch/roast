@@ -198,20 +198,14 @@ mixin cart-product(args={})
 
                                     .cart-form__delivery-descr Вы можете самостоятельно забрать заказ из нашего офиса-кофейни Blackmill в г. Минске
                                     .cart-city-picker
-                                        +input({
-                                            fg_mod: 'form-group--margin',
-                                            label_mod: 'form-control-label--small',
-                                            type: 'text',
-                                            name: false,
-                                            small: false,
-                                            placeholder: 'Введите название',
-                                            required: true,
-                                            validation: {
-                                                message: 'Заполните поле',
-                                                regexp: 'Неверный формат',
-                                                emailaddress: ' ',
-                                                identical: false
-                                            }
+                                        +select({
+                                            title: 'г. Минск, ул. Белинского 23',
+                                            with_links: true,
+                                            list: [
+                                                {name: 'г. Минск, ул. Белинского 23', active: true},
+                                                {name: 'г. Минск, ул. Казинца 36'},
+                                                {name: 'г. Минск, ул. Ленина 2'},
+                                            ]
                                         })
 
 
@@ -382,7 +376,7 @@ mixin cart-product(args={})
                         .cart-checkout__promo
                             +input({
                                 fg_mod: '',
-                                placeholder: 'Есть промокод?',
+                                placeholder: 'Введите промокод',
                                 type: 'text',
                                 name: false,
                                 small: false,
@@ -408,29 +402,42 @@ mixin cart-product(args={})
                                     span.in-stock найден
                                     .cart-checkout__promo-item-remove
                                         +icon('i-close')(style="width:10px; height:10px")
-
                         .cart-checkout__total-line
                             .cart-checkout__d Внутренний счет:
                             .cart-checkout__t 13,40 руб.
                         .cart-checkout__total-line
                             .cart-checkout__d Ваша скидка 5%:
                             .cart-checkout__t 10 руб.
+                            .tip
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
+                                <circle cx="7.61523" cy="7.5" r="6.75" stroke="#D9D9D9" stroke-width="1.5"/>
+                                <line x1="7.5957" y1="5.96594" x2="7.5957" y2="11.3353" stroke="#ACACAC" stroke-width="1.5"/>
+                                <line x1="7.5957" y1="3.6648" x2="7.5957" y2="5.19889" stroke="#ACACAC" stroke-width="1.5"/>
+                                </svg>
+                                .tip__text Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum nulla provident eveniet numquam vitae quisquam.
                         .cart-checkout__total-line
                             .cart-checkout__d Промокод:
                             .cart-checkout__t 5 руб.
                         .cart-checkout__total-line.cart-checkout__total-line--totals
                             .cart-checkout__d Итого:
                             .cart-checkout__t 245.30 руб. <span class="sale">248.30 руб.</span>
-
-
-                        .cart-checkout__scroll-info
-                            .cart-checkout__scroll-info-title Доставка:
-                            .cart-checkout__scroll-info-value
-                                span Почта России (EMS)
-                        .cart-checkout__delivery-info от 1 до 2 раб. дней
-                        .cart-checkout__scroll-info
-                            .cart-checkout__scroll-info-title Оплата:
-                            .cart-checkout__scroll-info-value
-                                span Наличный расчет
+                            .cart-checkout__sale
+                                span Общая экономия 28.40руб.
                         .cart-checkout__submit
-                            .btn.btn--primary Оформить заказ
+                            .btn Оформить заказ
+                        a(href="#").cart-checkout__back
+                            +icon('i-checkout')(style="width:15px; height:15px")
+                            span Назад в каталог
+
+                    .cart-checkout__info(x-data="{show:true}" x-show="show" x-transition)
+                        .cart-checkout__info-close(@click="show=false")
+                            +icon('i-close')(style="width:10px; height:10px")
+
+                        .cart-checkout__info-icon
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="25" viewBox="0 0 17 25" fill="none">
+                            <path d="M9.30273 24.0698H7.94291V20.8175H9.30273V24.0698Z" fill="#BB2749"/>
+                            <path d="M14.2461 22.9749L13.0522 23.6836L11.5631 20.7091L12.757 20.0004L14.2461 22.9749Z" fill="#BB2749"/>
+                            <path d="M5.68359 20.7086L4.19451 23.6831L3.0006 22.9744L4.48967 19.9999L5.68359 20.7086Z" fill="#BB2749"/>
+                            <path d="M17 17.1064L15.2739 12.6684V6.77378C15.2739 3.0387 12.2352 0 8.5001 0C4.76482 0 1.72612 3.0387 1.72612 6.77378V12.6684L0 17.1064H5.6756V17.2435C5.6756 18.8007 6.94267 20.0678 8.5001 20.0678C10.0573 20.0678 11.3244 18.8007 11.3244 17.2435V17.1064H17ZM3.20682 6.77378C3.20682 3.8552 5.58132 1.48069 8.5001 1.48069C11.4187 1.48069 13.7932 3.8552 13.7932 6.77378V12.0671H3.20682V6.77378ZM2.97295 13.5478H14.027L14.8353 15.6257H2.16474L2.97295 13.5478ZM9.84371 17.2435C9.84371 17.9844 9.24083 18.5871 8.5001 18.5871C7.75917 18.5871 7.15629 17.9844 7.15629 17.2435V17.1064H9.84352V17.2435H9.84371Z" fill="#BB2749"/>
+                            </svg>
+                        .cart-checkout__info-text Вы можете воспользоваться средствами внутреннего счета выбрав способ оплаты

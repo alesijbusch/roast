@@ -42,6 +42,7 @@
 			display: grid;
 
 			.cart-form__block {
+				margin-bottom: 0;
 				&:first-child {
 					border-right: none;
 				}
@@ -265,30 +266,42 @@
 	}
 
 	&__submit {
-		padding-top: 20px;
-		margin: 0 -29px -23px;
-
+		margin: 25px 0 20px;
+		display: flex;
+		justify-content: center;
 		.btn {
 			max-width: none;
-			width: 100%;
-			border-top-left-radius: 0px;
-			border-top-right-radius: 0px;
+			//width: 100%;
 		}
 	}
 
 	&__total-line {
-		overflow: hidden;
+		//overflow: hidden;
 		display: flex;
-		font-size: 0.9566em;
+		font-size: 0.9266em;
 		position: relative;
-		overflow: hidden;
-		gap: 10px;
+		//overflow: hidden;
+		gap: 6px;
 		margin-bottom: 6px;
+
+		.tip{
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			&__text{
+				left: auto;
+				right: 0;
+				z-index: 10;
+			}
+		}
 
 		&--totals {
 			margin-top: 25px;
 			font-weight: 600;
 			font-size: 1.1rem;
+			gap: 0 10px;
+			flex-wrap: wrap;
 			.cart-checkout__d{
 				color: #000;
 				min-width: auto;
@@ -354,21 +367,25 @@
 	}
 
 	&__promo {
-		margin-top: 20px;
+		margin-top: 30px;
 		position: relative;
+		.form-control{
+			background-color: #fff;
+			border:1px solid #E5E5E5;
+			padding-right: 40px;
+		}
 
 		&-list {
 			display: flex;
 			flex-direction: column;
-			gap: 10px;
 			margin-top: 10px;
+			margin-bottom: 10px;
 		}
 
 		&-item {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
-			padding: 2px 0px;
 			font-size: 14px;
 			position: relative;
 
@@ -385,30 +402,28 @@
 
 			&-name {
 				padding-right: 20px;
-				background-color: var(--black_bg_black);
 			}
 
 			&-status {
 				padding-left: 10px;
 				white-space: nowrap;
-				background-color: var(--black_bg_black);
 				display: flex;
 				align-items: center;
 				flex: 0 0 auto;
 			}
 
 			&-remove {
-				background-color: var(--black_bg_black);
 				flex: 0 0 auto;
 				padding-left: 10px;
 				display: flex;
 				align-items: center;
 				justify-content: center;
+				fill: #0d0c22;
 
 				&:hover {
 					@media (min-width: 1024px) {
 						cursor: pointer;
-						fill: var(--fill_dark_lite_hover);
+						fill: $accent;
 					}
 				}
 			}
@@ -425,7 +440,7 @@
 			&:before {
 				content: "";
 				display: block;
-				width: 16px;
+				width: 13px;
 				height: 2px;
 				background-color: var(--white_text_black);
 				position: absolute;
@@ -440,8 +455,8 @@
 				content: "";
 
 				display: block;
-				width: 8px;
-				height: 8px;
+				width: 10px;
+				height: 10px;
 				background-color: transparent;
 				border-right: 2px solid #8da3ad;
 				border-bottom: 2px solid #8da3ad;
@@ -450,7 +465,7 @@
 				position: absolute;
 				right: 0px;
 				top: 50%;
-				margin-top: -4px;
+				margin-top: -5px;
 				-webkit-transform: rotate(-45deg);
 				-moz-transform: rotate(-45deg);
 				-o-transform: rotate(-45deg);
@@ -458,6 +473,73 @@
 				transform: rotate(-45deg);
 				cursor: pointer;
 				z-index: 3;
+			}
+		}
+	}
+
+	&__sale{
+		position: relative;
+		padding: 2px 4px;
+		background-color: #D64A4A;
+		color: #ffffff;
+		font-weight: 500;
+		font-size: 11px;
+		border-radius: 2px;
+		margin-left: 75px;
+		&:before{
+			border:4px solid transparent;
+			border-bottom-color: #D64A4A;
+			content: '';
+			position: absolute;
+			bottom: 100%;
+			left: 8px;
+			z-index: 1;
+		}
+
+	}
+
+	&__back{
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		justify-content: center;
+		transition: all ease .3s;
+		svg{
+			transition: all ease .3s;
+		}
+		@media (min-width: $md){
+			&:hover{
+				svg{
+					transform: rotate(90deg);
+				}
+			}
+		}
+	}
+
+	&__info{
+		position: relative;
+		padding: 15px;
+		border: 1px solid #E3E3E3;
+		display: grid;
+		grid-template-columns: 20px auto;
+		color: $accent;
+		font-size: 13px;
+		margin-top: 13px;
+		gap: 10px;
+		&-close{
+			position: absolute;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			top: 4px;
+			right: 4px;
+			fill: #C5C5C5;
+			transition: all ease .3s;
+			@media (min-width: $md){
+				cursor: pointer;
+				&:hover{
+					fill: $accent;
+				}
 			}
 		}
 	}
@@ -696,6 +778,22 @@
 
 .cart-city-picker {
 	margin-top: 20px;
+	.select{
+		&__header{
+			background-color: #F8F8F8;
+			height: 50px;
+			padding: 13px 15px;
+			border: 1px solid transparent;
+			@media (min-width: $md){
+				&:hover{
+					//box-shadow: 0 0 10px 5px rgba(34, 34, 34, 0.1);
+					background-color: #f8f8f8;;
+				}
+			}
+
+		}
+	}
+
 }
 
 .cart-form-selfdelivery {
