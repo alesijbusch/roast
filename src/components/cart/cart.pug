@@ -47,11 +47,11 @@ mixin cart-product(args={})
                 .price--old= args.old
         .cart-product__control
             .cart-product__control-item
-                +icon('i-close')(style="width:18px; height:18px")
+                +icon('i-close')(style="width:12px; height:12px")
 .cart
     .rowblock
         .rowblock__left
-            .cart-form__block(x-data="{expand: true}")
+            .cart-form__block(x-data="{expand: true}" :class="!expand && 'collapse'")
                 .cart-form__header
                     .cart-form__title Товары в корзине
                     .cart-form__toggler(@click="expand=!expand")
@@ -59,7 +59,7 @@ mixin cart-product(args={})
 
 
 
-                .cart-products.cart-form__section
+                .cart-products.cart-form__section(x-transition)
                     +cart-product({
                         img: 'product.png',
                         title: 'Танзания Мбинга Килиманджаро АА',
@@ -81,18 +81,19 @@ mixin cart-product(args={})
                     })
 
             form.cart-form
-                .cart-form__block(x-data="{expand: true}")
+                .cart-form__block.cart-form__block--person(x-data="{expand: true}" :class="!expand && 'collapse'")
                     .cart-form__header
                         .cart-form__title Покупатель
-                        .person-type
-                            +radio({
-                                mod: 'form-group--person-type'
-                            })(checked name="person-type")
-                                .person-type__label Физическое лицо
-                            +radio({
-                                mod: 'form-group--person-type'
-                            })( name="person-type")
-                                .person-type__label Юридическое лицо
+                        .person-type__overflow
+                            .person-type
+                                +radio({
+                                    mod: 'form-group--person-type'
+                                })(checked name="person-type")
+                                    .person-type__label Физическое лицо
+                                +radio({
+                                    mod: 'form-group--person-type'
+                                })( name="person-type")
+                                    .person-type__label Юридическое лицо
                         .cart-form__toggler(@click="expand=!expand")
                             span
 
@@ -136,7 +137,7 @@ mixin cart-product(args={})
                                 })
                             .cart-form__field.cart-form__field--2
                                 +input({
-                                    label: 'Местоположение*',
+                                    label: 'Местоположение',
                                     fg_mod: 'form-group--margin',
                                     label_mod: 'form-control-label--small',
                                     type: 'text',
@@ -181,11 +182,11 @@ mixin cart-product(args={})
                         //.cart-form__more
                         //    button.btn Продолжить
                 .cart-form__block-grid
-                    .cart-form__block(x-data="{expand:true}")
+                    .cart-form__block(x-data="{expand: true}" :class="!expand && 'collapse'")
 
                         .cart-form__header
                             .cart-form__title Способ доставки
-                            .cart-form__toggler
+                            .cart-form__toggler(@click="expand=!expand")
                                 span
                         .cart-form__delivery
                             .cart-form-radio
@@ -316,10 +317,10 @@ mixin cart-product(args={})
 
                             //.cart-form__more
                             //    button.btn Продолжить
-                    .cart-form__block(x-data="{expand:true}")
+                    .cart-form__block(x-data="{expand: true}" :class="!expand && 'collapse'")
                         .cart-form__header
                             .cart-form__title Способ оплаты
-                                .cart-form__toggler
+                                .cart-form__toggler(@click="expand=!expand")
                                     span
                         .cart-form__pay
                             .cart-form-radio
@@ -362,7 +363,27 @@ mixin cart-product(args={})
                         //    button.btn Продолжить
                         //
 
+                .cart-form__block(x-data="{expand: true}" :class="!expand && 'collapse'")
+                    .cart-form__header
+                        .cart-form__title Комментарии к заказу
+
+                        .cart-form__toggler(@click="expand=!expand")
+                            span
+
+                    .cart-form__section
+                        .cart-form__form-desc Укажите желаемое время доставки, особые пожелания к заказу
+                        .cart-form__form
+                            .cart-form__field
+                                +textarea({
+
+                                })
         .rowblock__right
+            .cart-bill
+                .cart-bill__price.cart-checkout__total-line.cart-checkout__total-line--totals
+                    .cart-checkout__d Итого:
+                    .cart-checkout__t 245.30 руб.
+                .cart-bill__btn
+                    .btn Оформить
             .cart-checkout-sticky
                 .cart-checkout-wrap
                     .cart-checkout
