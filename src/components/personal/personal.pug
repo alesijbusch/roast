@@ -1,0 +1,106 @@
++include-style('personal')
+
+mixin order-item(args={})
+    .order-item(x-data="{expand: false}")
+        .order-item__head
+            .order-item__name
+                span Заказ №456755649
+            .order-item__date 28.01.2023
+            .order-item__status(class=args.status || '')=args.order || 'В обработке'
+            .order-item__summ 300 руб.
+            .order-item__action=args.action || 'Отменить'
+            .order-item__control(@click="expand = !expand" :class="expand && 'active'")
+                +icon('i-arrow-down')(style="height:10px;width:10px")
+
+        .order-item__body(x-show="expand" x-transition)
+            .order-item__list
+                +order-card({
+                    title: 'Танзания Мбинга Килиманджаро АА',
+                    img: 'product.png'
+                })
+                +order-card({
+                    title: 'Танзания Мбинга Килиманджаро АА',
+                    img: 'product-tea.png'
+                })
+            .order-item__info
+                .order-item__info-row
+                    .order-item__info-prop Доставка
+                    .order-item__info-val Самовывоз (г. Минск, ул. Белинского 23)
+                .order-item__info-row
+                    .order-item__info-prop Оплата
+                    .order-item__info-val Оплата через ЕРИП (скидка 2%)
+                .order-item__info-row
+                    .order-item__info-prop Скидка
+                    .order-item__info-val 5%
+
+
+
+
+
+
+mixin order-card(args={})
+    .order-card
+        .order-card__head
+            .order-card__img
+                +lazy-img({
+                    img: args.img
+                })
+            a(href="#").order-card__title=args.title
+        .order-card__props
+            .order-card__prop
+                .order-card__prop-prop Степень помола:
+                .order-card__prop-val Не молоть
+            .order-card__prop
+                .order-card__prop-prop Масса:
+                .order-card__prop-val 1000
+        .order-card__count х1шт.
+        .order-card__summ 30 руб.
+
+
+.personal
+    .personal-grid
+        .personal-grid__item
+            .personal-nav
+                .personal-nav__header
+                    .personal-nav__item
+                    .personal-nav__toggler
+
+                .personal-nav__body
+                    a(href="#").personal-nav__item
+                        +icon('i-nav-1')(style="height:19px;width:19px")
+                        span Личные данные
+                    a(href="#").personal-nav__item.active
+                        +icon('i-nav-2')(style="height:19px;width:19px")
+                        span Мои заказы
+                    a(href="#").personal-nav__item
+                        +icon('i-nav-3')(style="height:19px;width:19px")
+                        span Подписка на новости
+                    a(href="#").personal-nav__item
+                        +icon('i-nav-4')(style="height:19px;width:19px")
+                        span Подписка на кофе
+                    a(href="#").personal-nav__item
+                        +icon('i-nav-5')(style="height:19px;width:19px")
+                        span Корзина
+
+        .personal-grid__item
+            .personal-order
+                .personal-order__title Мои заказы
+                .personal-order__list
+                    +order-item({
+
+                    })
+                    +order-item({
+                        status: 'order-item__status--done',
+                        order: 'Готов к выдаче',
+                        action: 'Повторить'
+                    })
+                    +order-item({
+                        status: 'order-item__status--buy',
+                        order: 'Выкуплен',
+                        action: 'Повторить'
+                    })
+                    +order-item({
+                        status: 'order-item__status--cancel',
+                        order: 'Отменен',
+
+                    })

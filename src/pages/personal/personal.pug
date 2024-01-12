@@ -1,0 +1,32 @@
+extends ../../layout/layout
+
+block vars
+    - var pageTitle = 'Личный кабинет'
+    - var pageBodyClass = ''
+    - var dir = './'
+
+
+block premain
+    .container
+        .page-top
+            +breadcrumbs({
+                content2: 'Личный кабинет',
+            })
+            .page-top__header
+                h1.page-top__title Личный кабинет
+
+block main
+    .container
+        include ../../components/personal/personal
+
+    include ../../components/subscription/subscription
+block pageModal
+
+block componentsCriticalStyles
+    +componentsCriticalStyles-includer()
+block vendorScripts
+    +vendorScripts-includer()
+block componentsStyles
+    +style-includer()
+block componentsScripts
+    +componentsScripts-includer()
