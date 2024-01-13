@@ -1,0 +1,130 @@
++include-style('personal')
+
+.personal
+    .personal-grid
+        .personal-grid__item
+            include personal-nav
+
+        .personal-grid__item
+            .personal-user
+                .personal-user__form
+                    .personal__title Личные данные
+
+                    form.form-block
+                        .form-block__grid
+                            +input({
+                                fg_mod: 'form-group--margin',
+                                label_mod: 'form-control-label--small',
+                                label: 'Ваше имя',
+                                type: 'text',
+                                placeholder: false,
+                                required: true,
+                                pattern: false,
+                                validation: {
+                                    message: 'Обязательное поле',
+                                    regexp: 'Неверный формат',
+                                    emailaddress: ' ',
+                                    identical: false
+                                }
+                            })
+                            +input({
+                                fg_mod: 'form-group--margin',
+                                label_mod: 'form-control-label--small',
+                                label: 'Телефон',
+                                type: 'text',
+                                placeholder: false,
+                                required: true,
+                                pattern: false,
+                                validation: {
+                                    message: 'Обязательное поле',
+                                    regexp: 'Неверный формат',
+                                    emailaddress: ' ',
+                                    identical: false
+                                }
+                            })
+                            +input({
+                                fg_mod: 'form-group--margin',
+                                label_mod: 'form-control-label--small',
+                                label: 'Фамилия',
+                                type: 'text',
+                                placeholder: false,
+                                required: false,
+                                pattern: false,
+                                validation: {
+                                    message: 'Обязательное поле',
+                                    regexp: 'Неверный формат',
+                                    emailaddress: ' ',
+                                    identical: false
+                                }
+                            })
+                            +input({
+                                fg_mod: 'form-group--margin',
+                                label_mod: 'form-control-label--small',
+                                label: 'E-mail',
+                                type: 'email',
+                                placeholder: false,
+                                required: true,
+                                pattern: false,
+                                validation: {
+                                    message: 'Обязательное поле',
+                                    regexp: 'Неверный формат',
+                                    emailaddress: ' ',
+                                    identical: false
+                                }
+                            })
+
+                            +input({
+                                fg_mod: 'form-group--margin',
+                                label_mod: 'form-control-label--small',
+                                xType: "showPass ? 'text' : 'password'",
+                                label: 'Пароль',
+                                type: 'text',
+                                placeholder: false,
+                                required: true,
+                                pattern: false,
+                                validation: {
+                                    message: 'Обязательное поле',
+                                    regexp: 'Неверный формат',
+                                    emailaddress: ' ',
+                                    identical: false
+                                }
+                            })(x-data="{showPass: false}" )
+                                .show-pass(@click="showPass = !showPass" x-cloak)
+                                    +icon('i-show-pass')(style="width:16px; height:16px")(x-show="!showPass")
+                                    +icon('i-show-pass-2')(style="width:16px; height:16px")(x-show="showPass")
+                                //.form-group__description Длина пароля не менее 6 символов
+                                .pass-descr Изменить пароль
+
+
+                        .form-block__submit
+                            button(type="submit").btn.btn-lg.btn--primary Сохранить
+
+                .personal-sale
+                    .personal__title Ваша скидка
+                    .personal-sale__progress
+                        .progress
+                            .progress-line
+                                .progress-line__val(style="left: 30%") 3%
+                                .progress-line__progress(style="width: 30%")
+                            .progress-point 0%
+                            .progress-point 10%
+                    .personal-sale__block
+                        a(href="#").personal-sale__more
+                            span Подробнее о системе скидок
+
+                        .personal-sale__info
+                            .personal-sale__info-badge
+                                .sale
+                                    .sale-percent 1%
+                                    .sale-desc за каждые<br>50 руб.
+                            .personal-sale__info-desc
+                                p За каждые 50 рублей в заказе вы получаете +1% к накопительной скидке на следующие заказы
+                                p
+                                    b Максимальная скидка — 10%
+                                span *Скидка рассчитывается за весь период, то есть если вы сделаете заказ на 40 рублей, потом еще на 40 рублей, то на третий заказ уже будет действовать скидка 1%.
+                                span *Не суммируется со скидкой на товар недели и действует только на кофе и чай
+                .personal-bill.personal-sale
+                    .personal__title Внутренний счет
+                    .personal-bill__inner
+                        .personal-bill__summ 40,80руб.
+                        .personal-bill__info Воспользоваться средствами внутреннего счета можно перейдя в корзину, указав способ олпаты, далее выбрать внутренний счет

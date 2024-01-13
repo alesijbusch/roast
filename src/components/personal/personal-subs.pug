@@ -1,0 +1,19 @@
++include-style('personal')
+
+.personal
+    .personal-grid
+        .personal-grid__item
+            include personal-nav
+
+        .personal-grid__item
+            .personal__title Подписка на кофе
+            .personal-subs
+                .personal-subs__img
+                    +lazy-img({
+                        img:'personal-subs.png'
+                    })
+                .personal-subs__content
+                    h2 Список ваших подписок пуст
+                    p Уникальная возможность попробовать новые сорта кофе, которых еще нет на нашем сайте, а также эксклюзивные лоты, которые будут доступны только по подписке!
+                    .personal-subs__btn
+                        .btn.btn--primary Выбрать подписку

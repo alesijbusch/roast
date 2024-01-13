@@ -1,0 +1,27 @@
++include-style('personal')
+
+.personal-nav(x-data="{open: false}" :class="open && 'active'" @click.outside="open = false")
+    .personal-nav__header(@click="open = !open" )
+        .personal-nav__item
+            span Мои заказы
+        .personal-nav__toggler
+            +icon('i-arrow-down')(style="height:10px;width:10px")
+
+
+    .personal-nav__body
+        a(href="#").personal-nav__item
+            +icon('i-nav-1')(style="height:19px;width:19px")
+            span Личные данные
+        a(href="#").personal-nav__item.active
+            +icon('i-nav-2')(style="height:19px;width:19px")
+            span Мои заказы
+        a(href="#").personal-nav__item
+            +icon('i-nav-3')(style="height:19px;width:19px")
+            span Подписка на новости
+        a(href="#").personal-nav__item
+            +icon('i-nav-4')(style="height:19px;width:19px")
+            span Подписка на кофе
+        a(href="#").personal-nav__item
+            +icon('i-nav-5')(style="height:19px;width:19px")
+            span Корзина
+

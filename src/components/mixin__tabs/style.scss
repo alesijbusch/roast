@@ -1,0 +1,45 @@
+@import "src/assets/css/vars_mixins/vars_mixins";
+
+.tabs{
+	display: flex;
+	gap: 50px;
+	//padding-bottom: 16px;
+	border-bottom: 1px solid $a5;
+	margin-bottom: 40px;
+	flex-wrap: nowrap;
+	overflow: auto;
+	@media (max-width: $md - 1) {
+		//margin-right: -20px;
+		//padding-right: 20px;
+	}
+	@media (max-width: $sm - 1) {
+		gap: 30px;
+		margin-bottom: 25px;
+	}
+
+	&-item{
+		flex-shrink: 0;
+		padding-bottom: 16px;
+		border-bottom: 3px solid transparent;
+		position: relative;
+		font-size: 1.12rem;
+		@media (max-width: $md - 1) {
+			padding-bottom: 12px;
+		}
+
+		//&:before{
+		//	left: 0;
+		//	right: 0;
+		//	bottom: 0;
+		//	height: 3px;
+		//	position: absolute;
+		//	z-index: 2;
+		//	content: '';
+		//}
+		&.active{
+			font-weight: 600;
+			pointer-events: none;
+			border-bottom-color: $accent;
+		}
+	}
+}

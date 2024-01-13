@@ -60,31 +60,11 @@ mixin order-card(args={})
 .personal
     .personal-grid
         .personal-grid__item
-            .personal-nav
-                .personal-nav__header
-                    .personal-nav__item
-                    .personal-nav__toggler
-
-                .personal-nav__body
-                    a(href="#").personal-nav__item
-                        +icon('i-nav-1')(style="height:19px;width:19px")
-                        span Личные данные
-                    a(href="#").personal-nav__item.active
-                        +icon('i-nav-2')(style="height:19px;width:19px")
-                        span Мои заказы
-                    a(href="#").personal-nav__item
-                        +icon('i-nav-3')(style="height:19px;width:19px")
-                        span Подписка на новости
-                    a(href="#").personal-nav__item
-                        +icon('i-nav-4')(style="height:19px;width:19px")
-                        span Подписка на кофе
-                    a(href="#").personal-nav__item
-                        +icon('i-nav-5')(style="height:19px;width:19px")
-                        span Корзина
+            include personal-nav
 
         .personal-grid__item
             .personal-order
-                .personal-order__title Мои заказы
+                .personal__title Мои заказы
                 .personal-order__list
                     +order-item({
 

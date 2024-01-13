@@ -8,7 +8,17 @@
     line-height: calc(1em + 7px);
     color: #999;
     margin: 4px 0 0 0;
+	  &--sm{
+		  font-size: 12px;
+		  margin-top: 14px;
+		  @media (max-width: $sm - 1) {
+			  margin-top: -5px;
+		  }
+	  }
   }
+
+
+
 }
 
 .form-control-label {
@@ -149,6 +159,15 @@ textarea.form-control {
       background: $basic_black;
     }
   }
+}
+.checkbox-wrap{
+	display: flex;
+	gap: 40px;
+	margin-top: 6px;
+	@media (max-width: $xs - 1) {
+		flex-direction: column;
+		gap: 10px;
+	}
 }
 .checkbox--img {
   input:checked ~ label:before {
@@ -539,11 +558,28 @@ textarea.form-control {
   display: flex;
   align-items: center;
   justify-content: center;
+	fill: #D9D9D9;
   &:hover {
     @media (min-width: 1024px) {
       cursor: pointer;
     }
   }
+}
+
+.pass-descr{
+	@media (min-width: $md){
+		position: absolute;
+		right: -25px;
+		transform: translateX(100%);
+		top: 36px;
+		//bottom: 0;
+		margin: auto 0;
+	}
+
+	font-size: .8666rem;
+	color: $accent;
+	margin-top: 4px;
+
 }
 
 input.btn.btn--primary[type="submit"] {

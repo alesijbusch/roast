@@ -1,0 +1,6 @@
+mixin tabs(args={})
+    +include-style('mixin__tabs')
+    .tabs
+        each i in args.list
+            a(href="#").tabs-item(class=i.mod || '')
+                span=i.name

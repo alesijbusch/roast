@@ -1,0 +1,17 @@
++include-style('pagination')
+
+.pagination-wrap
+    .btn Показать еще 12
+
+    .pagination
+        a(href="#" title="Пред.").pagination__btn.pagination__btn--prev.is-hidden
+            +icon('i-arrow-right')(style="width:7px;height:12px")
+        .pagination__list
+            span.pagination__item.pagination__item--current 1
+            a(href="#").pagination__item 2
+            a(href="#").pagination__item 3
+            a(href="#").pagination__item ...
+            a(href="#").pagination__item 9
+            a(href="#").pagination__item 10
+        a(href="#" title="След.").pagination__btn.pagination__btn--next
+            +icon('i-arrow-right')(style="width:7px;height:12px")

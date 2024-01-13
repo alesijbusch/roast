@@ -1,7 +1,7 @@
 extends ../../layout/layout
 
 block vars
-    - var pageTitle = 'Статьи'
+    - var pageTitle = 'Личный кабинет'
     - var pageBodyClass = ''
     - var dir = './'
 
@@ -10,24 +10,14 @@ block premain
     .container
         .page-top
             +breadcrumbs({
-                content2: 'Статьи',
+                content2: 'Личный кабинет',
             })
             .page-top__header
-                h1.page-top__title Статьи
-    .container
-        +tabs({
-            list:[
-                {name: 'Все темы',
-                    mod: 'active'},
-                {name: 'Кофейные заметки'},
-                {name: 'Чайные заметки'},
-                {name: 'Новости Roast.by'},
-            ]
-        })
+                h1.page-top__title Личный кабинет
 
 block main
     .container
-        include ../../components/news-list/news-list
+        include ../../components/personal/personal-subs
 
     include ../../components/subscription/subscription
 block pageModal

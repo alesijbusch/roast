@@ -72,3 +72,21 @@
     color: #fff;
   }
 }
+
+
+.pagination-wrap{
+	position: relative;
+	display: flex;
+	justify-content: center;
+	margin-top: 40px;
+	.pagination{
+		position: absolute;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		margin: auto 0;
+		@media (max-width: $lg - 1) {
+			display: none;
+		}
+	}
+}

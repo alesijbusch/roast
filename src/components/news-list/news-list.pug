@@ -3,54 +3,62 @@
 -
     var items = [
         {
-            img: 'service-1.jpg',
+            img: 'service-1.png',
             title: 'Свежий взгляд на наш интернет-магазин!',
             btn: 'Заказать услугу'
         },        {
-            img: 'service-1.jpg',
+            img: 'service-2.png',
             title: 'Свежий взгляд на наш интернет-магазин!',
             btn: 'Заказать услугу'
         },
         {
-            img: 'service-2.jpg',
+            img: 'service-3.png',
             title: 'Что лучше: коляска-люлька или коляска-трансформер',
             btn: 'Подробнее'
         },
         {
-            img: 'service-2.jpg',
+            img: 'service-4.png',
             title: 'Что лучше: коляска-люлька или коляска-трансформер',
             btn: 'Подробнее'
         },
         {
-            img: 'service-3.jpg',
+            img: 'service-5.png',
+            title: 'Как сделать букет своими руками',
+            btn: 'Заказать услугу'
+        },
+        {
+            img: 'service-6.png',
             title: 'Как сделать букет своими руками',
             btn: 'Заказать услугу'
         }
     ]
 
 .news
-    .container
-        .main-row
-            .main-row__main
-                .news-list
-                    each item in items
+    .news-list
+        each item in items
+            .news-card-wrap
+                a(href="#").news-card
+                    .news-card__img
+                        +lazy-img({
+                            wrap_mod: 'service-item__img-wrap',
+                            img: item.img,
+                        })
+                    .news-card__content
+                        .news-card__info
+                            .news-card__tag Новости Roast.by
+                            .news-card__date
+                                +icon('i-calendar')(style="height:17px;width:17px")
+                                span 26 октября 2023
 
-                        .news-card
-                            .news-card__img
-                                +lazy-img({
-                                    wrap_mod: 'service-item__img-wrap',
-                                    link: true,
-                                    img: item.img,
-                                })
-                            .news-card__content
-                                a(href='#').news-card__title=item.title
-                                .news-card__footer
-                                    .news-card__tag
-                                        span Советы покупателям
-                                        span /
-                                        span 23 июня 2022
-            .main-row__aside.main-row__aside--right
-                .sticky-block
-                    include ../slide-block/slide-block-right
-                    include ../aside-targets/aside-targets
-                    include ../subscribe-block/subscribe-block
+                        .news-card__title=item.title
+                        .news-card__footer
+                            p Более миллиона людей пьют кофе каждый день. Кто-то готовит себе напиток дома, кто-то по принципу удобства выбирает кофейню рядом готовит себе напиток дома, кто-то по принципу удобства выбирает кофейню рядом
+
+
+
+    include ../pagination/pagination--v2
+    //.main-row__aside.main-row__aside--right
+    //    .sticky-block
+    //        include ../slide-block/slide-block-right
+    //        include ../aside-targets/aside-targets
+    //        include ../subscribe-block/subscribe-block

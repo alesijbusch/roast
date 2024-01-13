@@ -1,0 +1,63 @@
++include-style('personal')
+
+.personal
+    .personal-grid
+        .personal-grid__item
+            include personal-nav
+
+        .personal-grid__item
+            .personal-mail
+                .personal-mail__form
+                    .personal__title Подписка на новости
+
+                    form.form-block
+                        .form-block__grid
+                            +input({
+                                fg_mod: 'form-group--margin',
+                                label_mod: 'form-control-label--small',
+                                label: 'E-mail',
+                                type: 'email',
+                                placeholder: false,
+                                required: true,
+                                pattern: false,
+                                validation: {
+                                    message: 'Обязательное поле',
+                                    regexp: 'Неверный формат',
+                                    emailaddress: ' ',
+                                    identical: false
+                                }
+                            })
+
+
+                            .form-group__description.form-group__description--sm После добавления или изменения адреса подписки вам будет выслан код подтверждения.<br>Подписка будет не активной до ввода кода подтверждения.
+                            .form-group
+                                .form-control-label.form-control-label--small Рубрики подписки*
+                                .checkbox-wrap
+                                    +checkbox({
+                                        mod: '',
+                                        label: 'Новости магазина',
+                                        value: '',
+                                        name: 'news',
+                                        required: false,
+                                    })(checked)
+                                    +checkbox({
+                                        mod: '',
+                                        label: 'Акции',
+                                        value: '',
+                                        name: 'actions',
+                                        required: false,
+                                    })(checked)
+
+
+                        .form-block__footer
+                            .policy-block
+                                +checkbox({
+                                    mod: '',
+                                    label: 'Я согласен на <a href="#"> обработку персональных данных</a>',
+                                    value: '',
+                                    name: 'policy',
+                                    required: true,
+                                })(checked)
+                            .form-block__submit
+                                button(type="submit").btn.btn-lg.btn--primary Сохранить
+
