@@ -1,0 +1,115 @@
+@import "src/assets/css/vars_mixins/vars_mixins";
+
+.staff{
+	padding-bottom: 100px;
+	@media (max-width: $sm - 1) {
+		padding-bottom: 60px;
+	}
+}
+
+.staff-card{
+	padding: 30px;
+	border: 1px solid $a5;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	//width: 313px;
+	@media (max-width: $xs - 1) {
+
+		padding: 20px;
+	}
+	&__img{
+		height: 234px;
+		position: relative;
+		margin-bottom: 25px;
+		.lazy-img-wrap{
+			position: absolute;
+			inset: 0;
+			img{
+				object-fit: cover;
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+	&__name{
+		font-weight: 600;
+		color: $accent;
+		font-size: 1.25rem;
+
+	}
+	&__pos{
+		font-size: 10px;
+		text-transform: uppercase;
+		font-weight: 600;
+		line-height: 14px; /* 140% */
+		letter-spacing: 1px;
+		color: $b3;
+	}
+	&__info{
+		font-size: .8666rem;
+		color: $b3;
+		margin: 15px 0 20px;
+	}
+	&__footer{
+		padding-top: 20px;
+		margin-top: auto;
+		border-top: 1px  dashed $a5;
+		font-size: .94rem   ;
+		span{
+			font-weight: 600;
+		}
+	}
+}
+.staff-slider {
+	position: relative;
+	&:not(:last-child){
+		margin-bottom: 55px;
+		@media (max-width: $sm - 1) {
+			margin-bottom: 40px;
+		}
+	}
+	&__title{
+		font-size: 1.6rem;
+		font-weight: 600;
+		padding-right: 80px;
+	}
+	&__desc{
+		margin-top: 16px;
+		color: $b3;
+
+	}
+  &__slider {
+	  margin-top: 30px;
+	  position: static;
+
+	  &:not(.is-overflow){
+		  .splide__arrows{
+			  display: none;
+		  }
+	  }
+    .splide__slide {
+      //width: 178px;
+      //margin-right: 12px;
+    }
+
+	  .splide__arrows{
+		  position: absolute;
+		  right: 0;
+		  top: 0px;
+		  display: flex;gap: 10px;
+	  }
+	  .splide__arrow{
+		  position: static;
+		  transform: none;
+		  background-color: #F5F5F5;
+	  }
+
+  }
+
+
+
+
+
+}
+

@@ -1,0 +1,92 @@
++include-style('staff')
++include-script('staff')
++include-style('sales')
+
+
+mixin staff-card(args={})
+    .staff-card
+        .staff-card__img
+            +lazy-img({
+                img: `staff-${args.img}.png`
+            })
+        .staff-card__name Александр Ардашев
+        .staff-card__pos Коммерческий директор
+        .staff-card__info=args.info || 'Станет Вашим личным экспертом в мире кофе'
+        .staff-card__footer
+            span E-mail:
+            a(href="#") alar@roast.by
+
+
+//+include-style('sales-section')
+.container
+    .staff
+        .staff-slider
+            .staff-slider__title Продажи
+            .staff-slider__desc Надежные и позитивные помощники для покупателей. Сориентируют по характеристикам любого товара, выслушают все предпочтения клиентов и подберут идеально подходящий вариант. Помогут оформить заказ, расскажут о способах доставки и проконсультируют по всем другим организационным вопросам.
+
+            +splide({
+                mod: 'staff-slider__slider js-splide-staff'
+            })
+                each item in [1,2,3,]
+                    +splide-slide()
+                        +staff-card({
+                            img: item
+                        })
+                +splide-slide()
+                    +staff-card({
+                        img: 0,
+                        info: '  '
+                    })
+
+        .staff-slider
+            .staff-slider__title Roast.by
+
+            +splide({
+                mod: 'staff-slider__slider js-splide-staff'
+            })
+                each item in [4,5,6,]
+                    +splide-slide()
+                        +staff-card({
+                            img: item,
+                            info: 'Закончила «Петербургский институт кофе и чая» специальность - кофе тренер. С 2017 года член SCA, серебряный призер чемпионата РБ по каптестингу, диплом Sensory Skills Intermediate, судья национальных кофейных чемпионатов. '
+                        })
+                +splide-slide()
+                    +staff-card({
+                        img: 4,
+                        info: 'Кофе увлекся в 2009 году и с тех пор с ним неразлучен. Отвечаю в Roast.by за стратегическое развитие и закупки сырья.Люблю сноуборд, тяжелую музыку, крафтовое пиво и корги. Жаль, что у меня аллергия на последнюю :)'
+                    })
+
+        .staff-slider
+            .staff-slider__title Финансы
+
+            +splide({
+                mod: 'staff-slider__slider js-splide-staff'
+            })
+                each item in [7,8,9]
+                    +splide-slide()
+                        +staff-card({
+                            img: item,
+                            info: 'Закончила «Петербургский институт кофе и чая» специальность - кофе тренер. С 2017 года член SCA, серебряный призер чемпионата РБ по каптестингу, диплом Sensory Skills Intermediate, судья национальных кофейных чемпионатов. '
+                        })
+                +splide-slide()
+                    +staff-card({
+                        img: 4,
+                        info: 'С удовольствием решит нерешаемые проблемы!'
+                    })
+
+
+        .staff-slider
+            .staff-slider__title Кофейни
+
+            +splide({
+                mod: 'staff-slider__slider js-splide-staff'
+            })
+
+                +splide-slide()
+                    +staff-card({
+                        img: 4,
+                        info: 'С удовольствием решит нерешаемые проблемы!'
+                    })
+
+
+
