@@ -1,65 +1,124 @@
 @import "src/assets/css/vars_mixins/vars_mixins";
 
 .content {
-	color: #555;
-	color: var(--basic_text_black);
 	max-width: 1200px;
 	font-size: 1rem;
 	line-height: calc(1em + 10px);
 
 	h1, h2, h3, h4, h5, h6 {
-		font-weight: 500;
-		margin: 30px 0 25px;
-		color: #222;
-		color: var(--white_text_black);
+		font-weight: 600;
+		margin: 35px 0 24px;
 	}
 
-	h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+	h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
 		margin-top: 0;
 	}
 
 	h3 {
-		font-size: 1.5em;
-		line-height: calc(1em + 10px);
+		font-size: 1.56em;
+		line-height: 1.31;
 	}
 
 	p {
-		margin-bottom: 24px;
-	}
-
-	ol, ol li {
-		list-style-type: decimal;
-	}
-
-	ol, ul {
-		padding-left: 17px;
 		margin-bottom: 20px;
+		color: $b3
+	}
+
+	ol,
+	ul{
+		margin-bottom: 24px;
+		@media (max-width: $md - 1) {
+			margin-bottom: 24px;
+		}
+
 
 		li {
-			padding-left: 4px;
-			margin-bottom: 12px;
-			line-height: 24px;
 			position: relative;
+			padding: 0 0 0 20px;
+			font-style: normal;
+
+			//font-weight: normal;
+			@media (max-width: $md - 1) {
+				padding-left: 10px;
+			}
+
+			&:not(:last-child) {
+				margin-bottom: 8px;
+			}
+		}
+
+		ul, ol{
+			margin-top: 12px;
+			margin-bottom: 0;
+			color: $b3;
+			@media (max-width: $md - 1) {
+				margin-top: 12px;
+			}
+		}
+
+
+	}
+
+	ul {
+		& > li {
+			&:before {
+				content: '';
+				width: 5px;
+				height: 5px;
+				background-color: #000000;
+				position: absolute;
+				top: 10px;
+				left: 0;
+				@media (max-width: $md - 1) {
+					top: 5px;
+				}
+			}
 		}
 	}
 
-	ul li {
+	ol {
+		counter-reset: list;
+		list-style: none;
 
 
-		&:before {
-			content: "";
-			position: relative;
-			left: 0;
-			top: 11px;
-			background: #666;
-			width: 6px;
-			border-radius: 50%;
-			height: 6px;
-			display: inline-block;
-			vertical-align: top;
-			margin-right: 10px;
+		& > li {
+			padding-left: 2rem;
+			@media (max-width: $md - 1) {
+				padding-left: 14px;
+			}
+			&:before {
+				content: counters(list, ".") ".";
+				counter-increment: list;
+				transform: none;
+				display: inline-block;
+				font-style: normal;
+				font-weight: 600;
+				color: $b2;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+
+			& > ol:not(.list-reset) {
+				li {
+					padding: 0 0 0 3.6rem;
+					@media (max-width: $md - 1) {
+						padding-left: 26px;
+					}
+
+					& > ol:not(.list-reset) {
+						li {
+							padding: 0 0 0 4.8rem;
+							@media (max-width: $md - 1) {
+								padding-left: 36px;
+							}
+						}
+					}
+				}
+			}
 		}
 	}
+
 
 
 	table {

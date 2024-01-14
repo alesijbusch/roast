@@ -1,0 +1,25 @@
+@import "src/assets/css/vars_mixins/vars_mixins";
+
+.sticky-block{
+	padding: 35px;
+	background-color: $b4;
+	@media (max-width: $md - 1) {
+		padding: 20px;
+	}
+	&__img{
+		margin-bottom: 30px;
+		height: 140px;
+		position: relative;
+		.lazy-img-wrap{
+			position: absolute;
+			inset: 0;
+		}
+	}
+	h4{
+		font-size: 1.25rem;
+		margin-bottom: 15px;
+	}
+	&__btn{
+		margin-top: 30px;
+	}
+}

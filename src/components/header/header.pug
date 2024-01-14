@@ -72,10 +72,32 @@ header.header__main(
             .search-result__btn
               a(href="#").btn.btn-wide Все результаты  
         .header__bottom-inner
-          .header__bottom-scroll
-            each name in ['Кофе','Чай','Аксессуары','Зеленый кофе','Гранола','Капсулы','Дрип-пакеты','Оборудование']
-              a(href="#")
-                span=name
+          +nav({
+              more_btn: true,
+              mod: 'header__bottom-scroll header__top-nav',
+              list: [
+                  {name: 'Кофе',
+                      active: true,
+                      list: [
+                          {name: 'Свежеобжаренный'},
+                          {name: 'Зеленый'},
+                          {name: 'Капсулы', active: true,},
+                          {name: 'Дрип-пакеты'},
+                          {name: 'Подписки'},
+
+                      ],},
+                  {name: 'Чай',},
+                  {name: 'Аксессуары'},
+                  {name: 'Зеленый кофе'},
+                  {name: 'Гранола',},
+                  {name: 'Капсулы'},
+                  {name: 'Дрип-пакеты'},
+                  {name: 'Оборудование'},
+
+
+              ]
+          })
+
         .header__main-items
           .header__main-item
             span.header__main-item-link(@click="isMobileSearchVisible = ! isMobileSearchVisible")

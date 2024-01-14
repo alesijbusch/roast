@@ -1,12 +1,13 @@
++include-style('content')
+
 +include-style('accordion')
 .accordion
-    .content
-        h3 Вопросы и ответы
     .accordion-inner
         .accordion-item(x-data="{open: false}" :class="open ? 'active' :''" )
             .accordion-item__title( @click="open = !open" )
                 span Как осуществляется доставка в регионы?
-                +icon('i-close')(style='width: 12px; height: 12px')
+                .icon
+                    span
             //.accordion-item__body(x-show= "open")
             .accordion-item__body(x-show= "open" x-transition:enter.duration.350ms x-transition.opacity)
                 .accordion-item__body-content.content
@@ -17,12 +18,144 @@
                     p Для более точного расчета стоимости доставки обращайтесь к менеджерам в онлайн-чат.
         .accordion-item(x-data="{open: false}" :class="open ? 'active' :''" )
             .accordion-item__title( @click="open = !open" )
-                span Какие возможны способы оплаты?
-                +icon('i-close')(style='width: 12px; height: 12px')
+                span Как осуществляется доставка в регионы?
+                .icon
+                    span
             //.accordion-item__body(x-show= "open")
             .accordion-item__body(x-show= "open" x-transition:enter.duration.350ms x-transition.opacity)
                 .accordion-item__body-content.content
-                    p Оплатить заказ можно на сайте любым удобным для вас способом: банковская карта или перевод, оплата на электронный кошелек, оформление кредита и рассрочки. Также возможна оплата наличными при получении заказа.
+                    p Предусмотрено несколько вариантов доставки: транспортные компании, курьерская доставка и почта России.
 
-                    p Будьте внимательны! Способ оплаты может быть недоступен для некоторых видов доставки или региона.
+                    p Вы можете выбрать любой удобный для вас способ и указать желаемую дату доставки. Оплата рассчитывается автоматически при указании региона и даты.
 
+                    p Для более точного расчета стоимости доставки обращайтесь к менеджерам в онлайн-чат.
+        .accordion-item(x-data="{open: false}" :class="open ? 'active' :''" )
+            .accordion-item__title( @click="open = !open" )
+                span Как осуществляется доставка в регионы?
+                .icon
+                    span
+            //.accordion-item__body(x-show= "open")
+            .accordion-item__body(x-show= "open" x-transition:enter.duration.350ms x-transition.opacity)
+                .accordion-item__body-content.content
+                    p Предусмотрено несколько вариантов доставки: транспортные компании, курьерская доставка и почта России.
+
+                    p Вы можете выбрать любой удобный для вас способ и указать желаемую дату доставки. Оплата рассчитывается автоматически при указании региона и даты.
+
+                    p Для более точного расчета стоимости доставки обращайтесь к менеджерам в онлайн-чат.
+        .accordion-item(x-data="{open: false}" :class="open ? 'active' :''" )
+            .accordion-item__title( @click="open = !open" )
+                span Как осуществляется доставка в регионы?
+                .icon
+                    span
+            //.accordion-item__body(x-show= "open")
+            .accordion-item__body(x-show= "open" x-transition:enter.duration.350ms x-transition.opacity)
+                .accordion-item__body-content.content
+                    p Предусмотрено несколько вариантов доставки: транспортные компании, курьерская доставка и почта России.
+
+                    p Вы можете выбрать любой удобный для вас способ и указать желаемую дату доставки. Оплата рассчитывается автоматически при указании региона и даты.
+
+                    p Для более точного расчета стоимости доставки обращайтесь к менеджерам в онлайн-чат.
+        .accordion-item(x-data="{open: false}" :class="open ? 'active' :''" )
+            .accordion-item__title( @click="open = !open" )
+                span Как осуществляется доставка в регионы?
+                .icon
+                    span
+            //.accordion-item__body(x-show= "open")
+            .accordion-item__body(x-show= "open" x-transition:enter.duration.350ms x-transition.opacity)
+                .accordion-item__body-content.content
+                    p Предусмотрено несколько вариантов доставки: транспортные компании, курьерская доставка и почта России.
+
+                    p Вы можете выбрать любой удобный для вас способ и указать желаемую дату доставки. Оплата рассчитывается автоматически при указании региона и даты.
+
+                    p Для более точного расчета стоимости доставки обращайтесь к менеджерам в онлайн-чат.
+        .accordion-item(x-data="{open: false}" :class="open ? 'active' :''" )
+            .accordion-item__title( @click="open = !open" )
+                span Как осуществляется доставка в регионы?
+                .icon
+                    span
+            //.accordion-item__body(x-show= "open")
+            .accordion-item__body(x-show= "open" x-transition:enter.duration.350ms x-transition.opacity)
+                .accordion-item__body-content.content
+                    p Предусмотрено несколько вариантов доставки: транспортные компании, курьерская доставка и почта России.
+
+                    p Вы можете выбрать любой удобный для вас способ и указать желаемую дату доставки. Оплата рассчитывается автоматически при указании региона и даты.
+
+                    p Для более точного расчета стоимости доставки обращайтесь к менеджерам в онлайн-чат.
+        .accordion-item(x-data="{open: false}" :class="open ? 'active' :''" )
+            .accordion-item__title( @click="open = !open" )
+                span Как осуществляется доставка в регионы?
+                .icon
+                    span
+            //.accordion-item__body(x-show= "open")
+            .accordion-item__body(x-show= "open" x-transition:enter.duration.350ms x-transition.opacity)
+                .accordion-item__body-content.content
+                    p Предусмотрено несколько вариантов доставки: транспортные компании, курьерская доставка и почта России.
+
+                    p Вы можете выбрать любой удобный для вас способ и указать желаемую дату доставки. Оплата рассчитывается автоматически при указании региона и даты.
+
+                    p Для более точного расчета стоимости доставки обращайтесь к менеджерам в онлайн-чат.
+        .accordion-item(x-data="{open: false}" :class="open ? 'active' :''" )
+            .accordion-item__title( @click="open = !open" )
+                span Как осуществляется доставка в регионы?
+                .icon
+                    span
+            //.accordion-item__body(x-show= "open")
+            .accordion-item__body(x-show= "open" x-transition:enter.duration.350ms x-transition.opacity)
+                .accordion-item__body-content.content
+                    p Предусмотрено несколько вариантов доставки: транспортные компании, курьерская доставка и почта России.
+
+                    p Вы можете выбрать любой удобный для вас способ и указать желаемую дату доставки. Оплата рассчитывается автоматически при указании региона и даты.
+
+                    p Для более точного расчета стоимости доставки обращайтесь к менеджерам в онлайн-чат.
+        .accordion-item(x-data="{open: false}" :class="open ? 'active' :''" )
+            .accordion-item__title( @click="open = !open" )
+                span Как осуществляется доставка в регионы?
+                .icon
+                    span
+            //.accordion-item__body(x-show= "open")
+            .accordion-item__body(x-show= "open" x-transition:enter.duration.350ms x-transition.opacity)
+                .accordion-item__body-content.content
+                    p Предусмотрено несколько вариантов доставки: транспортные компании, курьерская доставка и почта России.
+
+                    p Вы можете выбрать любой удобный для вас способ и указать желаемую дату доставки. Оплата рассчитывается автоматически при указании региона и даты.
+
+                    p Для более точного расчета стоимости доставки обращайтесь к менеджерам в онлайн-чат.
+        .accordion-item(x-data="{open: false}" :class="open ? 'active' :''" )
+            .accordion-item__title( @click="open = !open" )
+                span Как осуществляется доставка в регионы?
+                .icon
+                    span
+            //.accordion-item__body(x-show= "open")
+            .accordion-item__body(x-show= "open" x-transition:enter.duration.350ms x-transition.opacity)
+                .accordion-item__body-content.content
+                    p Предусмотрено несколько вариантов доставки: транспортные компании, курьерская доставка и почта России.
+
+                    p Вы можете выбрать любой удобный для вас способ и указать желаемую дату доставки. Оплата рассчитывается автоматически при указании региона и даты.
+
+                    p Для более точного расчета стоимости доставки обращайтесь к менеджерам в онлайн-чат.
+        .accordion-item(x-data="{open: false}" :class="open ? 'active' :''" )
+            .accordion-item__title( @click="open = !open" )
+                span Как осуществляется доставка в регионы?
+                .icon
+                    span
+            //.accordion-item__body(x-show= "open")
+            .accordion-item__body(x-show= "open" x-transition:enter.duration.350ms x-transition.opacity)
+                .accordion-item__body-content.content
+                    p Предусмотрено несколько вариантов доставки: транспортные компании, курьерская доставка и почта России.
+
+                    p Вы можете выбрать любой удобный для вас способ и указать желаемую дату доставки. Оплата рассчитывается автоматически при указании региона и даты.
+
+                    p Для более точного расчета стоимости доставки обращайтесь к менеджерам в онлайн-чат.
+        .accordion-item(x-data="{open: false}" :class="open ? 'active' :''" )
+            .accordion-item__title( @click="open = !open" )
+                span Как осуществляется доставка в регионы?
+                .icon
+                    span
+            //.accordion-item__body(x-show= "open")
+            .accordion-item__body(x-show= "open" x-transition:enter.duration.350ms x-transition.opacity)
+                .accordion-item__body-content.content
+                    p Предусмотрено несколько вариантов доставки: транспортные компании, курьерская доставка и почта России.
+
+                    p Вы можете выбрать любой удобный для вас способ и указать желаемую дату доставки. Оплата рассчитывается автоматически при указании региона и даты.
+
+                    p Для более точного расчета стоимости доставки обращайтесь к менеджерам в онлайн-чат.

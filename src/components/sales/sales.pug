@@ -1,85 +1,16 @@
 +include-style('sales')
-+include-style('sales-section')
+//+include-style('sales-section')
+.container
+    .custom-grid
+        .custom-grid__content
+            .sales__list
+                include ../accordion/accordion
+        .custom-grid__sticky
+            +sticky-block({
+                img: 'service-1.png',
+                btn: 'Написать сообщение'
+            })
+                block body
+                    h4 Не нашли ответа на свой вопрос?
+                    p Свяжитесь с нами, и мы предоставим необходимую информацию
 
--
-    var items = [
-        {
-            img: 'sales-item-1.jpg',
-            badges: 'до -50%',
-            title: 'Черная пятница: скидки до 50%',
-            text: 'С 25 ноября по 2 октября',
-        },
-        {
-            img: 'sales-item-2.jpg',
-            badges: '-20%',
-            title: 'Скидка 20% на все автотовары',
-            text: 'До конца 2022 года',
-        },
-        {
-            img: 'sales-item-3.jpg',
-            badges: false,
-            title: 'При покупке ударной дрели набор сверл в подарок',
-            text: 'До конца августа',
-        },
-        {
-            img: 'sales-item-1.jpg',
-            badges: 'до -50%',
-            title: 'Черная пятница: скидки до 50%',
-            text: 'С 25 ноября по 2 октября',
-        },
-        {
-            img: 'sales-item-2.jpg',
-            badges: '-20%',
-            title: 'Скидка 20% на все автотовары',
-            text: 'До конца 2022 года',
-        },
-        {
-            img: 'sales-item-3.jpg',
-            badges: false,
-            title: 'При покупке ударной дрели набор сверл в подарок',
-            text: 'До конца августа',
-        },
-        {
-            img: 'sales-item-1.jpg',
-            badges: 'до -50%',
-            title: 'Черная пятница: скидки до 50%',
-            text: 'С 25 ноября по 2 октября',
-        },
-        {
-            img: 'sales-item-2.jpg',
-            badges: '-20%',
-            title: 'Скидка 20% на все автотовары',
-            text: 'До конца 2022 года',
-        },
-        {
-            img: 'sales-item-3.jpg',
-            badges: false,
-            title: 'При покупке ударной дрели набор сверл в подарок',
-            text: 'До конца августа',
-        },
-    ]
-
-.sales.container
-    .sales__text В разделе собраны все акции интернет-магазина: сезонные предложения, разовые и постоянные распродажи. Это отличная возможность сэкономить на покупке отдельного товара или целого набора. Акции действуют как для новых покупателей, так и для постоянных клиентов. Обращайте внимание на сроки акций и не забывайте о том, что количество товара ограничено. Следите за нашими предложениями и приобретайте товары с выгодой до 50%!
-    .sales__tabs.tabs-nav-v2
-        .tabs-nav-v2__list
-            .tabs-nav-v2__item.active Действующие акции
-            .tabs-nav-v2__item Архив
-    .sales__list
-        each item in items
-            .sales-item
-                +lazy-img({
-                    link: true,
-                    wrap_mod: 'sales-item__img-wrap',
-                    img_mod: 'sales-item__img',
-                    img: item.img
-                })
-                    if(item.badges)
-                        .sales-item__badges
-                            .badge.badge--yellow=item.badges
-                            .badge.badge--gray.badge--countdown
-                                img(src="/html/images/sale-fire.svg" alt="badge")
-                                +countdown('06.16.2023 14:06:00')
-                .sales-item__content
-                    a(href="#").sales-item__title=item.title
-                    .sales-item__text=item.text

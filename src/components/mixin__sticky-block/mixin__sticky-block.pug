@@ -1,0 +1,14 @@
+mixin sticky-block(args={})
+    +include-style('mixin__sticky-block')
+    +include-script('mixin__sticky-block')
+    .sticky-block
+        .sticky-block__inner
+            .sticky-block__img
+                +lazy-img({
+                    img: args.img
+                })
+            .sticky-block__content
+                block body
+            .sticky-block__btn(data-toggle="modal" data-target="#modal-feedback")
+                .btn=args.btn
+

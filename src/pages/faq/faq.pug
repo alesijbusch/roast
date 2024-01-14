@@ -1,7 +1,7 @@
 extends ../../layout/layout
 
 block vars
-    - var pageTitle = 'Скидки, оплата, достака'
+    - var pageTitle = 'Вопрос-ответ'
     - var pageBodyClass = ''
     - var dir = './'
 
@@ -10,20 +10,20 @@ block premain
     .container
         .page-top
             +breadcrumbs({
-                content2: 'Скидки, оплата, достака',
+                content2: 'Вопрос-ответ',
                 href_content2: '',
                 content3: ''
             })
             .page-top__header
-                h1.page-top__title Скидки, оплата, достака
+                h1.page-top__title Вопрос-ответ
     .container
         +tabs({
             list: [
                 {
                     name: 'Вопрос-ответ',
-
+                    mod: 'active'
                 },
-                {name: 'Система скидок', mod: 'active'},
+                {name: 'Система скидок'},
                 {name: 'Оплата'},
                 {name: 'Доставка'},
                 {name: 'Гарантия'},
@@ -32,7 +32,7 @@ block premain
             ]
         })
 block main
-    include ../../components/sales/sales-content
+    include ../../components/sales/sales
     include ../../components/subscription/subscription
 
 

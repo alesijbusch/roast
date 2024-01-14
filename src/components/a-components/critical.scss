@@ -211,6 +211,18 @@
   }
 }
 
+.custom-grid{
+	display: grid;
+	grid-template-columns: auto 320px;
+	gap: 20px;
+	padding-bottom: 100px;
+	@media (max-width: $sm - 1) {
+		padding-bottom: 60px;
+		gap: 25px;
+		grid-template-columns: 100%;
+	}
+}
+
 // .catalog .main-row__main {
 //   margin: 0 -24px -150px;
 //   padding: 0 24px 150px;
@@ -218,7 +230,7 @@
 // }
 
 .sticky-block {
-  top: 112px;
+  top: 92px;
   position: sticky;
   z-index: 5;
 }

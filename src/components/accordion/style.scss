@@ -1,70 +1,104 @@
 @import "src/assets/css/vars_mixins/vars_mixins";
 
-.accordion{
-	&-inner{
-		background-color: var(--black_bg_black);
-		border-radius: 8px;
-		//border: 1px solid var(--stroke_black);
-
-		//overflow: hidden;
+.accordion {
+	&-inner {
+		background-color: #ffffff;
 
 	}
-	&-item{
+
+	&-item {
 		//padding: 18px 18px 22px 23px;
-		border: 1px solid #e5e5e5;
-		border-color: var(--stroke_black);
-		transition: box-shadow ease .3s,border ease .3s,background ease .3s;
+		border: 1px solid $a5;
+		transition: box-shadow ease .3s, border ease .3s, background ease .3s;
+
 		&:hover {
 			//cursor: pointer;
 			border-color: #fff;
-			border-color: var(--stroke_black_hover);
-			background-color: #fff;
-			background-color: var(--card_bg_hover_black);
 			box-shadow: 0 5px 30px rgba(34, 34, 34, 0.1);
-			
+
 		}
+
 		&:not(:first-child) {
 			border-top: 0;
 		}
-		&:first-child {
-			border-top-left-radius: 8px;
-			border-top-right-radius: 8px;
-		}
-		&:last-child {
-			border-bottom-left-radius: 8px;
-			border-bottom-right-radius: 8px;
-		}
 
-		&__title{
+
+		&__title {
 			font-weight: 500;
-			padding: 18px 18px 22px 23px;
+			padding: 25px;
+			padding-right: 45px;
 			transition: all ease .3s;
 			min-height: auto;
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
 			cursor: pointer;
-			.icon{
-				transition: all ease .3s;
-				transform: rotate(45deg);
-				margin-left: 15px;
-				fill:var(--stroke_black);
+			position: relative;
+			@media (max-width: $sm - 1) {
+				padding: 20px;
+				padding-right: 45px;
 			}
-			&:hover{
-				cursor: pointer;
-				.icon{
-					fill:var(--fill_dark_lite_hover);
 
-				}
+			&:hover {
+				cursor: pointer;
+
 			}
 		}
-		&__body{
-			padding: 0 20px 20px;
-			color: var(--lite_basic_text_black);
+
+		.icon {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: absolute;
+			right: 25px;
+			top: 34px;
+
+			z-index: 2;
+
+			span {
+				position: relative;
+				width: 15px;
+				height: 15px;
+
+				&:before,
+				&:after {
+					content: '';
+					position: absolute;
+					display: block;
+					width: 15px;
+					height: 1px;
+					background-color: $accent;
+					margin: 0 auto;
+					transition: all ease .3s;
+				}
+
+				&:after {
+					transform: rotate(90deg);
+				}
+
+			}
 		}
-		&.active{
-			.icon{
-				transform: rotate(180deg);
+
+		&__body {
+			padding: 0 25px 25px;
+			color: $b3;
+			@media (max-width: $md - 1) {
+				padding: 0 20px 20px;
+			}
+			p{
+				font-size: .8666rem;
+				margin-bottom: 15px;
+			}
+
+		}
+
+		&.active {
+			.icon {
+				span {
+					&:after {
+						transform: rotate(0deg);
+					}
+				}
 			}
 		}
 	}

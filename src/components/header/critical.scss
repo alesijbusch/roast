@@ -511,6 +511,7 @@ body.overflow {
 		justify-content: space-between;
 		// padding: 10px 0;
 		min-width: 0;
+		flex-grow: 1;
 	}
 
 	&__bottom-scroll {
@@ -520,24 +521,54 @@ body.overflow {
 		display: flex;
 		align-items: center;
 		flex-shrink: 0;
+		width: 100%;
 		// margin: 0 -17px;
 
-		a {
-			margin-left: 17px;
-			margin-right: 17px;
-			color: $basic_black;
+		.nav-list{
+			width: 100%;
+			justify-content: center;
+			@media (max-width: 1379px) {
+				gap: 12px;
+			}
+
+		}
+
+		.nav-item {
+			white-space: nowrap;
+			&.active {
+				&:before {
+					content: "";
+					display: block;
+					position: absolute;
+					bottom: -17px;
+					left: 0;
+					height: 2px;
+					width: 100%;
+					background: $accent;
+				}
+
+				&:not(.has-nav) {
+					pointer-events: none;
+				}
+			}
+
+			&.has-nav {
+				.nav-link {
+					cursor: pointer;
+				}
+
+				cursor: pointer;
+			}
+		}
+
+		.nav-link {
 			flex-shrink: 0;
 			font-size: 15px;
 			line-height: calc(1em + 7px);
 			position: relative;
-			@media (max-width: 1380px) {
-				margin-left: 9px;
-				margin-right: 9px;
-			}
-			@media (max-width: $lg) {
-				margin-left: 7px;
-				margin-right: 7px;
-				font-size: 14px;
+
+			@media (max-width: 1379px) {
+				padding: 0;
 			}
 
 			&:hover {
@@ -548,19 +579,12 @@ body.overflow {
 				// border-bottom: 2px solid $accent;
 				text-shadow: 0 0 0.1px $basic_black, 0 0 0.1px $basic_black;
 
-				&:before {
-					content: "";
-					display: block;
-					position: absolute;
-					bottom: -15px;
-					left: 0;
-					height: 2px;
-					width: 100%;
-					background: $accent;
-				}
 			}
+
 		}
+
 	}
+
 }
 
 .search-mobile-close {
