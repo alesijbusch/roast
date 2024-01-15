@@ -1,0 +1,20 @@
+mixin news-card(args={})
+    +include-style('mixin__news-card')
+    a(href="#").news-card
+        .news-card__img
+            +lazy-img({
+                wrap_mod: 'service-item__img-wrap',
+                img: args.img,
+            })
+        .news-card__content
+            .news-card__info
+                .news-card__tag Новости Roast.by
+                .news-card__date
+                    +icon('i-calendar')(style="height:17px;width:17px")
+                    span 26 октября 2023
+
+            .news-card__title=args.title
+            if(!args.slider)
+                .news-card__footer
+                    p Более миллиона людей пьют кофе каждый день. Кто-то готовит себе напиток дома, кто-то по принципу удобства выбирает кофейню рядом готовит себе напиток дома, кто-то по принципу удобства выбирает кофейню рядом
+

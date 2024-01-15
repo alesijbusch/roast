@@ -1,4 +1,5 @@
-+include-style('news-list')
++include-style('content')
++include-script('article')
 
 -
     var items = [
@@ -33,18 +34,19 @@
         }
     ]
 
-.news
-    .news-list
-        each item in items
-            .news-card-wrap
-                +news-card({
-                    title: item.title,
-                    img: item.img
-                })
+.container
 
-    include ../pagination/pagination--v2
-    //.main-row__aside.main-row__aside--right
-    //    .sticky-block
-    //        include ../slide-block/slide-block-right
-    //        include ../aside-targets/aside-targets
-    //        include ../subscribe-block/subscribe-block
+    .article-slider
+        h2 Рекомендуем
+        +splide({
+            mod: 'article-slider__slider js-splide-article'
+        })
+            each item in items
+                +splide-slide()
+                    +news-card({
+                        slider: true,
+                        img: item.img,
+                        title: item.title
+                    })
+
+

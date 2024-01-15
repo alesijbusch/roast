@@ -2,16 +2,33 @@ extends ../../layout/layout
 
 block vars
     - var pageTitle = 'Услуги'
-    - var pageBodyClass = 'header-opacity'
+    - var pageBodyClass = ''
     - var dir = './'
 
 
 block premain
-    include ../../components/page-hero/page-hero
+    .container
+        .content-container
+            .page-top
+                +breadcrumbs({
+                    content2: 'Не только арабика и робуста: сорта и виды кофе',
+                    href_content2: '',
+                    content3: ''
+                })
+                .page-top__header
+                    h1.page-top__title Не только арабика и робуста: сорта и виды кофе
+                .page-top__info
+                    .page-top__tag Кофейные заметки
+                    .page-top__date
+                        +icon('i-calendar')(style="height:21px;width:21px")
+                        span 26 октября 2023, 0:00
+
 
 block main
-    include ../../components/news-article/news-article
-
+    .container
+        include ../../components/article/article
+    include ../../components/article/article-slider
+    include ../../components/subscription/subscription
 
 block pageModal
 

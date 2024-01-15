@@ -293,7 +293,7 @@
 	display: grid;
 	align-items: center;
 	gap: 20px;
-	font-size: 0.8666rem;
+	font-size: 0.8756rem;
 	justify-content: space-between;
 	grid-template-columns: auto 310px 40px 80px;
 	@media (max-width: $lg - 1) {
@@ -445,7 +445,7 @@
 		}
 
 		&-point {
-			font-size: 0.8666rem;
+			font-size: 0.8756rem;
 			color: $a3;
 			margin-top: 4px;
 		}

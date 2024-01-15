@@ -1,59 +1,60 @@
 -
-	var pages = [
-		{name: 'UI Kit', link: 'kit'},
-		{name: '404', link: '404'},
-		{name: 'Главная', link: 'index'},
-		{name: 'Каталог - список', link: 'catalog-list'},
-		{name: 'Каталог', link: 'catalog'},
-			{name: 'Каталог2', link: 'catalog2'},
-		{name: 'Товар', link: 'product'},
-		{name: 'ЛК-пользователь', link: 'personal-user'},
-		{name: 'ЛК-заказы', link: 'personal-order'},
-		{name: 'ЛК-подписки', link: 'personal-mail'},
-		{name: 'ЛК-кофе', link: 'personal-subs'},
-		// {name: 'Товар 2', link: 'product--single-img'},
-		// {name: 'Сравнение товаров', link: 'compare'},
-		// {name: 'Услуги', link: 'services'},
-		{name: 'Новости - список', link: 'news-list'},
-		{name: 'Команда', link: 'staff'},
-		// {name: 'Новость отдельная', link: 'news-article'},
-		// {name: 'Текстовая', link: 'content'},
-		// {name: 'Контакты', link: 'contacts'},
-		// {name: 'Контакты-2', link: 'contacts-2'},
-		// {name: 'Бренды', link: 'brands'},
-		// {name: 'Бренд', link: 'brand'},
-		{name: 'Вопрос-ответ', link: 'faq'},
-		{name: 'Скидки, оплата, достака и др', link: 'sales'},
-		// {name: 'Инфо', link: 'info'},
-		{name: 'Авторизация', link: 'auth'},
-		// {name: 'Регистрация', link: 'registration'},
-		// {name: 'Восстановление пароля', link: 'password-repare'},
-		{name: 'Корзина', link: 'cart'},
-		// {name: 'Select', link: 'select'},
-	]
+    var pages = [
+        {name: 'UI Kit', link: 'kit'},
+        {name: '404', link: '404'},
+        {name: 'Главная', link: 'index'},
+        {name: 'Каталог - список', link: 'catalog-list'},
+        {name: 'Каталог', link: 'catalog'},
+        {name: 'Каталог2', link: 'catalog2'},
+        {name: 'Товар', link: 'product'},
+        {name: 'ЛК-пользователь', link: 'personal-user'},
+        {name: 'ЛК-заказы', link: 'personal-order'},
+        {name: 'ЛК-подписки', link: 'personal-mail'},
+        {name: 'ЛК-кофе', link: 'personal-subs'},
+        // {name: 'Товар 2', link: 'product--single-img'},
+        // {name: 'Сравнение товаров', link: 'compare'},
+        // {name: 'Услуги', link: 'services'},
+        {name: 'Новости - список', link: 'news-list'},
+        {name: 'Новость отдельная', link: 'news-article'},
+
+        {name: 'Команда', link: 'staff'},
+        // {name: 'Текстовая', link: 'content'},
+        // {name: 'Контакты', link: 'contacts'},
+        // {name: 'Контакты-2', link: 'contacts-2'},
+        // {name: 'Бренды', link: 'brands'},
+        // {name: 'Бренд', link: 'brand'},
+        {name: 'Вопрос-ответ', link: 'faq'},
+        {name: 'Скидки, оплата, достака и др', link: 'sales'},
+        // {name: 'Инфо', link: 'info'},
+        {name: 'Авторизация', link: 'auth'},
+        // {name: 'Регистрация', link: 'registration'},
+        // {name: 'Восстановление пароля', link: 'password-repare'},
+        {name: 'Корзина', link: 'cart'},
+        // {name: 'Select', link: 'select'},
+    ]
 
 -
-	var colors = [
-		{name: '$light-800', number: '#999'},
-	]
+    var colors = [
+        {name: '$light-800', number: '#999'},
+    ]
 
 +include-style('pages-viget')
 
 
 .pages-viget(x-data="{ isPagesVigetOpen: false }" @click.away="isPagesVigetOpen = false" :class="isPagesVigetOpen ? 'open' : ''")
-	.pages-viget__inner
-		ul.pages-viget__nav
-			each item in pages
-				li
-					a(href= '/html/' + item.link + '.html')= item.name
-		ul.pages-viget__colors
-			li.name.main $f-main: 'Inter' 400 500 600 700
-			each color in colors
-				li
-					span(style=`background:${color.number}`)
-					div
-						div.name=color.name
-						div.number=color.number
+    .pages-viget__inner
+        ul.pages-viget__nav
+            each item in pages
+                li
+                    a(href= '/html/' + item.link + '.html')= item.name
+        ul.pages-viget__colors
+            li.name.main $f-main: 'Inter' 400 500 600 700
+            each color in colors
+                li
+                    span(style=`background:${color.number}`)
+                    div
+                        div.name=color.name
+                        div.number=color.number
 
-	.pages-viget__btn(@click="isPagesVigetOpen = ! isPagesVigetOpen")
-		.media-pointer
+    .pages-viget__btn(@click="isPagesVigetOpen = ! isPagesVigetOpen")
+        .media-pointer
