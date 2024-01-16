@@ -1,10 +1,10 @@
 window.addEventListener('load', function () {
     // бургер
-    let catalogBurger = document.querySelectorAll('.header__main-burger');
-    catalogBurger[0].addEventListener('click', function (ev) {
-        ev.stopPropagation();
-        ev.preventDefault();
-    });
+    // let catalogBurger = document.querySelectorAll('.header__main-burger');
+    // catalogBurger[0].addEventListener('click', function (ev) {
+    //     ev.stopPropagation();
+    //     ev.preventDefault();
+    // });
 
     // меню на адаптиве
     let checkWidths = () => {

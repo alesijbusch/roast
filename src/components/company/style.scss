@@ -1,0 +1,106 @@
+@import "src/assets/css/vars_mixins/vars_mixins";
+
+.company-top{
+	display: grid;
+	grid-template-columns: 32% auto;
+	@media (max-width: $lg - 1) {
+		grid-template-columns: 360px auto;
+	}
+	@media (max-width: $md - 1) {
+
+		grid-template-columns: 160px auto;
+		gap: 20px;
+	}
+	@media (max-width: $sm - 1) {
+		//display: block;
+		grid-template-columns: 100%;
+
+	}
+	&__img{
+		//aspect-ratio: .72;
+		position: relative;
+		width: 100%;
+		@media (max-width: $md - 1) {
+			position: sticky;
+			top: 60px;
+			//max-width: 160px;
+			aspect-ratio: 0.72;
+		}
+		@media (max-width: $sm - 1) {
+			position: relative;
+			top: 0;
+			max-width: 360px;
+		}
+		.lazy-img-wrap{
+			position: absolute;
+			inset: 0;
+			img{
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+	}
+	&__content{
+
+		padding: 60px;
+		background-color: #242424;
+		@media (max-width: $lg - 1) {
+			padding: 30px;
+		}
+		@media (max-width: $md - 1) {
+			padding: 0;
+			background-color: transparent;
+		}
+		&.content{
+			h3{
+				color: #ffffff;
+				margin-bottom: 15px;
+				@media (max-width: $md - 1) {
+					color: #000000;
+				}
+			}
+			p,h5{
+				color: $a5;
+				margin-bottom: 15px;
+				margin-top: 0;
+				@media (max-width: $md - 1) {
+					color: #000000;
+				}
+			}
+			h5{
+				margin-bottom: 0;
+			}
+			p{
+				font-size: .945rem;
+			}
+		}
+
+
+	}
+}
+
+.company-info{
+	margin-top: 80px;
+	@media (max-width: $md - 1) {
+		margin-top: 40px;
+	}
+}
+
+.company-imgs{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+	margin-top: 35px;
+	@media (max-width: $sm - 1) {
+		grid-template-columns: 100%;
+	}
+	&__item{
+		aspect-ratio: 1.56;
+		img{
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+}

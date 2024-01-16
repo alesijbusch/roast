@@ -42,7 +42,7 @@ html(lang='ru-RU')
         x-data="{ isMobileSearchVisible: false, isMobilePhonesVisible: false, isMobileNavVisible: false, isOpenedFilterPanel: false }"
         :class="[(isMobilePhonesVisible || isMobileSearchVisible || isMobileNavVisible) ? 'overflow' : '']"
     )
-        script.
+        //-script.
             if (localStorage.getItem('themeDark') === 'true') {
                 document.body.classList.add('theme-dark');
             } else {
@@ -92,7 +92,7 @@ html(lang='ru-RU')
         block componentsStyles
         script(src="./js/alpinejs/alpine.min.js" defer)
 
-        script(defer).
+        //-script(defer).
 
             var lightBtn = document.getElementById('theme-selector-light');
             var darkBtn = document.getElementById('theme-selector-dark');
