@@ -1,0 +1,62 @@
+@import "src/assets/css/vars_mixins/vars_mixins";
+
+.review{
+	@media (max-width: $sm - 1) {
+
+	}
+}
+.review-header{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 15px 40px;
+	flex-wrap: wrap;
+	margin-bottom: 30px;
+	&__left{
+		font-size: 1.625rem ;
+		@media (max-width: $sm - 1) {
+			font-size: 18px;
+		}
+	}
+	&__right{
+		display: flex;
+		gap: 10px;
+		@media (max-width: $sm - 1) {
+			overflow: auto;
+		}
+	}
+}
+.review-list {
+	.comment{
+		&:not(:last-child){
+			border-bottom: transparent;
+		}
+	}
+}
+
+.review-filter{
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0 15px;
+	height: 32px;
+	border-radius: 90px;
+	background-color: $b4;
+	transition: all ease .3s;
+	font-size: 0.8675rem;
+	flex-shrink: 0;
+	@media (min-width: $md){
+		cursor: pointer;
+		&:hover{
+			background: $accent;
+			color: #ffffff;
+		}
+	}
+
+	&.active{
+		pointer-events: none;
+		background-color: #000000;
+		color: #ffffff;
+	}
+}
+

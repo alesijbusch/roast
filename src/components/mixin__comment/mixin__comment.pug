@@ -1,0 +1,35 @@
+mixin comment(args={})
+    +include-style('mixin__comment')
+    .comment
+        .comment__header
+            .comment__header-inner
+                .comment__title Виталий
+                .comment__date
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18" fill="none">
+                    <path d="M15 7.50049H1M11.1111 1.50049V4.50049M4.88889 1.50049V4.50049M5.66667 12.0005L7.22222 13.5005L10.7222 10.1255M4.73333 16.5005H11.2667C12.5735 16.5005 13.2269 16.5005 13.726 16.2553C14.165 16.0395 14.522 15.6953 14.7457 15.272C15 14.7907 15 14.1606 15 12.9005V6.60049C15 5.34037 15 4.71031 14.7457 4.22901C14.522 3.80564 14.165 3.46144 13.726 3.24572C13.2269 3.00049 12.5735 3.00049 11.2667 3.00049H4.73333C3.42654 3.00049 2.77315 3.00049 2.27402 3.24572C1.83498 3.46144 1.47802 3.80564 1.25432 4.22901C1 4.71031 1 5.34037 1 6.60049V12.9005C1 14.1606 1 14.7907 1.25432 15.272C1.47802 15.6953 1.83498 16.0395 2.27402 16.2553C2.77315 16.5005 3.42654 16.5005 4.73333 16.5005Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    span 02.11.2023
+                .comment__time 09:01:24
+            .comment__rating
+                .comment__stars
+                    +icon('i-star')(width="16" height="16").filled
+                    +icon('i-star')(width="16" height="16").filled
+                    +icon('i-star')(width="16" height="16").filled
+                    +icon('i-star')(width="16" height="16").filled
+                    +icon('i-star')(width="16" height="16")
+        .comment__main(x-data="{isOpenedComment: false}")
+            if(args.product)
+                .comment__main-product
+                    +lazy-img({
+                        img: 'product.png'
+                    })
+                    a(href="#")=args.product.title || 'Матча (Маття) Изумруд'
+            .comment__main-item
+                span.comment__main-item__title Достоинства:
+                span.comment__main-item__text Будем дальше пробовать Ваши смеси
+            .comment__main-item
+                span.comment__main-item__title Недостатки:
+                span.comment__main-item__text Не обнаружил
+            .comment__main-item
+                span.comment__main-item__title Комментарий:
+                span.comment__main-item__text Отличный кофе для капучино, варила в рожковой кофеварке. Эспрессо тоже хорош, буду повторять, рекомендую

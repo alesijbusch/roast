@@ -1,158 +1,107 @@
 mixin lazy-video-youtube(args= {})
-	//- ПРИМЕР
-		+lazy-video-youtube({
-			src: "https://www.youtube.com/embed/djV11Xbc914",
-		}).MOD_CLASS
-	.lazy-video-youtube-wrapper
-		iframe.lazy-video.lazy-video-youtube(
-			class= args.video_mod,
-			data-src= args.src,
-			src= args.src,
-			frameborder= args.frameborder || "0",
-			allow= args.allow || "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-			allowfullscreen)&attributes(attributes)
+    //- ПРИМЕР
+        +lazy-video-youtube({
+            src: "https://www.youtube.com/embed/djV11Xbc914",
+        }).MOD_CLASS
+    .lazy-video-youtube-wrapper
+        iframe.lazy-video.lazy-video-youtube(
+            class= args.video_mod,
+            data-src= args.src,
+            src= args.src,
+            frameborder= args.frameborder || "0",
+            allow= args.allow || "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen)&attributes(attributes)
 
 
 +include-style('content')
 -
-	var items = [
-		{title: 'Температура', text: '90°C'},
-		{title: 'Кофе', text: '16г'},
-		{title: 'Выход', text: '48г'},
-		{title: 'Время экстракции', text: '25 сек'},
-	]
+    var items = [
+        {title: 'Температура', text: '90°C'},
+        {title: 'Кофе', text: '16г'},
+        {title: 'Выход', text: '48г'},
+        {title: 'Время экстракции', text: '25 сек'},
+    ]
 
 .tabs-nav-v2
-	.tabs-nav-v2__list
-		.tabs-nav-v2__item(:class="{'active': activeTab === 'text'}" @click="activeTab = 'text'") Описание
-		.tabs-nav-v2__item(:class="{'active': activeTab === 'reviews'}" @click="activeTab = 'reviews'") Отзывы (2)
-		.tabs-nav-v2__item(:class="{'active': activeTab === 'options'}" @click="activeTab = 'options'") Рецепты
-		.tabs-nav-v2__item(:class="{'active': activeTab === 'manufacturer'}" @click="activeTab = 'manufacturer'")  Информация о производителе
-		//- .tabs-nav-v2__item Доставка
+    .tabs-nav-v2__list
+        .tabs-nav-v2__item(:class="{'active': activeTab === 'text'}" @click="activeTab = 'text'") Описание
+        .tabs-nav-v2__item(:class="{'active': activeTab === 'reviews'}" @click="activeTab = 'reviews'") Отзывы (2)
+        .tabs-nav-v2__item(:class="{'active': activeTab === 'options'}" @click="activeTab = 'options'") Рецепты
+        .tabs-nav-v2__item(:class="{'active': activeTab === 'manufacturer'}" @click="activeTab = 'manufacturer'")  Информация о производителе
+        //- .tabs-nav-v2__item Доставка
 .tabs-container-v2
-	// Описание
-	.tabs-container-v2__item(:class="{'hidden': activeTab !== 'text'}")
-		.tabs-container-v2__tizers 
-			.tabs-container-v2__tizer
-				+lazy-img({
-					img: "tizer-1.svg",
-					wrap_mod: 'tabs-container-v2__tizer-img',
-				})
-				span.tabs-container-v2__tizer-text Смесь арабик из Америки и Африки (85%) и индийской робусты (15%).
-			.tabs-container-v2__tizer
-				+lazy-img({
-					img: "icon-countries.svg",
-					wrap_mod: 'tabs-container-v2__tizer-img',
-				})
-				span.tabs-container-v2__tizer-text Страны происхождения: Бразилия, Колумбия, Эф иопия и Индия.
-			.tabs-container-v2__tizer
-				+lazy-img({
-					img: "icon-coffee-beans.svg",
-					wrap_mod: 'tabs-container-v2__tizer-img',
-				})
-				span.tabs-container-v2__tizer-text Обжарка: FULL CITY.
-					br
-					| Авторский купаж от Roast.by.	
-		.content
-			p Смешав базовую Бразилию с насыщенной и яркой Колумбией Киндио, двумя самыми знаменитыми регионами Эфиопии — Иргачиф и Сидамо мы добились яркого с цветочным нотами аромата, богатого вкуса какао, орехов, с нотами сладкого цитруса и сухофруктов. А благородная робуста мытой обработки Индии Парчмент объединила все вкусы и добавила обволакивающую текстуру напитку с лёгким оттенком дорогой кубинской сигары!
-			p Эта смесь идеально подойдет для всех типов кофемашин! Яркий и сочный эспрессо, миндальный сладкий капучино и изысканный американо!
-			p Также хорошо раскрывается при заваривании в гейзерной кофеварке и джезве.
-	// Отзывы
-	.tabs-container-v2__item(:class="{'hidden': activeTab !== 'reviews'}")
-		.p-tab-review(x-data="{isOpenedAddComment: false}")
-			.p-tab-review__body
-				.p-tab-review__left
-					.p-tab-review__comments
-						.comment
-							.comment__header
-								.comment__header-inner
-									.comment__title Виталий
-									.comment__date 
-										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18" fill="none">
-											<path d="M15 7.50049H1M11.1111 1.50049V4.50049M4.88889 1.50049V4.50049M5.66667 12.0005L7.22222 13.5005L10.7222 10.1255M4.73333 16.5005H11.2667C12.5735 16.5005 13.2269 16.5005 13.726 16.2553C14.165 16.0395 14.522 15.6953 14.7457 15.272C15 14.7907 15 14.1606 15 12.9005V6.60049C15 5.34037 15 4.71031 14.7457 4.22901C14.522 3.80564 14.165 3.46144 13.726 3.24572C13.2269 3.00049 12.5735 3.00049 11.2667 3.00049H4.73333C3.42654 3.00049 2.77315 3.00049 2.27402 3.24572C1.83498 3.46144 1.47802 3.80564 1.25432 4.22901C1 4.71031 1 5.34037 1 6.60049V12.9005C1 14.1606 1 14.7907 1.25432 15.272C1.47802 15.6953 1.83498 16.0395 2.27402 16.2553C2.77315 16.5005 3.42654 16.5005 4.73333 16.5005Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-										</svg>
-										span 02.11.2023
-									.comment__time 09:01:24	
-								.comment__rating
-									.comment__stars
-										+icon('i-star')(width="16" height="16").filled
-										+icon('i-star')(width="16" height="16").filled
-										+icon('i-star')(width="16" height="16").filled
-										+icon('i-star')(width="16" height="16").filled
-										+icon('i-star')(width="16" height="16")
-							.comment__main(x-data="{isOpenedComment: false}")
-								.comment__main-item
-									span.comment__main-item__title Достоинства:
-									span.comment__main-item__text Будем дальше пробовать Ваши смеси
-								.comment__main-item
-									span.comment__main-item__title Недостатки:
-									span.comment__main-item__text Не обнаружил
-								.comment__main-item
-									span.comment__main-item__title Комментарий:
-									span.comment__main-item__text Отличный кофе для капучино, варила в рожковой кофеварке. Эспрессо тоже хорош, буду повторять, рекомендую
-						.comment
-							.comment__header
-								.comment__header-inner
-									.comment__title Екатерина
-									.comment__date 
-										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18" fill="none">
-											<path d="M15 7.50049H1M11.1111 1.50049V4.50049M4.88889 1.50049V4.50049M5.66667 12.0005L7.22222 13.5005L10.7222 10.1255M4.73333 16.5005H11.2667C12.5735 16.5005 13.2269 16.5005 13.726 16.2553C14.165 16.0395 14.522 15.6953 14.7457 15.272C15 14.7907 15 14.1606 15 12.9005V6.60049C15 5.34037 15 4.71031 14.7457 4.22901C14.522 3.80564 14.165 3.46144 13.726 3.24572C13.2269 3.00049 12.5735 3.00049 11.2667 3.00049H4.73333C3.42654 3.00049 2.77315 3.00049 2.27402 3.24572C1.83498 3.46144 1.47802 3.80564 1.25432 4.22901C1 4.71031 1 5.34037 1 6.60049V12.9005C1 14.1606 1 14.7907 1.25432 15.272C1.47802 15.6953 1.83498 16.0395 2.27402 16.2553C2.77315 16.5005 3.42654 16.5005 4.73333 16.5005Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-										</svg>
-										span 02.11.2023
-									.comment__time 09:01:24	
-								.comment__rating
-									.comment__stars
-										+icon('i-star')(width="16" height="16").filled
-										+icon('i-star')(width="16" height="16").filled
-										+icon('i-star')(width="16" height="16").filled
-										+icon('i-star')(width="16" height="16").filled
-										+icon('i-star')(width="16" height="16")
-							.comment__main(x-data="{isOpenedComment: false}")
-								.comment__main-item
-									span.comment__main-item__title Достоинства:
-									span.comment__main-item__text Будем дальше пробовать Ваши смеси
-								.comment__main-item
-									span.comment__main-item__title Недостатки:
-									span.comment__main-item__text Не обнаружил
-								.comment__main-item
-									span.comment__main-item__title Комментарий:
-									span.comment__main-item__text Отличный кофе для капучино, варила в рожковой кофеварке. Эспрессо тоже хорош, буду повторять, рекомендую
-				.p-tab-review__right
-					.grid-list.grid-list--review
-						.grid-list__item
-							.grid-list__item-inner
-								.grid-list__item-rating
-									+icon('i-star')(width="16" height="16").filled
-									+icon('i-star')(width="16" height="16").filled
-									+icon('i-star')(width="16" height="16").filled
-									+icon('i-star')(width="16" height="16").filled
-									+icon('i-star')(width="16" height="16")
-									span 4,5
-								.btn.btn-wide(data-toggle="modal" data-target="#modal-comment") Оставить отзыв	
-	// Рецепт
-	.tabs-container-v2__item(:class="{'hidden': activeTab !== 'options'}")
-		.p-tab-props
-			.p-tab-props__title 
-				<svg xmlns="http://www.w3.org/2000/svg" width="22" height="24" viewBox="0 0 22 24" fill="none">
-					<path d="M18 12.5V6.8C18 5.11984 18 4.27976 17.673 3.63803C17.3854 3.07354 16.9265 2.6146 16.362 2.32698C15.7202 2 14.8802 2 13.2 2H6.8C5.11984 2 4.27976 2 3.63803 2.32698C3.07354 2.6146 2.6146 3.07354 2.32698 3.63803C2 4.27976 2 5.11984 2 6.8V17.2C2 18.8802 2 19.7202 2.32698 20.362C2.6146 20.9265 3.07354 21.3854 3.63803 21.673C4.27976 22 5.11984 22 6.8 22H10M12 11H6M8 15H6M14 7H6M12.5 19L14.5 21L19 16.5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-				</svg>
-				span Рецепт молотого кофе 16г
-			table.p-tab-props__inner
-				tbody
-					each item in items
-						tr
-							td.p-tab-props__name=item.title
-							td.p-tab-props__text=item.text
-	// Информация о производителе
-	.tabs-container-v2__item(:class="{'hidden': activeTab !== 'manufacturer'}")
-		.content
-			.manufacturer
-				.manufacturer__title Кофе жареный в зернах/молотый Roast.by
-				.manufacturer__item
-					span.manufacturer__item-name Производитель: 
-					span.manufacturer__item-value ООО «Иммастар компани», Республика Беларусь, Минская область, Червенский район, аг. Черноградь, ул. Молодежная 6-2 (017) 355-88-86 ГОСТ 32775-2014
-				.manufacturer__item
-					span.manufacturer__item-name Срок годности: 
-					span.manufacturer__item-value 18 месяцев для кофе в зернах, 12 месяцев для кофе молотого
-				.manufacturer__item
-					span.manufacturer__item-text Мы рекомендуем выпить кофе не позднее, чем через три недели с момента обжарки.
+    // Описание
+    .tabs-container-v2__item(:class="{'hidden': activeTab !== 'text'}")
+        .tabs-container-v2__tizers
+            .tabs-container-v2__tizer
+                +lazy-img({
+                    img: "tizer-1.svg",
+                    wrap_mod: 'tabs-container-v2__tizer-img',
+                })
+                span.tabs-container-v2__tizer-text Смесь арабик из Америки и Африки (85%) и индийской робусты (15%).
+            .tabs-container-v2__tizer
+                +lazy-img({
+                    img: "icon-countries.svg",
+                    wrap_mod: 'tabs-container-v2__tizer-img',
+                })
+                span.tabs-container-v2__tizer-text Страны происхождения: Бразилия, Колумбия, Эф иопия и Индия.
+            .tabs-container-v2__tizer
+                +lazy-img({
+                    img: "icon-coffee-beans.svg",
+                    wrap_mod: 'tabs-container-v2__tizer-img',
+                })
+                span.tabs-container-v2__tizer-text Обжарка: FULL CITY.
+                    br
+                    | Авторский купаж от Roast.by.
+        .content
+            p Смешав базовую Бразилию с насыщенной и яркой Колумбией Киндио, двумя самыми знаменитыми регионами Эфиопии — Иргачиф и Сидамо мы добились яркого с цветочным нотами аромата, богатого вкуса какао, орехов, с нотами сладкого цитруса и сухофруктов. А благородная робуста мытой обработки Индии Парчмент объединила все вкусы и добавила обволакивающую текстуру напитку с лёгким оттенком дорогой кубинской сигары!
+            p Эта смесь идеально подойдет для всех типов кофемашин! Яркий и сочный эспрессо, миндальный сладкий капучино и изысканный американо!
+            p Также хорошо раскрывается при заваривании в гейзерной кофеварке и джезве.
+    // Отзывы
+    .tabs-container-v2__item(:class="{'hidden': activeTab !== 'reviews'}")
+        .p-tab-review(x-data="{isOpenedAddComment: false}")
+            .p-tab-review__body
+                .p-tab-review__left
+                    .p-tab-review__comments
+                        +comment()
+                        +comment()
+
+                .p-tab-review__right
+                    .grid-list.grid-list--review
+                        .grid-list__item
+                            .grid-list__item-inner
+                                .grid-list__item-rating
+                                    +icon('i-star')(width="16" height="16").filled
+                                    +icon('i-star')(width="16" height="16").filled
+                                    +icon('i-star')(width="16" height="16").filled
+                                    +icon('i-star')(width="16" height="16").filled
+                                    +icon('i-star')(width="16" height="16")
+                                    span 4,5
+                                .btn.btn-wide(data-toggle="modal" data-target="#modal-comment") Оставить отзыв
+    // Рецепт
+    .tabs-container-v2__item(:class="{'hidden': activeTab !== 'options'}")
+        .p-tab-props
+            .p-tab-props__title
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="24" viewBox="0 0 22 24" fill="none">
+                <path d="M18 12.5V6.8C18 5.11984 18 4.27976 17.673 3.63803C17.3854 3.07354 16.9265 2.6146 16.362 2.32698C15.7202 2 14.8802 2 13.2 2H6.8C5.11984 2 4.27976 2 3.63803 2.32698C3.07354 2.6146 2.6146 3.07354 2.32698 3.63803C2 4.27976 2 5.11984 2 6.8V17.2C2 18.8802 2 19.7202 2.32698 20.362C2.6146 20.9265 3.07354 21.3854 3.63803 21.673C4.27976 22 5.11984 22 6.8 22H10M12 11H6M8 15H6M14 7H6M12.5 19L14.5 21L19 16.5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                span Рецепт молотого кофе 16г
+            table.p-tab-props__inner
+                tbody
+                    each item in items
+                        tr
+                            td.p-tab-props__name=item.title
+                            td.p-tab-props__text=item.text
+    // Информация о производителе
+    .tabs-container-v2__item(:class="{'hidden': activeTab !== 'manufacturer'}")
+        .content
+            .manufacturer
+                .manufacturer__title Кофе жареный в зернах/молотый Roast.by
+                .manufacturer__item
+                    span.manufacturer__item-name Производитель:
+                    span.manufacturer__item-value ООО «Иммастар компани», Республика Беларусь, Минская область, Червенский район, аг. Черноградь, ул. Молодежная 6-2 (017) 355-88-86 ГОСТ 32775-2014
+                .manufacturer__item
+                    span.manufacturer__item-name Срок годности:
+                    span.manufacturer__item-value 18 месяцев для кофе в зернах, 12 месяцев для кофе молотого
+                .manufacturer__item
+                    span.manufacturer__item-text Мы рекомендуем выпить кофе не позднее, чем через три недели с момента обжарки.

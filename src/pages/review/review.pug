@@ -1,7 +1,7 @@
 extends ../../layout/layout
 
 block vars
-    - var pageTitle = 'Контакты'
+    - var pageTitle = 'Компания'
     - var pageBodyClass = ''
     - var dir = './'
 
@@ -23,14 +23,13 @@ block premain
                     name: 'О компании',
 
                 },
-                {name: 'Команда',},
-                {name: 'Отзывы'},
-                {name: 'Контакты', mod: 'active'},
+                {name: 'Команда', },
+                {name: 'Отзывы',mod: 'active'},
+                {name: 'Контакты'},
             ]
         })
-
 block main
-    include ../../components/contacts/contacts
+    include ../../components/review/review
     include ../../components/subscription/subscription
 
 

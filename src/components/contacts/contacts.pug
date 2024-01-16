@@ -1,129 +1,99 @@
 +include-style('contacts')
-+include-style('content')
++include-style('mixin__sticky-block')
+//+include-style('content')
 +include-script('contacts')
 
 
 .contacts.container
     .contacts__left
         .contacts-map
-        .contacts__content.content
-            h2 Региональные представительсва
-            p Наша компания имеет широкую сеть региональных представительств и дилеров. Вы можете обратиться в ближайший к вам офис для получения дополнительных консультаций.
+
         .contacts-region
-            h3 Московская область
+            h3 Кофейни
             .contacts-region__list
+                .contacts-region__card
+                    .contacts-region__card-left
+                        a(href='#').contacts-region__card-address Кофейня-магазин Blackmill, г. Минск, ул. Белинского 23
+                        a(href='#').contacts-region__card-map
+                            span Посмотреть на карте
+
+
+
+                    .contacts-region__card-right
+                        .contacts-region__card-list.contacts-region__card-list--time
+                            span пн-пт с 8:00 до 20:00
+                            span сб-вс выходной
+                        .contacts-region__card-list.contacts-region__card-list--phone
+                            a(href="#") +375 (29) 344-33-34
+                    .contacts-region__card-info
+                        <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17 12V7C17 3.68629 14.3137 1 11 1V1C7.68629 1 5 3.68629 5 7V12" stroke="#BB2749" stroke-width="1.5"/>
+                        <path d="M14 15V15C14 16.6569 12.6569 18 11 18V18C9.34315 18 8 16.6569 8 15V15" stroke="#BB2749" stroke-width="1.5"/>
+                        <path d="M4.63161 11.9478L3.92693 15.25H18.0732L17.3689 11.9479C17.3443 11.8325 17.2424 11.75 17.1244 11.75H4.87611C4.75814 11.75 4.65623 11.8325 4.63161 11.9478Z" stroke="#BB2749" stroke-width="1.5"/>
+                        <path d="M11 20L11 22" stroke="#BB2749" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M7 20.8126L7.84524 19" stroke="#BB2749" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M14 19L14.8452 20.8126" stroke="#BB2749" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+
+                        p Наш офис совмещен с кофейней, поэтому вы всегда можете не только купить кофе домой, но и насладиться им из рук профессионалов
                 each i in [1,2,3]
                     .contacts-region__card
-                        .contacts-region__card-img
-                            +lazy-img({
-                                link: true,
-                                img: `contacts-1.jpg`,
-                            })
-                        .contacts-region__card-content
-                            .contacts-region__card-list
-                                a(href='#').contacts-region__card-address г. Москва, ул. Гагарина, 1а
-                                a(href='#').contacts-region__card-map.mobile
-                                    <svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 5.09375C10 6.40373 9.49622 7.59606 8.67184 8.48755L4.88411 13.0328C4.58473 13.3921 4 13.1804 4 12.7127V9.99373C1.71776 9.53046 0 7.51271 0 5.09375C0 2.33233 2.23858 0.09375 5 0.09375C7.76142 0.09375 10 2.33233 10 5.09375ZM5 2.09375C6.65685 2.09375 8 3.4369 8 5.09375C8 6.7506 6.65685 8.09375 5 8.09375C3.34315 8.09375 2 6.7506 2 5.09375C2 3.4369 3.34315 2.09375 5 2.09375Z" fill="#3761E9"></path></svg>
-                                    span На карте
+                        .contacts-region__card-left
+                            a(href='#').contacts-region__card-address Кофейня 1801, г. Минск, ул. Независимости 95
+                            a(href='#').contacts-region__card-map
+                                span Посмотреть на карте
 
-                                .contacts-region__card-time
-                                    +icon('i-time')(style="width:18px; height:18px")
-                                    span Пн - Пт: 08:00 - 21:00
-                                .contacts-region__card-pay
-                                    each i in [1,3,2,6]
-                                        span
-                                            +lazy-img({
-                                                link: true,
-                                                img: `pay/pay-${i}.svg`
-                                            })
-                            .contacts-region__card-contacts
-                                .contacts-region__card-link
-                                    a(href="tel:+70000000000").contacts__item-text +7 (000) 000-00-00
-                                    a(href="mailto:info@site.ru").contacts__item-text info@site.ru
-                                a(href='#').contacts-region__card-map
-                                    <svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 5.09375C10 6.40373 9.49622 7.59606 8.67184 8.48755L4.88411 13.0328C4.58473 13.3921 4 13.1804 4 12.7127V9.99373C1.71776 9.53046 0 7.51271 0 5.09375C0 2.33233 2.23858 0.09375 5 0.09375C7.76142 0.09375 10 2.33233 10 5.09375ZM5 2.09375C6.65685 2.09375 8 3.4369 8 5.09375C8 6.7506 6.65685 8.09375 5 8.09375C3.34315 8.09375 2 6.7506 2 5.09375C2 3.4369 3.34315 2.09375 5 2.09375Z" fill="#3761E9"></path></svg>
-                                    span На карте
 
-        .contacts__content.content
-            p Аспро: Лайтшоп — магазин полезных вещей для себя, дома, офиса и дачи. Здесь вы найдете товары под свои предпочтения: от аудиотехники и одежды до строительных материалов и велосипедов. Работаем с проверенными производителями с 2005 года. Доставляем товары точно в срок.
-            p Покупка товара проста только на первый взгляд. Нужно думать о том, как оформить доставку, кто соберет шкаф или установит кондиционер. В нашем магазине эти услуги уже продуманы. Думайте только о подборе товаров в каталоге. Для этого предлагаем комплексный подход — наша команда выполнит все задачи!
-        .contacts__btn
-            .btn.btn-bordered Свяжитесь с нами
+
+                        .contacts-region__card-right
+                            .contacts-region__card-list.contacts-region__card-list--time
+                                span пн-пт с 8:00 до 20:00
+                                span сб-вс с 9:00 до 21:00
+                            .contacts-region__card-list.contacts-region__card-list--phone
+                                a(href="#") +375 (29) 344-33-34
+
+
+
 
     .contacts__right
-        .contacts__right--sticky
 
-            +splide({
-                mod: 'js-splide-contacts'
-            })
-                each item in [1,2]
-                    +splide-slide()
-                        span.contacts-slide
-                            img.contacts-slide__img(src=pixel data-splide-lazy=`/html/images/contacts-${item}.jpg` alt='contact')
-            .contacts__items
-                div
-                    .contacts__item
-                        .contacts__item-title Адрес
-                        .contacts__item-text г. Челябинск, ул. Энтузиастов, 30
-                    .contacts__item
-                        .contacts__item-title Режим работы
-                        .contacts__item-text Пн - Пт: 9.00 - 18.00
-                        .contacts__item-text Сб - Вс: выходные
-                div
-                    .contacts__item
-                        .contacts__item-title Телефон
-                        a(href="tel:+70000000000").contacts__item-text +7 (000) 000-00-00
-                        a(href="tel:+70000000001").contacts__item-text +7 (000) 000-00-01
-                    .contacts__item
-                        .contacts__item-title E-mail
-                        a(href="mailto:info@site.ru").contacts__item-text info@site.ru
-            .contacts__socials.socials
-                ul.socials__list
-                    each item in ['i-vk','i-tg','i-tube']
-                        li
-                            +lazy-img({
-                                link: true,
-                                wrap_mod: 'socials__icon-wrap',
-                                img_mod: 'socials__icon',
-                                img: `socials/${item}.svg`,
-                            })
-                    li
+        .contacts__right--sticky
+            .sticky-block.sticky-block--contacts
+                .sticky-block__inner
+                    .sticky-block__img
                         +lazy-img({
-                            link: true,
-                            wrap_mod: 'socials__icon-wrap socials__icon-wrap--dark',
-                            img_mod: 'socials__icon',
-                            img: `socials/i-tiktok-dark.svg`,
+                            img: 'contacts.png'
                         })
-                        +lazy-img({
-                            link: true,
-                            wrap_mod: 'socials__icon-wrap socials__icon-wrap--light',
-                            img_mod: 'socials__icon',
-                            img: `socials/i-tiktok-light.svg`,
-                        })
-                    li
-                        +lazy-img({
-                            link: true,
-                            wrap_mod: 'socials__icon-wrap',
-                            img_mod: 'socials__icon',
-                            img: `socials/i-whatsapp.svg`,
-                        })
-                    li
-                        +lazy-img({
-                            link: true,
-                            wrap_mod: 'socials__icon-wrap socials__icon-wrap--dark',
-                            img_mod: 'socials__icon',
-                            img: `socials/i-zen-dark.svg`,
-                        })
-                        +lazy-img({
-                            link: true,
-                            wrap_mod: 'socials__icon-wrap socials__icon-wrap--light',
-                            img_mod: 'socials__icon',
-                            img: `socials/i-zen-light.svg`,
-                        })
-                    li
-                        +lazy-img({
-                            link: true,
-                            wrap_mod: 'socials__icon-wrap',
-                            img_mod: 'socials__icon',
-                            img: `socials/i-insta.svg`,
-                        })
+                    .sticky-block__content
+                        h3 Наш офис
+
+                        .contacts__item
+                            .contacts__item-icon
+                                +icon('i-address')(style="height:19px;width:19px")
+
+                            .contacts__item-text
+                                p г. Минск, ул. Белинского 23 (вход в кофейню BlackMill)
+                                span.desc Этот же адрес используется для почтовых отправлений
+                        .contacts__item
+                            .contacts__item-icon
+                                +icon('i-time')(style="height:19px;width:19px")
+
+                            .contacts__item-text
+                                p пн-пт с 8:00 до 20:00<br>сб-вс с 9:00 до 21:00
+                                span.desc Заказы через сайт — круглосуточно
+                        .contacts__item
+                            .contacts__item-icon
+                                +icon('i-phone')(style="height:19px;width:19px")
+
+                            .contacts__item-text
+                                a(href="tel:+70000000000") +375 (33) 300-33-34
+
+                        .contacts__item
+                            .contacts__item-icon
+                                +icon('i-email')(style="height:19px;width:19px")
+
+                            .contacts__item-text
+                                a(href="mailto:info@site.ru") info@roast.by
+
+                    .sticky-block__btn(data-toggle="modal" data-target="#modal-feedback")
+                        .btn Написать сообщение

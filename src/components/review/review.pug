@@ -1,0 +1,53 @@
++include-style('review')
++include-style('mixin__sticky-block')
+
+//+include-style('sales-section')
+.container
+    .review
+        .review-header
+            .review-header__left
+                h3 Отзывы
+            .review-header__right
+                .review-filter.active Все отзывы
+                .review-filter Отзывы о компании
+                .review-filter Отзывы о продукции
+
+        .custom-grid
+            .custom-grid__content
+
+                .review-list
+                    +comment({
+                        product: {
+                            title: 'HARIO Фильтры бумажные белые для воронок (100шт) VCF-02-100WK',
+                        }
+                    })
+                    +comment({
+                        product: true
+                    })
+                    +comment({
+                        product: true
+                    })
+                    +comment({
+                        product: true
+                    })
+                    +comment({
+                        product: true
+                    })
+                    +comment({
+                        product: true
+                    })
+                include ../pagination/pagination--v2
+            .custom-grid__sticky
+                .sticky-block
+                    .sticky-block__inner
+                        .sticky-block__img
+                            +lazy-img({
+                                img: 'service-4.png',
+                            })
+                        .sticky-block__content
+                            h4 Оставить отзыв о компании
+                            p Люди обычно прислушиваются к мнению других покупателей, а оставляя отзывы вы еще и участвуете в программе лояльности, получаете баллы на внутренний счет
+
+                        .sticky-block__btn(data-toggle="modal" data-target="#modal-comment")
+                            .btn Написать отзыв
+
