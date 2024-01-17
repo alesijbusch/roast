@@ -1,0 +1,26 @@
+mixin service-card(args={})
+    +include-style('mixin__service-card')
+    a(href="#").service-card
+        .service-card__img
+            +lazy-img({
+                wrap_mod: 'service-item__img-wrap',
+                img: args.img,
+            })
+
+
+
+        .service-card__content
+            .service-card__title=args.title
+
+            .service-card__desc
+                p!=args.desc
+            if(args.device)
+                .service-card__footer
+                    +icon('i-device')(style="height:22px;width:22px")
+
+                    span Выбрать кофемашину
+            if(args.catalog)
+                .service-card__footer
+                    +icon('i-coffee')(style="height:22px;width:22px")
+
+                    span Перейти в каталог

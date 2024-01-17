@@ -1,0 +1,38 @@
++include-style('services')
+
+-
+    var items = [
+        {
+            img: 'services-1.png',
+            title: 'Оборудование',
+            desc: 'Мы предлагаем широкий выбор как автоматических, так и профессиональных кофемашин в аренду. К вам попадет качественно проверенная машина',
+            catalog: true
+        },
+        {
+            img: 'services-3.png',
+            title: 'Кофе',
+            desc: 'Для лучших кофемашин мы предлагаем лучший кофе. Свежеобжаренный кофе, сваренный в наших кофемашинах, будет радовать вас неповторимым вкусом',
+
+            device: true
+        },
+        {
+            img: 'services-4.png',
+            title: 'Обслуживание',
+            desc: 'Наш мастер готов провести ТО и устранить неполадки совершенно бесплатно. Также мы предоставляем таблетки для декальцинации кофемашины. Так она будет служить вам долго'
+
+        }
+    ]
+
+.services
+    .container
+        .services__descr Что входит в услугу
+
+        .services__grid
+            each item in items
+                +service-card({
+                    img: item.img,
+                    title: item.title,
+                    desc: item.desc,
+                    catalog: item.catalog,
+                    device: item.device
+                })

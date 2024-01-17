@@ -1,0 +1,57 @@
++include-style('services')
+
+
+.container
+    .service-block
+        .service-block__content
+            .service-block__item
+                .service-block__title Кофемашины идеально подойдут
+                .service-block__places
+                    .service-block__row
+                        .service-block__row-icon
+                            +lazy-img({
+                                img: 'service-icon-1.svg'
+                            })
+                        .service-block__row-text Дом
+                    .service-block__row
+                        .service-block__row-icon
+                            +lazy-img({
+                                img: 'service-icon-2.svg'
+                            })
+                        .service-block__row-text Офис
+                    .service-block__row
+                        .service-block__row-icon
+                            +lazy-img({
+                                img: 'service-icon-3.svg'
+                            })
+                        .service-block__row-text Салон красоты
+                    .service-block__row
+                        .service-block__row-icon
+                            +lazy-img({
+                                img: 'service-icon-4.svg'
+                            })
+                        .service-block__row-text Отель
+            .service-block__item
+                .service-block__title Как начать работать с нами
+                .service-block__steps
+                    .service-block__row
+                        .service-block__row-number
+                            span 01
+                        .service-block__row-text Оформляйте заявку
+                    .service-block__row
+                        .service-block__row-number
+                            span 02
+                        .service-block__row-text Ожидайте звонка менеджера
+                    .service-block__row
+                        .service-block__row-number
+                            span 03
+                        .service-block__row-text Заключаем договор и оплачиваете
+                    .service-block__row
+                        .service-block__row-number
+                            span 04
+                        .service-block__row-text Доставляем и устанавливаем
+
+        .service-block__img
+            +lazy-img({
+                img: 'service-img.png'
+            })

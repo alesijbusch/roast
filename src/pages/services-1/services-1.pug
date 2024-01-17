@@ -1,0 +1,40 @@
+extends ../../layout/layout
+
+block vars
+    - var pageTitle = 'Услуги'
+    - var pageBodyClass = ''
+    - var dir = './'
+
+
+block premain
+    .container
+        .page-top
+            +breadcrumbs({
+                content2: 'Услуги',
+                href_content2: '',
+                content3: 'Аренда кофемашин'
+            })
+            .page-top__header
+                h1.page-top__title Аренда кофемашин
+
+
+
+block main
+    include ../../components/services/services-1
+    include ../../components/tizers-section/tizers-section--services
+    include ../../components/services/services-block
+    include ../../components/services/services-device
+    include ../../components/subscription/subscription
+
+
+
+block pageModal
+
+block componentsCriticalStyles
+    +componentsCriticalStyles-includer()
+block vendorScripts
+    +vendorScripts-includer()
+block componentsStyles
+    +style-includer()
+block componentsScripts
+    +componentsScripts-includer()

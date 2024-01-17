@@ -1,0 +1,36 @@
++include-style('services')
++include-script('services')
+
+
+.container
+    .service-device
+        .services__descr Оборудование
+        .service-slider
+            +splide({
+                mod: 'service-slider__slider js-splide-service'
+            })
+
+                +splide-slide()
+                    +device-card({
+                        img: 'device-1.png',
+                        title: 'Kaffit Nizza'
+                    })
+
+
+
+                +splide-slide()
+                    +device-card({
+                        img: 'device-2.png',
+                        title: 'Аренда Dr. Coffee F11'
+                    })
+                +splide-slide()
+                    +device-card({
+                        img: 'device-3.png',
+                        title: 'JAVA WSD1801'
+                    })
+                +splide-slide()
+                    +device-card({
+                        img: 'device-4.png',
+                        title: 'DeLonghi ESAM 4200'
+                    })
+

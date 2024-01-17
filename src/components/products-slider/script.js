@@ -19,25 +19,26 @@ window.addEventListener("load", function () {
           type: "slide",
           pagination: false,
           perPage: 3,
-          drag: false,
+            perMove: 1,
+          drag: slidesCount > 3,
           gap: 20,
           speed: 1200,
           lazyLoad: true,
-          arrows: false,
+          arrows: true,
           breakpoints: {
             1199: {
               perPage: 2,
-              drag: slidesCount > 3,
+              drag: slidesCount > 2,
               arrows: true,
             },
             991: {
               perPage: 2,
-              drag: slidesCount > 3,
+              drag: slidesCount > 2,
               arrows: true,
             },
             767: {
               perPage: 1,
-              drag: slidesCount > 2,
+              drag: slidesCount > 1,
               arrows: true,
             },
             560: {

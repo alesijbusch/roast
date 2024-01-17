@@ -1,0 +1,20 @@
+mixin device-card(args={})
+    +include-style('mixin__device-card')
+
+
+    a(href="#").device-card(class=args.mod)
+
+        .device-card__img
+            +lazy-img({
+                img: args.img
+            })
+        .device-card__content
+            .device-card__title=args.title
+            .device-card__descr
+                p Для офисов от 40 человек
+                p Бесплатная установка (при условии покупки кофе)
+            ul.device-card__list
+                li капучино одним нажатием
+                li до 1600 порций или 15 кг в месяц
+                li бывает в белом цвете
+                li возможно подключение холодильника для молока

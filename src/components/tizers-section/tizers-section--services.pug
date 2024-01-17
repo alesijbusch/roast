@@ -1,0 +1,53 @@
++include-style('tizers-section')
+
+-
+    var items = [
+        {
+            link: false,
+            img: 'benefit-7.svg',
+            title: 'Качество',
+            text: 'У нас качественные кофемашины, которые бережно досматриваются нашим сервисным центром',
+        },
+        {
+            link: false,
+            img: 'benefit-9.svg',
+            title: 'Ассортимент',
+            text: 'У нас более 40 позиций кофе, вы точно найдете свой идеальный напиток',
+        },
+
+        {
+            link: false,
+            img: 'benefit-10.svg',
+            title: 'Сроки',
+            text: 'Каждый день наш коллектив трудится для наших клиентов, чтобы успеть доставить в срок ваш заказ',
+        },
+        {
+            link: false,
+            img: 'benefit-6.svg',
+            title: 'Доставка',
+            text: 'У нас работает курьерская доставка. Привезем для вас и машину и кофе',
+        },
+    ]
+.tizers-section.tizers-section--services
+    .container
+        .tizers-section__title Преимущества Roast.by
+        .tizers-section__inner
+            each item in items
+                if(item.link)
+                    a(href="#").ts-item
+                        +lazy-img({
+                            img: item.img,
+                            wrap_mod: 'ts-item__img',
+                        })
+                        .ts-item__content
+                            .ts-item__title=item.title
+                            .ts-item__text=item.text
+                else
+                    .ts-item
+                        +lazy-img({
+                            img: item.img,
+                            wrap_mod: 'ts-item__img',
+                        })
+                        .ts-item__content
+                            .ts-item__title=item.title
+                            .ts-item__text=item.text
