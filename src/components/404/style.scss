@@ -1,7 +1,12 @@
 @import "src/assets/css/vars_mixins/vars_mixins";
 
+.not-found-page{
+	.index-tabs{
+		padding-top: 0;
+	}
+}
+
 .pnf{
-	max-width: 600px;
 	margin: 80px auto;
 	@media (max-width: $xs - 1) {
 		margin: 40px auto;
@@ -10,32 +15,61 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 40px;
+		gap: 35px;
 		@media (max-width: $xs - 1) {
 			gap: 24px;
 		}
 	}
+	h1{
+		font-size: 32px;
+		line-height: 1.1;
+		font-weight: 700;
+	}
 	&-content{
-		text-align: center;
-		h1{
-			font-size: 42px;
-			line-height: 1.3;
-			font-weight: 400;
-			margin-bottom: 24px;
-			@media (max-width: $xs - 1) {
-				font-size: 28px;
-			}
+		padding: 45px;
+		background: $b4;
+		@media (max-width: $sm - 1) {
+			padding: 20px;
 		}
+		
 		p{
-			font-size: 18px;
-			@media (max-width: $xs - 1) {
-				font-size: 14px;
+			font-weight: 600;
+			margin-bottom: 30px;
+		}
+		ul{
+			li {
+				position: relative;
+				padding: 0 0 0 20px;
+				font-style: normal;
+				color: $b3;
+
+				&:not(:last-child) {
+					margin-bottom: 10px;
+				}
+
+				&:before {
+					content: '';
+					display: inline-block;
+					width: 12px;
+					height: 12px;
+					background-repeat: no-repeat;
+					-webkit-background-size: contain;
+					background-size: contain;
+					background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cline x1='1.41421' y1='9.93146' x2='5.47995' y2='13.9972' stroke='%238A6048' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='5.48047' y1='13.9977' x2='13.9302' y2='5.54802' stroke='%238A6048' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+					position: absolute;
+					top: 0px;
+					left: 0;
+					@media (max-width: $md - 1) {
+						top: 2px;
+					}
+				}
+
 			}
 		}
 	}
 	&-btns{
 		display: flex;
-		gap: 20px 40px;
+		gap: 20px 30px;
 		@media (max-width: $xs - 1) {
 			flex-direction: column;
 			width: 100%;

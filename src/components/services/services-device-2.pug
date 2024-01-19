@@ -1,0 +1,35 @@
++include-style('services')
++include-script('services')
+
+
+.container
+    .service-device
+        .services__descr Еще борудование
+        .service-slider
+            +splide({
+                mod: 'service-slider__slider service-slider__slider--v2 js-splide-service'
+
+            })
+
+                +splide-slide()
+                    +device-card({
+                        mod: 'device-card--v2',
+                        img: 'device-1.png',
+                        title: 'Kaffit Nizza'
+                    })
+
+
+
+                +splide-slide()
+                    +device-card({
+                        mod: 'device-card--v2',
+                        img: 'device-2.png',
+                        title: 'Аренда Dr. Coffee F11'
+                    })
+                +splide-slide()
+                    +device-card({
+                        mod: 'device-card--v2',
+                        img: 'device-3.png',
+                        title: 'JAVA WSD1801'
+                    })
+

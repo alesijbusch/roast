@@ -15,13 +15,15 @@ window.addEventListener("load", function () {
                 }
 
                 let slidesCount = el.target.querySelectorAll(".splide__slide").length;
+                let v2 = el.target.classList.contains('service-slider__slider--v2')
+
 
                 new Splide(el.target, {
                     type: "slide",
                     pagination: false,
-                    perPage: 4,
+                    perPage: v2 ? 2 : 4,
                     padding: 10,
-                    drag: slidesCount > 4,
+                    drag: v2 ? slidesCount > 2 : slidesCount > 4,
                     gap: 20,
                     lazyLoad: 'sequential',
                     breakpoints: {
@@ -45,6 +47,7 @@ window.addEventListener("load", function () {
                     },
                 }).mount();
 
+
                 el.target.classList.add("inited");
             }
         }, config);
@@ -55,9 +58,6 @@ window.addEventListener("load", function () {
     slider.forEach((el) => {
         sliderObserver.observe(el);
     });
-
-
-
 
 
 });

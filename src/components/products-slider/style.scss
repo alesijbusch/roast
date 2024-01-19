@@ -1,57 +1,88 @@
 @import "src/assets/css/vars_mixins/vars_mixins";
 
 .products-slider {
-  &__header {
-    margin-bottom: 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    @media (max-width: $sm - 1) {
-      margin-bottom: 20px;
-    }
-  }
-  &__slider {
-    .product-card-wrap {
-      height: 100% !important;
-    }
-    .product-card {
-      border: 1px solid #ededed;
-      border-color: var(--stroke_black);
+	&__header {
+		margin-bottom: 30px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		position: relative;
+		@media (max-width: $sm - 1) {
+			margin-bottom: 20px;
+		}
+	}
 
-      &:hover {
-        border: 1px solid #ededed;
-        border-color: var(--stroke_black);
-        box-shadow: none;
-      }
-    }
-  }
-  .splide__track {
-    margin: -20px -19px 0;
-    padding: 20px 19px 110px !important;
-    @media (max-width: $md) {
-      padding: 20px 19px 60px !important;
-    }
-  }
+	&__slider {
+		.product-card-wrap {
+			height: 100% !important;
+		}
+
+		.product-card {
+			border: 1px solid #ededed;
+			border-color: var(--stroke_black);
+
+			&:hover {
+				border: 1px solid #ededed;
+				border-color: var(--stroke_black);
+				box-shadow: none;
+			}
+		}
+
+		&--v2 {
+
+			@media (min-width: $xs){
+				.splide__arrows {
+					position: absolute;
+					right: 0;
+					display: flex;
+					top: -45px;
+					gap: 10px;
+				}
+				.splide__arrow {
+					position: static;
+					transform: none;
+
+				}
+
+			}
+
+
+			.splide__arrow {
+
+				background-color: #F5F5F5;
+			}
+		}
+	}
+
+	.splide__track {
+		margin: -20px -19px 0;
+		padding: 20px 19px 110px !important;
+		@media (max-width: $md) {
+			padding: 20px 19px 60px !important;
+		}
+	}
 }
 
 // 1199.75
 @media (max-width: $lg) {
 }
+
 // 991.75
 @media (max-width: $md) {
 }
+
 // 767.75
 @media (max-width: $sm) {
 }
+
 // 600.75
 @media (max-width: $xs) {
-  // .products-slider {
-  //   .splide__track {
-  //     padding: 20px 19px 60px !important;
-  //   }
-  //   //.splide__slide {
-  //   //  width: 260px;
-  //   //}
-  // }
+	// .products-slider {
+	//   .splide__track {
+	//     padding: 20px 19px 60px !important;
+	//   }
+	//   //.splide__slide {
+	//   //  width: 260px;
+	//   //}
+	// }
 }
