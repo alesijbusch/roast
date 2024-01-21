@@ -1,0 +1,38 @@
++modal({
+    id: 'modal-message',
+    mod: 'modal-comment modal-wide',
+    title: false,
+    header: false
+})
+
+    .comment-add-form
+        .modal-title Обратный звонок
+        .modal-descr Оставьте ваш номер и мы перезвоним вам
+        form.comment-form
+            +input({
+                mod: '',
+                label: 'Ваше имя',
+                required: true,
+            })
+            +input({
+                mod: '',
+                label: 'E-mail',
+                required: false,
+            })
+
+            +textarea({
+                mod: 'comment-form__full',
+                label: 'Комментарий',
+                required: false,
+            })
+            .comment-form__bottom.comment-form__full
+                .policy-block
+                    +checkbox({
+                        mod: '',
+                        label: 'Я согласен на <a href="#"> обработку персональных данных</a>',
+                        value: '',
+                        name: 'policy',
+                        required: true,
+                    })(checked)
+
+                button.btn Заказать звонок

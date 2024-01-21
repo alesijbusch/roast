@@ -1,0 +1,72 @@
++include-style('search')
++include-style('catalog')
+//+include-style('sales-section')
+
+-
+    var items = [
+        {img: 'cat-1.png', title: 'Ароматизированный чай'},
+        {img: 'cat-2.png', title: 'Зеленый чай'},
+        {img: 'cat-3.png', title: 'Белый чай'},
+        {img: 'cat-4.png', title: 'Красный чай'},
+        {img: 'cat-5.png', title: 'Индийский чай'},
+        {img: 'cat-6.png', title: 'Матча'},
+        {img: 'cat-7.png', title: 'Подарочный чай'},
+        {img: 'cat-8.png', title: 'Пуэр'},
+        {img: 'cat-9.png', title: 'Травы и добавки'},
+        {img: 'cat-2.png', title: 'Ароматизированный чай'},
+        {img: 'cat-3.png', title: 'Зеленый чай'},
+        {img: 'cat-4.png', title: 'Белый чай'},
+        {img: 'cat-1.png', title: 'Красный чай'},
+    ]
+
+
+
+.container
+    .search-inner
+        form.search(action="#")
+            input.form-control(placeholder="Найти")
+            .search__btns
+                button.btn--clear
+                    +icon('i-close')(style="height:9px;width:9px")
+                button.btn.btn--search Найти
+
+    include ../filters-panel/filters-panel--search
+    .catalog__grid
+        each item in [1,2,3]
+            +product-card2({
+                title: 'Бразилия Велосо Колекта',
+                in_basket: true,
+                no_rating: true,
+                active: true,
+                badges: 2,
+                no_price_old: true,
+            })
+            +product-card2({
+                title: 'Бразилия Велосо Колекта',
+                in_basket: false,
+                badges: 1,
+            })
+            +product-card2({
+                title: 'Бразилия Велосо Колекта',
+                in_basket: false,
+                badges: 1,
+            })
+            +product-card2({
+                title: 'Бразилия Велосо Колекта',
+                in_basket: true,
+                no_rating: true,
+                active: true,
+                badges: 2,
+            })
+            +product-card2({
+                title: 'Бразилия Велосо Колекта',
+                in_basket: false,
+                badges: 1,
+            })
+    .catalog__bottom
+        .catalog__more
+            .btn.btn-wave Загрузить еще
+                span 12
+            .btn.btn-transparent.btn-wave.preloader Загрузить еще
+        .catalog__pagination
+            include ../pagination/pagination

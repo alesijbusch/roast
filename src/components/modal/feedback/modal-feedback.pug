@@ -1,85 +1,91 @@
 +modal({
-	id: 'modal-feedback',
-	mod: 'modal-feedback modal-narrow',
-	title: 'Заказать услугу',
-	header: true
+    id: 'modal-feedback',
+    mod: 'modal-feedback modal-narrow',
+    title: 'Заказать услугу',
+    header: true
 })
-	form.form-block
-		+input({
-			label: 'Ваше имя',
-			fg_mod: 'form-group--margin',
-			label_mod: 'form-control-label--small',
-			type: 'text',
-			name: false,
-			small: false,
-			placeholder: '',
-			required: true,
-			validation: {
-				message: 'Заполните поле',
-				regexp: 'Неверный формат',
-				emailaddress: ' ',
-				identical: false
-			}
-		})
-		+input({
-			label: 'Телефон',
-			fg_mod: 'form-group--margin',
-			label_mod: 'form-control-label--small',
-			type: 'tel',
-			name: false,
-			small: false,
-			placeholder: '+375 (__) ___-__-__',
-			required: true,
-			pattern: 'phone',
-			validation: {
-				message: 'Заполните поле',
-				regexp: 'Неверный формат',
-				emailaddress: ' ',
-				identical: false
-			}
-		})
-		+input({
-			label: 'Email',
-			type: 'email',
-			label_mod: 'form-control-label--small',
-			fg_mod: 'form-group--margin',
-			name: false,
-			small: false,
-			placeholder: 'example@example.com',
-			required: true,
-			pattern: '[A-Za-zА-Яа-я0-9\_\-]{1,}@[A-Za-zА-Яа-я0-9\_\-]{1,}\.[A-Za-zА-Яа-я0-9]{2,}',
-			validation: {
-				message: 'Заполните поле',
-				regexp: 'Неверный формат',
-				emailaddress: ' ',
-				identical: false
-			}
-		})
-		+input({
-			label: 'Услуга',
-			fg_mod: 'form-group--margin',
-			label_mod: 'form-control-label--small',
-			type: 'text',
-			name: false,
-			small: false,
-			placeholder: '',
-			required: true,
-			value: 'Монтаж оборудования',
-			validation: {
-				message: 'Заполните поле',
-				regexp: 'Неверный формат',
-				emailaddress: ' ',
-				identical: false
-			}
-		})
-		+textarea({
-			fg_mod: 'form-group--margin',
-			label_mod: 'form-control-label--small',
-			label: 'Комментарий',
-			required: true,
-		})
-		.form-block__submit
-			button(type="submit").btn.btn--primary.btn--fw Отправить
-		.policy-block
-			<span> Продолжая, вы соглашаетесь с <a href="#" target="_blank">политикой конфиденциальности</a>
-
+    form.form-block
+        +input({
+            label: 'Ваше имя',
+            fg_mod: 'form-group--margin',
+            label_mod: 'form-control-label--small',
+            type: 'text',
+            name: false,
+            small: false,
+            placeholder: '',
+            required: true,
+            validation: {
+                message: 'Заполните поле',
+                regexp: 'Неверный формат',
+                emailaddress: ' ',
+                identical: false
+            }
+        })
+        +input({
+            label: 'Телефон',
+            fg_mod: 'form-group--margin',
+            label_mod: 'form-control-label--small',
+            type: 'tel',
+            name: false,
+            small: false,
+            placeholder: '+375 (__) ___-__-__',
+            required: true,
+            pattern: 'phone',
+            validation: {
+                message: 'Заполните поле',
+                regexp: 'Неверный формат',
+                emailaddress: ' ',
+                identical: false
+            }
+        })
+        +input({
+            label: 'Email',
+            type: 'email',
+            label_mod: 'form-control-label--small',
+            fg_mod: 'form-group--margin',
+            name: false,
+            small: false,
+            placeholder: 'example@example.com',
+            required: true,
+            pattern: '[A-Za-zА-Яа-я0-9\_\-]{1,}@[A-Za-zА-Яа-я0-9\_\-]{1,}\.[A-Za-zА-Яа-я0-9]{2,}',
+            validation: {
+                message: 'Заполните поле',
+                regexp: 'Неверный формат',
+                emailaddress: ' ',
+                identical: false
+            }
+        })
+        +input({
+            label: 'Услуга',
+            fg_mod: 'form-group--margin',
+            label_mod: 'form-control-label--small',
+            type: 'text',
+            name: false,
+            small: false,
+            placeholder: '',
+            required: true,
+            value: 'Монтаж оборудования',
+            validation: {
+                message: 'Заполните поле',
+                regexp: 'Неверный формат',
+                emailaddress: ' ',
+                identical: false
+            }
+        })
+        +textarea({
+            fg_mod: 'form-group--margin',
+            label_mod: 'form-control-label--small',
+            label: 'Комментарий',
+            required: true,
+        })
+        .form-block__footer
+            .policy-block
+                +checkbox({
+                    mod: '',
+                    label: 'Я согласен на <a href="#"> обработку персональных данных</a>',
+                    value: '',
+                    name: 'policy',
+                    required: true,
+                })(checked)
+            .form-block__submit
+                button(type="submit").btn.btn--primary.btn--fw Отправить

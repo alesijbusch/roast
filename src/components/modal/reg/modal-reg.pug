@@ -1,0 +1,81 @@
++modal({
+    id: 'modal-reg',
+    mod: 'modal-narrow modal-auth',
+    title: 'Регистрация',
+    header: true
+})
+    form.form-block
+        +input({
+            label: 'Email',
+            type: 'email',
+            label_mod: 'form-control-label--small',
+            fg_mod: 'form-group--margin',
+            name: false,
+            small: false,
+            placeholder: 'example@example.com',
+            required: true,
+            pattern: '[A-Za-zА-Яа-я0-9\_\-]{1,}@[A-Za-zА-Яа-я0-9\_\-]{1,}\.[A-Za-zА-Яа-я0-9]{2,}',
+            validation: {
+                message: 'Заполните поле',
+                regexp: 'Неверный формат',
+                emailaddress: ' ',
+                identical: false
+            }
+        })
+        .form-block__grid
+            +input({
+                fg_mod: 'form-group--margin',
+                label_mod: 'form-control-label--small',
+                xType: "showPass ? 'text' : 'password'",
+                label: 'Пароль',
+                type: 'text',
+                placeholder: false,
+                required: true,
+                pattern: false,
+                validation: {
+                    message: 'Обязательное поле',
+                    regexp: 'Неверный формат',
+                    emailaddress: ' ',
+                    identical: false
+                }
+            })(x-data="{showPass: false}" )
+                .show-pass(@click="showPass = !showPass" x-cloak)
+                    +icon('i-show-pass')(style="width:16px; height:16px")(x-show="!showPass")
+                    +icon('i-show-pass-2')(style="width:16px; height:16px")(x-show="showPass")
+                //.form-group__description Длина пароля не менее 6 символов
+            +input({
+                fg_mod: 'form-group--margin',
+                label_mod: 'form-control-label--small',
+                xType: "showPass ? 'text' : 'password'",
+                label: 'Повтор пароля',
+                type: 'text',
+                placeholder: false,
+                required: true,
+                pattern: false,
+                validation: {
+                    message: 'Обязательное поле',
+                    regexp: 'Неверный формат',
+                    emailaddress: ' ',
+                    identical: false
+                }
+            })(x-data="{showPass: false}" )
+                .show-pass(@click="showPass = !showPass" x-cloak)
+                    +icon('i-show-pass')(style="width:16px; height:16px")(x-show="!showPass")
+                    +icon('i-show-pass-2')(style="width:16px; height:16px")(x-show="showPass")
+                //.form-group__description Длина пароля не менее 6 символов
+        .form-block__footer
+
+
+            .policy-block
+                +checkbox({
+                    mod: '',
+                    label: 'Я согласен на <a href="#"> обработку персональных данных</a>',
+                    value: '',
+                    name: 'policy',
+                    required: true,
+                })(checked)
+            .form-block__submit
+                button(type="submit").btn.btn-lg.btn--primary Зарегистрироваться
+        .form-block__auth
+            p Уже зарегистрированы?
+            .forgot(data-toggle="modal" data-dismiss="modal" data-target="#modal-auth") Войти

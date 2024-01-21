@@ -1,0 +1,89 @@
++include-style('filters-panel')
++include-script('filters-panel')
+
+mixin filter-item(args={})
+    if(args.single_checkbox)
+        // toggle
+        .filter-item-toggle
+            input(type="checkbox" name="" id="toggle1")
+            label.filter-item(for="toggle1")
+                .filter-item__check
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 14 12" fill="none">
+                    <path d="M13.0334 1.59397L5.7038 8.9236L1.42819 4.64798" stroke="black" stroke-width="1.5"/>
+                    </svg>
+                .filter-item__header
+                    .filter-item__title!=args.title
+            //- span
+    else
+        .filter-item(
+            class=args.mod
+            x-data="{isOpenedFilterItem: false, isOpenedPartList: false}"
+            :class="[isOpenedFilterItem ? 'opened' : '', isOpenedPartList ? 'opened-part-list' : '']"
+            @click.away="isOpenedFilterItem = false")
+            .filter-item__header(@click="isOpenedFilterItem = ! isOpenedFilterItem")
+                .filter-item__title
+                    span!=args.title
+                    +icon('i-arrow-down')(style="height:5px;width:7px")
+                //- .filter-item__remove
+                //- 	+icon('i-close')(style="width:8px;height:8px")
+            .filter-item__body
+                .filter-item__body-list
+                    block
+                if(args.hint)
+                    .filter-item__body-hint
+                        .hint(x-data="{isHintOpened: false}"
+                            :class="isHintOpened ? 'opened' : ''"
+                            @click.away="isHintOpened = false")
+                            .hint__icon(@click="isHintOpened = ! isHintOpened") ?
+                            .hint__text Примечание
+                            .hint__body Пример подсказки
+
+.filters-panel-relative.filters-panel--search
+
+    .filters-panel__bottom
+        .filters-panel-btn
+            span Сортировка:
+        .filters-panel__sorts
+            .filters-panel__sort.filters-panel__sort-active
+                span По цене
+                    // .filters-panel__sort-icon--up - вверх
+                    // .filters-panel__sort-icon--down - вниз
+                <svg class="filters-panel__sort-icon filters-panel__sort-icon--up " xmlns="http://www.w3.org/2000/svg" width="13" height="11" viewBox="0 0 13 11" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M5.93921 4.02981C5.74395 4.22507 5.42737 4.22507 5.2321 4.02981L3.91003 2.70774L3.91003 8.99364C3.91003 9.26978 3.68618 9.49364 3.41003 9.49364C3.13389 9.49364 2.91003 9.26978 2.91003 8.99364L2.91003 2.51615L1.39652 4.02967C1.20126 4.22493 0.884678 4.22493 0.689416 4.02967C0.494153 3.8344 0.494153 3.51782 0.689416 3.32256L2.92538 1.0866C2.93584 1.07383 2.94703 1.06146 2.95895 1.04955C3.05193 0.956566 3.17241 0.907861 3.29421 0.903431C3.42938 0.897539 3.56647 0.946196 3.66968 1.0494C3.68208 1.0618 3.6937 1.0747 3.70452 1.08802L5.93921 3.3227C6.13447 3.51796 6.13447 3.83455 5.93921 4.02981Z" fill="#ACACAC"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.71859 2.00537C9.71859 1.72923 9.49473 1.50537 9.21859 1.50537C8.94245 1.50537 8.71859 1.72923 8.71859 2.00537L8.71859 8.29225L7.39652 6.97018C7.20126 6.77491 6.88468 6.77491 6.68942 6.97018C6.49415 7.16544 6.49415 7.48202 6.68942 7.67728L8.9241 9.91197C8.93493 9.92529 8.94654 9.93818 8.95895 9.95058C9.06215 10.0538 9.19925 10.1024 9.33441 10.0966C9.45621 10.0921 9.5767 10.0434 9.66968 9.95044C9.6816 9.93852 9.69279 9.92616 9.70325 9.91339L11.9392 7.67743C12.1345 7.48217 12.1345 7.16558 11.9392 6.97032C11.7439 6.77506 11.4274 6.77506 11.2321 6.97032L9.71859 8.48383L9.71859 2.00537Z" fill="#ACACAC"/>
+                </svg>
+            .filters-panel__sort
+                span По популярности
+                <svg class="filters-panel__sort-icon " xmlns="http://www.w3.org/2000/svg" width="13" height="11" viewBox="0 0 13 11" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M5.93921 4.02981C5.74395 4.22507 5.42737 4.22507 5.2321 4.02981L3.91003 2.70774L3.91003 8.99364C3.91003 9.26978 3.68618 9.49364 3.41003 9.49364C3.13389 9.49364 2.91003 9.26978 2.91003 8.99364L2.91003 2.51615L1.39652 4.02967C1.20126 4.22493 0.884678 4.22493 0.689416 4.02967C0.494153 3.8344 0.494153 3.51782 0.689416 3.32256L2.92538 1.0866C2.93584 1.07383 2.94703 1.06146 2.95895 1.04955C3.05193 0.956566 3.17241 0.907861 3.29421 0.903431C3.42938 0.897539 3.56647 0.946196 3.66968 1.0494C3.68208 1.0618 3.6937 1.0747 3.70452 1.08802L5.93921 3.3227C6.13447 3.51796 6.13447 3.83455 5.93921 4.02981Z" fill="#ACACAC"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.71859 2.00537C9.71859 1.72923 9.49473 1.50537 9.21859 1.50537C8.94245 1.50537 8.71859 1.72923 8.71859 2.00537L8.71859 8.29225L7.39652 6.97018C7.20126 6.77491 6.88468 6.77491 6.68942 6.97018C6.49415 7.16544 6.49415 7.48202 6.68942 7.67728L8.9241 9.91197C8.93493 9.92529 8.94654 9.93818 8.95895 9.95058C9.06215 10.0538 9.19925 10.1024 9.33441 10.0966C9.45621 10.0921 9.5767 10.0434 9.66968 9.95044C9.6816 9.93852 9.69279 9.92616 9.70325 9.91339L11.9392 7.67743C12.1345 7.48217 12.1345 7.16558 11.9392 6.97032C11.7439 6.77506 11.4274 6.77506 11.2321 6.97032L9.71859 8.48383L9.71859 2.00537Z" fill="#ACACAC"/>
+                </svg>
+        .filters-panel__sorts-mob
+            +select({
+                title: 'По цене (возрастание)',
+                with_links: true,
+                list: [
+                    {
+                        name: `По цене (возрастание)`,
+                        active: true
+                    },
+                    {name: `По цене (убывание)`},
+                    {name: `По популярности (возрастание)`},
+                    {name: `По популярности (убывание)`},
+                ]
+            })
+    .filters-panel__right
+        .filters-panel-btn
+            span Показывать по:
+        +select({
+            title: 12,
+            with_links: true,
+            list: [
+                {
+                    name: `9`
+                },
+                {name: `12` ,
+                active: true},
+                {name: '15'},
+            ]
+        })

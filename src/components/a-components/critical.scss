@@ -430,6 +430,11 @@
 	  }
 	  width: auto;
   }
+	&__auth{
+		display: flex;
+		gap: 10px;
+		flex-wrap: wrap;
+	}
   &__row {
     display: flex;
     justify-content: space-between;

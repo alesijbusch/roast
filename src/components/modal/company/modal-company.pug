@@ -1,5 +1,5 @@
 +modal({
-  id: 'modal-comment',
+  id: 'modal-company',
   mod: 'modal-comment modal-wide',
   title:false,
   header: false
@@ -24,16 +24,7 @@
           .rate-group-wrap
             +rate-group({name: 'rate'})
             .rate-group-wrap__text Хорошо
-        +textarea({
-          mod: '',
-          label: 'Достоинства',
-          required: false,
-        })
-        +textarea({
-          mod: '',
-          label: 'Недостатки',
-          required: false,
-        })
+
         +textarea({
           mod: 'comment-form__full',
           label: 'Комментарий',

@@ -3,160 +3,162 @@
 
 //header.header
 header.header__top
-  .container
-    .header__top-inner
-      +nav({
-        more_btn: true,
-        mod: 'header__top-nav',
-        list: [
-          {name: 'Компания', active: true,},
-          {name: 'Статьи'},
-          {name: 'Услуги'},
-          {name: 'Опт'},
-          {name: 'Контакты'},
-          {
-            name: 'Скидки, оплата, доставка',
-            list: [
-              {name: 'Вопрос-ответ'},
-              {name: 'Условия оплаты '},
-              {name: 'Условия доставки', active: true,},
-              {name: 'Гарантия на товар'},
-              {name: 'Как оформить заказ'},
-              {name: 'Политика'},
-            ],
-            accent: true,
-          },
-        ]
-      })
-      .header__phones-line
-        .header-phones
-          .header-phones__left(:class="isMobilePhonesVisible ? 'header-phones__left--visible' : ''")
-            include ./header-phones
-          .header-phones__right Заказать звонок
+    .container
+        .header__top-inner
+            +nav({
+                more_btn: true,
+                mod: 'header__top-nav',
+                list: [
+                    {name: 'Компания', active: true,},
+                    {name: 'Статьи'},
+                    {name: 'Услуги'},
+                    {name: 'Опт'},
+                    {name: 'Контакты'},
+                    {
+                        name: 'Скидки, оплата, доставка',
+                        list: [
+                            {name: 'Вопрос-ответ'},
+                            {name: 'Условия оплаты '},
+                            {name: 'Условия доставки', active: true,},
+                            {name: 'Гарантия на товар'},
+                            {name: 'Как оформить заказ'},
+                            {name: 'Политика'},
+                        ],
+                        accent: true,
+                    },
+                ]
+            })
+            .header__phones-line
+                .header-phones
+                    .header-phones__left(:class="isMobilePhonesVisible ? 'header-phones__left--visible' : ''")
+                        include ./header-phones
+                    .header-phones__right Заказать звонок
 
 header.header__main(
-  x-data="{ isSticky: false }"
-  @scroll.window="isSticky = (window.pageYOffset > 120) ? true : false"
-  :class="{'is-sticky' : isSticky}"
+    x-data="{ isSticky: false }"
+    @scroll.window="isSticky = (window.pageYOffset > 120) ? true : false"
+    :class="{'is-sticky' : isSticky}"
 )
-  .header-inner
-    .container
-      .header__main-inner
+    .header-inner
+        .container
+            .header__main-inner
 
-        .header__main-group    
-          a(href="#").header__main-logo
-            +lazy-img({
-            wrap_mod: 'logo__img',
-            img: `logo.png`
-          })
-          .header__main-info Интернет-магазин свежего кофе
-        .header__main-search(:class="isMobileSearchVisible ? 'visible' : ''")
-          .search-mobile-close(@click="isMobileSearchVisible = ! isMobileSearchVisible")
-            +icon('i-close')(style="height:16px;width:16px")
-          form.search(action="#")
-            input.form-control(placeholder="Найти")
-            .search__btns
-              button.btn--clear
-                +icon('i-close')(style="height:9px;width:9px")
-              button.btn.btn--search Найти
-          .search-result(style='display:none')
-            .search-result__list
-              each i in [1,2,3,4,5,6,7,8,9,10]
-                a(href="#").search-result__item
-                  +lazy-img({
-                    img: 'search-result-1.jpg',
-                  })
-                  .search-result__item-content
-                    .search-result__item-title Смартфон Nika 7
-                    .search-result__item-price 13&nbsp;300 ₽
-            .search-result__btn
-              a(href="#").btn.btn-wide Все результаты  
-        .header__bottom-inner
-          +nav({
-              more_btn: true,
-              mod: 'header__bottom-scroll header__top-nav',
-              list: [
-                  {name: 'Кофе',
-                      active: true,
-                      list: [
-                          {name: 'Свежеобжаренный'},
-                          {name: 'Зеленый'},
-                          {name: 'Капсулы', active: true,},
-                          {name: 'Дрип-пакеты'},
-                          {name: 'Подписки'},
+                .header__main-group
+                    a(href="#").header__main-logo
+                        +lazy-img({
+                            wrap_mod: 'logo__img',
+                            img: `logo.png`
+                        })
+                    .header__main-info Интернет-магазин свежего кофе
+                .header__main-search(:class="isMobileSearchVisible ? 'visible' : ''")
+                    .search-mobile-close(@click="isMobileSearchVisible = ! isMobileSearchVisible")
+                        +icon('i-close')(style="height:16px;width:16px")
+                    form.search(action="#")
+                        input.form-control(placeholder="Найти")
+                        .search__btns
+                            button.btn--clear
+                                +icon('i-close')(style="height:9px;width:9px")
+                            button.btn.btn--search Найти
+                    .search-result(style='display:none')
+                        .search-result__list
+                            each i in [1,2,3,4,5,6,7,8,9,10]
+                                a(href="#").search-result__item
+                                    +lazy-img({
+                                        img: 'search-result-1.jpg',
+                                    })
+                                    .search-result__item-content
+                                        .search-result__item-title Смартфон Nika 7
+                                        .search-result__item-price 13&nbsp;300 ₽
+                        .search-result__btn
+                            a(href="#").btn.btn-wide Все результаты
+                .header__bottom-inner
+                    +nav({
+                        more_btn: true,
+                        mod: 'header__bottom-scroll header__top-nav',
+                        list: [
+                            {
+                                name: 'Кофе',
+                                active: true,
+                                list: [
+                                    {name: 'Свежеобжаренный'},
+                                    {name: 'Зеленый'},
+                                    {name: 'Капсулы', active: true,},
+                                    {name: 'Дрип-пакеты'},
+                                    {name: 'Подписки'},
 
-                      ],},
-                  {name: 'Чай',},
-                  {name: 'Аксессуары'},
-                  {name: 'Зеленый кофе'},
-                  {name: 'Гранола',},
-                  {name: 'Капсулы'},
-                  {name: 'Дрип-пакеты'},
-                  {name: 'Оборудование'},
+                                ],
+                            },
+                            {name: 'Чай',},
+                            {name: 'Аксессуары'},
+                            {name: 'Зеленый кофе'},
+                            {name: 'Гранола',},
+                            {name: 'Капсулы'},
+                            {name: 'Дрип-пакеты'},
+                            {name: 'Оборудование'},
 
 
-              ]
-          })
+                        ]
+                    })
 
-        .header__main-items
-          .header__main-item
-            span.header__main-item-link(@click="isMobileSearchVisible = ! isMobileSearchVisible")
-              .header__main-item-icon-wrap
-                +icon('i-search')(style="height:21px;width:21px")
-                //- <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                //-   <path fill-rule="evenodd" clip-rule="evenodd" d="M2.58398 10.1029C2.58398 6.50151 5.50346 3.58203 9.10482 3.58203C12.7062 3.58203 15.6257 6.50151 15.6257 10.1029C15.6257 13.7042 12.7062 16.6237 9.10482 16.6237C5.50346 16.6237 2.58398 13.7042 2.58398 10.1029ZM9.10482 1.58203C4.39889 1.58203 0.583984 5.39694 0.583984 10.1029C0.583984 14.8088 4.39889 18.6237 9.10482 18.6237C11.0974 18.6237 12.9303 17.9397 14.3815 16.7937L16.1833 18.5956C16.5738 18.9861 17.207 18.9861 17.5975 18.5956C17.988 18.205 17.988 17.5719 17.5975 17.1813L15.7957 15.3795C16.9417 13.9284 17.6257 12.0955 17.6257 10.1029C17.6257 5.39694 13.8107 1.58203 9.10482 1.58203Z" fill="black"/>
-                //- </svg>
-          .header__main-item.header-cabinet
-            a(href="#").header__main-item-link
-              .header__main-item-icon-wrap.login
-                <svg width="21" height="21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.025 5.891A4.01 4.01 0 0 1 11.016 9.9 4.01 4.01 0 0 1 7.008 5.89a4.01 4.01 0 0 1 4.008-4.008 4.01 4.01 0 0 1 4.009 4.008z" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M19.034 17.915v0a5.345 5.345 0 0 0-5.344-5.345H8.345A5.345 5.345 0 0 0 3 17.915v0" stroke="#000" stroke-width="2" stroke-linecap="round"/></svg>
-            //- .header-cabinet__dropdown
-            //-   .header-cabinet__dropdown-inner
-            //-     .header-cabinet__dropdown-item
-            //-       a(href='#').header-cabinet__dropdown-link.active Мой кабинет
-            //-     .header-cabinet__dropdown-item
-            //-       a(href='#').header-cabinet__dropdown-link Личные данные
-            //-     .header-cabinet__dropdown-item
-            //-       a(href='#').header-cabinet__dropdown-link Сменить пароль
-            //-     .header-cabinet__dropdown-item
-            //-       a(href='#').header-cabinet__dropdown-link Текущие заказы
-            //-     .header-cabinet__dropdown-item
-            //-       a(href='#').header-cabinet__dropdown-link История заказов
-            //-     .header-cabinet__dropdown-item
-            //-       a(href='#').header-cabinet__dropdown-link Личный счет
-            //-     .header-cabinet__dropdown-item
-            //-       a(href='#').header-cabinet__dropdown-link Профили заказов
-            //-     .header-cabinet__dropdown-item
-            //-       a(href='#').header-cabinet__dropdown-link Подписки
-            //-     .header-cabinet__dropdown-item
-            //-       a(href='#').header-cabinet__dropdown-link Избранные товары
-            //-     .header-cabinet__dropdown-item
-            //-       a(href='#').header-cabinet__dropdown-link
-            //-         span Выйти
-            //-         +icon('i-login-2')(style="height:12px;width:12px")
+                .header__main-items
+                    .header__main-item
+                        span.header__main-item-link(@click="isMobileSearchVisible = ! isMobileSearchVisible")
+                            .header__main-item-icon-wrap
+                                +icon('i-search')(style="height:21px;width:21px")
+                                //- <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                //-   <path fill-rule="evenodd" clip-rule="evenodd" d="M2.58398 10.1029C2.58398 6.50151 5.50346 3.58203 9.10482 3.58203C12.7062 3.58203 15.6257 6.50151 15.6257 10.1029C15.6257 13.7042 12.7062 16.6237 9.10482 16.6237C5.50346 16.6237 2.58398 13.7042 2.58398 10.1029ZM9.10482 1.58203C4.39889 1.58203 0.583984 5.39694 0.583984 10.1029C0.583984 14.8088 4.39889 18.6237 9.10482 18.6237C11.0974 18.6237 12.9303 17.9397 14.3815 16.7937L16.1833 18.5956C16.5738 18.9861 17.207 18.9861 17.5975 18.5956C17.988 18.205 17.988 17.5719 17.5975 17.1813L15.7957 15.3795C16.9417 13.9284 17.6257 12.0955 17.6257 10.1029C17.6257 5.39694 13.8107 1.58203 9.10482 1.58203Z" fill="black"/>
+                                //- </svg>
+                    .header__main-item.header-cabinet
+                        a(href="#").header__main-item-link
+                            .header__main-item-icon-wrap.login
+                                <svg width="21" height="21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.025 5.891A4.01 4.01 0 0 1 11.016 9.9 4.01 4.01 0 0 1 7.008 5.89a4.01 4.01 0 0 1 4.008-4.008 4.01 4.01 0 0 1 4.009 4.008z" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M19.034 17.915v0a5.345 5.345 0 0 0-5.344-5.345H8.345A5.345 5.345 0 0 0 3 17.915v0" stroke="#000" stroke-width="2" stroke-linecap="round"/></svg>
+                        //- .header-cabinet__dropdown
+                        //-   .header-cabinet__dropdown-inner
+                        //-     .header-cabinet__dropdown-item
+                        //-       a(href='#').header-cabinet__dropdown-link.active Мой кабинет
+                        //-     .header-cabinet__dropdown-item
+                        //-       a(href='#').header-cabinet__dropdown-link Личные данные
+                        //-     .header-cabinet__dropdown-item
+                        //-       a(href='#').header-cabinet__dropdown-link Сменить пароль
+                        //-     .header-cabinet__dropdown-item
+                        //-       a(href='#').header-cabinet__dropdown-link Текущие заказы
+                        //-     .header-cabinet__dropdown-item
+                        //-       a(href='#').header-cabinet__dropdown-link История заказов
+                        //-     .header-cabinet__dropdown-item
+                        //-       a(href='#').header-cabinet__dropdown-link Личный счет
+                        //-     .header-cabinet__dropdown-item
+                        //-       a(href='#').header-cabinet__dropdown-link Профили заказов
+                        //-     .header-cabinet__dropdown-item
+                        //-       a(href='#').header-cabinet__dropdown-link Подписки
+                        //-     .header-cabinet__dropdown-item
+                        //-       a(href='#').header-cabinet__dropdown-link Избранные товары
+                        //-     .header-cabinet__dropdown-item
+                        //-       a(href='#').header-cabinet__dropdown-link
+                        //-         span Выйти
+                        //-         +icon('i-login-2')(style="height:12px;width:12px")
 
-          //- .header__main-item.header__main-item--mobile.header__main-item--hidden-xs
-          //-   span(@click="isMobilePhonesVisible = ! isMobilePhonesVisible").header__main-item-link
-          //-     .header__main-item-icon-wrap
-          //-       +icon('i-phone')(style="height:19px;width:15px")
-          .header__main-item
-            a(href="#").header__main-item-link
-              .header__main-item-icon-wrap
-                <svg width="21" height="21" viewBox="0 0 23 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M11.5429 4.18922C9.61684 1.90451 6.40498 1.28993 3.99174 3.38204C1.5785 5.47414 1.23875 8.97204 3.13388 11.4464C4.70955 13.5036 9.47809 17.8425 11.041 19.2469C11.2158 19.404 11.3032 19.4825 11.4052 19.5134C11.4942 19.5403 11.5916 19.5403 11.6806 19.5134C11.7826 19.4825 11.87 19.404 12.0449 19.2469C13.6077 17.8425 18.3763 13.5036 19.9519 11.4464C21.8471 8.97204 21.5488 5.45213 19.0941 3.38204C16.6394 1.31194 13.469 1.90451 11.5429 4.18922Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+                    //- .header__main-item.header__main-item--mobile.header__main-item--hidden-xs
+                    //-   span(@click="isMobilePhonesVisible = ! isMobilePhonesVisible").header__main-item-link
+                    //-     .header__main-item-icon-wrap
+                    //-       +icon('i-phone')(style="height:19px;width:15px")
+                    .header__main-item
+                        a(href="#").header__main-item-link
+                            .header__main-item-icon-wrap
+                                <svg width="21" height="21" viewBox="0 0 23 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M11.5429 4.18922C9.61684 1.90451 6.40498 1.28993 3.99174 3.38204C1.5785 5.47414 1.23875 8.97204 3.13388 11.4464C4.70955 13.5036 9.47809 17.8425 11.041 19.2469C11.2158 19.404 11.3032 19.4825 11.4052 19.5134C11.4942 19.5403 11.5916 19.5403 11.6806 19.5134C11.7826 19.4825 11.87 19.404 12.0449 19.2469C13.6077 17.8425 18.3763 13.5036 19.9519 11.4464C21.8471 8.97204 21.5488 5.45213 19.0941 3.38204C16.6394 1.31194 13.469 1.90451 11.5429 4.18922Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
 
-          .header__main-item.header__main-item--cart
-            a(href="#").header__main-item-link
-              .header__main-item-icon-wrap
-                .header__main-item-count 2
-                <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M14.5211 7.42233V4.6699C14.5211 2.64307 12.8175 1 10.716 1C8.61453 1 6.91093 2.64307 6.91093 4.6699V7.42233M2.71772 8.66273L2.14695 14.5346C1.98467 16.2041 1.90353 17.0389 2.19076 17.6836C2.44308 18.25 2.88525 18.7184 3.44641 19.0135C4.0852 19.3495 4.95451 19.3495 6.69313 19.3495H14.7389C16.4775 19.3495 17.3468 19.3495 17.9856 19.0135C18.5468 18.7184 18.989 18.25 19.2413 17.6836C19.5285 17.0389 19.4474 16.2041 19.2851 14.5346L18.7143 8.66273C18.5773 7.25292 18.5088 6.54801 18.18 6.01507C17.8905 5.54571 17.4628 5.17003 16.9512 4.93583C16.3704 4.6699 15.6363 4.6699 14.1681 4.6699L7.2639 4.6699C5.79574 4.6699 5.06166 4.6699 4.48082 4.93583C3.96927 5.17003 3.54152 5.54571 3.25201 6.01507C2.92328 6.54801 2.85476 7.25291 2.71772 8.66273Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              .header-cart-wrap
-                include ./header-cart
-        .header-mobile-burger(@click="isMobileNavVisible = ! isMobileNavVisible")
-          +icon('i-burger-2')(style="width:16px;height:12px")                              
+                    .header__main-item.header__main-item--cart
+                        a(href="#").header__main-item-link
+                            .header__main-item-icon-wrap
+                                .header__main-item-count 2
+                                <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14.5211 7.42233V4.6699C14.5211 2.64307 12.8175 1 10.716 1C8.61453 1 6.91093 2.64307 6.91093 4.6699V7.42233M2.71772 8.66273L2.14695 14.5346C1.98467 16.2041 1.90353 17.0389 2.19076 17.6836C2.44308 18.25 2.88525 18.7184 3.44641 19.0135C4.0852 19.3495 4.95451 19.3495 6.69313 19.3495H14.7389C16.4775 19.3495 17.3468 19.3495 17.9856 19.0135C18.5468 18.7184 18.989 18.25 19.2413 17.6836C19.5285 17.0389 19.4474 16.2041 19.2851 14.5346L18.7143 8.66273C18.5773 7.25292 18.5088 6.54801 18.18 6.01507C17.8905 5.54571 17.4628 5.17003 16.9512 4.93583C16.3704 4.6699 15.6363 4.6699 14.1681 4.6699L7.2639 4.6699C5.79574 4.6699 5.06166 4.6699 4.48082 4.93583C3.96927 5.17003 3.54152 5.54571 3.25201 6.01507C2.92328 6.54801 2.85476 7.25291 2.71772 8.66273Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            .header-cart-wrap
+                                include ./header-cart
+                .header-mobile-burger(@click="isMobileNavVisible = ! isMobileNavVisible")
+                    +icon('i-burger-2')(style="width:16px;height:12px")
 include ./mobile-nav
 
 

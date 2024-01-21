@@ -1,53 +1,61 @@
 +modal({
-	id: 'modal-auth',
-	mod: 'modal-narrow modal-container',
-	title: 'Вход в личный кабинет',
-	header: true
+    id: 'modal-auth',
+    mod: 'modal-narrow modal-auth',
+    title: 'Вход в аккаунт',
+    header: true
 })
-	form.form-block
-		.form-block__descr Авторизовавшись, вы сможете управлять своими личными данными, следить за состоянием заказов.
-		+input({
-			fg_mod:'form-group--margin',
-			label_mod: 'form-control-label--small',
-			label: 'Логин',
-			type: 'text',
-			placeholder: false,
-			required: true,
-			pattern: false,
-			validation: {
-			message: 'Обязательное поле',
-			regexp: 'Неверный формат',
-			emailaddress: ' ',
-			identical: false
-			}
-		})
-		+input({
-			fg_mod:'form-group--margin',
-			label_mod: 'form-control-label--small',
-			xType: "showPass ? 'text' : 'password'",
-			label: 'Пароль',
-			type: 'text',
-			placeholder: false,
-			required: true,
-			pattern: false,
-			validation: {
-			message: 'Обязательное поле',
-			regexp: 'Неверный формат',
-			emailaddress: ' ',
-			identical: false
-			}
-		})(x-data="{showPass: false}" )
-			.show-pass(@click="showPass = !showPass" x-cloak)
-				+icon('i-show-pass')(style="width:20px; height:20px")(x-show="!showPass")
-				+icon('i-show-pass-2')(style="width:20px; height:20px")(x-show="showPass")
-		.form-block__row
-			+checkbox({
-			})
-				span Запомнить меня
-			a(href='#').forgot Забыли пароль?
-		.form-block__submit
-			button(type="submit").btn.btn-lg.btn--primary Войти
-			button(type="submit").btn.btn-lg.btn-transparent Регистрация
-		.policy-block
-			<span> Продолжая, вы соглашаетесь с <a href="#" target="_blank">политикой конфиденциальности</a> и с <a href="#" target="_blank">публичной офертой</a></span>
-	include ../../auth-service/auth-service
+    form.form-block
+        +input({
+            label: 'Email',
+            type: 'email',
+            label_mod: 'form-control-label--small',
+            fg_mod: 'form-group--margin',
+            name: false,
+            small: false,
+            placeholder: 'example@example.com',
+            required: true,
+            pattern: '[A-Za-zА-Яа-я0-9\_\-]{1,}@[A-Za-zА-Яа-я0-9\_\-]{1,}\.[A-Za-zА-Яа-я0-9]{2,}',
+            validation: {
+                message: 'Заполните поле',
+                regexp: 'Неверный формат',
+                emailaddress: ' ',
+                identical: false
+            }
+        })
+        +input({
+            fg_mod: 'form-group--margin',
+            label_mod: 'form-control-label--small',
+            xType: "showPass ? 'text' : 'password'",
+            label: 'Пароль',
+            type: 'text',
+            placeholder: false,
+            required: true,
+            pattern: false,
+            validation: {
+                message: 'Обязательное поле',
+                regexp: 'Неверный формат',
+                emailaddress: ' ',
+                identical: false
+            }
+        })(x-data="{showPass: false}" )
+            .show-pass(@click="showPass = !showPass" x-cloak)
+                +icon('i-show-pass')(style="width:20px; height:20px")(x-show="!showPass")
+                +icon('i-show-pass-2')(style="width:20px; height:20px")(x-show="showPass")
+        .form-block__row
+            .forgot(data-toggle="modal" data-dismiss="modal"  data-target="#modal-password") Забыли пароль?
+        .form-block__footer
+
+
+            .policy-block
+                +checkbox({
+                    mod: '',
+                    label: 'Я согласен на <a href="#"> обработку персональных данных</a>',
+                    value: '',
+                    name: 'policy',
+                    required: true,
+                })(checked)
+            .form-block__submit
+                button(type="submit").btn.btn-lg.btn--primary Войти
+        .form-block__auth
+            p Новый пользователь?
+            .forgot(data-toggle="modal" data-dismiss="modal"  data-target="#modal-reg") Зарегистрироваться?
