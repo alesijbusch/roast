@@ -44,7 +44,7 @@
 
 		.product-block {
 			width: 100%;
-			max-width: 360px;
+			max-width: 424px;
 		}
 
 		@media (max-width: $sm - 1) {
@@ -261,6 +261,9 @@
 				margin-bottom: 8px;
 			}
 
+		}
+		.black{
+			color: #000000;
 		}
 
 		ul, ol {
