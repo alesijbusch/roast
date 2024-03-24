@@ -83,7 +83,7 @@
 		align-items: start;
 		gap: 21px 15px;
 		width: auto;
-		// width: 77%;
+		width: 77%;
 	}
 
 	&__btns {
@@ -381,11 +381,6 @@
 		margin: -1px 0 1px -1px;
 		padding: 1px 10px 1px 1px;
 		@include scroll();
-		&:not(.filter-item--checkboxes){
-			display: flex;
-			flex-direction: column;
-			gap: 12px;
-		}
 	}
 
 	&__body-list-more {

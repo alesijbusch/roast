@@ -190,6 +190,46 @@ $xl: 1380px;
 				flex: 0 0 100%;
 			}
 		}
+
+		&-location{
+			position: relative;
+		}
+		&-dropdown{
+			z-index: 10;
+			position: absolute;
+			left: 0;
+			right: 0;
+			max-height: 200px;
+			overflow: auto;
+			top: calc(100% + 2px);
+			padding: 0 20px;
+			background-color: #fff;
+			font-size: .8675rem;
+			box-shadow: 4px 0px 20px 0px rgba(0, 0, 0, 0.15);
+			@media (min-width: $md){
+				@include scroll();
+			}
+		}
+		&-item{
+			transition: all ease .3s;
+			@media (min-width: $md){
+				&:hover{
+					cursor: pointer;
+					color: $accent;
+				}
+			}
+			&:not(:last-child){
+				margin-bottom: 8px;
+			}
+			&:first-of-type{
+				padding-top: 8px;
+			}
+			&:last-of-type{
+				padding-bottom: 8px;
+			}
+
+
+		}
 	}
 
 	&__more {
@@ -377,7 +417,7 @@ $xl: 1380px;
 	}
 
 	&__submit {
-		margin: 25px 0 20px;
+		margin: 25px 0 0;
 		display: flex;
 		justify-content: center;
 		.btn {
@@ -414,9 +454,10 @@ $xl: 1380px;
 			gap: 0 10px;
 			flex-wrap: wrap;
 			@media (max-width: $xl - 1) {
-				display: grid;
+				display: flex;
 				justify-items: start;
 				grid-template-columns: 50px auto;
+				position: relative;
 			}
 			.cart-checkout__d{
 				color: #000;
@@ -484,10 +525,12 @@ $xl: 1380px;
 	}
 
 	&__promo {
-		margin-top: 30px;
+		//margin-top: 30px;
 		position: relative;
+		margin-bottom: 20px;
 		@media (max-width: $sm - 1) {
-			margin-top: 20px;
+			//margin-top: 20px;
+			margin-bottom: 12px;
 		}
 		.form-control{
 			background-color: #fff;
@@ -499,7 +542,7 @@ $xl: 1380px;
 			display: flex;
 			flex-direction: column;
 			margin-top: 10px;
-			margin-bottom: 10px;
+			//margin-bottom: 10px;
 		}
 
 		&-item {
@@ -610,7 +653,12 @@ $xl: 1380px;
 		border-radius: 2px;
 		margin-left: 75px;
 		@media (max-width: $xl - 1) {
-			grid-column: span 2;
+			//grid-column: span 2;
+			position: absolute;
+			bottom: 0;
+			left: 75px;
+			margin-left: 0;
+			transform: translateY(100%);
 
 		}
 		&:before{
@@ -631,6 +679,7 @@ $xl: 1380px;
 		gap: 8px;
 		justify-content: center;
 		transition: all ease .3s;
+		margin-top: 20px;
 		svg{
 			transition: all ease .3s;
 		}

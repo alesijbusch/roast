@@ -7,12 +7,6 @@ body {
 
 body.overflow {
 	overflow: hidden;
-	width: calc(100vw - var(--scrollWidth));
-
-	.main {
-		padding-right: var(--scrollWidth);
-	}
-
 }
 
 @keyframes stickyAnim {

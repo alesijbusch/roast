@@ -135,23 +135,39 @@ mixin cart-product(args={})
                                         identical: false
                                     }
                                 })
-                            .cart-form__field.cart-form__field--2
-                                +input({
-                                    label: 'Местоположение',
-                                    fg_mod: 'form-group--margin',
-                                    label_mod: 'form-control-label--small',
-                                    type: 'text',
-                                    name: false,
-                                    small: false,
-                                    placeholder: 'Введите название города',
-                                    required: true,
-                                    validation: {
-                                        message: 'Заполните поле',
-                                        regexp: 'Неверный формат',
-                                        emailaddress: ' ',
-                                        identical: false
-                                    }
-                                })
+                            .cart-form__field.cart-form__field--2.cart-form__field-location(x-data="{search: false}" @click.outside="search=false")
+                                .form-group
+                                    <label class="form-control-label form-control-label--small" for="ID4031461171">Местоположение<span class="label-required">*</span>
+                                    </label>
+                                    <input class="form-control" autocomplete="no" type="text" id="ID4031461171" name="NAME4031461171" placeholder="Введите название города" @focus="search=true" required="required">
+                                    //+input({
+                                    //    label: 'Местоположение',
+                                    //    fg_mod: 'form-group--margin',
+                                    //    label_mod: 'form-control-label--small',
+                                    //    type: 'text',
+                                    //    name: false,
+                                    //    small: false,
+                                    //    placeholder: 'Введите название города',
+                                    //    required: true,
+                                    //    validation: {
+                                    //        message: 'Заполните поле',
+                                    //        regexp: 'Неверный формат',
+                                    //        emailaddress: ' ',
+                                    //        identical: false
+                                    //    }
+                                    //})()
+                                .cart-form__field-dropdown(x-show="search" x-transition x-cloak)
+                                    .cart-form__field-item(@click="search=false") Барановичи
+                                    .cart-form__field-item(@click="search=false") Барановичи
+                                    .cart-form__field-item(@click="search=false") Барановичи
+                                    .cart-form__field-item(@click="search=false") Барановичи
+                                    .cart-form__field-item(@click="search=false") Барановичи
+                                    .cart-form__field-item(@click="search=false") Барановичи
+                                    .cart-form__field-item(@click="search=false") Барановичи
+                                    .cart-form__field-item(@click="search=false") Барановичи
+                                    .cart-form__field-item(@click="search=false") Барановичи
+                                    .cart-form__field-item(@click="search=false") Барановичи
+                                    .cart-form__field-item(@click="search=false") Барановичи
                             .cart-form__field.cart-form__field--2
                                 +input({
                                     label: 'Email',

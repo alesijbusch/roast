@@ -5,7 +5,7 @@ window.addEventListener("load", function () {
 		threshold: 0.5,
 	};
 
-  if (!window.slider) window.slider = {}
+  window.slider = {}
 
   window.slider.productSlider = function(){
 const sliderObserver = new IntersectionObserver((entries, observer) => {

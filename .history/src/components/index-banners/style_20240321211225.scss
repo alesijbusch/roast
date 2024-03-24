@@ -83,9 +83,6 @@
     font-weight: 600;
     line-height: 50px;
     color: #fff;
-    &:hover{
-      color: #fff;
-    }
   }
   &__text {
     position: relative;
@@ -167,7 +164,9 @@
   .ib-slide {
     &__title {
       color: #333;
-      
+      &:hover{
+        color: #fff;
+      }
     }
     &__text {
       color: #333;
@@ -212,7 +211,7 @@
   }
   &__top {
     padding-top: 54px;
-    background: url("/html/images/ellipse.png");
+    background: url("/src/assets/images/ellipse.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

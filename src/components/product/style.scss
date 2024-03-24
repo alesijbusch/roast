@@ -475,6 +475,7 @@
 		background: #f8f8f8;
 		display: flex;
 		flex-wrap: wrap;
+		gap: 25px;
 		flex-direction: column;
 		padding: 20px 25px 25px 25px;
 		@media (max-width: $xs) {
@@ -483,26 +484,29 @@
 	}
 
 	&__item-group {
-		display: flex;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
 		gap: 30px;
 		@media (max-width: $xs) {
+			grid-template-columns: 100%;
+			gap: 20px;
 			justify-content: space-between;
 		}
 	}
 
 	&__item-block {
-		width: 50%;
-		margin-bottom: 20px;
+		//width: 50%;
+		//margin-bottom: 20px;
 	}
 
 	&__item-select {
-		width: 50%;
+		//width: 50%;
 
-		&:first-child {
-			@media (max-width: $xs) {
-				width: 100%;
-			}
-		}
+		//&:first-child {
+		//	@media (max-width: $xs) {
+		//		width: 100%;
+		//	}
+		//}
 
 		&:last-child {
 			.select {

@@ -241,6 +241,9 @@
 	ol,
 	ul:not(.product-block__grid__item-row) {
 		margin-bottom: 24px;
+		margin-top: 16px;
+		padding-left: 20px;
+		padding-left: 20px;
 		@media (max-width: $md - 1) {
 			margin-bottom: 16px;
 		}

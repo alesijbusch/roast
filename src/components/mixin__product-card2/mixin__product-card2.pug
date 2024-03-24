@@ -52,7 +52,7 @@ mixin product-card2(args={})
 				a(href="#").product-block__title=args.title
 				.product-block__subtitle Выпечка, Кленовый сироп, Макадамия
 			.product-block__body
-				.product-block__body-left 
+				.product-block__body-left
 					.product-block__body-group
 						.product-block__rating
 							if(args.no_rating)
@@ -71,7 +71,7 @@ mixin product-card2(args={})
 									+icon('i-star')(width="16" height="16")
 						.product-block__review
 							+icon('i-review')(style="height:14px;width:14px")
-							span 0 
+							span 0
 							span.dn отзывов
 					.product-block__grid
 						.product-block__grid__item
@@ -83,7 +83,8 @@ mixin product-card2(args={})
 				.product-block__body-right
 					.product-block__img-wrap
 						+lazy-img({
-							wrap_mod: '.product-block__img',
+                            link: true,
+							wrap_mod: 'product-block__img',
 							img: 'product.png'
 							})
 			.product-block__grid
@@ -116,22 +117,22 @@ mixin product-card2(args={})
 				.product-block__prices
 					.product-block__price 45.30&nbsp;руб.
 					if(args.no_price_old)
-						.product-block__price-old 
+						.product-block__price-old
 							span 48.30&nbsp;руб.
 							.discount
 								<svg xmlns="http://www.w3.org/2000/svg" width="4" height="5" viewBox="0 0 4 5" fill="none">
 									<path d="M0.5 2.5L3.5 0.334936L3.5 4.66506L0.5 2.5Z" fill="#D64A4A"></path>
-								</svg> 
+								</svg>
 								span -10%
 				.product-block__favorite(class= args.active && 'active' )
 					<svg width="21" height="21" viewBox="0 0 23 21" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path fill-rule="evenodd" clip-rule="evenodd" d="M11.5429 4.18922C9.61684 1.90451 6.40498 1.28993 3.99174 3.38204C1.5785 5.47414 1.23875 8.97204 3.13388 11.4464C4.70955 13.5036 9.47809 17.8425 11.041 19.2469C11.2158 19.404 11.3032 19.4825 11.4052 19.5134C11.4942 19.5403 11.5916 19.5403 11.6806 19.5134C11.7826 19.4825 11.87 19.404 12.0449 19.2469C13.6077 17.8425 18.3763 13.5036 19.9519 11.4464C21.8471 8.97204 21.5488 5.45213 19.0941 3.38204C16.6394 1.31194 13.469 1.90451 11.5429 4.18922Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 					</svg>
 				.product-block__compare
-					//- +icon('i-compare')(style="width:20px;height:16px")
-					<svg xmlns="http://www.w3.org/2000/svg" width="43" height="42" viewBox="0 0 43 42" fill="none">
-						<path fill-rule="evenodd" clip-rule="evenodd" d="M19.8764 13.75C19.8764 13.3358 19.5406 13 19.1264 13C18.7122 13 18.3764 13.3358 18.3764 13.75L18.3764 28.4879C18.3764 28.9021 18.7122 29.2379 19.1264 29.2379C19.5406 29.2379 19.8764 28.9021 19.8764 28.4879L19.8764 13.75ZM15.834 21.869C15.834 21.4547 15.4982 21.119 15.084 21.119C14.6698 21.119 14.334 21.4547 14.334 21.869V28.4879C14.334 28.9021 14.6698 29.2379 15.084 29.2379C15.4982 29.2379 15.834 28.9021 15.834 28.4879L15.834 21.869ZM23.1763 21.1191C23.5906 21.1191 23.9263 21.4549 23.9263 21.8691V28.4881C23.9263 28.9023 23.5906 29.2381 23.1763 29.2381C22.7621 29.2381 22.4263 28.9023 22.4263 28.4881V21.8691C22.4263 21.4549 22.7621 21.1191 23.1763 21.1191ZM27.9709 16.7949C27.9709 16.3807 27.6351 16.0449 27.2209 16.0449C26.8067 16.0449 26.4709 16.3807 26.4709 16.7949L26.4709 28.4882C26.4709 28.9024 26.8067 29.2382 27.2209 29.2382C27.6351 29.2382 27.9709 28.9024 27.9709 28.4882L27.9709 16.7949Z" fill="black"/>
-					</svg>
+					+icon('i-compare')(style="width:20px;height:16px")
+					//<svg xmlns="http://www.w3.org/2000/svg" width="43" height="42" viewBox="0 0 43 42" fill="none">
+					//	<path fill-rule="evenodd" clip-rule="evenodd" d="M19.8764 13.75C19.8764 13.3358 19.5406 13 19.1264 13C18.7122 13 18.3764 13.3358 18.3764 13.75L18.3764 28.4879C18.3764 28.9021 18.7122 29.2379 19.1264 29.2379C19.5406 29.2379 19.8764 28.9021 19.8764 28.4879L19.8764 13.75ZM15.834 21.869C15.834 21.4547 15.4982 21.119 15.084 21.119C14.6698 21.119 14.334 21.4547 14.334 21.869V28.4879C14.334 28.9021 14.6698 29.2379 15.084 29.2379C15.4982 29.2379 15.834 28.9021 15.834 28.4879L15.834 21.869ZM23.1763 21.1191C23.5906 21.1191 23.9263 21.4549 23.9263 21.8691V28.4881C23.9263 28.9023 23.5906 29.2381 23.1763 29.2381C22.7621 29.2381 22.4263 28.9023 22.4263 28.4881V21.8691C22.4263 21.4549 22.7621 21.1191 23.1763 21.1191ZM27.9709 16.7949C27.9709 16.3807 27.6351 16.0449 27.2209 16.0449C26.8067 16.0449 26.4709 16.3807 26.4709 16.7949L26.4709 28.4882C26.4709 28.9024 26.8067 29.2382 27.2209 29.2382C27.6351 29.2382 27.9709 28.9024 27.9709 28.4882L27.9709 16.7949Z" fill="black"/>
+					//</svg>
 				if(args.in_basket)
 					.product-block__btns
 						.product-block__buy.btn.btn-sm.btn-wave

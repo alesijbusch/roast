@@ -52,13 +52,6 @@
 				background-color: #F5F5F5;
 			}
 		}
-		&:not(.is-initialized){
-			.splide__slide{
-				&:not(:last-child){
-					margin-right: 20px;
-				}
-			}
-		}
 	}
 
 	.splide__track {
@@ -67,7 +60,9 @@
 		@media (max-width: $md) {
 			padding: 20px 19px 60px !important;
 		}
-		
+		@media (max-width: $sm) {
+			padding: 20px 0 60px !important;
+		}
 		
 	}
 }
