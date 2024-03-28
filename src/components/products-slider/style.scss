@@ -54,6 +54,14 @@
 		}
 		&:not(.is-initialized){
 			.splide__slide{
+				width: calc(33.333% - 13px);
+
+				@media (max-width: $md - 1) {
+					width: calc(50% - 10px);
+				}
+				@media (max-width: $xs - 1) {
+					width: 100%;
+				}
 				&:not(:last-child){
 					margin-right: 20px;
 				}

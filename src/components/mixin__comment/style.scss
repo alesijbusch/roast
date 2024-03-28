@@ -3,6 +3,9 @@
 .comment {
 	border: 1px solid #e3e3e3;
 	padding: 30px;
+	.comment{
+		padding-right: 0;
+	}
 
 	&__header {
 		margin-bottom: 25px;

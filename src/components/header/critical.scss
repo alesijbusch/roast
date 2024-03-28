@@ -9,8 +9,15 @@ body.overflow {
 	overflow: hidden;
 	width: calc(100vw - var(--scrollWidth));
 
-	.main {
-		padding-right: var(--scrollWidth);
+	//.main {
+	//	padding-right: var(--scrollWidth);
+	//}
+
+	header.is-sticky{
+		.header-inner{
+			padding-right: var(--scrollWidth);
+		}
+
 	}
 
 }
@@ -147,6 +154,7 @@ body.overflow {
 			transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
 			transition-delay: 0.2s;
 			position: absolute;
+			z-index: 2;
 			//top: calc(100% + 8px);
 			top: 25px;
 			left: 0;

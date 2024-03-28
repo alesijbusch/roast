@@ -70,7 +70,50 @@ mixin product-card(args={})
                             span 0
                             span отзывов
                     a(href="#").product-card__title=args.title
-                    .product-card__info-body
+                    if(!args.utp)
+                        .product-card__info-body
+                            .product-card__prices
+                                .product-card__price-new 45.30 руб.
+                                if(args.no_price_old)
+                                    .product-card__price-old
+                                        span 48.30 руб.
+                                        .discount
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="4" height="5" viewBox="0 0 4 5" fill="none">
+                                            <path d="M0.5 2.5L3.5 0.334936L3.5 4.66506L0.5 2.5Z" fill="#D64A4A"></path>
+                                            </svg>
+                                            span -10%
+                            .product-card__grid
+                                .product-card__grid-title Масса
+                                .product-card__grid-property 100
+                    else
+                        .product-block__grid__group
+                            .product-block__grid__item
+                                .product-card__grid-title Цвет: <span>Бежевый</span>
+                                if(args.utp7)
+                                    .utp
+                                        .utp-color(style="--bg-utp:url(/html/images/product-tea.png)").active
+                                        .utp-color(style="--bg-utp:url(/html/images/product.png)")
+                                        .utp-color(style="--bg-utp:url(/html/images/product.png)")
+                                        .utp-color(style="--bg-utp:url(/html/images/product.png)")
+                                        .utp-color(style="--bg-utp:url(/html/images/product.png)")
+                                        //.utp-color(style="--bg-utp:url(/html/images/product-tea.png)")
+                                        .utp-color(style="--bg-utp:red")
+                                        .utp-color(style="--bg-utp:red")
+                                else
+                                    .utp
+                                        .utp-color(style="--bg-utp:url(/html/images/product-tea.png)").active
+                                        .utp-color(style="--bg-utp:url(/html/images/product.png)")
+                                        //.utp-color(style="--bg-utp:url(/html/images/product-tea.png)")
+                                        .utp-color(style="--bg-utp:red")
+
+
+                            .product-block__grid__item
+                                .product-card__grid-title Объем
+                                .utp
+                                    .product-card__grid-property.active
+                                        span 150
+                                    .product-card__grid-property
+                                        span 200
                         .product-card__prices
                             .product-card__price-new 45.30 руб.
                             if(args.no_price_old)
@@ -81,9 +124,7 @@ mixin product-card(args={})
                                         <path d="M0.5 2.5L3.5 0.334936L3.5 4.66506L0.5 2.5Z" fill="#D64A4A"></path>
                                         </svg>
                                         span -10%
-                        .product-card__grid
-                            .product-card__grid-title Масса
-                            .product-card__grid-property 100
+
                 .product-card__actions
                     .product-card__actions-inner
                         .product-card__favorite(class= args.active && 'active' )
