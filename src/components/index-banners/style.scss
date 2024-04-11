@@ -248,6 +248,16 @@
     font-weight: 600;
     line-height: 28px;
     margin-bottom: 5px;
+	  @media (max-width: $xs - 1) {
+		  max-height: 30px;
+		  -webkit-line-clamp: 1;
+		  display: -webkit-box;
+		  -webkit-box-orient: vertical;
+		  display: -moz-box;
+		  -moz-box-orient: vertical;
+		  -moz-line-clamp: 1;
+		  overflow: hidden;
+	  }
   }
   &__price {
     font-size: 16px;
@@ -355,7 +365,7 @@
   .slider-product__top {
     padding-top: 51px;
     background-size: initial;
-    background-image: url("/src/assets/images/ellipse-xs.png");
+    background-image: url("/html/images/ellipse-xs.png");
   }
   .slider-product__badge {
     top: 30px;

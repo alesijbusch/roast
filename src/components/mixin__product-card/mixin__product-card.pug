@@ -60,11 +60,12 @@ mixin product-card(args={})
                 .product-card__info
                     .product-card__info-line
                         .product-card__rating
-                            +icon('i-star')(width="16" height="16").filled
-                            +icon('i-star')(width="16" height="16").filled
-                            +icon('i-star')(width="16" height="16").filled
-                            +icon('i-star')(width="16" height="16")
-                            +icon('i-star')(width="16" height="16")
+                            .star.filled(style="width:16px; height: 16px")
+                            .star.filled(style="width:16px; height: 16px")
+                            .star.filled(style="width:16px; height: 16px")
+                            .star.half(style="width:16px; height: 16px")
+                            .star(style="width:16px; height: 16px")
+
                         .product-card__review
                             +icon('i-review')(style="height:14px;width:14px")
                             span 0

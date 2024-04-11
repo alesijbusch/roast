@@ -488,9 +488,11 @@
 		grid-template-columns: 1fr 1fr;
 		gap: 30px;
 		@media (max-width: $xs) {
-			grid-template-columns: 100%;
+			display: flex;
+			flex-direction: column;
+			//grid-template-columns: 100%;
 			gap: 20px;
-			justify-content: space-between;
+			//justify-content: space-between;
 		}
 	}
 

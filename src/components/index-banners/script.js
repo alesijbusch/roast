@@ -32,8 +32,15 @@ window.addEventListener("load", function () {
     });
   };
 
-  splide.on("move", () => {
+
+
+  splide.on("move", (ni, prev, dest) => {
     loadSlide(".splide__slide");
+      console.log('here')
+    document.querySelector('.slider-product-page .item').innerHTML = ni + 1
+
+
+
   });
   splide.on("drag", () => {
     loadSlide(".splide__slide");
@@ -45,8 +52,7 @@ window.addEventListener("load", function () {
     pagination: false,
     perPage: 1,
     perMove: 1,
-    drag: true,
-    speed: 1000,
+    speed: 500,
     lazyLoad: "nearby",
     // breakpoints: {
     //   768: {
@@ -67,6 +73,11 @@ window.addEventListener("load", function () {
   //   });
 
   // });
+    splideProduct.on("move", (ni, prev, dest) => {
+
+        document.querySelector('.slider-product-page .item').innerHTML = ni + 1
+
+    });
 
   splideProduct.mount();
 });

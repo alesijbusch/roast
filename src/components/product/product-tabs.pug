@@ -71,13 +71,16 @@ mixin lazy-video-youtube(args= {})
                         .grid-list__item
                             .grid-list__item-inner
                                 .grid-list__item-rating
-                                    +icon('i-star')(width="16" height="16").filled
-                                    +icon('i-star')(width="16" height="16").filled
-                                    +icon('i-star')(width="16" height="16").filled
-                                    +icon('i-star')(width="16" height="16").filled
-                                    +icon('i-star')(width="16" height="16")
+                                    .star.filled(style="width:18px; height: 18px")
+                                    .star.filled(style="width:18px; height: 18px")
+                                    .star.filled(style="width:18px; height: 18px")
+                                    .star.half(style="width:18px; height: 18px")
+                                    .star(style="width:18px; height: 18px")
+
                                     span 4,5
-                                .btn.btn-wide(data-toggle="modal" data-target="#modal-comment") Оставить отзыв
+                                .btn.btn-wide.btn-comment Оставить отзыв
+
+        include ../modal/comment/modal-comment
     // Рецепт
     .tabs-container-v2__item(:class="{'hidden': activeTab !== 'options'}")
         .p-tab-props

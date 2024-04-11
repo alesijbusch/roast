@@ -12,11 +12,11 @@ mixin comment(args={})
                 .comment__time 09:01:24
             .comment__rating
                 .comment__stars
-                    +icon('i-star')(width="16" height="16").filled
-                    +icon('i-star')(width="16" height="16").filled
-                    +icon('i-star')(width="16" height="16").filled
-                    +icon('i-star')(width="16" height="16").filled
-                    +icon('i-star')(width="16" height="16")
+                    .star.filled(style="width:18px; height: 18px")
+                    .star.filled(style="width:18px; height: 18px")
+                    .star.filled(style="width:18px; height: 18px")
+                    .star.half(style="width:18px; height: 18px")
+                    .star(style="width:18px; height: 18px")
         .comment__main(x-data="{isOpenedComment: false}")
             if(args.product)
                 .comment__main-product

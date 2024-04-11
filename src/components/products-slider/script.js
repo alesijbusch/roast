@@ -25,7 +25,7 @@ const sliderObserver = new IntersectionObserver((entries, observer) => {
 					perMove: 1,
 					drag: slidesCount > 3,
 					gap: 20,
-					speed: 1200,
+					speed: 600,
 					lazyLoad: true,
 					arrows: true,
 					breakpoints: {
