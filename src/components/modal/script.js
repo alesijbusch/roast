@@ -9,7 +9,7 @@
 				this.element = document.getElementById(a);
 				if (!this.element) console.warn('element not found');
 				this.backdrop = document.createElement("div");
-				!this.element || document.getElementById(a).modal || (document.getElementById(a).modal = (a, b = void 0) => "hide" === a ? b.immediately ? this.hide(!0) : this.hide() : void this.show(), (this.element.querySelector(".modal-close"))?.addEventListener("click", () => {
+				!this.element || document.getElementById(a).modal || (document.getElementById(a).modal = (a, b = void 0) => "hide" === a ? b?.immediately ? this.hide(!0) : this.hide() : void this.show(), (this.element.querySelector(".modal-close"))?.addEventListener("click", () => {
 					this.hide()
 				}), this.element.addEventListener("click", a => {
 					a.target.closest(".modal-content") || this.hide()
