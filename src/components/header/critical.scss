@@ -144,7 +144,7 @@ body.overflow {
 
 		.nav-toggle {
 			line-height: 0;
-			fill: $accent;
+			fill: $b2;
 		}
 
 		.nav-lvl2 {
@@ -295,6 +295,7 @@ body.overflow {
 		top: 0;
 		left: 0;
 		right: 0;
+		z-index: 6;
 		@media (max-width: $md - 1) {
 			height: 52px;
 			//z-index: 6;

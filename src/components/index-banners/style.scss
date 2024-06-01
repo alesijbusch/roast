@@ -211,11 +211,23 @@
     background: #f8f8f8;
   }
   &__top {
+	  display: block;
     padding-top: 54px;
     background: url("/html/images/ellipse.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+	  @media (min-width: $md) {
+		  cursor: pointer;
+		  &:hover {
+			  & + .slider-product__bottom{
+				  .slider-product__title{
+					  color: $accent;
+				  }
+			  }
+		  }
+
+	  }
   }
   &__bottom {
     margin-top: 20px;
@@ -283,6 +295,11 @@
       font-size: 14px;
     }
   }
+
+	.splide__arrow{
+		background-color: #fff;
+		box-shadow: none;
+	}
 }
 
 // 1199.75

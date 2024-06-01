@@ -4,7 +4,7 @@ mixin product-card(args={})
     .product-card-wrap
         .product-card
             .product-card__inner
-                .product-card__top
+                a(href="#").product-card__top
                     .product-card__top-badges
                         if(args.badges === 1)
                             +lazy-img({

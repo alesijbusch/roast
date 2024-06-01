@@ -20,8 +20,10 @@
 		//aspect-ratio: .72;
 		position: relative;
 		width: 100%;
+		min-height: 420px;
 		@media (max-width: $md - 1) {
 			position: sticky;
+			min-height: auto;
 			top: 60px;
 			//max-width: 160px;
 			aspect-ratio: 0.72;

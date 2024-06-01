@@ -9,6 +9,12 @@
 	&-inner {
 		border: 1px solid $a5;
 		padding: 45px;
+
+		img{
+			margin: 0 auto	;
+			display: block;
+		}
+
 		@media (max-width: $md - 1) {
 			padding: 30px;
 		}
@@ -313,7 +319,7 @@
 			}
 
 			&:before {
-				content: counters(list, ".") ".";
+				content: counters(list, ".");
 				counter-increment: list;
 				transform: none;
 				display: inline-block;
@@ -323,6 +329,9 @@
 				position: absolute;
 				top: 0;
 				left: 0;
+			}
+			&:nth-child(-n+9):before {
+				content: "0" counters(list, ".");
 			}
 
 			& > ol:not(.list-reset) {
