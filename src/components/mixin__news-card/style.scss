@@ -64,6 +64,14 @@
 		font-weight: 600;
 		font-size: 1.25rem;
 		line-height: 1.33;
+		-webkit-line-clamp: 2;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		display: -moz-box;
+		-moz-box-orient: vertical;
+		-moz-line-clamp: 2;
+		overflow: hidden;
+		height: 55px;
 
 	}
 

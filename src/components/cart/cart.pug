@@ -17,11 +17,11 @@ mixin cart-product(args={})
                 placeholder: pixel,
                 img_mod: '',
                 wrap_mod: '',
-                link: false,
+                link: true,
                 aria_label: false,
             })
         .cart-product__content
-            .cart-product__title= args.title
+            a(href="#").cart-product__title= args.title
         .cart-product__prop
             .cart-product__type
                 .cart-product__type-prop Масса:

@@ -1,5 +1,12 @@
 @font-face {
   font-family: Inter;
+  src: url('/html/fonts/Inter-Light.woff2') format("woff2");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: Inter;
   src: url('/html/fonts/inter-v8-latin_cyrillic-ext-regular.woff2') format("woff2");
   font-style: normal;
   font-weight: 400;
