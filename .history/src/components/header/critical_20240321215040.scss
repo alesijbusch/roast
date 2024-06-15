@@ -703,7 +703,7 @@ body.overflow {
 		font-size: 12px;
 		line-height: calc(1em + 4px);
 		color: $light-800;
-		font-weight: 400;
+		font-weight: 300;
 	}
 
 	&__dropdown-item {
@@ -1189,7 +1189,7 @@ body.overflow {
 		&__dropdown-phone-link {
 			font-size: 1.125rem;
 			line-height: calc(1em + 7px);
-			font-weight: 400;
+			font-weight: 300;
 		}
 
 		&__left--visible .header-phones__dropdown {
@@ -1243,7 +1243,7 @@ body.overflow {
 			color: $basic_text;
 			font-size: 10px;
 			font-style: normal;
-			font-weight: 400;
+			font-weight: 300;
 			line-height: normal;
 		}
 	}

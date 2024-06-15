@@ -49,7 +49,7 @@
   &__text {
     font-size: 15px;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 300;
     line-height: 23px;
     color: #000;
     margin-bottom: 15px;
@@ -62,7 +62,7 @@
     &-item {
       font-size: 14px;
       font-style: normal;
-      font-weight: 400;
+      font-weight: 300;
       line-height: 22px;
       text-overflow: ellipsis;
       overflow: hidden;
@@ -80,7 +80,7 @@
     align-items: center;
     font-size: 14px;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 300;
     line-height: 22px;
     color: $accent;
     cursor: pointer;

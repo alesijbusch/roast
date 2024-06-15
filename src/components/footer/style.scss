@@ -53,12 +53,12 @@
       }
     }
     a {
-      font-weight: 400;
+      font-weight: 300;
       font-size: 0.9375rem;
       color: $basic_white;
       font-size: 15px;
       font-style: normal;
-      font-weight: 400;
+      font-weight: 300;
       line-height: normal;
       &:hover {
         color: $accent;
@@ -117,7 +117,7 @@
     display: flex;
     align-items: start;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 300;
     line-height: 24px;
     &:last-child {
       margin-bottom: 0;

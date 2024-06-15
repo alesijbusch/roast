@@ -44,7 +44,7 @@
     color: #757575;
     font-size: 14px;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 300;
     line-height: 22px;
   }
   &__body {
@@ -77,7 +77,7 @@
       color: $basic_black;
       font-size: 14px;
       font-style: normal;
-      font-weight: 400;
+      font-weight: 300;
       line-height: normal;
       margin-left: 5px;
     }
@@ -110,7 +110,7 @@
         font-size: 12px;
 	      height: 30px;
         font-style: normal;
-        font-weight: 400;
+        font-weight: 300;
         line-height: normal;
         border: 1px solid #e3e3e3;
         cursor: pointer;
@@ -127,7 +127,7 @@
       color: $basic_text;
       font-size: 13px;
       font-style: normal;
-      font-weight: 400;
+      font-weight: 300;
       line-height: normal;
       padding-bottom: 5px;
     }
@@ -137,7 +137,7 @@
         color: #000;
         font-size: 13px;
         font-style: normal;
-        font-weight: 400;
+        font-weight: 300;
         line-height: 20px;
       }
       .select__body-list {
@@ -189,7 +189,7 @@
     color: #757575;
     font-size: 12px;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 300;
     line-height: 18px;
     @media (max-width: 359px) {
       justify-content: center;
