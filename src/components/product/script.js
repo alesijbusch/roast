@@ -12,9 +12,10 @@ window.addEventListener("load", function () {
         },
     }).mount();
 
+
     document
         .querySelector(".product__section-info-close")
-        .addEventListener("click", () => {
+        ?.addEventListener("click", () => {
             const nodeToRemove = document.querySelector(".product__section-info");
             nodeToRemove.remove();
         });

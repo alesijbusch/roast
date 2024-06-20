@@ -244,9 +244,14 @@
 		margin-bottom: 20px;
 		color: $b3;
 		font-weight: 300;
+
+
 		@media (max-width: $sm - 1) {
 			margin-bottom: 16px;
 		}
+	}
+	b{
+		color: #000000;
 	}
 
 	ol,
@@ -435,7 +440,33 @@
 		max-width: 100%;
 	}
 
+	a:not([class]){
+		color: #8A6048;
+		b{
+			color: #8A6048;
+		}
+		text-decoration: underline;
+		@media (min-width: $md) {
+			cursor: pointer;
+			&:hover {
+				color: #914600;
+				b{
+					color: #914600;
+				}
+			}
+
+		}
+		&:visited{
+			color: #6F635C;
+			b{
+				color: #6F635C;
+			}
+		}
+	}
+
 }
+
+
 
 .file-type {
 	width: 40px;

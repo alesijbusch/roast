@@ -133,7 +133,8 @@
 		}
 
 		&__text {
-			color: #000;
+			//color: #000;
+			color: #757575;
 			font-size: 16px;
 			font-style: normal;
 			font-weight: 300;
@@ -241,6 +242,9 @@
 		&.opened {
 			max-height: 1000px;
 		}
+	}
+	.comment-text__text{
+		color: #7a7a7a;
 	}
 }
 
