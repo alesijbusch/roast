@@ -537,6 +537,10 @@
 	}
 }
 
+.sp-popup-outer{
+	z-index: 20;
+}
+
 // 1199.75
 @media (max-width: $lg) {
 }
