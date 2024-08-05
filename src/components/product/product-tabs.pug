@@ -21,8 +21,7 @@ mixin lazy-video-youtube(args= {})
         {title: 'Выход', text: '48г'},
         {title: 'Время экстракции', text: '25 сек'},
     ]
-
-.tabs-nav-v2
+.tabs-nav-v2(id="tabs")
     .tabs-nav-v2__list
         .tabs-nav-v2__item(:class="{'active': activeTab === 'text'}" @click="activeTab = 'text'") Описание
         .tabs-nav-v2__item(:class="{'active': activeTab === 'reviews'}" @click="activeTab = 'reviews'") Отзывы (2)

@@ -27,11 +27,12 @@
 					img: `i-cartt.svg`,
 				})
 				+lazy-img({
-					link: false,
+					link: true,
+					href: '#tabs',
 					wrap_mod: 'product-block__badge-wrap',
 					img_mod: '.product-block__badge__icon',
 					img: `i-review.svg`,
-				})
+				})(@click="activeTab = 'reviews'")
 			.product-gallery__sliders
 				.splide#main-carousel
 					.splide__track

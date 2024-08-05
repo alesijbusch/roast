@@ -1,11 +1,11 @@
 +include-style('product')
 +include-script('product')
 
-.container.product
+.container.product(x-data="{activeTab: 'text'}")
 	.product__top
 		include ./product-gallery
 		include ./product-main
-	.product__section(x-data="{activeTab: 'text'}")
+	.product__section
 		.product__section-info
 			.product__section-info-close
 				<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none">
