@@ -89,7 +89,7 @@ textarea.form-control {
     cursor: pointer;
     outline: 0;
     display: block;
-    color: #757575;
+    color: #444444;
     font-size: 15px;
     font-style: normal;
     font-weight: 300;
@@ -121,7 +121,7 @@ textarea.form-control {
     opacity: 0.6;
   }
   input:checked ~ label {
-    color: #757575;
+    color: #444444;
   }
   input:checked ~ label:before {
     border: 8px solid $basic_black;
@@ -241,7 +241,7 @@ textarea.form-control {
     cursor: pointer;
     outline: 0;
     display: block;
-    color: #757575;
+    color: #444444;
     font-size: 15px;
     font-style: normal;
     font-weight: 300;

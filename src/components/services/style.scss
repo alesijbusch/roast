@@ -222,7 +222,7 @@
 				position: relative;
 				padding: 0 0 0 20px;
 				font-style: normal;
-				color: $b3;
+				color: #444444;
 				font-size: .945rem;
 				@media (max-width: $md - 1) {
 					padding-left: 16px;
@@ -270,7 +270,7 @@
 				margin-bottom: 5px;
 			}
 			.prop{
-				color: $b3;
+				color: #444444;
 				flex-grow: 1;
 				position: relative;
 				display: flex;
@@ -332,7 +332,7 @@
 				margin-bottom: 7px;
 			}
 			p{
-				color: $b3;
+				color: #444444;
 				line-height: 1.5;
 				font-size: .8rem;
 			}

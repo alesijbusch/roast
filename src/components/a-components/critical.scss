@@ -73,7 +73,7 @@
 	&__date{
 		display: flex;
 		align-items: center;
-		color: $b3;
+		color: #444444;
 		font-size: .94rem;
 		gap: 6px;
 	}
@@ -89,7 +89,7 @@
 
 	&__descr{
 		margin-top: 15px;
-		color: $b3;
+		color: #444444;
 		p{
 			&:not(:last-child){
 				margin-bottom: 15px;
@@ -473,7 +473,7 @@
   position: relative;
   display: block;
   box-shadow: none;
-  color: #757575;
+  color: #444444;
   font-size: 14px;
   font-style: normal;
   font-weight: 300;
@@ -481,7 +481,7 @@
   display: flex;
   align-items: center;
   a {
-    color: #757575;
+    color: #444444;
     border-bottom: 1px solid #e3e3e3;
     &:hover {
       color: $accent;

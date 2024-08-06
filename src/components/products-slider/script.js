@@ -47,6 +47,7 @@ const sliderObserver = new IntersectionObserver((entries, observer) => {
 						560: {
 							perPage: 1,
 							arrows: true,
+							speed: 2000,
 							// autoWidth: true,
 							drag: true,
 						},

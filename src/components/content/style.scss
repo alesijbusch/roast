@@ -97,7 +97,7 @@
 		}
 
 		&__author {
-			color: $b3;
+			color: #444444;
 			font-size: 12px;
 			font-weight: 600;
 		}
@@ -110,7 +110,7 @@
 
 		&__text {
 			padding-left: 35px;
-			color: $b3;
+			color: #444444;
 			background-size: 26px 13px;
 			background-image: url("data:image/svg+xml,%3Csvg width='27' height='14' viewBox='0 0 27 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 0.0756836H14L6 13.0757H0L6 0.0756836Z' fill='%23D9D9D9'/%3E%3Cpath d='M18.5 0.0756836H26.5L18.5 13.0757H12.5L18.5 0.0756836Z' fill='%23D9D9D9'/%3E%3C/svg%3E%0A");
 			background-position: 0 0;
@@ -197,7 +197,7 @@
 .content {
 	font-size: 1rem;
 	line-height: 1.33;
-	color: $b3;
+	color: #444444;
 	font-weight: 300;
 
 	h1, h2, h3, h4, h5, h6 {
@@ -242,7 +242,7 @@
 
 	p {
 		margin-bottom: 20px;
-		color: $b3;
+		color: #444444;
 		font-weight: 300;
 
 
@@ -269,7 +269,7 @@
 			position: relative;
 			padding: 0 0 0 20px;
 			font-style: normal;
-			color: $b3;
+			color: #444444;
 
 			//font-weight: normal;
 			@media (max-width: $md - 1) {
@@ -288,7 +288,7 @@
 		ul, ol {
 			margin-top: 12px;
 			margin-bottom: 0;
-			color: $b3;
+			color: #444444;
 			@media (max-width: $md - 1) {
 				margin-top: 10px;
 			}

@@ -21,7 +21,7 @@
 		display: flex;
 		align-self: start;
 		gap: 12px;
-		color: #757575;
+		color: #444444;
 		font-size: 13px;
 		font-style: normal;
 		font-weight: 300;
@@ -648,7 +648,7 @@
 				background-position: 0 11px;
 				background-repeat: repeat-x;
 				vertical-align: top;
-				color: #757575;
+				color: #444444;
 				width: 50%;
 
 				span {
@@ -686,7 +686,7 @@
 		font-style: normal;
 		font-weight: 300;
 		line-height: 23px;
-		color: #757575;
+		color: #444444;
 		@media (max-width: 1380px) {
 			width: 100%;
 		}
@@ -1014,7 +1014,7 @@
 	}
 
 	&__price-old {
-		color: #757575;
+		color: #444444;
 		font-size: 16px;
 		font-style: normal;
 		font-weight: 300;
@@ -1405,7 +1405,7 @@
 		}
 
 		&__item {
-			color: #757575;
+			color: #444444;
 			font-size: 16px;
 			font-style: normal;
 			font-weight: 300;
@@ -1501,7 +1501,7 @@
 	}
 
 	&__name {
-		color: #757575;
+		color: #444444;
 	}
 
 	&__text {
