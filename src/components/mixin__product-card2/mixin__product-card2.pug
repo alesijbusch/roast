@@ -2,54 +2,26 @@ mixin product-card2(args={})
 	+include-style('mixin__product-card2')
 	+include-script('mixin__product-card2')
 	.product-block
+
 		.product-block__badges
-			if(args.badges === 1)
-				+lazy-img({
-					link: false,
-					wrap_mod: 'product-block__badge-wrap',
-					img_mod: '.product-block__badge__icon',
-					img: `i-present.svg`,
-				})
-				+lazy-img({
-					link: false,
-					wrap_mod: 'product-block__badge-wrap',
-					img_mod: '.product-block__badge__icon',
-					img: `i-good.svg`,
-				})
-				+lazy-img({
-					link: false,
-					wrap_mod: 'product-block__badge-wrap',
-					img_mod: '.product-block__badge__icon',
-					img: `i-sale.svg`,
-				})
-				+lazy-img({
-					link: false,
-					wrap_mod: 'product-block__badge-wrap',
-					img_mod: '.product-block__badge__icon',
-					img: `i-cartt.svg`,
-				})
+			.product-block__badge(title="Рейтинг")
+				<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M7.75254 1.36108C7.8717 1.1872 8.1283 1.1872 8.24746 1.36108L10.7611 5.02872C10.8001 5.08564 10.8575 5.12737 10.9237 5.14688L15.1886 6.40409C15.3908 6.46369 15.4701 6.70773 15.3415 6.87479L12.6301 10.3987C12.588 10.4534 12.5661 10.5209 12.568 10.5899L12.6902 15.0346C12.696 15.2453 12.4885 15.3961 12.2898 15.3255L8.10051 13.8357C8.0355 13.8126 7.9645 13.8126 7.89949 13.8357L3.71015 15.3255C3.51155 15.3961 3.30396 15.2453 3.30975 15.0346L3.432 10.5899C3.43389 10.5209 3.41195 10.4534 3.36987 10.3987L0.658482 6.87479C0.529943 6.70773 0.609236 6.46369 0.811421 6.40409L5.0763 5.14688C5.14249 5.12737 5.19993 5.08564 5.23894 5.02872L7.75254 1.36108Z" fill="#757575"/>
+				</svg>
 
-				+lazy-img({
-					link: true,
-					href: '/html/product.html#tabs',
-					wrap_mod: 'product-block__badge-wrap',
-					img_mod: '.product-block__badge__icon',
-					img: `i-review.svg`,
-				})
-			if(args.badges === 2)
-				+lazy-img({
-					link: false,
-					wrap_mod: 'product-block__badge-wrap',
-					img_mod: '.product-block__badge__icon',
-					img: `i-present.svg`,
-				})
-				+lazy-img({
-					link: false,
-					wrap_mod: 'product-block__badge-wrap',
-					img_mod: '.product-block__badge__icon',
-					img: `i-good.svg`,
-				})
+				span 12
+			a(href="/html/product.html#tabs" title="Количество отзывов").product-block__badge
+				<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M13.3346 1.33301H2.66797C2.13754 1.33301 1.62883 1.54372 1.25376 1.91879C0.878682 2.29387 0.667969 2.80257 0.667969 3.33301V9.99967C0.667969 10.5301 0.878682 11.0388 1.25376 11.4139C1.62883 11.789 2.13754 11.9997 2.66797 11.9997H4.0013V13.9997C4.00141 14.1305 4.04003 14.2585 4.11234 14.3675C4.18466 14.4766 4.28747 14.562 4.40797 14.613C4.49063 14.6466 4.57876 14.6647 4.66797 14.6663C4.84286 14.6656 5.01046 14.5962 5.13464 14.473L7.6613 11.9997H13.3346C13.8651 11.9997 14.3738 11.789 14.7488 11.4139C15.1239 11.0388 15.3346 10.5301 15.3346 9.99967V3.33301C15.3346 2.80257 15.1239 2.29387 14.7488 1.91879C14.3738 1.54372 13.8651 1.33301 13.3346 1.33301ZM12.0013 8.66634H4.0013V7.33301H12.0013V8.66634ZM12.0013 5.99967H4.0013V4.66634H12.0013V5.99967Z" fill="#757575"/>
+				</svg>
 
+				span 23
+			.product-block__badge(title="Количество заказов")
+				<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M14.3759 4.02905L7.9986 0.5L5.3995 1.93831L11.795 5.48268L14.3759 4.02905ZM1.17969 4.77407V11.7839L7.55891 15.5001V8.38219L1.17969 4.77407ZM14.8175 4.78951L8.43829 8.38278V15.5001L14.8175 11.7839V4.78951ZM10.8954 5.98944L4.49176 2.44058L1.63505 4.02137L7.99907 7.62082L10.8954 5.98944Z" fill="#757575"/>
+				</svg>
+
+				span 32
 		.product-block__inner
 			.product-block__top
 				a(href="#").product-block__title=args.title
