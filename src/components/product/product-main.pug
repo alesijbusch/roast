@@ -1,196 +1,216 @@
 .product-main
-    h1.product-main__title Фирменная смесь Roast.by
-    .product-main__detail
-        .product-main__rating
-            span.product-main__article Арт. #[span xb2b5025]
-            .product-main__stars
-                .star.filled(style="width:16px; height: 16px")
-                .star.filled(style="width:16px; height: 16px")
-                .star.filled(style="width:16px; height: 16px")
-                .star.half(style="width:16px; height: 16px")
-                .star(style="width:16px; height: 16px")
+	.product-block__badges
+		.product-block__badge(title="Рейтинг")
+			<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M7.75254 1.36108C7.8717 1.1872 8.1283 1.1872 8.24746 1.36108L10.7611 5.02872C10.8001 5.08564 10.8575 5.12737 10.9237 5.14688L15.1886 6.40409C15.3908 6.46369 15.4701 6.70773 15.3415 6.87479L12.6301 10.3987C12.588 10.4534 12.5661 10.5209 12.568 10.5899L12.6902 15.0346C12.696 15.2453 12.4885 15.3961 12.2898 15.3255L8.10051 13.8357C8.0355 13.8126 7.9645 13.8126 7.89949 13.8357L3.71015 15.3255C3.51155 15.3961 3.30396 15.2453 3.30975 15.0346L3.432 10.5899C3.43389 10.5209 3.41195 10.4534 3.36987 10.3987L0.658482 6.87479C0.529943 6.70773 0.609236 6.46369 0.811421 6.40409L5.0763 5.14688C5.14249 5.12737 5.19993 5.08564 5.23894 5.02872L7.75254 1.36108Z" fill="#757575"/>
+			</svg>
+
+			span 12
+		a(href="/html/product.html#tabs" @click="activeTab = 'reviews'" title="Количество отзывов").product-block__badge
+			<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M13.3346 1.33301H2.66797C2.13754 1.33301 1.62883 1.54372 1.25376 1.91879C0.878682 2.29387 0.667969 2.80257 0.667969 3.33301V9.99967C0.667969 10.5301 0.878682 11.0388 1.25376 11.4139C1.62883 11.789 2.13754 11.9997 2.66797 11.9997H4.0013V13.9997C4.00141 14.1305 4.04003 14.2585 4.11234 14.3675C4.18466 14.4766 4.28747 14.562 4.40797 14.613C4.49063 14.6466 4.57876 14.6647 4.66797 14.6663C4.84286 14.6656 5.01046 14.5962 5.13464 14.473L7.6613 11.9997H13.3346C13.8651 11.9997 14.3738 11.789 14.7488 11.4139C15.1239 11.0388 15.3346 10.5301 15.3346 9.99967V3.33301C15.3346 2.80257 15.1239 2.29387 14.7488 1.91879C14.3738 1.54372 13.8651 1.33301 13.3346 1.33301ZM12.0013 8.66634H4.0013V7.33301H12.0013V8.66634ZM12.0013 5.99967H4.0013V4.66634H12.0013V5.99967Z" fill="#757575"/>
+			</svg>
+
+			span 23
+		.product-block__badge(title="Количество заказов")
+			<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M14.3759 4.02905L7.9986 0.5L5.3995 1.93831L11.795 5.48268L14.3759 4.02905ZM1.17969 4.77407V11.7839L7.55891 15.5001V8.38219L1.17969 4.77407ZM14.8175 4.78951L8.43829 8.38278V15.5001L14.8175 11.7839V4.78951ZM10.8954 5.98944L4.49176 2.44058L1.63505 4.02137L7.99907 7.62082L10.8954 5.98944Z" fill="#757575"/>
+			</svg>
+
+			span 32
+
+	h1.product-main__title Фирменная смесь Roast.by
+	.product-main__detail
+		.product-main__rating
+			span.product-main__article Арт. #[span xb2b5025]
+			//-.product-main__stars
+				.star.filled(style="width:16px; height: 16px")
+				.star.filled(style="width:16px; height: 16px")
+				.star.filled(style="width:16px; height: 16px")
+				.star.half(style="width:16px; height: 16px")
+				.star(style="width:16px; height: 16px")
 
 
 
-            a(href="#reviews").product-main__review
-                +icon('i-review')(style="height:14px;width:14px")
-                span 0
-                span.dn отзывов
-        .product-main__actions
-            a(href="#").product-main__action.active
-                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="19" viewBox="0 0 21 19" fill="none">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M8.99475 4.67663C7.39522 2.84174 4.7279 2.34816 2.7238 4.02837C0.719707 5.70858 0.437558 8.51781 2.01139 10.505C3.31992 12.1572 7.27999 15.6419 8.57789 16.7697C8.7231 16.8959 8.7957 16.959 8.88039 16.9838C8.95431 17.0054 9.03518 17.0054 9.1091 16.9838C9.19379 16.959 9.26639 16.8959 9.4116 16.7697C10.7095 15.6419 14.6696 12.1572 15.9781 10.505C17.5519 8.51781 17.3042 5.69091 15.2657 4.02837C13.2271 2.36584 10.5943 2.84174 8.99475 4.67663Z" stroke="#E3E3E3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                span В избранное
-            a(href="#").product-main__action
-                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="20" viewBox="0 0 19 20" fill="none">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M6.05664 1.38281C6.05664 0.830528 5.60892 0.382812 5.05664 0.382812C4.50435 0.382812 4.05664 0.830528 4.05664 1.38281L4.05664 15.6207C4.05664 16.173 4.50435 16.6207 5.05664 16.6207C5.60892 16.6207 6.05664 16.173 6.05664 15.6207L6.05664 1.38281ZM2 9.5C2 8.94771 1.55228 8.5 1 8.5C0.447715 8.5 0 8.94771 0 9.5V15.619C0 16.1712 0.447715 16.619 1 16.619C1.55228 16.619 2 16.1712 2 15.619L2 9.5ZM9.12109 8.5C9.67338 8.5 10.1211 8.94771 10.1211 9.5V15.619C10.1211 16.1712 9.67338 16.619 9.12109 16.619C8.56881 16.619 8.12109 16.1712 8.12109 15.619V9.5C8.12109 8.94771 8.56881 8.5 9.12109 8.5ZM14.1777 4.42578C14.1777 3.8735 13.73 3.42578 13.1777 3.42578C12.6254 3.42578 12.1777 3.8735 12.1777 4.42578L12.1777 15.6191C12.1777 16.1714 12.6255 16.6191 13.1777 16.6191C13.73 16.6191 14.1777 16.1714 14.1777 15.6191L14.1777 4.42578Z" fill="#E3E3E3"/>
-                </svg>
-                span В сравнение
-    .product-main__parts
-        .grid-list
-            .grid-list__inner
-                .grid-list__item
-                    ul.grid-list__item-list
-                        li
-                            .prop(style="background-image: url(images/line.png);")
-                                span Степень обжарки
-                            .value
-                                span Средняя
-                                    .tip
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
-                                        <circle cx="7.61523" cy="7.5" r="6.75" stroke="#D9D9D9" stroke-width="1.5"/>
-                                        <line x1="7.5957" y1="5.96594" x2="7.5957" y2="11.3353" stroke="#ACACAC" stroke-width="1.5"/>
-                                        <line x1="7.5957" y1="3.6648" x2="7.5957" y2="5.19889" stroke="#ACACAC" stroke-width="1.5"/>
-                                        </svg>
-                                        .tip__text Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum nulla provident eveniet numquam vitae quisquam.
-                        li
-                            .prop(style="background-image: url(images/line.png);")
-                                span Вкусовые дескрипторы
-                            .value
-                                span Красный апельсин, Урюк, Фундук
-                                    .tip
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
-                                        <circle cx="7.61523" cy="7.5" r="6.75" stroke="#D9D9D9" stroke-width="1.5"/>
-                                        <line x1="7.5957" y1="5.96594" x2="7.5957" y2="11.3353" stroke="#ACACAC" stroke-width="1.5"/>
-                                        <line x1="7.5957" y1="3.6648" x2="7.5957" y2="5.19889" stroke="#ACACAC" stroke-width="1.5"/>
-                                        </svg>
-                                        .tip__text Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum nulla provident eveniet numquam vitae quisquam.
-                        li
-                            .prop(style="background-image: url(images/line.png);")
-                                span Способ обработки
-                            .value
-                                span Другой
-                                    .tip
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
-                                        <circle cx="7.61523" cy="7.5" r="6.75" stroke="#D9D9D9" stroke-width="1.5"/>
-                                        <line x1="7.5957" y1="5.96594" x2="7.5957" y2="11.3353" stroke="#ACACAC" stroke-width="1.5"/>
-                                        <line x1="7.5957" y1="3.6648" x2="7.5957" y2="5.19889" stroke="#ACACAC" stroke-width="1.5"/>
-                                        </svg>
-                                        .tip__text Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum nulla provident eveniet numquam vitae quisquam.
-                        li
-                            .prop(style="background-image: url(images/line.png);")
-                                span Оценка Q-грейдеров
-                            .value
-                                span 82.75
-                                    .tip
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
-                                        <circle cx="7.61523" cy="7.5" r="6.75" stroke="#D9D9D9" stroke-width="1.5"/>
-                                        <line x1="7.5957" y1="5.96594" x2="7.5957" y2="11.3353" stroke="#ACACAC" stroke-width="1.5"/>
-                                        <line x1="7.5957" y1="3.6648" x2="7.5957" y2="5.19889" stroke="#ACACAC" stroke-width="1.5"/>
-                                        </svg>
-                                        .tip__text Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum nulla provident eveniet numquam vitae quisquam.
-                        li
-                            .prop(style="background-image: url(images/line.png);")
-                                span Особенности кофе
-                            .value
-                                span Арабика, Робуста
-                                    .tip
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
-                                        <circle cx="7.61523" cy="7.5" r="6.75" stroke="#D9D9D9" stroke-width="1.5"/>
-                                        <line x1="7.5957" y1="5.96594" x2="7.5957" y2="11.3353" stroke="#ACACAC" stroke-width="1.5"/>
-                                        <line x1="7.5957" y1="3.6648" x2="7.5957" y2="5.19889" stroke="#ACACAC" stroke-width="1.5"/>
-                                        </svg>
-                                        .tip__text Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum nulla provident eveniet numquam vitae quisquam.
-        .grid-list
-            .grid-list__inner
-                .grid-list__item
-                    .grid-list__item-inner
-                        .grid-list__item-group
-                            .grid-list__item-block
-                                .grid-list__item-title Цвет: <span>Бежевый</span>
-                                .grid-list__item-utp.utp
-                                    .utp-color(style="--bg-utp:#868686").active
-                                    .utp-color(style="--bg-utp:#E3E3E3")
-                                    .utp-color(style="--bg-utp:#68A1B4")
-                                    .utp-color(style="--bg-utp:#FFFFFF")
-                                    .utp-color(style="--bg-utp:#868686")
-                                    .utp-color(style="--bg-utp:#E3E3E3")
-                                    .utp-color(style="--bg-utp:#68A1B4")
-                                    .utp-color(style="--bg-utp:#FFFFFF")
-                                    .utp-color(style="--bg-utp:#000000")
-                            .grid-list__item-block
-                                .grid-list__item-title Объем, мл
-                                .grid-list__item-utp.utp
-                                    .utp-capacity.active
-                                        span 150
-                                    .utp-capacity
-                                        span 200
-                                    .utp-capacity
-                                        span 300
-                        .grid-list__item-group
-                            .grid-list__item-block
-                                .grid-list__item-title Кислотность
-                                .grid-list__item-line(data-percent="30")
-                            .grid-list__item-block
-                                .grid-list__item-title Плотность
-                                .grid-list__item-line(data-percent="50")
-                        .grid-list__item-group
-                            .grid-list__item-select
-                                .grid-list__item-title Степень помола
-                                +select({
-                                    title: 'Не обжаривать',
-                                    with_links: true,
-                                    list: [
-                                        {name: 'Не обжаривать', active: true},
-                                        {name: 'Не молоть '},
-                                        {name: 'Под чашку'},
-                                        {name: 'Турка'},
-                                        {name: 'Френч-пресс'},
-                                        {name: 'Эспрессо Крупно'},
-                                        {name: 'Эспрессо Тонко'},
-                                        {name: 'Аэропресс'},
-                                        {name: 'Мока'},
-                                        {name: 'Пуровер'},
-                                    ]
-                                })
-                            .grid-list__item-select
-                                .grid-list__item-title Масса
-                                +select({
-                                    title: '200',
-                                    with_links: true,
-                                    list: [
-                                        {name: '200', active: true},
-                                        {name: '1000'},
-                                    ]
-                                })
-        .grid-list
-            .grid-list__inner
-                .grid-list__item
-                    .buy-block
-                        //- .buy-block__badges
-                        //- 	.badge.badge--yellow -10%
-                        .buy-block__prices
-                            .buy-block__price 45.30 руб.
-                            .buy-block__price-old 48.30 руб.
-                            .discount
-                                <svg xmlns="http://www.w3.org/2000/svg" width="4" height="5" viewBox="0 0 4 5" fill="none">
-                                <path d="M0.5 2.5L3.5 0.334936L3.5 4.66506L0.5 2.5Z" fill="#D64A4A"></path>
-                                </svg>
-                                span -10%
-                        .buy-block__btns
-                            .counter
-                                span.counter__action.counter__action--minus
-                                input.counter__count(type="text" value="1" maxlength="6")
-                                span.counter__action.counter__action--plus
-                            .btn.btn--cart
-                                <svg width="15" height="15" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M14.5211 7.42233V4.6699C14.5211 2.64307 12.8175 1 10.716 1C8.61453 1 6.91093 2.64307 6.91093 4.6699V7.42233M2.71772 8.66273L2.14695 14.5346C1.98467 16.2041 1.90353 17.0389 2.19076 17.6836C2.44308 18.25 2.88525 18.7184 3.44641 19.0135C4.0852 19.3495 4.95451 19.3495 6.69313 19.3495H14.7389C16.4775 19.3495 17.3468 19.3495 17.9856 19.0135C18.5468 18.7184 18.989 18.25 19.2413 17.6836C19.5285 17.0389 19.4474 16.2041 19.2851 14.5346L18.7143 8.66273C18.5773 7.25292 18.5088 6.54801 18.18 6.01507C17.8905 5.54571 17.4628 5.17003 16.9512 4.93583C16.3704 4.6699 15.6363 4.6699 14.1681 4.6699L7.2639 4.6699C5.79574 4.6699 5.06166 4.6699 4.48082 4.93583C3.96927 5.17003 3.54152 5.54571 3.25201 6.01507C2.92328 6.54801 2.85476 7.25291 2.71772 8.66273Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                                span Купить
-        .grid-list
-            .grid-list__inner
-                .grid-list__item
-                    .grid-list__item-bottom
-                        .grid-list__item-date-block
-                            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="0 0 23 21" fill="none">
-                            <path d="M12.4 5.8125H14.6204C14.8528 5.8125 14.9689 5.8125 15.0783 5.8384C15.1752 5.86137 15.2679 5.89925 15.3529 5.95065C15.4487 6.00863 15.5309 6.0897 15.6952 6.25184L19.5548 10.0607C19.7191 10.2228 19.8013 10.3039 19.86 10.3985C19.9121 10.4824 19.9505 10.5738 19.9738 10.6695C20 10.7774 20 10.892 20 11.1213V13.7812C20 14.2181 20 14.4365 19.9277 14.6088C19.8313 14.8385 19.6463 15.021 19.4135 15.1161C19.239 15.1875 19.0176 15.1875 18.575 15.1875M13.825 15.1875H12.4M12.4 15.1875V6C12.4 4.9499 12.4 4.42485 12.1929 4.02377C12.0108 3.67096 11.7201 3.38413 11.3626 3.20436C10.9561 3 10.4241 3 9.36 3H4.04C2.9759 3 2.44385 3 2.03742 3.20436C1.67991 3.38413 1.38925 3.67096 1.20709 4.02377C1 4.42485 1 4.9499 1 6V13.3125C1 14.348 1.85066 15.1875 2.9 15.1875M12.4 15.1875H8.6M8.6 15.1875C8.6 16.7408 7.32401 18 5.75 18C4.17599 18 2.9 16.7408 2.9 15.1875M8.6 15.1875C8.6 13.6342 7.32401 12.375 5.75 12.375C4.17599 12.375 2.9 13.6342 2.9 15.1875M18.575 15.6562C18.575 16.9507 17.5117 18 16.2 18C14.8883 18 13.825 16.9507 13.825 15.6562C13.825 14.3618 14.8883 13.3125 16.2 13.3125C17.5117 13.3125 18.575 14.3618 18.575 15.6562Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            span Ближайшая доставка
-                            span.date 7.11.2023
-                        .grid-list__item-date-block
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="21" viewBox="0 0 24 21" fill="none">
-                            <path d="M4.35 2L1.5 4.83333M20.5 4.83333L17.65 2M5.3 17.1111L3.4 19M16.7 17.1111L18.6 19M8.15 11.9167L10.05 13.8056L14.325 9.55556M11 19C13.0156 19 14.9487 18.204 16.374 16.787C17.7993 15.3701 18.6 13.4483 18.6 11.4444C18.6 9.44059 17.7993 7.5188 16.374 6.10186C14.9487 4.68492 13.0156 3.88889 11 3.88889C8.98435 3.88889 7.05126 4.68492 5.62599 6.10186C4.20071 7.5188 3.4 9.44059 3.4 11.4444C3.4 13.4483 4.20071 15.3701 5.62599 16.787C7.05126 18.204 8.98435 19 11 19Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            span Ближайшая обжарка
-                            span.date 7.11.2023
+			//-a(href="#reviews").product-main__review
+				+icon('i-review')(style="height:14px;width:14px")
+				span 0
+				span.dn отзывов
+		//-.product-main__actions
+			a(href="#").product-main__action.active
+				<svg xmlns="http://www.w3.org/2000/svg" width="21" height="19" viewBox="0 0 21 19" fill="none">
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M8.99475 4.67663C7.39522 2.84174 4.7279 2.34816 2.7238 4.02837C0.719707 5.70858 0.437558 8.51781 2.01139 10.505C3.31992 12.1572 7.27999 15.6419 8.57789 16.7697C8.7231 16.8959 8.7957 16.959 8.88039 16.9838C8.95431 17.0054 9.03518 17.0054 9.1091 16.9838C9.19379 16.959 9.26639 16.8959 9.4116 16.7697C10.7095 15.6419 14.6696 12.1572 15.9781 10.505C17.5519 8.51781 17.3042 5.69091 15.2657 4.02837C13.2271 2.36584 10.5943 2.84174 8.99475 4.67663Z" stroke="#E3E3E3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+				</svg>
+				span В избранное
+			a(href="#").product-main__action
+				<svg xmlns="http://www.w3.org/2000/svg" width="19" height="20" viewBox="0 0 19 20" fill="none">
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M6.05664 1.38281C6.05664 0.830528 5.60892 0.382812 5.05664 0.382812C4.50435 0.382812 4.05664 0.830528 4.05664 1.38281L4.05664 15.6207C4.05664 16.173 4.50435 16.6207 5.05664 16.6207C5.60892 16.6207 6.05664 16.173 6.05664 15.6207L6.05664 1.38281ZM2 9.5C2 8.94771 1.55228 8.5 1 8.5C0.447715 8.5 0 8.94771 0 9.5V15.619C0 16.1712 0.447715 16.619 1 16.619C1.55228 16.619 2 16.1712 2 15.619L2 9.5ZM9.12109 8.5C9.67338 8.5 10.1211 8.94771 10.1211 9.5V15.619C10.1211 16.1712 9.67338 16.619 9.12109 16.619C8.56881 16.619 8.12109 16.1712 8.12109 15.619V9.5C8.12109 8.94771 8.56881 8.5 9.12109 8.5ZM14.1777 4.42578C14.1777 3.8735 13.73 3.42578 13.1777 3.42578C12.6254 3.42578 12.1777 3.8735 12.1777 4.42578L12.1777 15.6191C12.1777 16.1714 12.6255 16.6191 13.1777 16.6191C13.73 16.6191 14.1777 16.1714 14.1777 15.6191L14.1777 4.42578Z" fill="#E3E3E3"/>
+				</svg>
+				span В сравнение
+	.product-main__parts
+		.grid-list
+			.grid-list__inner
+				.grid-list__item
+					ul.grid-list__item-list
+						li
+							.prop(style="background-image: url(images/line.png);")
+								span Степень обжарки
+							.value
+								span Средняя
+									.tip
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
+										<circle cx="7.61523" cy="7.5" r="6.75" stroke="#D9D9D9" stroke-width="1.5"/>
+										<line x1="7.5957" y1="5.96594" x2="7.5957" y2="11.3353" stroke="#ACACAC" stroke-width="1.5"/>
+										<line x1="7.5957" y1="3.6648" x2="7.5957" y2="5.19889" stroke="#ACACAC" stroke-width="1.5"/>
+										</svg>
+										.tip__text Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum nulla provident eveniet numquam vitae quisquam.
+						li
+							.prop(style="background-image: url(images/line.png);")
+								span Вкусовые дескрипторы
+							.value
+								span Красный апельсин, Урюк, Фундук
+									.tip
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
+										<circle cx="7.61523" cy="7.5" r="6.75" stroke="#D9D9D9" stroke-width="1.5"/>
+										<line x1="7.5957" y1="5.96594" x2="7.5957" y2="11.3353" stroke="#ACACAC" stroke-width="1.5"/>
+										<line x1="7.5957" y1="3.6648" x2="7.5957" y2="5.19889" stroke="#ACACAC" stroke-width="1.5"/>
+										</svg>
+										.tip__text Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum nulla provident eveniet numquam vitae quisquam.
+						li
+							.prop(style="background-image: url(images/line.png);")
+								span Способ обработки
+							.value
+								span Другой
+									.tip
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
+										<circle cx="7.61523" cy="7.5" r="6.75" stroke="#D9D9D9" stroke-width="1.5"/>
+										<line x1="7.5957" y1="5.96594" x2="7.5957" y2="11.3353" stroke="#ACACAC" stroke-width="1.5"/>
+										<line x1="7.5957" y1="3.6648" x2="7.5957" y2="5.19889" stroke="#ACACAC" stroke-width="1.5"/>
+										</svg>
+										.tip__text Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum nulla provident eveniet numquam vitae quisquam.
+						li
+							.prop(style="background-image: url(images/line.png);")
+								span Оценка Q-грейдеров
+							.value
+								span 82.75
+									.tip
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
+										<circle cx="7.61523" cy="7.5" r="6.75" stroke="#D9D9D9" stroke-width="1.5"/>
+										<line x1="7.5957" y1="5.96594" x2="7.5957" y2="11.3353" stroke="#ACACAC" stroke-width="1.5"/>
+										<line x1="7.5957" y1="3.6648" x2="7.5957" y2="5.19889" stroke="#ACACAC" stroke-width="1.5"/>
+										</svg>
+										.tip__text Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum nulla provident eveniet numquam vitae quisquam.
+						li
+							.prop(style="background-image: url(images/line.png);")
+								span Особенности кофе
+							.value
+								span Арабика, Робуста
+									.tip
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
+										<circle cx="7.61523" cy="7.5" r="6.75" stroke="#D9D9D9" stroke-width="1.5"/>
+										<line x1="7.5957" y1="5.96594" x2="7.5957" y2="11.3353" stroke="#ACACAC" stroke-width="1.5"/>
+										<line x1="7.5957" y1="3.6648" x2="7.5957" y2="5.19889" stroke="#ACACAC" stroke-width="1.5"/>
+										</svg>
+										.tip__text Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum nulla provident eveniet numquam vitae quisquam.
+		.grid-list
+			.grid-list__inner
+				.grid-list__item
+					.grid-list__item-inner
+						//- .grid-list__item-group
+						.grid-list__item-block
+							.grid-list__item-title Цвет: <span>Бежевый</span>
+							.grid-list__item-utp.utp
+								.utp-color(style="--bg-utp:#868686").active
+								.utp-color(style="--bg-utp:#E3E3E3")
+								.utp-color(style="--bg-utp:#68A1B4")
+								.utp-color(style="--bg-utp:#FFFFFF")
+								.utp-color(style="--bg-utp:#868686")
+								.utp-color(style="--bg-utp:#E3E3E3")
+								.utp-color(style="--bg-utp:#68A1B4")
+								.utp-color(style="--bg-utp:#FFFFFF")
+								.utp-color(style="--bg-utp:#000000")
+						.grid-list__item-block
+							.grid-list__item-title Объем, мл
+							.grid-list__item-utp.utp
+								.utp-capacity.active
+									span 150
+								.utp-capacity
+									span 200
+								.utp-capacity
+									span 300
+						.grid-list__item-group
+							.grid-list__item-block
+								.grid-list__item-title Кислотность
+								.grid-list__item-line(data-percent="30")
+							.grid-list__item-block
+								.grid-list__item-title Плотность
+								.grid-list__item-line(data-percent="50")
+						.grid-list__item-group
+							.grid-list__item-select
+								.grid-list__item-title Степень помола
+								+select({
+									title: 'Не обжаривать',
+									with_links: true,
+									list: [
+										{name: 'Не обжаривать', active: true},
+										{name: 'Не молоть '},
+										{name: 'Под чашку'},
+										{name: 'Турка'},
+										{name: 'Френч-пресс'},
+										{name: 'Эспрессо Крупно'},
+										{name: 'Эспрессо Тонко'},
+										{name: 'Аэропресс'},
+										{name: 'Мока'},
+										{name: 'Пуровер'},
+									]
+								})
+							.grid-list__item-select
+								.grid-list__item-title Масса
+								+select({
+									title: '200',
+									with_links: true,
+									list: [
+										{name: '200', active: true},
+										{name: '1000'},
+									]
+								})
+		.grid-list
+			.grid-list__inner
+				.grid-list__item
+					.buy-block
+						//- .buy-block__badges
+						//- 	.badge.badge--yellow -10%
+						.buy-block__prices
+							.buy-block__price 45.30 руб.
+							.buy-block__price-old 48.30 руб.
+							.discount
+								<svg xmlns="http://www.w3.org/2000/svg" width="4" height="5" viewBox="0 0 4 5" fill="none">
+								<path d="M0.5 2.5L3.5 0.334936L3.5 4.66506L0.5 2.5Z" fill="#D64A4A"></path>
+								</svg>
+								span -10%
+						.buy-block__btns
+							.counter
+								span.counter__action.counter__action--minus
+								input.counter__count(type="text" value="1" maxlength="6")
+								span.counter__action.counter__action--plus
+							.btn.btn--cart
+								<svg width="15" height="15" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M14.5211 7.42233V4.6699C14.5211 2.64307 12.8175 1 10.716 1C8.61453 1 6.91093 2.64307 6.91093 4.6699V7.42233M2.71772 8.66273L2.14695 14.5346C1.98467 16.2041 1.90353 17.0389 2.19076 17.6836C2.44308 18.25 2.88525 18.7184 3.44641 19.0135C4.0852 19.3495 4.95451 19.3495 6.69313 19.3495H14.7389C16.4775 19.3495 17.3468 19.3495 17.9856 19.0135C18.5468 18.7184 18.989 18.25 19.2413 17.6836C19.5285 17.0389 19.4474 16.2041 19.2851 14.5346L18.7143 8.66273C18.5773 7.25292 18.5088 6.54801 18.18 6.01507C17.8905 5.54571 17.4628 5.17003 16.9512 4.93583C16.3704 4.6699 15.6363 4.6699 14.1681 4.6699L7.2639 4.6699C5.79574 4.6699 5.06166 4.6699 4.48082 4.93583C3.96927 5.17003 3.54152 5.54571 3.25201 6.01507C2.92328 6.54801 2.85476 7.25291 2.71772 8.66273Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+								span Купить
+		.grid-list
+			.grid-list__inner
+				.grid-list__item
+					.grid-list__item-bottom
+						.grid-list__item-date-block
+							<svg xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="0 0 23 21" fill="none">
+							<path d="M12.4 5.8125H14.6204C14.8528 5.8125 14.9689 5.8125 15.0783 5.8384C15.1752 5.86137 15.2679 5.89925 15.3529 5.95065C15.4487 6.00863 15.5309 6.0897 15.6952 6.25184L19.5548 10.0607C19.7191 10.2228 19.8013 10.3039 19.86 10.3985C19.9121 10.4824 19.9505 10.5738 19.9738 10.6695C20 10.7774 20 10.892 20 11.1213V13.7812C20 14.2181 20 14.4365 19.9277 14.6088C19.8313 14.8385 19.6463 15.021 19.4135 15.1161C19.239 15.1875 19.0176 15.1875 18.575 15.1875M13.825 15.1875H12.4M12.4 15.1875V6C12.4 4.9499 12.4 4.42485 12.1929 4.02377C12.0108 3.67096 11.7201 3.38413 11.3626 3.20436C10.9561 3 10.4241 3 9.36 3H4.04C2.9759 3 2.44385 3 2.03742 3.20436C1.67991 3.38413 1.38925 3.67096 1.20709 4.02377C1 4.42485 1 4.9499 1 6V13.3125C1 14.348 1.85066 15.1875 2.9 15.1875M12.4 15.1875H8.6M8.6 15.1875C8.6 16.7408 7.32401 18 5.75 18C4.17599 18 2.9 16.7408 2.9 15.1875M8.6 15.1875C8.6 13.6342 7.32401 12.375 5.75 12.375C4.17599 12.375 2.9 13.6342 2.9 15.1875M18.575 15.6562C18.575 16.9507 17.5117 18 16.2 18C14.8883 18 13.825 16.9507 13.825 15.6562C13.825 14.3618 14.8883 13.3125 16.2 13.3125C17.5117 13.3125 18.575 14.3618 18.575 15.6562Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+							</svg>
+							span Ближайшая доставка
+							span.date 7.11.2023
+						.grid-list__item-date-block
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="21" viewBox="0 0 24 21" fill="none">
+							<path d="M4.35 2L1.5 4.83333M20.5 4.83333L17.65 2M5.3 17.1111L3.4 19M16.7 17.1111L18.6 19M8.15 11.9167L10.05 13.8056L14.325 9.55556M11 19C13.0156 19 14.9487 18.204 16.374 16.787C17.7993 15.3701 18.6 13.4483 18.6 11.4444C18.6 9.44059 17.7993 7.5188 16.374 6.10186C14.9487 4.68492 13.0156 3.88889 11 3.88889C8.98435 3.88889 7.05126 4.68492 5.62599 6.10186C4.20071 7.5188 3.4 9.44059 3.4 11.4444C3.4 13.4483 4.20071 15.3701 5.62599 16.787C7.05126 18.204 8.98435 19 11 19Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+							</svg>
+							span Ближайшая обжарка
+							span.date 7.11.2023
