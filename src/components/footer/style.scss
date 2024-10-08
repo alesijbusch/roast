@@ -300,3 +300,24 @@
     }
   }
 }
+
+
+.modal-information{
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	left: 20px;
+	z-index: 20;
+	display: none;
+	&.show{
+		display: block;
+	}
+	&__dialog{
+		margin-left: auto;
+		max-width: 760px;
+		padding: 20px 14px;
+		background-color: #fff;
+		border-radius: 8px;
+		box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+	}
+}

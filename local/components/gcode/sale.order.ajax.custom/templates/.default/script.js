@@ -28,7 +28,7 @@ document.addEventListener('alpine:init', () => {
         frontValidateErrors: {},
         preloaderTotal: false,
         noPhoto: '',
-        location: {},
+        location: null,
         street: false,
         address: false,
         addressData: {},
@@ -721,7 +721,6 @@ document.addEventListener('alpine:init', () => {
                 _this.action = 'saveOrderAjax';
                 _this.sendRequest();
             });
-
         },
         async initValidator() {
             if (!this.validation) {
@@ -899,7 +898,10 @@ document.addEventListener('alpine:init', () => {
             const _this = this;
             const formData = new FormData();
             let name = $event.target.value;
+
             if (name.length < 3) {
+                this.location = '';
+                this.$refs.locationReal.value = '';
                 return;
             }
             formData.append('guess', name);
@@ -1042,7 +1044,19 @@ document.addEventListener('alpine:init', () => {
                         statusText: xhr.statusText
                     });
                 };
-                xhr.send(formData);
+                if (_this.action == 'saveOrderAjax')
+                {
+                    const captcha = roast.captcha;
+                    captcha.form('saveOrderAjax', function (token) {
+                        formData.append(captcha.name, token);
+                        xhr.send(formData);
+                    });
+                }
+                else
+                {
+                    xhr.send(formData);
+                }
+                
             })
         },
     }))

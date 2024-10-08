@@ -22,7 +22,7 @@
 	&__inner {
 		display: flex;
 		flex-direction: column;
-		gap: 15px;
+		gap: 10px;
 		height: 100%;
 		position: relative;
 	}
@@ -48,6 +48,9 @@
 		&--v2{
 			color: #757575;
 		}
+		b{
+			font-weight: 600;
+		}
 	}
 
 	&__badges {
@@ -67,6 +70,9 @@
 		font-size: 13px;
 		gap: 5px;
 		transition: all ease .3s;
+		path{
+			fill: #A0A0A0;
+		}
 		@media (min-width: $sm) {
 			cursor: pointer;
 			&:hover {
@@ -79,10 +85,10 @@
 
 	&__title {
 		color: $basic_black;
-		font-size: 18px;
+		font-size: 20px;
 		font-style: normal;
-		font-weight: 600;
-		line-height: 24px;
+		font-weight: 700;
+		line-height: 26px;
 		margin-bottom: 5px;
 		text-overflow: ellipsis;
 		overflow: hidden;
@@ -104,6 +110,7 @@
 		display: -moz-box;
 		overflow: hidden;
 		height: 60px;
+		margin-bottom: 15px;
 	}
 
 	&__body {
@@ -159,6 +166,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: 10px;
+		margin-top: 10px;
 
 		&__group {
 			display: flex;
@@ -175,6 +183,7 @@
 		&__item-row {
 			display: flex;
 			gap: 5px;
+			margin-top: 5px;
 
 			li {
 				padding: 0px 10px;
@@ -197,7 +206,7 @@
 		}
 
 		&__item-title {
-			color: $basic_text;
+			color: #757575;
 			font-size: 13px;
 			font-style: normal;
 			font-weight: 300;
@@ -206,6 +215,7 @@
 		}
 
 		&__item-select {
+			margin-top: 5px;
 			.select__header {
 				border: 1px solid #e3e3e3;
 				color: #000;
@@ -230,8 +240,8 @@
 	}
 
 	&__img-wrap {
-		width: 110px;
-		height: 130px;
+		width: 120px;
+		height: 140px;
 		position: relative;
 	}
 

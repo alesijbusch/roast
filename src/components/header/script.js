@@ -1,4 +1,7 @@
 window.addEventListener('load', function () {
+
+    // document.cookie = `PHPSESSID=0;domain=.roast.by;expires=${new Date(0)}`
+
     // бургер
     // let catalogBurger = document.querySelectorAll('.header__main-burger');
     // catalogBurger[0].addEventListener('click', function (ev) {

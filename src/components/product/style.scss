@@ -453,7 +453,7 @@
 		}
 	}
 
-	.product-block__badges{
+	.product-block__badges {
 		position: static;
 		margin-bottom: 10px;
 	}
@@ -1264,6 +1264,12 @@
 }
 
 // product-tabs
+.product__section {
+	.content {
+		max-width: 880px;
+	}
+}
+
 .tabs-nav-v2 {
 	margin-top: 60px;
 	margin-bottom: 45px;
@@ -1477,7 +1483,7 @@
 .p-tab-props {
 	border: 1px solid #e3e3e3;
 	padding: 30px 30px 15px;
-	width: 950px;
+	max-width: 880px;
 
 	&__inner {
 		font-size: 16px;
@@ -1520,6 +1526,24 @@
 
 	.cell_value {
 		padding-left: 16px;
+	}
+
+	&__footer {
+		margin-top: 60px;
+		@media (max-width: $sm - 1) {
+			margin-top: 30px;
+		}
+
+		a {
+			color:$accent;
+			word-break: break-word;
+			&:hover {
+				@media (hover: hover) {
+					cursor: pointer;
+					text-decoration: underline;
+				}
+			}
+		}
 	}
 }
 
@@ -2117,41 +2141,41 @@
 	}
 }
 
-.product .product__section .p-tab-review__body{
+.product .product__section .p-tab-review__body {
 
-		.blog-comment-nav {
-			display: flex;
-			justify-content: flex-end;
-			margin-top: 30px;
+	.blog-comment-nav {
+		display: flex;
+		justify-content: flex-end;
+		margin-top: 30px;
 
-			.blog-comment-nav-item {
-				margin: 0 2px;
-				display: inline-block;
-				width: 44px;
-				height: 44px;
-				text-align: center;
-				text-decoration: none;
-				font-size: 15px;
-				font-style: normal;
-				font-weight: 300;
-				line-height: 44px;
-				position: relative;
-				color: #000000 !important;
-				border-radius: 50%;
-				transition: all ease .3s;
+		.blog-comment-nav-item {
+			margin: 0 2px;
+			display: inline-block;
+			width: 44px;
+			height: 44px;
+			text-align: center;
+			text-decoration: none;
+			font-size: 15px;
+			font-style: normal;
+			font-weight: 300;
+			line-height: 44px;
+			position: relative;
+			color: #000000 !important;
+			border-radius: 50%;
+			transition: all ease .3s;
 
-				&:hover {
-					background-color: $a5;
-					color: $accent!important;
-				}
+			&:hover {
+				background-color: $a5;
+				color: $accent !important;
+			}
 
-				&-sel {
-					pointer-events: none;
-					background-color: #000000;
-					color: #fff !important;
-				}
+			&-sel {
+				pointer-events: none;
+				background-color: #000000;
+				color: #fff !important;
 			}
 		}
+	}
 
 }
 
