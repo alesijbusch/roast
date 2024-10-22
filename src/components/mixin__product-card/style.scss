@@ -251,6 +251,7 @@
 
   &__btns {
     width: 160px;
+	  margin-left: auto;
     .counter {
       height: 42px;
       width: 160px;
@@ -282,6 +283,9 @@
   }
 
   &__favorite {
+	  position: absolute;
+	  z-index: 4;
+	  right: 0;
     background: #f8f8f8;
     border-radius: 50%;
     fill: $basic_black;
@@ -296,15 +300,22 @@
       transition: 0.3s;
     }
     &:hover {
-      background: $accent;
       svg path {
-        stroke: #fff;
+        stroke: $accent;
       }
     }
     &.active {
-      background: $basic_black;
+	    &:hover {
+
+		    svg path {
+			    stroke: $accent;
+			    fill: transparent;
+		    }
+	    }
       svg path {
-        stroke: #fff;
+        stroke: $accent;
+	      fill: $accent;
+
       }
     }
   }

@@ -348,18 +348,22 @@
 		}
 
 		&:hover {
-			background: $accent;
-
-			svg {
-				fill: #fff;
+			svg path {
+				stroke: $accent;
 			}
 		}
-
 		&.active {
-			background: $basic_black;
+			&:hover {
 
-			svg {
-				fill: #fff;
+				svg path {
+					stroke: $accent;
+					fill: transparent;
+				}
+			}
+			svg path {
+				stroke: $accent;
+				fill: $accent;
+
 			}
 		}
 	}
