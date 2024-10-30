@@ -75,6 +75,9 @@
 		font-size: 13px;
 		gap: 5px;
 		transition: all ease .3s;
+		path{
+			fill: #A0A0A0;
+		}
 		@media (min-width: $sm) {
 			cursor: pointer;
 			&:hover {

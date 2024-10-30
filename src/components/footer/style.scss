@@ -313,11 +313,18 @@
 		display: block;
 	}
 	&__dialog{
-		margin-left: auto;
+		margin: 0 auto;
 		max-width: 760px;
 		padding: 20px 14px;
 		background-color: #fff;
 		border-radius: 8px;
 		box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+	}
+	&__content{
+		position: relative;
+	}
+	.modal-close{
+		right: 0;
+		top: -5px;
 	}
 }
