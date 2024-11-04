@@ -117,7 +117,12 @@
 		display: flex;
 		gap: 25px;
 		justify-content: space-between;
+		&-left{
+			flex-grow: 1;
+		}
 	}
+
+
 
 	&__body-group {
 		display: flex;
@@ -265,6 +270,9 @@
 		background-color: #8A6048;
 		position: absolute;
 		right: -10px;
+		left: 10px;
+		margin: 0 auto;
+		display: table;
 		top: 2px;
 		transform: rotate(8deg);
 		z-index: 2;
