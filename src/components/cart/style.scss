@@ -499,6 +499,13 @@ $xl: 1380px;
 		padding: 20px;
 	}
 
+	&-wrap{
+		@media (max-width: $sm - 1) {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+
 	&__title {
 		font-weight: 600;
 		font-size: 1.25rem;
@@ -1066,9 +1073,9 @@ $xl: 1380px;
 
 }
 
-.cart-city-picker {
+.cart-time-picker,
+.cart-city-picker{
 	margin-top: 20px;
-
 	.select {
 		&__header {
 			background-color: #F8F8F8;
@@ -1084,7 +1091,6 @@ $xl: 1380px;
 
 		}
 	}
-
 }
 
 
@@ -1129,4 +1135,39 @@ $xl: 1380px;
 		}
 	}
 
+}
+.cart-delivery{
+	padding: 20px;
+	background-color: #F8F8F8;
+	margin-top: 13px;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	position: relative;
+	@media (max-width: $sm - 1) {
+		order: -1;
+		margin-bottom: 13px;
+		margin-top: 0;
+	}
+	&:before{
+		content: '';
+		position: absolute;
+		left: 20px;
+		top: 0;
+		bottom: 0;
+		width: 1px;
+		height: 30px;
+		margin: auto 0;
+		background-color: #E3E3E3;
+	}
+
+	&__item{
+		display: flex;
+		align-items: center;
+		gap: 15px;
+		fill: #000000;
+		.prop{
+			color: #757575;
+		}
+	}
 }

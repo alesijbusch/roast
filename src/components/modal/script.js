@@ -64,7 +64,7 @@
 				new GoodAppModal(c)
 			});
 
-			[...document.querySelectorAll("[data-target][data-toggle=\"modal\"]")].forEach(a => {
+			[...document.querySelectorAll("[data-toggle='modal']:not([data-target='#modal-comment'])")].forEach(a => {
 				const isExist = GoodAppModal.elements.find(x => x === a);
 				if (isExist) return;
 				GoodAppModal.elements.push(a);

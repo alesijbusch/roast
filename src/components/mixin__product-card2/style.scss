@@ -27,7 +27,7 @@
 		position: relative;
 	}
 
-	&__header{
+	&__header {
 		display: flex;
 		justify-content: space-between;
 		gap: 10px;
@@ -35,7 +35,7 @@
 		align-items: flex-start;
 	}
 
-	&__labels{
+	&__labels {
 		display: flex;
 		flex-direction: column;
 		gap: 5px;
@@ -44,11 +44,12 @@
 
 	}
 
-	&__label{
-		&--v2{
+	&__label {
+		&--v2 {
 			color: #757575;
 		}
-		b{
+
+		b {
 			font-weight: 600;
 		}
 	}
@@ -70,9 +71,11 @@
 		font-size: 13px;
 		gap: 5px;
 		transition: all ease .3s;
-		path{
+
+		path {
 			fill: #A0A0A0;
 		}
+
 		@media (min-width: $sm) {
 			cursor: pointer;
 			&:hover {
@@ -117,11 +120,11 @@
 		display: flex;
 		gap: 25px;
 		justify-content: space-between;
-		&-left{
+
+		&-left {
 			flex-grow: 1;
 		}
 	}
-
 
 
 	&__body-group {
@@ -172,6 +175,7 @@
 		flex-direction: column;
 		gap: 10px;
 		margin-top: 10px;
+		margin-bottom: 20px;
 
 		&__group {
 			display: flex;
@@ -221,6 +225,7 @@
 
 		&__item-select {
 			margin-top: 5px;
+
 			.select__header {
 				border: 1px solid #e3e3e3;
 				color: #000;
@@ -253,6 +258,7 @@
 	&__img {
 		position: absolute;
 		inset: 0;
+
 		img {
 			height: 100%;
 			object-fit: contain;
@@ -260,7 +266,7 @@
 		}
 	}
 
-	&__sticker{
+	&__sticker {
 		font-size: 10px;
 		text-transform: uppercase;
 		font-weight: 500;
@@ -284,7 +290,8 @@
 		justify-content: space-between;
 		align-items: center;
 		gap: 10px;
-		margin-top: 20px;
+		//margin-top: 20px;
+		margin-top: auto;
 
 		@media (max-width: 359px) {
 			margin-top: 10px;
@@ -300,7 +307,7 @@
 		font-style: normal;
 		font-weight: 600;
 		line-height: 24px;
-		flex-grow: 1;
+		//flex-grow: 1;
 
 		@media (max-width: 359px) {
 			width: 100%;
@@ -350,6 +357,10 @@
 		flex-shrink: 0;
 		cursor: pointer;
 		transition: background 0.3s;
+		margin-left: auto;
+		@media (max-width: 359px) {
+			margin-right: auto;
+		}
 
 		svg path {
 			transition: 0.3s;
@@ -360,6 +371,7 @@
 				stroke: $accent;
 			}
 		}
+
 		&.active {
 			&:hover {
 
@@ -368,6 +380,7 @@
 					fill: transparent;
 				}
 			}
+
 			svg path {
 				stroke: $accent;
 				fill: $accent;
@@ -385,11 +398,27 @@
 	}
 
 	&__btns {
+		width: 100%;
+		max-width: 142px;
+		@media (max-width: $sm - 1) {
+			max-width: 147px;
+		}
+
 		.product-block__buy {
 			fill: #fff;
 			padding: 10px 35px;
 			font-size: 15px;
 			height: 42px;
+			max-width: 142px;
+			width: 100%;
+
+			&.out-of-stock{
+				pointer-events: none;
+				border-color: #d0d0d0;
+				background-color: #d0d0d0;
+
+			}
+
 
 			svg path {
 				stroke: #fff;
@@ -398,13 +427,18 @@
 			@media (max-width: 1280px) {
 				padding: 10px 21px;
 			}
+			@media (max-width: $xs - 1) {
+				max-width: 147px;
+			}
 			@media (max-width: 359px) {
 				width: 100%;
+				max-width: none;
 			}
 		}
 
 		@media (max-width: 359px) {
 			width: 100%;
+			max-width: none;
 		}
 	}
 

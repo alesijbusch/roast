@@ -207,6 +207,8 @@ document.addEventListener('alpine:init', () => {
          * инициализация карты складов
          */
         initDeliveryMap(bayerStoreId, firstInit = false) {
+            return;
+
             const _this = this;
             const rawData = _this.activeDelivery['STORE'] || [];
             const coordsList = [];
@@ -517,7 +519,7 @@ document.addEventListener('alpine:init', () => {
             // this.refreshOrderAjax();
         },
         changeStreet(data) {
-            this.street['VALUE'][0] = data.address.formatted_address;
+            this.street['VALUE'][0] = data.value;
             this.buildAddress();
             // this.refreshOrderAjax();
         },
@@ -932,7 +934,7 @@ document.addEventListener('alpine:init', () => {
             })
                 .then((res) => res.json())
                 .then((result) => {
-                    _this.streetList = result['data']['results'];
+                    _this.streetList = result['data'];
                 });
         },
         /**

@@ -10,9 +10,9 @@
 //- br
 //- br
 mixin cart-product(args={})
-    .cart-product
-        .cart-product__image
-            +lazy-img({
+	.cart-product
+		.cart-product__image
+			+lazy-img({
                 img: args.img,
                 placeholder: pixel,
                 img_mod: '',
@@ -20,87 +20,87 @@ mixin cart-product(args={})
                 link: true,
                 aria_label: false,
             })
-        .cart-product__content
-            a(href="#").cart-product__title= args.title
-        .cart-product__prop
-            .cart-product__type
-                .cart-product__type-prop Масса:
-                .cart-product__type-val.active 100
-                .cart-product__type-val 2000
-            .cart-product__type
-                .cart-product__type-prop Степень помола:
-                .cart-product__type-val.active Не обжаривать
-        .cart-product__price
-            .price= args.cost
-            if(args.old)
-                .price--old= args.old
+		.cart-product__content
+			a(href="#").cart-product__title= args.title
+		.cart-product__prop
+			.cart-product__type
+				.cart-product__type-prop Масса:
+				.cart-product__type-val.active 100
+				.cart-product__type-val 2000
+			.cart-product__type
+				.cart-product__type-prop Степень помола:
+				.cart-product__type-val.active Не обжаривать
+		.cart-product__price
+			.price= args.cost
+			if(args.old)
+				.price--old= args.old
 
-        .cart-product__counter
-            .counter.btn-wave
-                span.counter__action.counter__action--minus
-                input.counter__count(type="text" value="1" maxlength="6")
-                span.counter__action.counter__action--plus
+		.cart-product__counter
+			.counter.btn-wave
+				span.counter__action.counter__action--minus
+				input.counter__count(type="text" value="1" maxlength="6")
+				span.counter__action.counter__action--plus
 
-        .cart-product__totalprice
-            .price= args.price
-            if(args.old)
-                .price--old= args.old
-        .cart-product__control
-            .cart-product__control-item
-                +icon('i-close')(style="width:12px; height:12px")
+		.cart-product__totalprice
+			.price= args.price
+			if(args.old)
+				.price--old= args.old
+		.cart-product__control
+			.cart-product__control-item
+				+icon('i-close')(style="width:12px; height:12px")
 .cart
-    .rowblock
-        .rowblock__left
-            .cart-form__block(x-data="{expand: true}" :class="!expand && 'collapse'")
-                .cart-form__header
-                    .cart-form__title Товары в корзине
-                    .cart-form__toggler(@click="expand=!expand")
-                        span
+	.rowblock
+		.rowblock__left
+			.cart-form__block(x-data="{expand: true}" :class="!expand && 'collapse'")
+				.cart-form__header
+					.cart-form__title Товары в корзине
+					.cart-form__toggler(@click="expand=!expand")
+						span
 
 
 
-                .cart-products.cart-form__section(x-transition)
-                    +cart-product({
+				.cart-products.cart-form__section(x-transition)
+					+cart-product({
                         img: 'product.png',
                         title: 'Танзания Мбинга Килиманджаро АА',
                         price: '12 740 ₽',
                         cost: '154.12 руб/шт'
                     })
-                    +cart-product({
+					+cart-product({
                         img: 'product.png',
                         title: 'Танзания Мбинга Килиманджаро АА',
                         old: '145.34 руб.',
                         price: '123.74 руб.',
                         cost: '154.12 руб/шт'
                     })
-                    +cart-product({
+					+cart-product({
                         img: 'product-tea.png',
                         title: 'Матча (Маття) Изумруд',
                         price: '123 руб.',
                         cost: '154.12 руб/шт'
                     })
 
-            form.cart-form
-                .cart-form__block.cart-form__block--person(x-data="{expand: true}" :class="!expand && 'collapse'")
-                    .cart-form__header
-                        .cart-form__title Покупатель
-                        .person-type__overflow
-                            .person-type
-                                +radio({
+			form.cart-form
+				.cart-form__block.cart-form__block--person(x-data="{expand: true}" :class="!expand && 'collapse'")
+					.cart-form__header
+						.cart-form__title Покупатель
+						.person-type__overflow
+							.person-type
+								+radio({
                                     mod: 'form-group--person-type'
                                 })(checked name="person-type")
-                                    .person-type__label Физическое лицо
-                                +radio({
+									.person-type__label Физическое лицо
+								+radio({
                                     mod: 'form-group--person-type'
                                 })( name="person-type")
-                                    .person-type__label Юридическое лицо
-                        .cart-form__toggler(@click="expand=!expand")
-                            span
+									.person-type__label Юридическое лицо
+						.cart-form__toggler(@click="expand=!expand")
+							span
 
-                    .cart-form__section
-                        .cart-form__form
-                            .cart-form__field.cart-form__field--2
-                                +input({
+					.cart-form__section
+						.cart-form__form
+							.cart-form__field.cart-form__field--2
+								+input({
                                     label: 'Ф.И.О.',
                                     fg_mod: 'form-group--margin',
                                     label_mod: 'form-control-label--small',
@@ -117,8 +117,8 @@ mixin cart-product(args={})
                                     }
                                 })
 
-                            .cart-form__field.cart-form__field--2
-                                +input({
+							.cart-form__field.cart-form__field--2
+								+input({
                                     label: 'Телефон',
                                     fg_mod: 'form-group--margin',
                                     label_mod: 'form-control-label--small',
@@ -135,41 +135,41 @@ mixin cart-product(args={})
                                         identical: false
                                     }
                                 })
-                            .cart-form__field.cart-form__field--2.cart-form__field-location(x-data="{search: false}" @click.outside="search=false")
-                                .form-group
-                                    <label class="form-control-label form-control-label--small" for="ID4031461171">Местоположение<span class="label-required">*</span>
-                                    </label>
-                                    <input class="form-control" autocomplete="no" type="text" id="ID4031461171" name="NAME4031461171" placeholder="Введите название города" @focus="search=true" required="required">
-                                    //+input({
-                                    //    label: 'Местоположение',
-                                    //    fg_mod: 'form-group--margin',
-                                    //    label_mod: 'form-control-label--small',
-                                    //    type: 'text',
-                                    //    name: false,
-                                    //    small: false,
-                                    //    placeholder: 'Введите название города',
-                                    //    required: true,
-                                    //    validation: {
-                                    //        message: 'Заполните поле',
-                                    //        regexp: 'Неверный формат',
-                                    //        emailaddress: ' ',
-                                    //        identical: false
-                                    //    }
-                                    //})()
-                                .cart-form__field-dropdown(x-show="search" x-transition x-cloak)
-                                    .cart-form__field-item(@click="search=false") Барановичи
-                                    .cart-form__field-item(@click="search=false") Барановичи
-                                    .cart-form__field-item(@click="search=false") Барановичи
-                                    .cart-form__field-item(@click="search=false") Барановичи
-                                    .cart-form__field-item(@click="search=false") Барановичи
-                                    .cart-form__field-item(@click="search=false") Барановичи
-                                    .cart-form__field-item(@click="search=false") Барановичи
-                                    .cart-form__field-item(@click="search=false") Барановичи
-                                    .cart-form__field-item(@click="search=false") Барановичи
-                                    .cart-form__field-item(@click="search=false") Барановичи
-                                    .cart-form__field-item(@click="search=false") Барановичи
-                            .cart-form__field.cart-form__field--2
-                                +input({
+							.cart-form__field.cart-form__field--2.cart-form__field-location(x-data="{search: false}" @click.outside="search=false")
+								.form-group
+									<label class="form-control-label form-control-label--small" for="ID4031461171">Местоположение<span class="label-required">*</span>
+									</label>
+									<input class="form-control" autocomplete="no" type="text" id="ID4031461171" name="NAME4031461171" placeholder="Введите название города" @focus="search=true" required="required">
+									//+input({
+									//    label: 'Местоположение',
+									//    fg_mod: 'form-group--margin',
+									//    label_mod: 'form-control-label--small',
+									//    type: 'text',
+									//    name: false,
+									//    small: false,
+									//    placeholder: 'Введите название города',
+									//    required: true,
+									//    validation: {
+									//        message: 'Заполните поле',
+									//        regexp: 'Неверный формат',
+									//        emailaddress: ' ',
+									//        identical: false
+									//    }
+									//})()
+								.cart-form__field-dropdown(x-show="search" x-transition x-cloak)
+									.cart-form__field-item(@click="search=false") Барановичи
+									.cart-form__field-item(@click="search=false") Барановичи
+									.cart-form__field-item(@click="search=false") Барановичи
+									.cart-form__field-item(@click="search=false") Барановичи
+									.cart-form__field-item(@click="search=false") Барановичи
+									.cart-form__field-item(@click="search=false") Барановичи
+									.cart-form__field-item(@click="search=false") Барановичи
+									.cart-form__field-item(@click="search=false") Барановичи
+									.cart-form__field-item(@click="search=false") Барановичи
+									.cart-form__field-item(@click="search=false") Барановичи
+									.cart-form__field-item(@click="search=false") Барановичи
+							.cart-form__field.cart-form__field--2
+								+input({
                                     label: 'Email',
                                     type: 'email',
                                     label_mod: 'form-control-label--small',
@@ -186,8 +186,8 @@ mixin cart-product(args={})
                                         identical: false
                                     }
                                 })
-                            .policy-block
-                                +checkbox({
+							.policy-block
+								+checkbox({
                                     mod: '',
                                     label: 'Я согласен на <a href="#"> обработку персональных данных</a>',
                                     value: '',
@@ -195,27 +195,27 @@ mixin cart-product(args={})
                                     required: true,
                                 })(checked)
 
-                        //.cart-form__more
-                        //    button.btn Продолжить
-                .cart-form__block-grid
-                    .cart-form__block(x-data="{expand: true}" :class="!expand && 'collapse'")
+						//.cart-form__more
+						//    button.btn Продолжить
+				.cart-form__block-grid
+					.cart-form__block(x-data="{expand: true}" :class="!expand && 'collapse'")
 
-                        .cart-form__header
-                            .cart-form__title Способ доставки
-                            .cart-form__toggler(@click="expand=!expand")
-                                span
-                        .cart-form__delivery
-                            .cart-form-radio
-                                +radio({
+						.cart-form__header
+							.cart-form__title Способ доставки
+							.cart-form__toggler(@click="expand=!expand")
+								span
+						.cart-form__delivery
+							.cart-form-radio
+								+radio({
                                     mod: 'cart-form-radio__header'
                                 })(name="delivery-type")
-                                    .cart-form-radio__label Самовывоз
-                                .cart-form-radio__body
+									.cart-form-radio__label Самовывоз
+								.cart-form-radio__body
 
 
-                                    .cart-form__delivery-descr Вы можете самостоятельно забрать заказ из нашего офиса-кофейни Blackmill в г. Минске
-                                    .cart-city-picker
-                                        +select({
+									.cart-form__delivery-descr Вы можете самостоятельно забрать заказ из нашего офиса-кофейни Blackmill в г. Минске
+									.cart-city-picker
+										+select({
                                             title: 'г. Минск, ул. Белинского 23',
                                             with_links: true,
                                             list: [
@@ -227,16 +227,16 @@ mixin cart-product(args={})
 
 
 
-                            .cart-form-radio
-                                +radio({
+							.cart-form-radio
+								+radio({
                                     mod: 'cart-form-radio__header'
                                 })(name="delivery-type")
-                                    .cart-form-radio__label Доставка курьером
-                                    .cart-form-radio__cost 6 руб.
-                                .cart-form-radio__body
-                                    .cart-form__delivery-descr Доставка курьером по г. Минску от 1 до 2 дней. Укажите в комментарии желаемое время доставки
-                                    .cart-city-picker
-                                        +input({
+									.cart-form-radio__label Доставка курьером
+									.cart-form-radio__cost 6 руб.
+								.cart-form-radio__body
+									.cart-form__delivery-descr Доставка курьером по г. Минску от 1 до 2 дней. Укажите в комментарии желаемое время доставки
+									.cart-city-picker
+										+input({
                                             fg_mod: 'form-group--margin',
                                             label_mod: 'form-control-label--small',
                                             type: 'text',
@@ -252,17 +252,17 @@ mixin cart-product(args={})
                                                 identical: false
                                             }
                                         })
-                            .cart-form-radio
-                                +radio({
+							.cart-form-radio
+								+radio({
                                     mod: 'cart-form-radio__header'
                                 })(name="delivery-type")
-                                    .cart-form-radio__label Доставка Белпочтой
-                                    .cart-form-radio__cost Бесплатно
-                                .cart-form-radio__body
+									.cart-form-radio__label Доставка Белпочтой
+									.cart-form-radio__cost Бесплатно
+								.cart-form-radio__body
 
-                                    .cart-form__delivery-descr Доставка в ближайшее отделении Белпочты от 1 до 3 дней
-                                        .cart-form__delivery-post
-                                            +input({
+									.cart-form__delivery-descr Доставка в ближайшее отделении Белпочты от 1 до 3 дней
+										.cart-form__delivery-post
+											+input({
                                                 fg_mod: 'form-group--margin',
                                                 label_mod: 'form-control-label--small',
                                                 type: 'text',
@@ -278,7 +278,7 @@ mixin cart-product(args={})
                                                     identical: false
                                                 }
                                             })
-                                            +input({
+											+input({
                                                 fg_mod: 'form-group--margin',
                                                 label_mod: 'form-control-label--small',
                                                 type: 'text',
@@ -294,7 +294,7 @@ mixin cart-product(args={})
                                                     identical: false
                                                 }
                                             })
-                                            +input({
+											+input({
                                                 fg_mod: 'form-group--margin',
                                                 label_mod: 'form-control-label--small',
                                                 type: 'text',
@@ -310,108 +310,106 @@ mixin cart-product(args={})
                                                     identical: false
                                                 }
                                             })
-                            .cart-form-radio
-                                +radio({
+							.cart-form-radio
+								+radio({
                                     mod: 'cart-form-radio__header'
                                 })(name="delivery-type")
-                                    .cart-form-radio__label Доставка DPD
-                                    .cart-form-radio__cost 5.27 руб.
-                                .cart-form-radio__body
+									.cart-form-radio__label Доставка DPD
+									.cart-form-radio__cost 5.27 руб.
+								.cart-form-radio__body
 
-                                    .cart-form__delivery-descr Доставка посылки курьером DPD до двери получателя (Минск) дн. 3 (DPD EXPRESS)
-                            .cart-form-radio
-                                +radio({
+									.cart-form__delivery-descr Доставка посылки курьером DPD до двери получателя (Минск) дн. 3 (DPD EXPRESS)
+							.cart-form-radio
+								+radio({
                                     mod: 'cart-form-radio__header'
                                 })(name="delivery-type")
-                                    .cart-form-radio__label Яндекс-доставка (до 45 минут)
-                                    .cart-form-radio__cost 9 руб.
-                                .cart-form-radio__body
+									.cart-form-radio__label Яндекс-доставка (до 45 минут)
+									.cart-form-radio__cost 9 руб.
+								.cart-form-radio__body
 
-                                    .cart-form__delivery-descr Работает только по г. Минску, после оплаты картой. Необходимо уточнить наличие кофе в офисе перед оплатой
+									.cart-form__delivery-descr Работает только по г. Минску, после оплаты картой. Необходимо уточнить наличие кофе в офисе перед оплатой
 
 
 
-                            //.cart-form__more
-                            //    button.btn Продолжить
-                    .cart-form__block(x-data="{expand: true}" :class="!expand && 'collapse'")
-                        .cart-form__header
-                            .cart-form__title Способ оплаты
-                                .cart-form__toggler(@click="expand=!expand")
-                                    span
-                        .cart-form__pay
-                            .cart-form-radio
-                                +radio({
+							//.cart-form__more
+							//    button.btn Продолжить
+					.cart-form__block(x-data="{expand: true}" :class="!expand && 'collapse'")
+						.cart-form__header
+							.cart-form__title Способ оплаты
+								.cart-form__toggler(@click="expand=!expand")
+									span
+						.cart-form__pay
+							.cart-form-radio
+								+radio({
                                     mod: 'cart-form-radio__header'
                                 })(name="payment-type")
-                                    .cart-form-radio__label Оплата через ЕРИП (скидка 2%)
-                                .cart-form-radio__body
-                                    .cart-form__delivery-descr В вашем интернет-банкинге в разделе "Платежи": Система Расчет ЕРИП -> Интернет-магазины и сервисы -> A-Z -> R -> Roast.by, введите ваш номер заказа и оплатите его.
-                                    .policy-block
-                                        +checkbox({
+									.cart-form-radio__label Оплата через ЕРИП (скидка 2%)
+								.cart-form-radio__body
+									.cart-form__delivery-descr В вашем интернет-банкинге в разделе "Платежи": Система Расчет ЕРИП -> Интернет-магазины и сервисы -> A-Z -> R -> Roast.by, введите ваш номер заказа и оплатите его.
+									.policy-block
+										+checkbox({
                                             mod: '',
                                             label: 'Внутренний счет - <b>13,40 руб.</b>',
                                             value: '',
                                             name: 'score',
                                             required: true,
                                         })
-                            .cart-form-radio
-                                +radio({
+							.cart-form-radio
+								+radio({
                                     mod: 'cart-form-radio__header'
                                 })(name="payment-type")
-                                    .cart-form-radio__label Оплата наличными
+									.cart-form-radio__label Оплата наличными
 
-                            .cart-form-radio
-                                +radio({
+							.cart-form-radio
+								+radio({
                                     mod: 'cart-form-radio__header'
                                 })(name="payment-type")
-                                    .cart-form-radio__label QR-платежи "Оплати" (скидка 3%)
-                            .cart-form-radio
-                                +radio({
+									.cart-form-radio__label QR-платежи "Оплати" (скидка 3%)
+							.cart-form-radio
+								+radio({
                                     mod: 'cart-form-radio__header'
                                 })(name="payment-type")
-                                    .cart-form-radio__label Оплата картой при получении
-                            .cart-form-radio
-                                +radio({
+									.cart-form-radio__label Оплата картой при получении
+							.cart-form-radio
+								+radio({
                                     mod: 'cart-form-radio__header'
                                 })(name="payment-type")
-                                    .cart-form-radio__label Оплата банковской картой онлайн (Google Pay)
-                        //.cart-form__more
-                        //    button.btn Продолжить
-                        //
+									.cart-form-radio__label Оплата банковской картой онлайн (Google Pay)
+						//.cart-form__more
+						//    button.btn Продолжить
+						//
 
-                .cart-form__block(x-data="{expand: true}" :class="!expand && 'collapse'")
-                    .cart-form__header
-                        .cart-form__title Комментарии к заказу
+				.cart-form__block(x-data="{expand: true}" :class="!expand && 'collapse'")
+					.cart-form__header
+						.cart-form__title Комментарии к заказу
 
-                        .cart-form__toggler(@click="expand=!expand")
-                            span
+						.cart-form__toggler(@click="expand=!expand")
+							span
 
-                    .cart-form__section
-                        .cart-form__form-desc Укажите желаемое время доставки, особые пожелания к заказу
-                        .cart-form__form
-                            .cart-form__field
-                                +textarea({
-
-                                })
-        .rowblock__right
-            .cart-bill
-                .cart-bill__price.cart-checkout__total-line.cart-checkout__total-line--totals
-                    .cart-checkout__d Итого:
-                    .cart-checkout__t 245.30 руб.
-                .cart-bill__btn
-                    .btn Оформить
-            .cart-checkout-sticky
-                .cart-checkout-wrap
-                    .cart-checkout
-                        .cart-checkout__title Ваш заказ
-                        .cart-checkout__total-line
-                            .cart-checkout__d Доставка:
-                            .cart-checkout__t Самовывоз
-                        .cart-checkout__total-line
-                            .cart-checkout__d Оплата:
-                            .cart-checkout__t Оплата через ЕРИП
-                        .cart-checkout__promo
-                            +input({
+					.cart-form__section
+						.cart-form__form-desc Укажите желаемое время доставки, особые пожелания к заказу
+						.cart-form__form
+							.cart-form__field
+								+textarea({})
+		.rowblock__right
+			.cart-bill
+				.cart-bill__price.cart-checkout__total-line.cart-checkout__total-line--totals
+					.cart-checkout__d Итого:
+					.cart-checkout__t 245.30 руб.
+				.cart-bill__btn
+					.btn Оформить
+			.cart-checkout-sticky
+				.cart-checkout-wrap
+					.cart-checkout
+						.cart-checkout__title Ваш заказ
+						.cart-checkout__total-line
+							.cart-checkout__d Доставка:
+							.cart-checkout__t Самовывоз
+						.cart-checkout__total-line
+							.cart-checkout__d Оплата:
+							.cart-checkout__t Оплата через ЕРИП
+						.cart-checkout__promo
+							+input({
                                 fg_mod: '',
                                 placeholder: 'Введите промокод',
                                 type: 'text',
@@ -425,56 +423,79 @@ mixin cart-product(args={})
                                     identical: false
                                 }
                             })
-                            button.cart-checkout__promo-submit
-                        .cart-checkout__promo-list
-                            .cart-checkout__promo-item
-                                .cart-checkout__promo-item-name dsfsdf dsfs aad
-                                .cart-checkout__promo-item-status
-                                    span.outin-stock не найден
-                                    .cart-checkout__promo-item-remove
-                                        +icon('i-close')(style="width:10px; height:10px")
-                            .cart-checkout__promo-item
-                                .cart-checkout__promo-item-name.in-stock dsfsdf
-                                .cart-checkout__promo-item-status
-                                    span.in-stock найден
-                                    .cart-checkout__promo-item-remove
-                                        +icon('i-close')(style="width:10px; height:10px")
-                        .cart-checkout__total-line
-                            .cart-checkout__d Внутренний счет:
-                            .cart-checkout__t 13,40 руб.
-                        .cart-checkout__total-line
-                            .cart-checkout__d Ваша скидка 5%:
-                            .cart-checkout__t 10 руб.
-                            .tip
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
-                                <circle cx="7.61523" cy="7.5" r="6.75" stroke="#D9D9D9" stroke-width="1.5"/>
-                                <line x1="7.5957" y1="5.96594" x2="7.5957" y2="11.3353" stroke="#ACACAC" stroke-width="1.5"/>
-                                <line x1="7.5957" y1="3.6648" x2="7.5957" y2="5.19889" stroke="#ACACAC" stroke-width="1.5"/>
-                                </svg>
-                                .tip__text Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum nulla provident eveniet numquam vitae quisquam.
-                        .cart-checkout__total-line
-                            .cart-checkout__d Промокод:
-                            .cart-checkout__t 5 руб.
-                        .cart-checkout__total-line.cart-checkout__total-line--totals
-                            .cart-checkout__d Итого:
-                            .cart-checkout__t 245.30 руб. <span class="sale">248.30 руб.</span>
-                            .cart-checkout__sale
-                                span Общая экономия 28.40руб.
-                        .cart-checkout__submit
-                            .btn Оформить заказ
-                        a(href="#").cart-checkout__back
-                            +icon('i-checkout')(style="width:15px; height:15px")
-                            span Назад в каталог
+							button.cart-checkout__promo-submit
+						.cart-checkout__promo-list
+							.cart-checkout__promo-item
+								.cart-checkout__promo-item-name dsfsdf dsfs aad
+								.cart-checkout__promo-item-status
+									span.outin-stock не найден
+									.cart-checkout__promo-item-remove
+										+icon('i-close')(style="width:10px; height:10px")
+							.cart-checkout__promo-item
+								.cart-checkout__promo-item-name.in-stock dsfsdf
+								.cart-checkout__promo-item-status
+									span.in-stock найден
+									.cart-checkout__promo-item-remove
+										+icon('i-close')(style="width:10px; height:10px")
+						.cart-checkout__total-line
+							.cart-checkout__d Внутренний счет:
+							.cart-checkout__t 13,40 руб.
+						.cart-checkout__total-line
+							.cart-checkout__d Ваша скидка 5%:
+							.cart-checkout__t 10 руб.
+							.tip
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
+								<circle cx="7.61523" cy="7.5" r="6.75" stroke="#D9D9D9" stroke-width="1.5"/>
+								<line x1="7.5957" y1="5.96594" x2="7.5957" y2="11.3353" stroke="#ACACAC" stroke-width="1.5"/>
+								<line x1="7.5957" y1="3.6648" x2="7.5957" y2="5.19889" stroke="#ACACAC" stroke-width="1.5"/>
+								</svg>
+								.tip__text Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum nulla provident eveniet numquam vitae quisquam.
+						.cart-checkout__total-line
+							.cart-checkout__d Промокод:
+							.cart-checkout__t 5 руб.
+						.cart-checkout__total-line.cart-checkout__total-line--totals
+							.cart-checkout__d Итого:
+							.cart-checkout__t 245.30 руб. <span class="sale">248.30 руб.</span>
+							.cart-checkout__sale
+								span Общая экономия 28.40руб.
+						.cart-checkout__submit
+							.btn Оформить заказ
+						a(href="#").cart-checkout__back
+							+icon('i-checkout')(style="width:15px; height:15px")
+							span Назад в каталог
 
-                    .cart-checkout__info(x-data="{show:true}" x-show="show" x-transition)
-                        .cart-checkout__info-close(@click="show=false")
-                            +icon('i-close')(style="width:10px; height:10px")
 
-                        .cart-checkout__info-icon
-                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="25" viewBox="0 0 17 25" fill="none">
-                            <path d="M9.30273 24.0698H7.94291V20.8175H9.30273V24.0698Z" fill="#BB2749"/>
-                            <path d="M14.2461 22.9749L13.0522 23.6836L11.5631 20.7091L12.757 20.0004L14.2461 22.9749Z" fill="#BB2749"/>
-                            <path d="M5.68359 20.7086L4.19451 23.6831L3.0006 22.9744L4.48967 19.9999L5.68359 20.7086Z" fill="#BB2749"/>
-                            <path d="M17 17.1064L15.2739 12.6684V6.77378C15.2739 3.0387 12.2352 0 8.5001 0C4.76482 0 1.72612 3.0387 1.72612 6.77378V12.6684L0 17.1064H5.6756V17.2435C5.6756 18.8007 6.94267 20.0678 8.5001 20.0678C10.0573 20.0678 11.3244 18.8007 11.3244 17.2435V17.1064H17ZM3.20682 6.77378C3.20682 3.8552 5.58132 1.48069 8.5001 1.48069C11.4187 1.48069 13.7932 3.8552 13.7932 6.77378V12.0671H3.20682V6.77378ZM2.97295 13.5478H14.027L14.8353 15.6257H2.16474L2.97295 13.5478ZM9.84371 17.2435C9.84371 17.9844 9.24083 18.5871 8.5001 18.5871C7.75917 18.5871 7.15629 17.9844 7.15629 17.2435V17.1064H9.84352V17.2435H9.84371Z" fill="#BB2749"/>
-                            </svg>
-                        .cart-checkout__info-text Вы можете воспользоваться средствами внутреннего счета выбрав способ оплаты
+					.cart-delivery
+						.cart-delivery__item
+							.cart-delivery__icon
+								<svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M3.85 2.5L1 5.33333M20 5.33333L17.15 2.5M4.8 17.6111L2.9 19.5M16.2 17.6111L18.1 19.5M7.65 12.4167L9.55 14.3056L13.825 10.0556M10.5 19.5C12.5156 19.5 14.4487 18.704 15.874 17.287C17.2993 15.8701 18.1 13.9483 18.1 11.9444C18.1 9.94059 17.2993 8.0188 15.874 6.60186C14.4487 5.18492 12.5156 4.38889 10.5 4.38889C8.48435 4.38889 6.55126 5.18492 5.12599 6.60186C3.70071 8.0188 2.9 9.94059 2.9 11.9444C2.9 13.9483 3.70071 15.8701 5.12599 17.287C6.55126 18.704 8.48435 19.5 10.5 19.5Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+
+							.cart-delivery__content
+								.prop Ближайшая обжарка
+								.val 19.11.2023
+						.cart-delivery__item
+							.cart-delivery__icon
+								<svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M12.4 6.3125H14.6204C14.8528 6.3125 14.9689 6.3125 15.0783 6.3384C15.1752 6.36137 15.2679 6.39925 15.3529 6.45065C15.4487 6.50863 15.5309 6.5897 15.6952 6.75184L19.5548 10.5607C19.7191 10.7228 19.8013 10.8039 19.86 10.8985C19.9121 10.9824 19.9505 11.0738 19.9738 11.1695C20 11.2774 20 11.392 20 11.6213V14.2812C20 14.7181 20 14.9365 19.9277 15.1088C19.8313 15.3385 19.6463 15.521 19.4135 15.6161C19.239 15.6875 19.0176 15.6875 18.575 15.6875M13.825 15.6875H12.4M12.4 15.6875V6.5C12.4 5.4499 12.4 4.92485 12.1929 4.52377C12.0108 4.17096 11.7201 3.88413 11.3626 3.70436C10.9561 3.5 10.4241 3.5 9.36 3.5H4.04C2.9759 3.5 2.44385 3.5 2.03742 3.70436C1.67991 3.88413 1.38925 4.17096 1.20709 4.52377C1 4.92485 1 5.4499 1 6.5V13.8125C1 14.848 1.85066 15.6875 2.9 15.6875M12.4 15.6875H8.6M8.6 15.6875C8.6 17.2408 7.32401 18.5 5.75 18.5C4.17599 18.5 2.9 17.2408 2.9 15.6875M8.6 15.6875C8.6 14.1342 7.32401 12.875 5.75 12.875C4.17599 12.875 2.9 14.1342 2.9 15.6875M18.575 16.1562C18.575 17.4507 17.5117 18.5 16.2 18.5C14.8883 18.5 13.825 17.4507 13.825 16.1562C13.825 14.8618 14.8883 13.8125 16.2 13.8125C17.5117 13.8125 18.575 14.8618 18.575 16.1562Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+
+
+							.cart-delivery__content
+								.prop Ближайшая доставка
+								.val 20.11.2023
+
+
+					.cart-checkout__info(x-data="{show:true}" x-show="show" x-transition)
+						.cart-checkout__info-close(@click="show=false")
+							+icon('i-close')(style="width:10px; height:10px")
+
+						.cart-checkout__info-icon
+							<svg xmlns="http://www.w3.org/2000/svg" width="17" height="25" viewBox="0 0 17 25" fill="none">
+							<path d="M9.30273 24.0698H7.94291V20.8175H9.30273V24.0698Z" fill="#BB2749"/>
+							<path d="M14.2461 22.9749L13.0522 23.6836L11.5631 20.7091L12.757 20.0004L14.2461 22.9749Z" fill="#BB2749"/>
+							<path d="M5.68359 20.7086L4.19451 23.6831L3.0006 22.9744L4.48967 19.9999L5.68359 20.7086Z" fill="#BB2749"/>
+							<path d="M17 17.1064L15.2739 12.6684V6.77378C15.2739 3.0387 12.2352 0 8.5001 0C4.76482 0 1.72612 3.0387 1.72612 6.77378V12.6684L0 17.1064H5.6756V17.2435C5.6756 18.8007 6.94267 20.0678 8.5001 20.0678C10.0573 20.0678 11.3244 18.8007 11.3244 17.2435V17.1064H17ZM3.20682 6.77378C3.20682 3.8552 5.58132 1.48069 8.5001 1.48069C11.4187 1.48069 13.7932 3.8552 13.7932 6.77378V12.0671H3.20682V6.77378ZM2.97295 13.5478H14.027L14.8353 15.6257H2.16474L2.97295 13.5478ZM9.84371 17.2435C9.84371 17.9844 9.24083 18.5871 8.5001 18.5871C7.75917 18.5871 7.15629 17.9844 7.15629 17.2435V17.1064H9.84352V17.2435H9.84371Z" fill="#BB2749"/>
+							</svg>
+						.cart-checkout__info-text Вы можете воспользоваться средствами внутреннего счета выбрав способ оплаты
