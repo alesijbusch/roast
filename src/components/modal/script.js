@@ -64,16 +64,17 @@
 				new GoodAppModal(c)
 			});
 
-			[...document.querySelectorAll("[data-toggle='modal']:not([data-target='#modal-comment'])")].forEach(a => {
-				const isExist = GoodAppModal.elements.find(x => x === a);
-				if (isExist) return;
-				GoodAppModal.elements.push(a);
-				const b = a.getAttribute("data-target").split("#").join(""),
-					c = document.getElementById(b);
-				a.addEventListener("click", () => {
-					c.modal()
-				})
-			});
+            [...document.querySelectorAll("[data-target][data-toggle=\"modal\"]")].forEach(a => {
+                const isExist = GoodAppModal.elements.find(x => x === a);
+                if (isExist) return;
+
+                GoodAppModal.elements.push(a);
+                const b = a.getAttribute("data-target").split("#").join(""),
+                    c = document.getElementById(b);
+                a.addEventListener("click", () => {
+                    c.modal()
+                })
+            });
 		}
 
 		window.GOODAPP.initModals();

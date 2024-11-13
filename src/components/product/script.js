@@ -28,16 +28,19 @@ window.addEventListener("load", function () {
     let commentModal = document.querySelector('#modal-comment')
 
     if (commentModal) {
-        let clone = commentModal.cloneNode(true)
 
-        document.querySelector('.js-modals-list').append(clone)
+        document.querySelector('.js-modals-list').insertAdjacentElement('afterbegin', commentModal)
 
-        commentModal.remove()
+        // let clone = commentModal.cloneNode(true)
+
+        // document.querySelector('.js-modals-list').append(clone)
+
+        // commentModal.remove()
     }
 
-    document.querySelector('.btn-comment').addEventListener('click', ()=>{
-        document.querySelector('#modal-comment').modal()
-    })
+    // document.querySelector('.btn-comment').addEventListener('click', ()=>{
+    //     document.querySelector('#modal-comment').modal()
+    // })
 
 
 });
