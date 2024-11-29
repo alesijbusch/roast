@@ -49,7 +49,7 @@ window.addEventListener("load", function () {
   let splideProduct = new Splide(".js-splide-slider-product", {
     type: "slide",
     arrows: true,
-    pagination: false,
+    pagination: true,
     perPage: 1,
     perMove: 1,
     speed: 500,

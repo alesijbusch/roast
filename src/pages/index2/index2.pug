@@ -1,0 +1,28 @@
+extends ../../layout/layout
+
+block vars
+	- var pageTitle = 'Главная'
+	- var pageBodyClass = ''
+	- var dir = './'
+
+
+block premain
+	include ../../components/index-banners/index-banners
+
+block main
+
+	include ../../components/index-tabs/index-tabs
+	include ../../components/about/about
+	include ../../components/brands-slider/brands-slider
+	include ../../components/tizers-section/tizers-section
+	include ../../components/subscription/subscription
+block pageModal
+
+block componentsCriticalStyles
+	+componentsCriticalStyles-includer()
+block vendorScripts
+	+vendorScripts-includer()
+block componentsStyles
+	+style-includer()
+block componentsScripts
+	+componentsScripts-includer()
