@@ -6,29 +6,46 @@
 		.index-banners__grid
 			.slider-product
 				.slider-product__bg
+					img(loading="lazy" src=SITE_TEMPLATE_PATH + "images/slide-bg.svg")
+				.slider-product__center
 					img(loading="lazy" src=SITE_TEMPLATE_PATH + "images/slider-bg.svg")
 				+splide({
 				mod: 'slider-product__slider js-splide-slider-product'
 				})
 					+splide-slide()
 						.slider-product__block
-							.slide-bg
-								img(loading="lazy" src=SITE_TEMPLATE_PATH + "images/slide-bg.svg")
+
 							.slider-product__top
 								.slider-product__badge Товар недели
 								a(href="#").slider-product__title Бразилия Велосо Колекта
 								.slider-product__descr Сладкий кофе с насыщенным вкусом шоколада и
 							a(href="#").slider-product-wrap
+								.slider-product__shadow
+									img(loading="lazy" src=SITE_TEMPLATE_PATH + "images/slide-shadow.svg")
 								picture
-									source(srcset=SITE_TEMPLATE_PATH + 'images/slider-product.png' media='(min-width: 661px)')
-									source(srcset=SITE_TEMPLATE_PATH + 'images/slider-product-xs.png' media='(min-width: 0px)')
+									source(srcset=SITE_TEMPLATE_PATH + 'images/coffee-slider.png' media='(min-width: 661px)')
+									source(srcset=SITE_TEMPLATE_PATH + 'images/coffee-slider.png' media='(min-width: 0px)')
 									img.slider-product__img(src=SITE_TEMPLATE_PATH + 'images/slider-product.png' alt='product')
 							.slider-product__bottom
 								.slider-product__price от 41.90 руб.
 					+splide-slide()
 						.slider-product__block
-							.slide-bg
-								img(loading="lazy" src=SITE_TEMPLATE_PATH + "images/slide-bg.svg")
+
+							.slider-product__top
+								.slider-product__badge Товар недели
+								a(href="#").slider-product__title Бразилия Велосо Колекта
+							a(href="#").slider-product-wrap
+								.slider-product__shadow
+									img(loading="lazy" src=SITE_TEMPLATE_PATH + "images/slide-shadow.svg")
+								picture
+									source(srcset=SITE_TEMPLATE_PATH + 'images/tea-slider.png' media='(min-width: 661px)')
+									source(srcset=SITE_TEMPLATE_PATH + 'images/tea-slider.png' media='(min-width: 0px)')
+									img.slider-product__img(src=SITE_TEMPLATE_PATH + 'images/slider-product.png' alt='product')
+							.slider-product__bottom
+								.slider-product__price от 41.90 руб.
+					+splide-slide()
+						.slider-product__block
+
 							.slider-product__top
 								.slider-product__badge Товар недели
 								a(href="#").slider-product__title Бразилия Велосо Колекта
@@ -41,22 +58,7 @@
 								.slider-product__price от 41.90 руб.
 					+splide-slide()
 						.slider-product__block
-							.slide-bg
-								img(loading="lazy" src=SITE_TEMPLATE_PATH + "images/slide-bg.svg")
-							.slider-product__top
-								.slider-product__badge Товар недели
-								a(href="#").slider-product__title Бразилия Велосо Колекта
-							a(href="#").slider-product-wrap
-								picture
-									source(srcset=SITE_TEMPLATE_PATH + 'images/slider-product.png' media='(min-width: 661px)')
-									source(srcset=SITE_TEMPLATE_PATH + 'images/slider-product-xs.png' media='(min-width: 0px)')
-									img.slider-product__img(src=SITE_TEMPLATE_PATH + 'images/slider-product.png' alt='product')
-							.slider-product__bottom
-								.slider-product__price от 41.90 руб.
-					+splide-slide()
-						.slider-product__block
-							.slide-bg
-								img(loading="lazy" src=SITE_TEMPLATE_PATH + "images/slide-bg.svg")
+
 							.slider-product__top
 								.slider-product__badge Товар недели
 								a(href="#").slider-product__title Бразилия Велосо Колекта
