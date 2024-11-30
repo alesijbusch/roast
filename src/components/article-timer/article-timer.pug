@@ -3,6 +3,8 @@
 .article-timer
 	.article-timer__inner
 		.article-timer__left
+			.article-timer__bg
+				img(loading="lazy" src=SITE_TEMPLATE_PATH+ "images/list-bg.svg")
 			.article-timer__left-group
 				.article-timer__article-title Последние статьи
 				a(href="#").article-timer__article-arrow
@@ -27,6 +29,8 @@
 						span.title Не только арабика и робуста: сорта и виды кофе
 		.article-timer__right
 			.article-timer__timer
+				.article-timer__bg
+					img(loading="lazy" src=SITE_TEMPLATE_PATH+ "images/time-bg.svg")
 				.article-timer__timer-top
 					.article-timer__timer-icon
 						+icon('i-timer')(width="30" height="30")
@@ -52,6 +56,8 @@
 							span минут
 
 			.article-timer__delivery
+				.article-timer__bg
+					img(loading="lazy" src=SITE_TEMPLATE_PATH+ "images/delivery-bg.svg")
 				.article-timer__timer-icon
 					<svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M12.4 6.3125H14.6204C14.8528 6.3125 14.9689 6.3125 15.0783 6.3384C15.1752 6.36137 15.2679 6.39925 15.3529 6.45065C15.4487 6.50863 15.5309 6.5897 15.6952 6.75184L19.5548 10.5607C19.7191 10.7228 19.8013 10.8039 19.86 10.8985C19.9121 10.9824 19.9505 11.0738 19.9738 11.1695C20 11.2774 20 11.392 20 11.6213V14.2812C20 14.7181 20 14.9365 19.9277 15.1088C19.8313 15.3385 19.6463 15.521 19.4135 15.6161C19.239 15.6875 19.0176 15.6875 18.575 15.6875M13.825 15.6875H12.4M12.4 15.6875V6.5C12.4 5.4499 12.4 4.92485 12.1929 4.52377C12.0108 4.17096 11.7201 3.88413 11.3626 3.70436C10.9561 3.5 10.4241 3.5 9.36 3.5H4.04C2.9759 3.5 2.44385 3.5 2.03742 3.70436C1.67991 3.88413 1.38925 4.17096 1.20709 4.52377C1 4.92485 1 5.4499 1 6.5V13.8125C1 14.848 1.85066 15.6875 2.9 15.6875M12.4 15.6875H8.6M8.6 15.6875C8.6 17.2408 7.32401 18.5 5.75 18.5C4.17599 18.5 2.9 17.2408 2.9 15.6875M8.6 15.6875C8.6 14.1342 7.32401 12.875 5.75 12.875C4.17599 12.875 2.9 14.1342 2.9 15.6875M18.575 16.1562C18.575 17.4507 17.5117 18.5 16.2 18.5C14.8883 18.5 13.825 17.4507 13.825 16.1562C13.825 14.8618 14.8883 13.8125 16.2 13.8125C17.5117 13.8125 18.575 14.8618 18.575 16.1562Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>

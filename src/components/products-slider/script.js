@@ -5,71 +5,69 @@ window.addEventListener("load", function () {
 		threshold: 0.5,
 	};
 
-  if (!window.slider) window.slider = {}
+	if (!window.slider) window.slider = {}
 
-  window.slider.productSlider = function(){
-const sliderObserver = new IntersectionObserver((entries, observer) => {
-		entries.forEach((el) => {
-			if (el.isIntersecting) {
-				if (el.target.classList.contains("inited")) {
-					return;
+	window.slider.productSlider = function () {
+		const sliderObserver = new IntersectionObserver((entries, observer) => {
+			entries.forEach((el) => {
+				if (el.isIntersecting) {
+					if (el.target.classList.contains("inited")) {
+						return;
+					}
+
+					let slidesCount =
+						el.target.querySelectorAll(".splide__slide").length;
+
+					new Splide(el.target, {
+						type: "slide",
+						pagination: false,
+						perPage: 3,
+						perMove: 1,
+						drag: slidesCount > 3,
+						gap: 20,
+						speed: 1200,
+						lazyLoad: true,
+						arrows: true,
+						breakpoints: {
+							1199: {
+								perPage: 2,
+								drag: slidesCount > 2,
+								arrows: true,
+							},
+							991: {
+								perPage: 2,
+								drag: slidesCount > 2,
+								arrows: true,
+							},
+							767: {
+								perPage: 1,
+								drag: slidesCount > 1,
+								arrows: true,
+							},
+							560: {
+								perPage: 1,
+								arrows: true,
+								speed: 2000,
+								// autoWidth: true,
+								drag: true,
+							},
+						},
+					}).mount();
+
+					el.target.classList.add("inited");
 				}
+			}, config);
+		});
 
-				let slidesCount =
-					el.target.querySelectorAll(".splide__slide").length;
+		let slider = document.querySelectorAll(".js-splide-products");
 
-				new Splide(el.target, {
-					type: "slide",
-					pagination: false,
-					perPage: 3,
-					perMove: 1,
-					drag: slidesCount > 3,
-					gap: 20,
-					speed: 1200,
-					lazyLoad: true,
-					arrows: true,
-					breakpoints: {
-						1199: {
-							perPage: 2,
-							drag: slidesCount > 2,
-							arrows: true,
-						},
-						991: {
-							perPage: 2,
-							drag: slidesCount > 2,
-							arrows: true,
-						},
-						767: {
-							perPage: 1,
-							drag: slidesCount > 1,
-							arrows: true,
-						},
-						560: {
-							perPage: 1,
-							arrows: true,
-							speed: 2000,
-							// autoWidth: true,
-							drag: true,
-						},
-					},
-				}).mount();
+		slider.forEach((el) => {
+			sliderObserver.observe(el);
+		});
 
-				el.target.classList.add("inited");
-			}
-		}, config);
-	});
+	}
 
-	let slider = document.querySelectorAll(".js-splide-products");
-
-	slider.forEach((el) => {
-		sliderObserver.observe(el);
-	});
-
-  }
-
-  window.slider.productSlider()
-
-	
+	window.slider.productSlider()
 
 
 	const sliderSmObserver = new IntersectionObserver((entries, observer) => {
