@@ -511,11 +511,11 @@
 		//	}
 		//}
 
-		&:last-child {
-			.select {
-				width: 85px;
-			}
-		}
+		//&:last-child {
+		//	.select {
+		//		width: 85px;
+		//	}
+		//}
 
 		@media (max-width: $xs) {
 			width: auto;

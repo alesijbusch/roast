@@ -69,14 +69,18 @@
                 if (isExist) return;
 
                 GoodAppModal.elements.push(a);
-                const b = a.getAttribute("data-target").split("#").join(""),
-                    c = document.getElementById(b);
+
                 a.addEventListener("click", () => {
+					const b = a.getAttribute("data-target").split("#").join(""),
+						c = document.getElementById(b);
                     c.modal()
                 })
             });
 		}
 
+		// setTimeout(()=>{
+		//
+		// })
 		window.GOODAPP.initModals();
 
 	})

@@ -578,3 +578,17 @@
   }
 }
 
+[id^="bx_incl_area"]{
+	.index-banners__grid{
+		& > div{
+			&:first-child{
+				min-width: 100%;
+				grid-area: product;
+			}
+			&:nth-child(2){
+				min-width: 100%;
+				grid-area: slider;
+			}
+		}
+	}
+}
