@@ -408,34 +408,33 @@ mixin cart-product(args={})
 						.cart-checkout__total-line
 							.cart-checkout__d Оплата:
 							.cart-checkout__t Оплата через ЕРИП
-						.cart-checkout__promo
-							+input({
-                                fg_mod: '',
-                                placeholder: 'Введите промокод',
-                                type: 'text',
-                                name: false,
-                                small: false,
-                                required: true,
-                                validation: {
-                                    message: 'Заполните поле',
-                                    regexp: 'Неверный формат',
-                                    emailaddress: ' ',
-                                    identical: false
-                                }
-                            })
-							button.cart-checkout__promo-submit
+						.cart-checkout__promo(x-data="{open: false, code: ''}" )
+							input(
+                                @focus="open = true"
+								x-model="code"
+                                placeholder='Промокод'
+                                type='text'
+								class="form-control"
+                            )
+							button.cart-checkout__promo-submit(x-show="code.length" title="Применить промокод")
 						.cart-checkout__promo-list
 							.cart-checkout__promo-item
 								.cart-checkout__promo-item-name dsfsdf dsfs aad
 								.cart-checkout__promo-item-status
 									span.outin-stock не найден
-									.cart-checkout__promo-item-remove
+									.cart-checkout__promo-item-remove(title="Убрать промокод")
 										+icon('i-close')(style="width:10px; height:10px")
 							.cart-checkout__promo-item
-								.cart-checkout__promo-item-name.in-stock dsfsdf
+								.cart-checkout__promo-item-name dsfsdf
 								.cart-checkout__promo-item-status
-									span.in-stock найден
-									.cart-checkout__promo-item-remove
+									span.in-stock Применен
+									.cart-checkout__promo-item-remove(title="Убрать промокод")
+										+icon('i-close')(style="width:10px; height:10px")
+							.cart-checkout__promo-item
+								.cart-checkout__promo-item-name dsfsdf
+								.cart-checkout__promo-item-status
+									span.outin-stock Не активен
+									.cart-checkout__promo-item-remove(title="Убрать промокод")
 										+icon('i-close')(style="width:10px; height:10px")
 						.cart-checkout__total-line
 							.cart-checkout__d Внутренний счет:

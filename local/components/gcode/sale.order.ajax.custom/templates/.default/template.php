@@ -1,7 +1,10 @@
 <? if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
 
 use Bitrix\Main;
+use Bitrix\Main\Config\Option;
 use Bitrix\Main\Localization\Loc;
+use GoodApp\Google\RecaptchaV3;
+use GoodApp\Helpers\Util;
 
 /**
  * @var array $arParams
@@ -12,8 +15,12 @@ use Bitrix\Main\Localization\Loc;
  * @var string $templateFolder
  */
 
+//CJSCore::Init(array('jquery'));
+
 $context = Main\Application::getInstance()->getContext();
 $request = $context->getRequest();
+
+//RecaptchaV3::getInstance()->init();
 
 $arParams['ALLOW_USER_PROFILES'] = $arParams['ALLOW_USER_PROFILES'] === 'Y' ? 'Y' : 'N';
 $arParams['SKIP_USELESS_BLOCK'] = $arParams['SKIP_USELESS_BLOCK'] === 'N' ? 'N' : 'Y';
@@ -242,11 +249,28 @@ $this->addExternalCss("/html/components-template/form-mixin/style.css");
 $this->addExternalCss("/html/components-template/cart/style.css");
 $this->addExternalJs("/html/components-template/cart/script.min.js");
 
+function getDivisibleHour(): int
+{
+    $hour = (int) date('G');
 
-?>
+    // Проверяем делимость часа
+    if ($hour % 3 === 0) {
+        return 2;
+    } elseif ($hour % 2 === 0) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+$keys = (new GoodApp\HighLoad\YandexKey())->getAll();
+if ($key = $keys[getDivisibleHour()]) {?>
+    <script id="customMap" src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=<?=$key['UF_KEY']?>&suggest_apikey=<?=$key['UF_SUGGEST_KEY']?>"></script>
+<?php }?>
 <NOSCRIPT>
 	<div style="color:red"><?= Loc::getMessage('SOA_NO_JS') ?></div>
 </NOSCRIPT>
+
 
 <?
 if ($request->get('ORDER_ID') <> '') {
@@ -259,6 +283,7 @@ if ($request->get('ORDER_ID') <> '') {
 	$signer = new Main\Security\Sign\Signer;
 	$signedParams = $signer->sign(base64_encode(serialize($arParams)), 'sale.order.ajax.custom');
 	$messages = Loc::loadLanguageFile(__FILE__);
+
 	$jsParams = [
 		'result' => $arResult['JS_DATA'],
 		'locations' => $arResult['LOCATIONS'],
@@ -269,7 +294,7 @@ if ($request->get('ORDER_ID') <> '') {
 		'templateFolder' => $templateFolder,
 		'action' => 'saveOrderAjax',
 		'formSelector' => '#bx-soa-order-form',
-		'noPhoto' => '/upload/default.png'
+		'noPhoto' => '/upload/default.png',
 	];
 ?>
 <div class="cart" x-data='saleOrderAjax(<?= \Bitrix\Main\Web\Json::encode($jsParams) ?>)'>
@@ -367,38 +392,58 @@ if ($request->get('ORDER_ID') <> '') {
 				<div class="cart-form__section">
 				<div class="cart-form__form">
 					<template x-for="prop in orderPropsList" :key="prop.ID">
-					<div class="cart-form__field cart-form__field--2" :class="{'cart-form__field-location': (prop.CODE == 'PD_LOCATION' || prop.CODE == 'LOCATION')}" x-data="{search: false}" @click.outside="search=false">
-						<template x-if="prop.CODE != 'PD_LOCATION' && prop.CODE != 'LOCATION'">
-						<div class="form-group">
-							<label class="form-control-label" :for="prop.CODE" x-html="prop.REQUIRED === 'Y' ? prop.NAME + `<span class='label-required'>*</span>` : prop.NAME"></label>
-							<input class="form-control" :type="prop.INPUT_TYPE" :id="prop.CODE" :name="'ORDER_PROP_' + prop.ID" :value="prop['VALUE'][0]" :required="prop.REQUIRED === 'Y'" placeholder="" />
-						</div>
-						</template>
+                        <div class="cart-form__field cart-form__field--2" :class="{'cart-form__field-location': (prop.CODE == 'PD_LOCATION' || prop.CODE == 'LOCATION')}" x-data="{search: false}" @click.outside="search=false">
+                            <template x-if="prop.CODE != 'PD_LOCATION' && prop.CODE != 'LOCATION'">
+                                <div class="form-group">
+                                    <label class="form-control-label" :for="prop.CODE" x-html="prop.REQUIRED === 'Y' ? prop.NAME + `<span class='label-required'>*</span>` : prop.NAME"></label>
+                                    <input class="form-control" :type="prop.INPUT_TYPE" :id="prop.CODE" :name="'ORDER_PROP_' + prop.ID" :value="prop['VALUE'][0]" :required="prop.REQUIRED === 'Y'" placeholder="" />
+                                </div>
+                            </template>
 
-						<template x-if="prop.CODE == 'PD_LOCATION' || prop.CODE == 'LOCATION'">
-						<div class="form-group" :class="{'is-invalid' : !location, 'is-success': location }">
-							<label class="form-control-label" :for="prop.CODE + '_selector'" x-html="prop.REQUIRED === 'Y' ? prop.NAME + `<span class='label-required'>*</span>` : prop.NAME">
-							</label>
-							<input x-on:focus="search=true"  @input.debounce.400="guessCity($event)" class="form-control" :type="prop.INPUT_TYPE" :id="prop.CODE + '_selector'" :required="prop.REQUIRED === 'Y'" placeholder="" x-ref="locationFake" autocomplete="nope"/>
+                            <template x-if="prop.CODE == 'PD_LOCATION' || prop.CODE == 'LOCATION'">
+                                <div class="form-group" :class="{'is-invalid' : !location, 'is-success': location }">
+                                    <label
+                                            class="form-control-label"
+                                            :for="prop.CODE + '_selector'"
+                                            x-html="prop.REQUIRED === 'Y' ? prop.NAME + `<span class='label-required'>*</span>` : prop.NAME"
+                                    ></label>
+                                    <input
+                                            x-on:focus="search=true"
+                                            @input.debounce.400="guessCity($event)"
+                                            class="form-control location-selector"
+                                            :type="prop.INPUT_TYPE"
+                                            :id="prop.CODE + '_selector'"
+                                            :required="prop.REQUIRED === 'Y'"
+                                            placeholder=""
+                                            x-ref="locationFake"
+                                            autocomplete="nope"
+                                    />
 
-							<input type="hidden" :id="prop.CODE" :name="'ORDER_PROP_' + prop.ID" :required="prop.REQUIRED === 'Y'" x-ref="locationReal" />
-							<template x-if="citiesList">
-								<div class="cart-form__field-dropdown" x-show="search" x-transition="">
-								<template x-for="city in citiesList">
-									<div class="cart-form__field-item" @click="changeLocation(city); search=false;" x-text="city.title"></div>
-								</template>
-								</div>
-							</template>
-						</div>
-						</template>
-					</div>
+                                    <input
+                                            type="hidden"
+                                            class="location-hidden"
+                                            :id="prop.CODE"
+                                            :name="'ORDER_PROP_' + prop.ID"
+                                            :required="prop.REQUIRED === 'Y'"
+                                            x-ref="locationReal"
+                                    />
+                                    <template x-if="citiesList">
+                                        <div class="cart-form__field-dropdown" x-show="search" x-transition="">
+                                        <template x-for="city in citiesList">
+                                            <div class="cart-form__field-item" @click="changeLocation(city); search=false;" x-text="city.title"></div>
+                                        </template>
+                                        </div>
+                                    </template>
+                                </div>
+                            </template>
+                        </div>
 					</template>
 
 					<template x-if="Object.values(userConsent).length">
 					<div class="form-group">
 					<div class="checkbox">
 						<input class="form-control" type="checkbox" :id="userConsent.CODE" :name="'ORDER_PROP_' + userConsent.ID" value="Y" :required="userConsent.REQUIRED === 'Y'" />
-						<label class="form-control-label" :for="userConsent.CODE" x-html="userConsent.REQUIRED === 'Y' ? userConsent.NAME + `<span class='label-required'>*</span>` : userConsent.NAME"></label>
+						<label class="form-control-label" :for="userConsent.CODE" x-html="'Обработка персональных <a href=\'/info/public/\' target=\'_blank\'>данных</a>' + (userConsent.REQUIRED === 'Y' ? `<span class='label-required'>*</span>` : '')"></label>
 					</div>
 					</div>
 					</template>
@@ -556,36 +601,62 @@ if ($request->get('ORDER_ID') <> '') {
 				</div>
 			</div>
 
-			<template x-if="address&&street">
-			<div class="cart-form__block" :class="{'collapse': !expand.address}">
-				<div class="cart-form__header">
-					<div class="cart-form__title" x-html="address.REQUIRED === 'Y' ? address.NAME + `<span class='label-required'>*</span>` : address.NAME"></div>
-					<div class="cart-form__toggler" @click="expand.address=!expand.address"><span></span></div>
-				</div>
+			<template x-if="address">
+                <div class="cart-form__block" :class="{'collapse': !expand.address}">
+                    <div class="cart-form__header">
+                        <div class="cart-form__title" x-html="address.REQUIRED === 'Y' ? address.NAME + `<span class='label-required'>*</span>` : address.NAME"></div>
+                        <div class="cart-form__toggler" @click="expand.address=!expand.address"><span></span></div>
+                    </div>
 
-				<input type="hidden" :id="address.CODE" :name="'ORDER_PROP_' + address.ID" :value="address['VALUE'][0]" :required="address.REQUIRED === 'Y'" x-ref="addressReal" />
-				<div class="form-group" x-data="{search: false}" @click.outside="search=false">
-					<label class="form-control-label" :for="street.CODE + '_selector'" x-html="(street.REQUIRED === 'Y' ? street.NAME + `<span class='label-required'>*</span>` : street.NAME) + ' (' + result.ORDER_PROP.properties.filter(item => item.CODE == 'PD_LOCATION')[0].DISPLAY_VALUE + ')'"></label>
-					<input x-on:focus="search=true" @input.debounce.400="guessStreet($event)" class="form-control" :type="street.INPUT_TYPE" :id="street.CODE + '_selector'" :value="street['VALUE'][0]" :required="street.REQUIRED === 'Y'" placeholder=""/>
+                    <div class="form-group" @click.outside="showYaSuggestList=false">
+                        <label
+                                class="form-control-label"
+                                :for="address.CODE"
+                                x-html="address.REQUIRED === 'Y' ? address.NAME + `<span class='label-required'>*</span> (` + cityData.name + `)` : address.NAME">
+                        </label>
+                        <input
+                                class="form-control"
+                                :type="address.INPUT_TYPE"
+                                :id="address.CODE"
+                                :name="'ORDER_PROP_' + address.ID"
+                                :value="address['VALUE'][0]"
+                                :required="address.REQUIRED === 'Y'"
+                                @input.debounce.400="guessAddress($event)"
+                                @click="guessAddress($event)"
+                                placeholder=""
+                        />
 
-					<input type="hidden" :id="street.CODE" :name="'ORDER_PROP_' + street.ID" :value="street['VALUE'][0]" :required="street.REQUIRED === 'Y'"/>
-					<template x-if="streetList">
-						<div class="cart-form__field-dropdown" x-show="search" x-transition="">
-						<template x-for="city in streetList">
-							<div class="cart-form__field-item" @click="changeStreet(city); search=false;" x-text="city.title.text"></div>
-						</template>
-						</div>
-					</template>
-				</div>
+                        <template x-if="yaSuggestList">
+                            <div class="cart-form__field-dropdown" x-show="showYaSuggestList" x-transition="">
+                                <template x-for="suggest in yaSuggestList">
+                                    <div class="cart-form__field-item" @click="changeAddress($event, suggest);" x-text="suggest.displayName"></div>
+                                </template>
+                            </div>
+                        </template>
+                    </div>
 
-				<template x-for="prop in addressData">
-					<div class="form-group">
-						<label class="form-control-label" :for="prop.CODE" x-html="prop.REQUIRED === 'Y' ? prop.NAME + `<span class='label-required'>*</span>` : prop.NAME"></label>
-						<input class="form-control" @input="prop['VALUE'][0]=event.target.value;buildAddress();" :type="prop.INPUT_TYPE" :id="prop.CODE" :name="'ORDER_PROP_' + prop.ID" :value="prop['VALUE'][0]" :required="prop.REQUIRED === 'Y'" placeholder="" />
-					</div>
-				</template>
-				
-			</div>
+                    <template x-for="prop in addressDataHidden">
+                        <div class="form-group">
+                            <input class="form-control" type="hidden" :id="prop.CODE" :name="'ORDER_PROP_' + prop.ID" :value="prop['VALUE'][0]" :required="prop.REQUIRED === 'Y'" placeholder="" />
+                        </div>
+                    </template>
+
+                    <template x-for="prop in addressData">
+                        <div class="form-group">
+                            <label class="form-control-label" :for="prop.CODE" x-html="prop.REQUIRED === 'Y' ? prop.NAME + `<span class='label-required'>*</span>` : prop.NAME"></label>
+                            <input
+                                    class="form-control"
+                                    :type="prop.INPUT_TYPE"
+                                    :id="prop.CODE"
+                                    :name="'ORDER_PROP_' + prop.ID"
+                                    :value="prop['VALUE'][0]"
+                                    :required="prop.REQUIRED === 'Y'" placeholder=""
+                            />
+                        </div>
+                    </template>
+
+                    <div id="delivery_map"></div>
+                </div>
 			</template>
 
 			<template x-if="propBes||propNeperez||commentary">
@@ -642,7 +713,7 @@ if ($request->get('ORDER_ID') <> '') {
 				<div class="cart-checkout__t" x-html="result.TOTAL.ORDER_TOTAL_PRICE_FORMATED"></div>
 			</div>
 			<div class="cart-bill__btn">
-				<div class="btn">Оформить</div>
+				<div class="btn" @click="dispatchCompleteOrder()">Оформить</div>
 			</div>
 		</div>
 
@@ -672,16 +743,16 @@ if ($request->get('ORDER_ID') <> '') {
 				</template>
 				<div class="cart-checkout__promo">
 					<div class="form-group">
-						<input class="form-control" type="text" x-ref="coupon" placeholder="Есть промокод?" />
+						<input class="form-control" type="text" x-model="promoCode" x-ref="coupon" placeholder="Промокод" />
 					</div>
-					<button class="cart-checkout__promo-submit" @click="enterCoupon()"></button>
+					<button class="cart-checkout__promo-submit" x-cloak x-show="promoCode.length" @click="enterCoupon()"></button>
 				</div>
 
 				<template x-if="couponList.length">
 				<div class="cart-checkout__promo-list">
 				<template x-for="coupon in couponList">
 					<div class="cart-checkout__promo-item">
-						<div class="cart-checkout__promo-item-name" :class="{'in-stock': coupon.JS_STATUS === 'APPLIED'}" x-html="coupon.COUPON"></div>
+						<div class="cart-checkout__promo-item-name"  x-html="coupon.COUPON"></div>
 						<div class="cart-checkout__promo-item-status">
 							<span :class="coupon.JS_STATUS === 'APPLIED' ? 'in-stock' : 'outin-stock'" x-html="coupon.JS_CHECK_CODE"></span>
 
@@ -716,7 +787,7 @@ if ($request->get('ORDER_ID') <> '') {
 					<div class="cart-checkout__t" x-html="result.TOTAL.DISCOUNT_PRICE_FORMATED"></div>
 					<div class="tip">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none"><circle cx="7.61523" cy="7.5" r="6.75" stroke="#D9D9D9" stroke-width="1.5"></circle><line x1="7.5957" y1="5.96594" x2="7.5957" y2="11.3353" stroke="#ACACAC" stroke-width="1.5"></line><line x1="7.5957" y1="3.6648" x2="7.5957" y2="5.19889" stroke="#ACACAC" stroke-width="1.5"></line></svg>
-						<div class="tip__text">Здесь учтены все скидки для вашего заказа: <a href="/info/sales" style="color: #8a6048">это могут быть</a> бонусы от программы лояльности, скидка за выбранный способ оплаты, промокоды, скидка за количество товаров или акционные товары.</div>
+						<div class="tip__text">Здесь учтены все скидки для вашего заказа: <a href="/info/sales" style="color: #8a6048">это могут быть</a> бонусы от программы лояльности, скидка за выбранный способ оплаты, промокоды, акционные товары.</div>
 					</div>
 				</div>
 				</template>
@@ -745,6 +816,29 @@ if ($request->get('ORDER_ID') <> '') {
 				</div>
 			</div>
 
+			<div class="cart-delivery">
+				<? [$roastDay, $neededDay] = Util::getDateRoastNeeded();?>
+				<template x-if="isCoffeExist">
+				<div class="cart-delivery__item">
+					<div class="cart-delivery__icon">
+						<svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.85 2.5L1 5.33333M20 5.33333L17.15 2.5M4.8 17.6111L2.9 19.5M16.2 17.6111L18.1 19.5M7.65 12.4167L9.55 14.3056L13.825 10.0556M10.5 19.5C12.5156 19.5 14.4487 18.704 15.874 17.287C17.2993 15.8701 18.1 13.9483 18.1 11.9444C18.1 9.94059 17.2993 8.0188 15.874 6.60186C14.4487 5.18492 12.5156 4.38889 10.5 4.38889C8.48435 4.38889 6.55126 5.18492 5.12599 6.60186C3.70071 8.0188 2.9 9.94059 2.9 11.9444C2.9 13.9483 3.70071 15.8701 5.12599 17.287C6.55126 18.704 8.48435 19.5 10.5 19.5Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+					</div>
+					<div class="cart-delivery__content">
+						<div class="prop">Ближайшая обжарка</div>
+						<div class="val"><?= $roastDay?></div>
+					</div>
+				</div>
+				</template>
+				<div class="cart-delivery__item">
+					<div class="cart-delivery__icon">
+						<svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.4 6.3125H14.6204C14.8528 6.3125 14.9689 6.3125 15.0783 6.3384C15.1752 6.36137 15.2679 6.39925 15.3529 6.45065C15.4487 6.50863 15.5309 6.5897 15.6952 6.75184L19.5548 10.5607C19.7191 10.7228 19.8013 10.8039 19.86 10.8985C19.9121 10.9824 19.9505 11.0738 19.9738 11.1695C20 11.2774 20 11.392 20 11.6213V14.2812C20 14.7181 20 14.9365 19.9277 15.1088C19.8313 15.3385 19.6463 15.521 19.4135 15.6161C19.239 15.6875 19.0176 15.6875 18.575 15.6875M13.825 15.6875H12.4M12.4 15.6875V6.5C12.4 5.4499 12.4 4.92485 12.1929 4.52377C12.0108 4.17096 11.7201 3.88413 11.3626 3.70436C10.9561 3.5 10.4241 3.5 9.36 3.5H4.04C2.9759 3.5 2.44385 3.5 2.03742 3.70436C1.67991 3.88413 1.38925 4.17096 1.20709 4.52377C1 4.92485 1 5.4499 1 6.5V13.8125C1 14.848 1.85066 15.6875 2.9 15.6875M12.4 15.6875H8.6M8.6 15.6875C8.6 17.2408 7.32401 18.5 5.75 18.5C4.17599 18.5 2.9 17.2408 2.9 15.6875M8.6 15.6875C8.6 14.1342 7.32401 12.875 5.75 12.875C4.17599 12.875 2.9 14.1342 2.9 15.6875M18.575 16.1562C18.575 17.4507 17.5117 18.5 16.2 18.5C14.8883 18.5 13.825 17.4507 13.825 16.1562C13.825 14.8618 14.8883 13.8125 16.2 13.8125C17.5117 13.8125 18.575 14.8618 18.575 16.1562Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+					</div>
+					<div class="cart-delivery__content">
+						<div class="prop">Ближайшая доставка</div>
+						<div class="val"><?= $neededDay?></div>
+					</div>
+				</div>
+			</div>
 			<template x-if="result.CURRENT_BUDGET_FORMATED">
 			<div class="cart-checkout__info" x-data="{show:true}" x-show="show" x-transition="">
 				<div class="cart-checkout__info-close" @click="show=false">

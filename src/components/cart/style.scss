@@ -625,7 +625,7 @@ $xl: 1380px;
 	}
 
 	&__promo {
-		//margin-top: 30px;
+		//margin-top: 20px;
 		position: relative;
 		margin-bottom: 20px;
 		@media (max-width: $sm - 1) {
@@ -636,13 +636,23 @@ $xl: 1380px;
 		.form-control {
 			background-color: #fff;
 			border: 1px solid #E5E5E5;
-			padding-right: 40px;
+			padding-right: 46px;
+			//&:focus{
+			//	&+.cart-checkout__promo-submit{
+			//		opacity: 1;
+			//		visibility: visible;
+			//	}
+			//}
+
 		}
 
 		&-list {
 			display: flex;
 			flex-direction: column;
-			margin-top: 10px;
+			margin-top: -10px;
+			@media (max-width: $sm - 1) {
+				margin-top: -6px;
+			}
 			//margin-bottom: 10px;
 		}
 
@@ -652,8 +662,17 @@ $xl: 1380px;
 			justify-content: space-between;
 			font-size: 14px;
 			position: relative;
+			padding: 5px 10px;
+			border: 1px solid $a4;
+			margin-bottom: 5px;
+			&:last-child{
+				margin-bottom: 20px;
+			}
 			@media (max-width: $xl - 1) {
 				justify-content: flex-start;
+			}
+			@media (max-width: $xs - 1) {
+				justify-content: space-between;
 			}
 
 			&:before {
@@ -669,6 +688,10 @@ $xl: 1380px;
 
 			&-name {
 				padding-right: 20px;
+				white-space: nowrap;
+				overflow: hidden;
+				max-width: calc(100% - 80px);
+				text-overflow: ellipsis;
 			}
 
 			&-status {
@@ -685,7 +708,7 @@ $xl: 1380px;
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				fill: #0d0c22;
+				fill: $a4;
 
 				&:hover {
 					@media (min-width: 1024px) {
@@ -703,15 +726,28 @@ $xl: 1380px;
 			transform: translateY(-50%);
 			width: 30px;
 			height: 30px;
+			border-radius: 50%;
+			background-color: #000000;
+			transition: all ease .3s;
+			//opacity: 0;
+			//visibility: hidden;
+
+			&:hover {
+				@media (hover: hover) {
+					cursor: pointer;
+					opacity: .7;
+				}
+			}
 
 			&:before {
 				content: "";
 				display: block;
 				width: 13px;
 				height: 2px;
-				background-color: var(--white_text_black);
+				background-color: #fff;
+				//background-color: var(--white_text_black);
 				position: absolute;
-				right: 1px;
+				right: 10px;
 				top: 50%;
 				margin-top: -1px;
 				z-index: 2;
@@ -725,12 +761,12 @@ $xl: 1380px;
 				width: 10px;
 				height: 10px;
 				background-color: transparent;
-				border-right: 2px solid #8da3ad;
-				border-bottom: 2px solid #8da3ad;
-				border-right-color: var(--white_text_black);
-				border-bottom-color: var(--white_text_black);
+				border-right: 2px solid #ffffff;
+				border-bottom: 2px solid #ffffff;
+				//border-right-color: var(--white_text_black);
+				//border-bottom-color: var(--white_text_black);
 				position: absolute;
-				right: 0px;
+				right: 9px;
 				top: 50%;
 				margin-top: -5px;
 				-webkit-transform: rotate(-45deg);
