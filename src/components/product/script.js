@@ -25,18 +25,14 @@ window.addEventListener("load", function () {
         block.style.background = `linear-gradient(90deg, black ${percent}%, #e3e3e3 ${percent}%)`;
     });
 
-    let commentModal = document.querySelector('#modal-comment')
+	setTimeout(()=>{
+		let commentModal = document.querySelector('#modal-comment')
+		if (commentModal) {
+			document.querySelector('.js-modals-list').insertAdjacentElement('afterbegin', commentModal)
+		}
 
-    if (commentModal) {
+	}, 400)
 
-        document.querySelector('.js-modals-list').insertAdjacentElement('afterbegin', commentModal)
-
-        // let clone = commentModal.cloneNode(true)
-
-        // document.querySelector('.js-modals-list').append(clone)
-
-        // commentModal.remove()
-    }
 
     // document.querySelector('.btn-comment').addEventListener('click', ()=>{
     //     document.querySelector('#modal-comment').modal()
