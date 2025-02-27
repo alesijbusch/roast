@@ -1517,7 +1517,70 @@
 .p-tab-props {
 	border: 1px solid #e3e3e3;
 	padding: 30px 30px 15px;
-	max-width: 880px;
+
+
+	&__grid{
+		display: flex;
+		grid-template-columns: 70% auto;
+		gap: 24px;
+		align-items: flex-start;
+		@media (max-width: $md - 1) {
+			flex-direction: column;
+		}
+		@media (max-width: $sm - 1) {
+			gap: 20px;
+		}
+
+	}
+
+	&__content{
+		flex-grow: 1;
+		@media (max-width: $md - 1) {
+			display: contents;
+		}
+	}
+
+	&__form{
+		max-width: 402px;
+		width: 100%;
+		flex-grow: 1;
+		position: sticky;
+		top: 60px;
+		@media (max-width: $lg - 1) {
+			max-width: 340px;
+		}
+		@media (max-width: $md - 1) {
+			order: 3;
+			position: static;
+			max-width: none;
+		}
+		.grid-list__item-inner{
+			padding: 40px;
+			gap: 20px;
+			width: 100%;
+			text-align: center;
+			@media (max-width: $lg - 1) {
+				padding: 24px;
+			}
+			@media (max-width: $sm - 1) {
+				gap: 20px;
+			}
+			p{
+				color: #444444;
+				margin: 0;
+				@media (max-width: $xs - 1) {
+					margin-top: 5px;
+				}
+			}
+			h3{
+				@media (max-width: $xs - 1) {
+					font-size: 16px;
+				}
+			}
+		}
+	}
+
+
 
 	&__inner {
 		font-size: 16px;
@@ -2174,6 +2237,51 @@
 		}
 	}
 }
+
+.recipe-list{
+	margin-top: 45px;
+	@media (max-width: $md - 1) {
+		display: contents;
+	}
+	&__header{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		@media (max-width: $md - 1) {
+			width: 100%;
+			order: 2;
+		}
+		@media (max-width: $sm - 1) {
+			flex-wrap: wrap;
+			gap: 16px;
+		}
+
+	}
+	&__title{
+		@media (max-width: $sm - 1) {
+			font-size: 16px;
+		}
+
+	}
+	&__sort{
+		@media (max-width: $xs - 1) {
+			width: 100%;
+		}
+	}
+	&__list{
+		margin-top: 25px;
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		@media (max-width: $md - 1) {
+			order: 4;
+		}
+		@media (max-width: $sm - 1) {
+			margin-top: 0;
+		}
+	}
+}
+
 
 .product .product__section .p-tab-review__body {
 

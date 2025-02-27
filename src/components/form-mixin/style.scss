@@ -407,6 +407,17 @@ textarea.form-control {
       }
     }
   }
+
+	&--recipe{
+		.select__header{
+			padding: 12px;
+			background-color: #F8F8F8;
+			@media (max-width: $sm - 1) {
+				padding: 15px 12px;
+			}
+		}
+
+	}
 }
 
 // Rate group

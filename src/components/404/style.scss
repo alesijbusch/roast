@@ -1,17 +1,18 @@
 @import "src/assets/css/vars_mixins/vars_mixins";
 
-.not-found-page{
-	.index-tabs{
+.not-found-page {
+	.index-tabs {
 		padding-top: 0;
 	}
 }
 
-.pnf{
+.pnf {
 	margin: 80px auto;
 	@media (max-width: $xs - 1) {
 		margin: 40px auto;
 	}
-	&-inner{
+
+	&-inner {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -20,23 +21,26 @@
 			gap: 24px;
 		}
 	}
-	h1{
+
+	h1 {
 		font-size: 32px;
 		line-height: 1.1;
 		font-weight: 700;
 	}
-	&-content{
+
+	&-content {
 		padding: 45px;
 		background: $b4;
 		@media (max-width: $sm - 1) {
 			padding: 20px;
 		}
-		
-		p{
+
+		p {
 			font-weight: 600;
 			margin-bottom: 30px;
 		}
-		ul{
+
+		ul {
 			li {
 				position: relative;
 				padding: 0 0 0 20px;
@@ -67,13 +71,14 @@
 			}
 		}
 	}
-	&-btns{
+
+	&-btns {
 		display: flex;
 		gap: 20px 30px;
 		@media (max-width: $xs - 1) {
 			flex-direction: column;
 			width: 100%;
-			.btn{
+			.btn {
 				width: 100%;
 				max-width: 300px;
 			}
@@ -82,3 +87,200 @@
 		}
 	}
 }
+
+.sp-popup-outer .sp-form-popup{
+	padding: 0 !important;
+	border: none;
+}
+
+.sp-force-hide {
+	display: none;
+}
+
+.sp-form[sp-id="208016"] {
+	display: block;
+	background: #F9F5F2;
+	max-width: 98%;
+	border-radius: 0px;
+	width: 800px;
+	@media (max-width: $xs - 1) {
+		width: 380px;
+
+	}
+}
+
+//
+//.sp-form[sp-id="208016"] input[type="checkbox"] {
+//	display: inline-block;
+//	opacity: 0;
+//	visibility: visible;
+//	position: absolute;
+//}
+//
+//.sp-form[sp-id="208016"] .sp-form-fields-wrapper {
+//	margin: 0 auto;
+//}
+//
+//
+//.sp-form[sp-id="208016"] .sp-button {
+//	width: 100%;
+//	box-shadow: none;
+//}
+//
+//.sp-form[sp-id="208016"] .sp-button-container {
+//	text-align: left;
+//	width: auto;
+//}
+//
+//.sp-popup-outer {
+//	background: rgba(5, 5, 5, 0.5);
+//}
+//.sp-form-popup.sp-form .sp-btn-close{
+//	background-size: auto;
+//	box-shadow: none;
+//	top: 5px;
+//	right: 5px;
+//	background-color: transparent;
+//	background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.63477 18.3637L18.3627 5.63574M18.3651 18.3638L5.63716 5.63589' stroke='%23D4D4D4' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E%0A");
+//}
+//
+//.sp-form{
+//	form{
+//		font-family: $f-main;
+//		display: flex;
+//		.sp-field .sp-checkbox-option>label,  .sp-field .sp-radio-options>label{
+//			font-size: 14px;
+//		}
+//		.sp-field .sp-invalid+.sp-tip, .sp-field.sp-invalid>.sp-tip{
+//			top: 100%;
+//			z-index: 4;
+//		}
+//		.sp-field .sp-form-control.form-control{
+//			border-radius: 0;
+//			font-size: 16px;
+//			height: 54px;
+//			&::placeholder{
+//				font-size: 16px;
+//			}
+//
+//
+//		}
+//
+//		label{
+//			padding-left: 24px;
+//		}
+//	}
+//	.sp-spacer-container{
+//		display: none;
+//	}
+//	.sp-button-container{
+//		margin-top: 20px;
+//	}
+//	.sp-link-wrapper{
+//		padding-top: 16px;
+//	}
+//	&__info{
+//		padding: 80px 40px;
+//		width: 450px;
+//		@media (max-width: $xs - 1) {
+//			width: 100%;
+//			padding: 30px 20px;
+//		}
+//
+//		.sp-field{
+//			padding: 0;
+//		}
+//	}
+//	&__img{
+//		width: 350px;
+//		flex-grow: 1;
+//		background-repeat: no-repeat;
+//		background-position: center;
+//		background-size: cover;
+//		background-image: url('/html/images/sale-bg.png');
+//		@media (max-width: $xs - 1) {
+//			display: none;
+//		}
+//	}
+//
+//	&__title{
+//		margin-bottom: 70px;
+//		@media (max-width: $xs - 1) {
+//			margin-bottom: 40px;
+//		}
+//		.first{
+//			font-weight: 700;
+//			font-size: 42px;
+//			@media (max-width: $xs - 1) {
+//				font-size: 32px;
+//			}
+//		}
+//		.second{
+//			font-weight: 400;
+//			font-size: 36px;
+//			@media (max-width: $xs - 1) {
+//				font-size: 32px;
+//			}
+//		}
+//		p{
+//			text-align: center;
+//			margin: 0;
+//			line-height: 1;
+//		}
+//	}
+//	&__text{
+//		margin-top: 70px;
+//		@media (max-width: $xs - 1) {
+//			margin-top: 40px;
+//		}
+//	}
+//
+//	.sm-t{
+//		font-size: 14px;
+//		color: #757575;
+//	}
+//	.btn.sp-button {
+//		text-transform: none;
+//		letter-spacing: normal;
+//		margin: 0;
+//		border: 1px solid;
+//		overflow: hidden;
+//		display: inline-flex;
+//		user-select: none;
+//		background-image: none;
+//		cursor: pointer;
+//		white-space: nowrap;
+//		transition: background-color 0.1s ease;
+//
+//		border-color: $basic_black;
+//		background-color: $basic_black;
+//
+//		color: #fff;
+//		text-decoration: none;
+//		// display: flex;
+//		padding: 12px 45px 14px 45px;
+//		justify-content: center;
+//		align-items: center;
+//		gap: 7px;
+//		font-size: 16px;
+//		border-radius: 0;
+//		font-style: normal;
+//		font-weight: 300;
+//		line-height: 24px;
+//			height: 54px;
+//
+//		&:active {
+//			color: #ffffff;
+//			border-color: $basic_black;
+//			background-color: $basic_black;
+//		}
+//
+//		&:focus,
+//		&:hover {
+//			color: #ffffff;
+//			border-color: $accent;
+//			background-color: $accent;
+//		}
+//	}
+//
+//}

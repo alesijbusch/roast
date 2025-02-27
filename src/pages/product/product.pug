@@ -1,36 +1,37 @@
 extends ../../layout/layout
 
 block vars
-    - var pageTitle = 'Фирменная смесь Roast.by'
-    - var pageBodyClass = ''
-    - var dir = './'
+	- var pageTitle = 'Фирменная смесь Roast.by'
+	- var pageBodyClass = ''
+	- var dir = './'
 
 
 block premain
-    .container
-        .page-top
-            +breadcrumbs({
-                content2: 'Каталог',
-                href_content2: '#',
-                content3: 'Фирменная смесь Roast.by',
-                href_content3: '#',
-            })
+	.container
+		.page-top
+			+breadcrumbs({
+				content2: 'Каталог',
+				href_content2: '#',
+				content3: 'Фирменная смесь Roast.by',
+				href_content3: '#',
+			})
 
 block main
-    include ../../components/product/product
-    include ../../components/products-slider/products-slider
-    include ../../components/subscription/subscription
+	include ../../components/product/product
+	include ../../components/products-slider/products-slider
+	include ../../components/subscription/subscription
 
 
 
 block pageModal
-
+	include ../../components/modal/recipe/modal-recipe
+	include ../../components/modal/answer/modal-answer
 block componentsCriticalStyles
-    +componentsCriticalStyles-includer()
+	+componentsCriticalStyles-includer()
 block vendorScripts
-    +vendorScripts-includer()
+	+vendorScripts-includer()
 block componentsStyles
-    +style-includer()
+	+style-includer()
 block componentsScripts
-    +componentsScripts-includer()
-    <script src="https://yastatic.net/share2/share.js"></script>
+	+componentsScripts-includer()
+	<script src="https://yastatic.net/share2/share.js"></script>
