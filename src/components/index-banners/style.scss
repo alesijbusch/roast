@@ -330,7 +330,7 @@
 		&.in-view{
 			.slider-product__center{
 				img{
-					transform: scale(.8);
+					transform: scale(.78);
 				}
 			}
 
@@ -357,7 +357,7 @@
 			cursor: pointer;
 			.slider-product__center{
 				img{
-					transform: scale(.9);
+					transform: scale(.78);
 				}
 			}
 
@@ -388,9 +388,7 @@
 
 	&__center {
 		position: absolute;
-		top: 15%;
-		right: 40px;
-		left: 40px;
+		inset: 0;
 		display: flex;
 		align-items: center;
 		opacity: .7;
@@ -402,7 +400,13 @@
 			transition: all ease .7s;
 			transform: scale(0);
 			@media (max-width: $md - 1) {
-				max-width: 270px;
+				//max-width: 270px;
+				object-position: top;
+
+			}
+
+			@media (max-width: $xs - 1) {
+				object-fit: cover;
 			}
 		}
 	}
