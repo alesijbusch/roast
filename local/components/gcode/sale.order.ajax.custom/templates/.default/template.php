@@ -307,7 +307,7 @@ if ($request->get('ORDER_ID') <> '') {
 			</div>
 			<template x-if="productList.length">
 			<div class="cart-products cart-form__section" x-transition>
-			<template x-for="product in productList" :key="product.PRODUCT_ID">
+			<template x-for="product in productList" :key="product.ID">
 			<div class="cart-product" :class="{'loading-popover': product.PRELOADER}">
 				<div class="cart-product__image">
 					<a class="lazy-img-wrap" :href="product.DETAIL_PAGE_URL">
@@ -318,11 +318,40 @@ if ($request->get('ORDER_ID') <> '') {
 					<a class="cart-product__title" :href="product.DETAIL_PAGE_URL" x-html="product.NAME"></a>
 				</div>
 				<div class="cart-product__prop">
-					<template x-for="prop in product.PROPS" :key="prop.ID">
-						<div class="cart-product__type">
-							<div class="cart-product__type-prop" x-html="prop.NAME + ': '"></div>
-							<div class="cart-product__type-val active" x-html="prop.VALUE"></div>
-						</div>
+					<template x-if="product.PROPS.filter(item => item.CODE == 'IS_GIFT' && item.VALUE == 'Y').length == 0">
+						<template x-for="prop in product.PROPS" :key="prop.ID">
+							<div class="cart-product__type" :class="{'hidden': prop.NAME == 'PARENT_ID'}">
+								<div class="cart-product__type-prop" x-html="prop.NAME + ': '"></div>
+								<div class="cart-product__type-val active" x-html="prop.VALUE"></div>
+							</div>
+						</template>
+					</template>
+					<template x-if="product.PROPS.filter(item => item.CODE == 'IS_GIFT' && item.VALUE == 'Y').length > 0">
+						<div class="grid-list__item-select">
+                            <div class="grid-list__item-title offer-item-line-js" :data-prop-code="'STEPEN_POMOLA'" x-ref="propLvl1" x-text="'Степень помола'"></div>
+
+                            <div class="select" x-data="{isOpenedSelect: false}" :class="{opened: isOpenedSelect}" @click.away="isOpenedSelect = false">
+                                <div class="select__header" @click="isOpenedSelect = ! isOpenedSelect">
+                                <div class="select__title offer-item-title-js"><span x-text="product.PROPS.find(item => item.CODE == 'STEPEN_POMOLA')?.VALUE"></span>
+                                <svg class="icon" style="height:5px;width:7px;">
+                                    <use xlink:href="/html/images/sprite.svg#i-arrow-down"></use>
+                                </svg>
+                                </div>
+                                </div>
+
+                                <div class="select__body">
+                                <ul class="select__body-list">
+                                <template x-for="value in ['Не молоть', 'Аэропресс', 'Мока', 'Под чашку', 'Пуровер', 'Турка', 'Френч-пресс', 'Эспрессо крупно', 'Эспрессо тонко']">
+                                    <li class="offer-value-js"
+										@click="changeBasketProperty(product.ID, value, 'STEPEN_POMOLA');isOpenedSelect=false"
+                                    >
+                                        <span class="text" :title="value" x-text="value"></span>
+                                    </li>
+                                </template>
+                                </ul>
+                                </div>
+                            </div>
+                        </div>
 					</template>
 				</div>
 				<div class="cart-product__price">
@@ -332,7 +361,11 @@ if ($request->get('ORDER_ID') <> '') {
 					</template>
 				</div>
 				<div class="cart-product__counter">
-					<div class="counter btn-wave" x-data="counter(product.MEASURE_RATIO, product.AVAILABLE_QUANTITY, product.QUANTITY, product.MEASURE_RATIO_VALUE, product.ID)" x-effect="count = product.QUANTITY">
+					<div class="counter btn-wave"
+                         :class="{'hidden': product.IS_POMOL}"
+                         x-data="counter(product.MEASURE_RATIO, product.AVAILABLE_QUANTITY, product.QUANTITY, product.MEASURE_RATIO_VALUE, product.ID)"
+                         x-effect="count = product.QUANTITY"
+                    >
 						<span class="counter__action counter__action--minus" @click="decrement" :disabled="disableMin || product.PRELOADER"></span>
 						<input class="counter__count" type="text" x-bind="watchCounter" :value="count" maxlength="6" />
 						<span class="counter__action counter__action--plus" @click="increment" :disabled="disableMax || product.PRELOADER"></span>
@@ -352,7 +385,7 @@ if ($request->get('ORDER_ID') <> '') {
 					</svg>
 				</div>*/
 					?>
-					<div class="cart-product__control-item" @click="removeItem(product.ID)">
+					<div class="cart-product__control-item" :class="{'hidden': product.IS_POMOL}" @click="removeItem(product.ID)">
 						<svg class="icon" style="width: 18px; height: 18px;">
 							<use xlink:href="/html/images/sprite.svg#i-close"></use>
 						</svg>
@@ -369,8 +402,8 @@ if ($request->get('ORDER_ID') <> '') {
 			<input type="hidden" name="BUYER_STORE" value="0">
 			<input type="hidden" name="PROFILE_ID" x-model="activeProfile.ID">
 			<input type="hidden" name="location_type" value="code">
-
-
+			<input type="hidden" id="STEPEN_POMOLA_GIFT" :name="'ORDER_PROP_' + stepenPomolaGift.ID" :value="stepenPomolaGift['VALUE'][0]"/>
+			
 			<div class="cart-form__block cart-form__block--person" :class="{'collapse': !expand.user}">
 				<div class="cart-form__header">
 					<div class="cart-form__title">Покупатель</div>
@@ -393,13 +426,17 @@ if ($request->get('ORDER_ID') <> '') {
 				<div class="cart-form__form">
 					<template x-for="prop in orderPropsList" :key="prop.ID">
                         <div class="cart-form__field cart-form__field--2" :class="{'cart-form__field-location': (prop.CODE == 'PD_LOCATION' || prop.CODE == 'LOCATION')}" x-data="{search: false}" @click.outside="search=false">
-                            <template x-if="prop.CODE != 'PD_LOCATION' && prop.CODE != 'LOCATION'">
+                            <template x-if="prop.CODE != 'PD_LOCATION' && prop.CODE != 'LOCATION' && prop.CODE!='PICKUP_POINT'">
                                 <div class="form-group">
                                     <label class="form-control-label" :for="prop.CODE" x-html="prop.REQUIRED === 'Y' ? prop.NAME + `<span class='label-required'>*</span>` : prop.NAME"></label>
                                     <input class="form-control" :type="prop.INPUT_TYPE" :id="prop.CODE" :name="'ORDER_PROP_' + prop.ID" :value="prop['VALUE'][0]" :required="prop.REQUIRED === 'Y'" placeholder="" />
                                 </div>
                             </template>
-
+                            <template x-if="prop.CODE == 'PICKUP_POINT'">
+                                <div class="form-group">
+                                    <input class="form-control" type="hidden" :id="prop.CODE" :name="'ORDER_PROP_' + prop.ID" :value="prop['VALUE'][0]" :required="prop.REQUIRED === 'Y'" placeholder="" />
+                                </div>
+                            </template>
                             <template x-if="prop.CODE == 'PD_LOCATION' || prop.CODE == 'LOCATION'">
                                 <div class="form-group" :class="{'is-invalid' : !location, 'is-success': location }">
                                     <label
@@ -522,6 +559,33 @@ if ($request->get('ORDER_ID') <> '') {
 									<div class="cart-form__delivery-period" x-html="delivery.PERIOD_TEXT"></div>
 								</template>
 								<div class="cart-form__delivery-descr" x-html="delivery.DESCRIPTION"></div>
+                                <template x-if="delivery.CALCULATE_ERRORS">
+                                    <div class="cart-form__delivery-descr" x-html="delivery.CALCULATE_ERRORS"></div>
+                                </template>
+                                <template x-if="delivery.TO_TERMINAL_EUROPOST =='Y' && pickup.items.length > 0">
+                                    <div class="cart-city-picker">
+                                    <div class="select" x-data="{isOpenedSelect: false}" :class="{'opened': isOpenedSelect}" @click.away="isOpenedSelect = false">
+                                        <div class="select__header" @click="isOpenedSelect = !isOpenedSelect">
+                                            <div class="select__title">
+                                                <span x-show="pickup.current" x-html="pickup.current?.WarehouseName"></span>
+                                                <svg class="icon" style="height:5px;width:7px;">
+                                                    <use xlink:href="/html/images/sprite.svg#i-arrow-down"></use>
+                                                </svg>
+                                            </div>
+                                        </div>
+
+                                        <div class="select__body">
+                                            <ul class="select__body-list">
+                                                <template x-for="val in pickup.items" :key="val.WarehouseId">
+                                                    <li @click="isOpenedSelect = !isOpenedSelect; pickup.current = val;">
+                                                        <span x-html="val.WarehouseName"></span>
+                                                    </li>
+                                                </template>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                </template>
 							</div>
 
 							<template x-if="[1, 5].includes(delivery.ID) && timeForOnlinePay">

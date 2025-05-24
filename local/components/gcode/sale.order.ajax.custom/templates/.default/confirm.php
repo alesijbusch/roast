@@ -94,3 +94,55 @@ if ($arParams["SET_TITLE"] == "Y")
 
 <? endif ?>
 
+<?if (!empty($_GET['ORDER_ID'])):?>
+<script>
+(function (){
+
+	window.dataLayer = window.dataLayer || [];
+
+	const formData = new FormData;
+	const orderId = '<?= $arResult['ORDER_ID']?>';
+	formData.append('ORDER_ID', orderId);
+	formData.append('TYPE', 'Полный заказ');
+
+	
+	fetch('/local/ajax/goals.php', {
+		method: 'POST',
+		body: formData
+	})
+		.then((response) => response.json())
+		.then(function(response){
+
+			const products = [];
+			const items = response.ITEMS;
+			if(items){
+				for(const key in items){
+					products.push({
+						"item_id": items[key].ID,
+						"item_name": items[key].NAME,
+						"price": items[key].PRICE,
+						"quantity": items[key].QUANTITY,
+						"item_brand": items[key].BRAND,
+						"item_category": items[key].CATEGORY1,
+						"item_category2": items[key].CATEGORY2,
+					});
+				}
+			}
+			if(response.ID){
+				let data3 = {
+					'event': 'purchase',
+					'ecommerce': {
+						'transaction_id': response.ACCOUNT_NUMBER,
+						'value': response.PRICE,
+						'currency': 'BYN',
+						'tax': response.TAX_VALUE,
+						'shipping': response.PRICE_DELIVERY,
+						'items': products
+					}
+				}
+				window.dataLayer.push(data3);
+			}
+		});
+})();
+</script>
+<?endif;?>

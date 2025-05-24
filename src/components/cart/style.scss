@@ -144,6 +144,7 @@ $xl: 1380px;
 
 			.cart-form__block {
 				margin-bottom: 0;
+				min-width: 100%;
 				@media (min-width: $sm) {
 					&:first-child {
 						border-right: none;
@@ -1128,7 +1129,16 @@ $xl: 1380px;
 		}
 	}
 }
-
+.cart-city-picker{
+	.select__title{
+		span{
+			width: calc(100% - 15px);
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+	}
+}
 
 .cart-bill {
 	@media (min-width: $xl) {

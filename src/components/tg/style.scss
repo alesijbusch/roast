@@ -1,0 +1,62 @@
+@import "src/assets/css/vars_mixins/vars_mixins";
+.tg-label{
+	position: fixed;
+	z-index: 200;
+	right: 150px;
+	bottom: 0;
+	@media (max-width: $sm - 1) {
+		bottom: 50px;
+		right: 50px;
+	}
+	@media (max-width: $xs - 1) {
+		bottom: 30px;
+		right: 20px;
+	}
+
+	&__inner{
+		padding: 4px 12px;
+		background-color: #00A1DB;
+		border-radius: 8px 8px 0 0;
+		display: flex;
+		align-items: center;
+		color: #FFFFFF;
+		transition: all ease .3s;
+		font-size: 12px;
+		gap: 6px;
+		@media (max-width: $sm - 1) {
+			padding: 0px;
+			width: 56px;
+			height: 56px;
+			border-radius: 50px;
+			justify-content: center;
+		}
+		&:hover {
+			@media (hover: hover) {
+				cursor: pointer;
+				color: #FFFFFF;
+				opacity: .95;
+			}
+		}
+	}
+	&__icon{
+		@media (min-width: $sm) {
+			svg{
+				max-width: 25px;
+				max-height: 25px;
+			}
+		}
+		@media (max-width: $sm - 1) {
+			svg{
+				width: 50px;
+				height: 50px;
+			}
+			transform: translate(6px, 6px);
+		}
+
+	}
+	&__title{
+		@media (max-width: $sm - 1) {
+			display: none;
+		}
+	}
+}
