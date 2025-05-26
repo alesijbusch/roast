@@ -82,6 +82,10 @@
   &__bottom {
     display: flex;
     margin-top: 40px;
+	  margin-bottom: 60px;
+	  @media (max-width: $sm - 1) {
+		  margin-bottom: 30px;
+	  }
   }
   &__more {
     max-width: 744px;

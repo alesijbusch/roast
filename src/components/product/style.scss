@@ -330,6 +330,9 @@
 // product-main
 .product-main {
 	width: 50%;
+	.catalog-filters{
+		margin-bottom: 10px;
+	}
 
 	&__badges {
 		display: flex;
