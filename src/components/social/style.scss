@@ -2,6 +2,15 @@
 
 .share-container{
 	position: relative;
+	.icon{
+		fill: #A0A0A0;
+		&:hover {
+			@media (hover: hover) {
+				cursor: pointer;
+				fill: $accent;
+			}
+		}
+	}
 
 	&:hover {
 		.share {
@@ -14,8 +23,8 @@
 
 
 		position: absolute;
-		top: 38px;
-		right: 12px;
+		top: 20px;
+		right: 8px;
 		z-index: 6;
 		background: var(--card_bg_black);
 		padding: 16px;
@@ -99,6 +108,7 @@
 			height: 20px!important;
 			overflow: hidden;
 			transition: all ease .3s;
+			display: inline-block;
 		}
 
 		.ya-share2__item_service_vkontakte .ya-share2__icon{

@@ -32,24 +32,6 @@ footer.footer
 				//- 			input(type="email" placeholder='E-mail').form-control
 				//- 			button.btn.btn-wave Подписаться
 				.footer__left-bottom
-					//- each item in footer
-					//- 	.footer__left-item(
-					//- 		x-data="{ width: window.innerWidth, breakpoint: 767, isOpened: window.innerWidth > 767 }"
-					//- 		@resize.window.debounce.100="width = window.innerWidth; isOpened = width > breakpoint"
-					//- 		:class="isOpened ? 'opened' : ''"
-					//- 		)
-					//- 		if(item.no_link)
-					//- 			.footer__left-item-title(@click="isOpened = !isOpened")
-					//- 				span=item.title
-					//- 				+icon('i-arrow-down')(style="width:7px;height:5px")
-					//- 		else
-					//- 			.footer__left-item-title(@click="isOpened = !isOpened")
-					//- 				a(href="#" class=item.active ? 'active' : '')=item.title
-					//- 				+icon('i-arrow-down')(style="width:7px;height:5px")
-					//- 		ul.footer__left-item-list
-					//- 			each i in item.list
-					//- 				li
-					//- 					a(href="#")=i
 
 					.footer__left-item
 						.footer__left-item-opened(
@@ -93,6 +75,25 @@ footer.footer
 									a(href="#") Брендированный кофе
 								li
 									a(href="#") Оптовые поставки
+								li(x-data="{open: false}" :class="open && 'opened'").sublist
+									a(href="#")
+										span Аренда кофемашин
+										span.sublist-toggler(@click.prevent="open=!open")
+											+icon('i-arrow-down')(style="width:7px;height:5px")
+									ul.sublist-list(x-transition x-show="open" x-cloak)
+										li
+											a(href="#") Брендированный кофе
+										li
+											a(href="#") Оптовые поставки
+										li
+											a(href="#") Аренда кофемашин
+								li
+									a(href="#") Брендированный кофе
+								li
+									a(href="#") Оптовые поставки
+
+					.footer__left-item
+
 						.footer__left-item-opened(
 							x-data="{ width: window.innerWidth, breakpoint: 767, isOpened: window.innerWidth > 767 }"
 							@resize.window.debounce.100="width = window.innerWidth; isOpened = width > breakpoint"
