@@ -95,8 +95,13 @@ document.addEventListener('alpine:init', () => {
 							window.GOODAPP.initModals()
 
 							_this.modalPickup.addEventListener('GoodAppModal.opened', () => {
-
 								this.createPickupMap()
+							})
+							_this.modalPickup.addEventListener('GoodAppModal.closed', () => {
+								this.tempPoint = this.pickup.current
+								const geo = [+this.pickup.current.PRM.Latitude, +this.pickup.current.PRM.Longitude]
+								yaMapPickup?.destroy()
+								yaMapPickup = null
 							})
 
 						})
@@ -1284,14 +1289,6 @@ document.addEventListener('alpine:init', () => {
 
 				this.tempPoint = v
 
-				// yaMapPickup.destroy()
-				// yaMapPickup = null
-				//
-				// this.$nextTick(()=>{
-				// 	this.createPickupMap()
-				// })
-
-
 			},
 
 			createPickupMap() {
@@ -1308,14 +1305,14 @@ document.addEventListener('alpine:init', () => {
 					});
 
 					// Создание карты
-					const map = new ymaps.Map('pickup-map', {
+					yaMapPickup = new ymaps.Map('pickup-map', {
 						center: [+_this.pickup.current.PRM.Latitude, +_this.pickup.current.PRM.Longitude],
 						zoom: 14,
 						controls: []
 					});
 
 					// Добавление менеджера объектов на карту
-					map.geoObjects.add(objectManager);
+					yaMapPickup.geoObjects.add(objectManager);
 
 					// Настройка стилей кластеров
 					objectManager.clusters.options.set({
@@ -1361,17 +1358,17 @@ document.addEventListener('alpine:init', () => {
 						const cluster = e.get('target');
 						const clusterCenter = cluster.geometry.getCoordinates();
 						const clusterPoints = cluster.properties.geoObjects.length;
-						const currentZoom = map.getZoom();
+						const currentZoom = yaMapPickup.getZoom();
 
 						// Определение уровня зума
 						let targetZoom = currentZoom + Math.max(1, 4 - Math.floor(clusterPoints / 10));
 						targetZoom = Math.min(targetZoom, 18);
 
 						// Плавное перемещение и зум
-						map.panTo(clusterCenter, {
+						yaMapPickup.panTo(clusterCenter, {
 							flying: true,
 							duration: 500
-						}).then(() => map.setZoom(targetZoom, {duration: 500}));
+						}).then(() => yaMapPickup.setZoom(targetZoom, {duration: 500}));
 
 						e.preventDefault();
 					});
@@ -1397,7 +1394,7 @@ document.addEventListener('alpine:init', () => {
 					// Обработчик кастомного события
 					document.addEventListener('mapCenterChange', ({detail: {geo, index}}) => {
 						highlightActivePlacemark(index);
-						map.setCenter(geo, 16, {checkZoomRange: true});
+						yaMapPickup.setCenter(geo, 16, {checkZoomRange: true});
 					});
 				}
 
@@ -1414,7 +1411,6 @@ document.addEventListener('alpine:init', () => {
 
 			submitPoint(){
 				this.pickup.current = this.tempPoint
-				this.tempPoint = null
 				this.modalPickup.modal('hide')
 			},
 
