@@ -1,7 +1,9 @@
 document.addEventListener('alpine:init', () => {
 
+
 	Alpine.data('saleOrderAjax', (parameters = {}) => {
 		let yaMap; // обьект карты не должен быть проксирован
+		let yaMapPickup; // обьект карты не должен быть проксирован
 		return {
 			result: {},
 			params: {},
@@ -37,7 +39,6 @@ document.addEventListener('alpine:init', () => {
 			address: false,
 			addressData: {},
 			addressDataHidden: {},
-			pickupDataHidden: {},
 			timeForOnlinePay: false,
 			stepenPomolaGift: false,
 			userConsent: {},
@@ -66,8 +67,13 @@ document.addEventListener('alpine:init', () => {
 			addressIsValid: false,
 			pickup: {
 				items: [],
-				current: {}
+				current: null
 			},
+			yaMapPickup: null,
+			pickupInit : false,
+			tempPoint : null,
+
+			modalPickup: null,
 			async init() {
 				const _this = this;
 				_this.root = this.$root;
@@ -81,6 +87,24 @@ document.addEventListener('alpine:init', () => {
 				_this.formSelector = parameters.formSelector || '';
 				_this.noPhoto = parameters.noPhoto || '';
 				_this.getSessid();
+				_this.modalPickup = _this.$refs.modalPickup
+				window.addEventListener('load', () => {
+					try {
+						setTimeout(() => {
+							_this.modalPickup = _this.$refs.modalPickup
+							window.GOODAPP.initModals()
+
+							_this.modalPickup.addEventListener('GoodAppModal.opened', () => {
+
+								this.createPickupMap()
+							})
+
+						})
+					} catch (e) {
+
+					}
+				})
+
 
 				/** прокидываем значения в smallBasket */
 				_this.$watch('productList', () => {
@@ -123,15 +147,31 @@ document.addEventListener('alpine:init', () => {
 				_this.$watch('location', _this.refreshOrderAjax.bind(_this));
 				_this.$watch('PAY_CURRENT_ACCOUNT', _this.refreshOrderAjax.bind(_this));
 
+				_this.$watch('pickup.current', (v) => {
+					console.log(v)
+					if (!v) return
+					const geo = [+v.PRM.Latitude, +v.PRM.Longitude]
+
+					// setTimeout(() => {
+					// 	document.dispatchEvent(new CustomEvent('onBalloonOpen', {
+					// 		detail: {
+					// 			geo
+					// 		}
+					// 	}))
+					// }, 100)
+					_this.changePickupProperty()
+				})
+				_this.$watch('pickup', (v) => {
+
+				})
+
 				_this.$watch('deliveryGroupsIds', (v) => {
 
 					if (this.pickup?.items?.length && !this.pickup?.current) {
-						_this.pickup.current = _this.pickup.items[0]
+						_this.pickup.current = _this.pickup.items[0];
+						_this.tempPoint = _this.pickup.items[0];
 					}
-					console.log('---->')
-
-					_this.$nextTick(() => _this.changePickupProperty())
-
+					_this.changePickupProperty()
 				})
 
 				_this.initDeliveryMap(_this.BUYER_STORE, true);
@@ -357,17 +397,24 @@ document.addEventListener('alpine:init', () => {
 
 				}
 			},
+			openModalPickup() {
+				this.modalPickup.modal()
+			},
+
 			changePickupProperty() {
 				const _this = this;
-				const input = document.querySelector('#PICKUP_POINT')
-				if (input) {
-					input.value = _this.pickup.current.WarehouseId;
+
+				if (!_this.pickup.current?.PRM?.WarehouseId) return
+				if (document.querySelector('#PICKUP_POINT') != null &&
+					document.querySelector('#PICKUP_POINT').value !== _this.pickup.current?.PRM?.WarehouseId) {
+					if (_this.pickup.current) {
+						document.querySelector('#PICKUP_POINT').value = _this.pickup.current?.PRM?.WarehouseId;
+					} else {
+						document.querySelector('#PICKUP_POINT').value = '';
+					}
 					_this.action = 'refreshOrderAjax';
-					_this.pickupDataHidden['VALUE'][0] = _this.pickup.current.WarehouseId;
-					_this.sendRequest({PICKUP_ORDER: _this.pickupDataHidden});
+					_this.sendRequest();
 				}
-
-
 			},
 			/**
 			 * разбор и модификация купонов
@@ -392,7 +439,6 @@ document.addEventListener('alpine:init', () => {
 				let _userConsent = {};
 				let _addressData = {};
 				let _addressDataHidden = {};
-				let _pickupDataHidden = {};
 				let _timeForOnlinePay = false;
 				let _stepenPomolaGift = false;
 				// for (let indexGroup in rawData['groups']) {
@@ -434,12 +480,6 @@ document.addEventListener('alpine:init', () => {
 						case 'HOUSE':
 							if (_this.isFizPersonalType()) {
 								_addressDataHidden[prop['CODE']] = prop;
-								continue;
-							}
-							break;
-						case 'PICKUP_POINT':
-							if (_this.isFizPersonalType()) {
-								_pickupDataHidden = prop;
 								continue;
 							}
 							break;
@@ -499,17 +539,16 @@ document.addEventListener('alpine:init', () => {
 				_this.address = _address;
 				_this.addressData = _addressData;
 				_this.addressDataHidden = _addressDataHidden;
-				_this.pickupDataHidden = _pickupDataHidden;
 				_this.timeForOnlinePay = _timeForOnlinePay;
 				_this.stepenPomolaGift = _stepenPomolaGift;
 				_this.orderPropsList = _propsList.sort((a, b) => a.SORT - b.SORT);
 
 
-				if (_this.cityData) {
-					_this.$nextTick(function () {
-						_this.changeLocation(_this.cityData);
-					});
-				}
+				// if (_this.cityData) {
+				//     _this.$nextTick(function () {
+				//         _this.changeLocation(_this.cityData);
+				//     });
+				// }
 
 				setTimeout(() => {
 					if (_this.addressDataHidden['COORDINATES'] && _this.addressDataHidden['COORDINATES']['VALUE'][0] !== '') {
@@ -557,6 +596,7 @@ document.addEventListener('alpine:init', () => {
 					_product['PROPS'].forEach((prop, index) => {
 						if (prop['CODE'] === 'PARENT_ID') {
 							_product['IS_POMOL'] = true;
+							_product['AVAILABLE_QUANTITY'] = 9999;
 						}
 					})
 
@@ -575,11 +615,10 @@ document.addEventListener('alpine:init', () => {
 			 * Действия при смене доставки
 			 */
 			changeDelivery() {
-				const _this = this
 				this.refreshOrderAjax();
 
-				if (_this.addressDataHidden['COORDINATES'] && _this.addressDataHidden['COORDINATES']['VALUE'][0] !== '') {
-					_this.changeMap(_this.addressDataHidden['COORDINATES']['VALUE'][0].split(' '));
+				if (this.addressDataHidden['COORDINATES'] && this.addressDataHidden['COORDINATES']['VALUE'][0] !== '') {
+					this.changeMap(this.addressDataHidden['COORDINATES']['VALUE'][0].split(' '));
 				}
 			},
 			/**
@@ -1130,6 +1169,10 @@ document.addEventListener('alpine:init', () => {
 			},
 			changeLocation(city) {
 				if (city && city.code) {
+					if (yaMapPickup) {
+						yaMapPickup?.destroy()
+						yaMapPickup = null
+					}
 					if (document.querySelector('.location-selector')) {
 						document.querySelector('.location-selector').value = city.title;
 					}
@@ -1140,29 +1183,35 @@ document.addEventListener('alpine:init', () => {
 					this.location = city.code;
 					this.cityData = city;
 
+
 					this.validateAddress();
 					this.revalidateAddress();
 
 					if (city.code !== this.pickup.location) {
-						const formData = new FormData();
-						formData.append('location', city.code);
-						formData.append('sessid', GOODAPP.message.sessid);
-						fetch('/pickup/', {
-							method: 'POST',
-							body: formData
-						}).then(res => res.json())
-							.then(result => {
-								if (result.status === 'success') {
-									this.pickup.items = result.data.list;
-									this.pickup.location = city.code;
-									this.pickup.current = null;
-								}
-							})
-							.catch(function (error) {
-								console.log(error);
-							})
+						this.getPickupPoints(city.code);
 					}
 				}
+			},
+			getPickupPoints(cityCode) {
+				const formData = new FormData();
+				formData.append('location', cityCode);
+				formData.append('sessid', GOODAPP.message.sessid);
+				fetch('/pickup/', {
+					method: 'POST',
+					body: formData
+				}).then(res => res.json())
+					.then(result => {
+						if (result.status === 'success') {
+							this.pickup.items = result.data.list;
+							this.pickup.location = cityCode;
+							this.pickup.current = null;
+
+							this.changePickupProperty()
+						}
+					})
+					.catch(function (error) {
+						console.log(error);
+					})
 			},
 			addLocationToSearchInput($event) {
 			},
@@ -1222,6 +1271,153 @@ document.addEventListener('alpine:init', () => {
 					}
 				));
 			},
+
+			clickPoint(v,index){
+				const _this = this
+				const geo = [+v.PRM.Latitude, +v.PRM.Longitude]
+				document.dispatchEvent(new CustomEvent('mapCenterChange', {
+					detail: {
+						index,
+						geo
+					}
+				}))
+
+				this.tempPoint = v
+
+				// yaMapPickup.destroy()
+				// yaMapPickup = null
+				//
+				// this.$nextTick(()=>{
+				// 	this.createPickupMap()
+				// })
+
+
+			},
+
+			createPickupMap() {
+				const _this = this
+
+
+
+				function init() {
+					// Инициализация ObjectManager с кластеризацией
+					const objectManager = new ymaps.ObjectManager({
+						clusterize: true,
+						gridSize: 64,
+						clusterDisableClickZoom: false
+					});
+
+					// Создание карты
+					const map = new ymaps.Map('pickup-map', {
+						center: [+_this.pickup.current.PRM.Latitude, +_this.pickup.current.PRM.Longitude],
+						zoom: 14,
+						controls: []
+					});
+
+					// Добавление менеджера объектов на карту
+					map.geoObjects.add(objectManager);
+
+					// Настройка стилей кластеров
+					objectManager.clusters.options.set({
+						preset: 'islands#invertedVioletClusterIcons',
+						clusterIconColor: '#7351a8'
+					});
+
+					// Подготовка данных для меток
+					const features = _this.pickup.items.map((item, index) => ({
+						type: "Feature",
+						id: index,
+						geometry: {
+							type: "Point",
+							coordinates: [+item.PRM.Latitude, +item.PRM.Longitude]
+						},
+						properties: {
+							hintContent: item.PRM.WarehouseName,
+							isCurrent: item === _this.pickup.current
+						},
+						options: {
+							// Используем стандартные иконки Яндекса
+							preset: item === _this.pickup.current
+								? 'islands#redIcon'
+								: 'islands#blueIcon',
+							// Дополнительные параметры иконки
+							iconColor: item === _this.pickup.current ? '#ff0000' : '#1e98ff',
+							iconShape: {
+								type: 'Circle',
+								coordinates: [0, 0],
+								radius: 20
+							}
+						}
+					}));
+
+					// Добавление всех объектов
+					objectManager.add({
+						type: "FeatureCollection",
+						features: features
+					});
+
+					// Обработчик клика на кластер
+					objectManager.clusters.events.add('click', function(e) {
+						const cluster = e.get('target');
+						const clusterCenter = cluster.geometry.getCoordinates();
+						const clusterPoints = cluster.properties.geoObjects.length;
+						const currentZoom = map.getZoom();
+
+						// Определение уровня зума
+						let targetZoom = currentZoom + Math.max(1, 4 - Math.floor(clusterPoints / 10));
+						targetZoom = Math.min(targetZoom, 18);
+
+						// Плавное перемещение и зум
+						map.panTo(clusterCenter, {
+							flying: true,
+							duration: 500
+						}).then(() => map.setZoom(targetZoom, {duration: 500}));
+
+						e.preventDefault();
+					});
+
+					// Обработчик клика на метки
+					objectManager.objects.events.add('click', function(e) {
+						const objectId = e.get('objectId');
+						highlightActivePlacemark(objectId);
+						_this.tempPoint = _this.pickup.items[objectId];
+						e.preventDefault();
+					});
+
+					// Функция подсветки активной метки
+					function highlightActivePlacemark(activeId) {
+						objectManager.objects.each(obj => {
+							objectManager.objects.setObjectOptions(obj.id, {
+								preset: obj.id === activeId ? 'islands#redIcon' : 'islands#blueIcon',
+								iconColor: obj.id === activeId ? '#ff0000' : '#1e98ff'
+							});
+						});
+					}
+
+					// Обработчик кастомного события
+					document.addEventListener('mapCenterChange', ({detail: {geo, index}}) => {
+						highlightActivePlacemark(index);
+						map.setCenter(geo, 16, {checkZoomRange: true});
+					});
+				}
+
+
+
+
+				if(!this.pickupInit){
+					ymaps.ready(init);
+				} else {
+					init()
+				}
+
+			},
+
+			submitPoint(){
+				this.pickup.current = this.tempPoint
+				this.tempPoint = null
+				this.modalPickup.modal('hide')
+			},
+
 			/**
 			 * Инициализация и обработка запросов в компонент
 			 * @param customParams

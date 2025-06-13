@@ -528,3 +528,132 @@
 		}
 	}
 }
+
+
+
+.modal-pickup__grid{
+	display: grid;
+	grid-template-columns: 400px 1fr;
+	border-radius: 10px;
+	overflow: hidden;
+	@media (max-width: $md - 1) {
+		grid-template-columns: 300px 1fr;
+	}
+	@media (max-width: $sm - 1) {
+		grid-template-columns: 1fr;
+	}
+}
+.modal-pickup__map{
+	height: 600px;
+	@media (max-width: $md - 1) {
+		height: 400px;
+	}
+	@media (max-width: $md - 1) {
+		height: 340px;
+	}
+}
+.modal-pickup__ovh{
+	flex-grow: 1;
+	position: relative;
+	@media (max-width: $sm - 1) {
+		height: 320px;
+	}
+}
+.modal-pickup__list{
+	padding: 24px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	background-color: #F8F8F8;
+	@media (max-width: $md - 1) {
+		padding: 16px;
+	}
+}
+.modal-pickup__title{
+	margin-bottom: 24px;
+	font-weight: 600;
+	font-size: 20px;
+	@media (max-width: $md - 1) {
+		font-size: 18px;
+		margin-bottom: 16px;
+	}
+}
+.modal-pickup__points{
+	height: 100%;
+	overflow: auto;
+	position: absolute;
+	inset: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	@media (max-width: $md - 1) {
+		gap: 8px;
+	}
+	@media (min-width: $sm) {
+		@include scroll();
+	}
+}
+.modal-pickup__item{
+	padding: 15px;
+	display: flex;
+	align-items: center;
+	border: 1px solid #ECECEC;
+	border-radius: 10px;
+	font-size: 15px;
+	font-weight: 500;
+	gap: 16px;
+	@media (max-width: $md - 1) {
+		font-size: 13px;
+		padding: 10px;
+	}
+	.round{
+		width: 20px;
+		height: 20px;
+		flex-shrink: 0;
+		border: 1px solid #ececec;
+		border-radius: 50%;
+	}
+	&.active{
+		border-color: #8a6048;
+		border-width: 2px;
+		pointer-events: none;
+		.round{
+			border-width: 5px;
+			border-color: #8a6048;
+		}
+	}
+}
+.modal-pickup__item.active{
+
+}
+
+.modal-pickup{
+	&__footer{
+		position: sticky;
+
+		width: 100%;
+		bottom: 0;
+		margin-top: 24px;
+		.btn{
+			width: 100%;
+			&[disabled]{
+				background-color: #bdbdbd;
+				border-color: #bdbdbd;
+				pointer-events: none;
+			}
+		}
+	}
+	.modal-dialog{
+		max-width: 1100px;
+		padding: 0 30px;
+	}
+	.modal-content{
+		padding: 0;
+		border: none;
+		background-color: transparent;
+	}
+	.modal-close{
+		right: -20px;
+		top: 10px;
+	}
+}
