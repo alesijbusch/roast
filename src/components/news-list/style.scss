@@ -24,7 +24,7 @@
 
 	.news-card-wrap {
 		height: 424px;
-		@media (max-width: $sm - 1) {
+		@media (max-width: $md - 1) {
 			height: auto;
 		}
 		.news-card{

@@ -121,7 +121,6 @@
 	&-footer {
 		display: flex;
 		gap: 10px;
-		justify-content: flex-end;
 		align-items: center;
 		margin-top: 30px;
 		@media (max-width: $sm - 1) {
@@ -154,6 +153,13 @@
 						fill: $accent;
 					}
 				}
+			}
+		}
+
+		.stat-block{
+			margin-right: auto;
+			@media (max-width: $xs - 1) {
+				order: 3;
 			}
 		}
 	}

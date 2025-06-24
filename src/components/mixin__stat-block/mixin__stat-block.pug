@@ -1,0 +1,28 @@
+mixin stat-block(args={})
+	+include-style('mixin__stat-block')
+
+	.stat-block
+		.stat-block__left
+			.stat-block__item(title='Нравится')
+				+icon('i-finger')(style="height:20px;width:20px")
+				span 15
+			.stat-block__item.stat-block__item--v2.active(title='Не нравится')
+				+icon('i-finger-a')(style="height:20px;width:20px")
+				span 15
+			if(args.scroll)
+				a(href="#reviews").stat-block__item(title='Комментарии')
+					+icon('i-comm2')(style="height:20px;width:20px")
+					span 5
+			else
+
+				.stat-block__item(title='Комментарии')
+					+icon('i-comm2')(style="height:20px;width:20px")
+					span 5
+		if(args.right)
+			.stat-block__right
+				.stat-block__item(title='Просмотры')
+					+icon('i-watch')(style="height:20px;width:20px")
+					span 163
+				.stat-block__item(title='Время на чтение')
+					+icon('i-cloak')(style="height:20px;width:20px")
+					span 5 мин.

@@ -71,6 +71,9 @@
 					.article-author__name Екатерина Иванова
 					.article-author__text Капсульный кофе — это те же смеси, которые представлены в нашем каталоге группы В+. У нас нет капсул других брендов — все смеси мы составляем, обжариваем и упаковываем сами
 			.article-footer
+				+stat-block({
+					scroll: true
+				})
 				.article-footer__left Поделиться статьей
 				.article-footer__right
 					a(href="#").article-icon
@@ -87,7 +90,7 @@
 						+icon('i-fb')(style="height:30px;width:30px")
 					a(href="#").article-icon
 
-	.article-reviews
+	#reviews.article-reviews
 		.article-reviews__title Комментарии (18)
 		.article-reviews__form
 			form.article-form

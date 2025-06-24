@@ -250,6 +250,7 @@
 
 .article-reviews{
 	margin-bottom: 100px;
+	scroll-margin-top: 100px;
 	@media (max-width: $sm - 1) {
 		margin-bottom: 50px;
 	}
