@@ -144,6 +144,7 @@ document.addEventListener('alpine:init', () => {
 				});
 
 				_this.$watch('address', (v) => {
+
 					if (v !== null && typeof v !== 'undefined') {
 						_this.createMap();
 					}
@@ -153,17 +154,9 @@ document.addEventListener('alpine:init', () => {
 				_this.$watch('PAY_CURRENT_ACCOUNT', _this.refreshOrderAjax.bind(_this));
 
 				_this.$watch('pickup.current', (v) => {
-					console.log(v)
+
 					if (!v) return
 					const geo = [+v.PRM.Latitude, +v.PRM.Longitude]
-
-					// setTimeout(() => {
-					// 	document.dispatchEvent(new CustomEvent('onBalloonOpen', {
-					// 		detail: {
-					// 			geo
-					// 		}
-					// 	}))
-					// }, 100)
 					_this.changePickupProperty()
 				})
 				_this.$watch('pickup', (v) => {
@@ -1244,8 +1237,6 @@ document.addEventListener('alpine:init', () => {
 						center: [53.9006, 27.5590],
 						zoom: 12,
 						controls: []
-					}, {
-						autoFitToViewport: 'always',
 					});
 
 					yaMap.behaviors.disable(['drag']);
@@ -1257,24 +1248,26 @@ document.addEventListener('alpine:init', () => {
 				}
 
 				const mapNode = document.getElementById('delivery_map');
-				if (mapNode && mapNode.textContent === '') {
-					yaMap.destroy();
-					yaMap = null;
+
+				if (mapNode && yaMap === null){
 					this.createMap();
 				}
 
-				yaMap.geoObjects.removeAll();
-				yaMap.setCenter(coordsList, 14);
+				this.$nextTick(()=>{
+					yaMap.geoObjects.removeAll();
+					yaMap.setCenter(coordsList, 14);
 
-				// Добавляем метку на карту
-				yaMap.geoObjects.add(new ymaps.Placemark(
-					coordsList, // Координаты метки
-					{},
-					{
-						preset: 'islands#icon',
-						iconColor: '#0095b6'
-					}
-				));
+					// Добавляем метку на карту
+					yaMap.geoObjects.add(new ymaps.Placemark(
+						coordsList, // Координаты метки
+						{},
+						{
+							preset: 'islands#icon',
+							iconColor: '#0095b6'
+						}
+					));
+				})
+
 			},
 
 			clickPoint(v,index){
@@ -1293,9 +1286,6 @@ document.addEventListener('alpine:init', () => {
 
 			createPickupMap() {
 				const _this = this
-
-
-
 				function init() {
 					// Инициализация ObjectManager с кластеризацией
 					const objectManager = new ymaps.ObjectManager({
@@ -1397,9 +1387,6 @@ document.addEventListener('alpine:init', () => {
 						yaMapPickup.setCenter(geo, 16, {checkZoomRange: true});
 					});
 				}
-
-
-
 
 				if(!this.pickupInit){
 					ymaps.ready(init);

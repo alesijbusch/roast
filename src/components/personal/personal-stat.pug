@@ -1,0 +1,95 @@
++include-style('personal')
+
+.personal
+	.personal-grid
+		.personal-grid__item
+			include personal-nav
+
+		.personal-grid__item
+			.personal__title Статистика заказов
+			.personal-stat
+				.personal-stat__block.personal-stat__block--v1
+					.personal-stat__title Любимые сорта
+					.personal-stat__cards
+						.stat-card
+							.stat-card__img
+								img(loading="lazy" src=SITE_TEMPLATE_PATH+'images/product.png')
+							.stat-card__content
+								.stat-card__title Танзания Мбинга Килиманджаро АА
+								.stat-card__text 5 покупок
+						.stat-card
+							.stat-card__img
+								img(loading="lazy" src=SITE_TEMPLATE_PATH+'images/product.png')
+							.stat-card__content
+								.stat-card__title Смесь Осень
+								.stat-card__text 3 покупок
+						.stat-card
+							.stat-card__img
+								img(loading="lazy" src=SITE_TEMPLATE_PATH+'images/product.png')
+							.stat-card__content
+								.stat-card__title Танзания Мбинга Килиманджаро АА
+								.stat-card__text 5 покупок
+
+				.personal-stat__block.personal-stat__block--v2
+					.personal-stat__cards
+						.stat-card
+							.stat-card__content
+								.stat-card__text Сумма выкупа
+								.stat-card__title 2 900 руб.
+							.stat-card__img
+								img(loading="lazy" src=SITE_TEMPLATE_PATH + 'images/money.svg')
+						.stat-card
+							.stat-card__content
+								.stat-card__text Времени на сайте
+								.stat-card__title 2 г 6 мес
+							.stat-card__img
+								img(loading="lazy" src=SITE_TEMPLATE_PATH + 'images/time.svg')
+						.stat-card
+							.stat-card__content
+								.stat-card__text Выпито кофе
+								.stat-card__title 43 пачки
+							.stat-card__img
+								img(loading="lazy" src=SITE_TEMPLATE_PATH + 'images/pack.svg')
+						.stat-card
+							.stat-card__content
+								.stat-card__text Кофе попробовал
+
+								.stat-card__title 16 видов
+							.stat-card__img
+								img(loading="lazy" src=SITE_TEMPLATE_PATH + 'images/coffee2.svg')
+						.stat-card
+							.stat-card__content
+								.stat-card__text Отзывов оставлено
+								.stat-card__title 3
+							.stat-card__img
+								img(loading="lazy" src=SITE_TEMPLATE_PATH + 'images/comment2.svg')
+						.stat-card
+							.stat-card__content
+								.stat-card__text Рецептов написано
+
+								.stat-card__title 0
+							.stat-card__img
+								img(loading="lazy" src=SITE_TEMPLATE_PATH + 'images/recipe.svg')
+
+
+				.personal-stat__block.personal-stat__block--v3
+					.stat-total
+						.personal-stat__title Масса кофе и чая
+						.stat-total__mid
+							<div class="segment-circle">
+							<div class="segment-circle__text">3 кг</div>
+							<div class="segment" style="background: conic-gradient(#FFE986 0deg 90deg, transparent 90deg 360deg);"></div>
+							</div>
+						.stat-total__footer
+							.stat-total__row
+								.thumb
+								.prop Кофе
+								.value
+									span 75%
+									span 2.25 кг
+							.stat-total__row
+								.thumb.thumb--tea
+								.prop Чай
+								.value
+									span 25%
+									span 2.25 кг
