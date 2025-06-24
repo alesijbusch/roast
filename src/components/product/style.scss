@@ -2285,6 +2285,65 @@
 	}
 }
 
+.product-links{
+	display: flex;
+	justify-content: space-between;
+	gap: 40px;
+	margin-bottom: 50px;
+	margin-top: -40px;
+	@media (max-width: $xs - 1) {
+		margin-bottom: 60px;
+		margin-top: 0;
+		gap: 20px;
+	}
+	&__item{
+		fill: #222222;
+		display: flex;
+		align-items: center;
+		gap: 4px;
+		font-weight: 500;
+		font-size: 18px;
+		white-space: nowrap;
+		flex-shrink: 0;
+		span{
+			//max-width: calc(100% - 10px);
+			text-overflow: ellipsis;
+			overflow: hidden;
+		}
+		@media (max-width: $md - 1) {
+			font-size: 16px;
+		}
+		@media (max-width: $xs - 1) {
+			font-size: 14px;
+			background-color: #F8F8F8;
+			border-radius: 100px;
+			padding: 7px 10px;
+			gap: 2px;
+			max-width: 50%;
+
+			.icon{
+				max-width: 7px;
+				max-height: 7px;
+			}
+		}
+		&:hover {
+			@media (hover: hover) {
+				cursor: pointer;
+				fill: $accent;
+			}
+		}
+		.icon{
+			margin-top: 1px;
+			transform: rotate(90deg);
+		}
+		&:nth-child(2){
+			.icon{
+				order: 2;
+				transform: rotate(-90deg);
+			}
+		}
+	}
+}
 
 .product .product__section .p-tab-review__body {
 

@@ -19,5 +19,13 @@
 			</svg>
 			span Вы уже покупали этот товар, но еще не оставили отзыв. Люди обычно прислушиваются к мнению других покупателей, а оставляя отзывы вы еще и участвуете в программе лояльности, получаете баллы на внутренний счет
 		include ./product-tabs
-	//.product__section
+	.product-links
+		a(href="#").product-links__item
+			+icon('i-arrow-down')(style="height:12px;width:12px")
+			span Руанда Этника
+		a(href="#").product-links__item
+			+icon('i-arrow-down')(style="height:12px;width:12px")
+			span Колумбия Ла Дельфита
+
+
 	//    include ./product-popup

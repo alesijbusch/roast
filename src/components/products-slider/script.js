@@ -104,7 +104,6 @@ window.addEventListener("load", function () {
 						560: {
 							perPage: 1,
 							arrows: false,
-							autoWidth: true,
 							drag: true,
 						},
 					},
