@@ -3,35 +3,49 @@
 .company-top{
 	display: grid;
 	grid-template-columns: 32% auto;
+	border-radius: 15px;
+	overflow: hidden;
 	@media (max-width: $lg - 1) {
 		grid-template-columns: 360px auto;
 	}
 	@media (max-width: $md - 1) {
-
-		grid-template-columns: 160px auto;
+		overflow: visible;
+		grid-template-columns: 200px auto;
 		gap: 20px;
 	}
 	@media (max-width: $sm - 1) {
 		//display: block;
 		grid-template-columns: 100%;
-
+	}
+	@media (max-width: $xs - 1) {
+		gap: 0;
+		overflow: hidden;
 	}
 	&__img{
 		//aspect-ratio: .72;
 		position: relative;
 		width: 100%;
 		min-height: 420px;
+		border-radius: 15px;
+		//overflow: hidden;
 		@media (max-width: $md - 1) {
 			position: sticky;
 			min-height: auto;
 			top: 60px;
 			//max-width: 160px;
 			aspect-ratio: 0.72;
+			border-radius: 15px;
+			overflow: hidden;
 		}
 		@media (max-width: $sm - 1) {
 			position: relative;
 			top: 0;
 			max-width: 360px;
+		}
+		@media (max-width: $xs - 1) {
+			border-radius: 0;
+			max-height: none;
+			max-width: none;
 		}
 		.lazy-img-wrap{
 			position: absolute;
@@ -52,7 +66,13 @@
 		}
 		@media (max-width: $md - 1) {
 			padding: 14px;
+			border-radius: 15px;
 			//background-color: transparent;
+		}
+		@media (max-width: $xs - 1) {
+			border-radius: 0;
+			position: relative;
+			margin-top: -1px;
 		}
 		&.content{
 			h3{

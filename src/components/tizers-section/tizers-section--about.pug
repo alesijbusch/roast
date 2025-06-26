@@ -1,0 +1,78 @@
++include-style('tizers-section')
+
+-
+	var items = [
+		{
+			link: false,
+			img: 'benefit-1.svg',
+			title: 'Современное производство',
+			text: 'Конвекционный ростер IMF, традиционный ростер Giesen и колорсортер',
+		},
+		{
+			link: false,
+			img: 'benefit-2.svg',
+			title: 'Бесплатная доставка',
+			text: 'Курьером по Минску, транспортной компанией и почтой по РБ',
+		},
+		{
+			link: false,
+			img: 'benefit-3.svg',
+			title: 'Накопительная система',
+			text: 'Постоянная скидка за покупкидо 20%',
+		},
+		{
+			link: false,
+			img: 'benefit-4.svg',
+			title: 'Бонусы за покупки',
+			text: 'При покупке 5 пачек —подарок!',
+		},
+		{
+			link: false,
+			img: 'benefit-5.svg',
+			title: 'Постоянное обучение',
+			text: 'Постоянно в поисках и готовы делиться новыми знаниями с вами в нашем блоге',
+		},
+		{
+			link: false,
+			img: 'benefit-6.svg',
+			title: 'Публикуем все отзывы',
+			text: 'Мы публикуем все отзывы без исключения - открыты к любым предложениям и критике',
+		},
+		{
+			link: false,
+			img: 'benefit-7.svg',
+			title: 'Гарантия качества',
+			text: 'Вернем деньги или заменим кофе, если вам не понравится',
+		},
+		{
+			link: false,
+			img: 'benefit-8.svg',
+			title: 'Мы всегда на стороне покупателя',
+			text: 'Меняем кофе или возвращаем деньги по первой просьбе',
+		},
+	]
+
+.tizers-section.tizers-section_btn.tizers-section--about
+	.container
+		h3.section-title
+			span Наша миссия –– создать лучшую компанию по обжарке кофе
+		.tizers-section__inner#tizers-section_list
+			each item in items
+				if(item.link)
+					a(href="#").ts-item
+						+lazy-img({
+							img: item.img,
+							wrap_mod: 'ts-item__img',
+						})
+						.ts-item__content
+							.ts-item__title=item.title
+							.ts-item__text=item.text
+				else
+					.ts-item
+						+lazy-img({
+							img: item.img,
+							wrap_mod: 'ts-item__img',
+						})
+						.ts-item__content
+							.ts-item__title=item.title
+							.ts-item__text=item.text
