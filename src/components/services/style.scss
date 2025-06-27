@@ -1,33 +1,38 @@
 @import "src/assets/css/vars_mixins/vars_mixins";
 
 .services {
-  padding-bottom: 80px;
-  &__grid {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 20px;
-  }
+	padding-bottom: 80px;
 
-	&__descr{
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 20px;
+	}
+
+	&__descr {
 		margin-bottom: 30px;
 		font-weight: 600;
 		font-size: 1.625rem;
 	}
+	.about-slider{
+		padding-bottom: 0;
+	}
 }
 
-.service-block{
+.service-block {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	background: #242424;
 	color: #ffffff;
-	margin-bottom:  80px;
+	margin-bottom: 80px;
 	@media (max-width: $md - 1) {
 		grid-template-columns: 100%;
 	}
 	@media (max-width: $sm - 1) {
 		margin-bottom: 60px;
 	}
-	&__content{
+
+	&__content {
 		padding: 60px;
 		@media (max-width: $md - 1) {
 			padding: 40px;
@@ -37,7 +42,8 @@
 			padding: 40px 20px;
 		}
 	}
-	&__img{
+
+	&__img {
 		position: relative;
 		@media (max-width: $md - 1) {
 			height: 260px;
@@ -45,23 +51,27 @@
 		@media (max-width: $sm - 1) {
 			height: 200px;
 		}
-		.lazy-img-wrap{
+
+		.lazy-img-wrap {
 			position: absolute;
 			inset: 0;
 		}
-		img{
+
+		img {
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
 		}
 	}
-	&__title{
+
+	&__title {
 		font-size: 1.625rem;
 		font-weight: 600;
 		margin-bottom: 30px;
 	}
-	&__item{
-		&:not(:last-child){
+
+	&__item {
+		&:not(:last-child) {
 			margin-bottom: 60px;
 			@media (max-width: $sm - 1) {
 				margin-bottom: 45px;
@@ -70,46 +80,53 @@
 	}
 
 	&__places,
-	&__steps{
+	&__steps {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		gap: 20px 40px;
 	}
-	&__places{
+
+	&__places {
 		@media (max-width: $sm - 1) {
 			display: flex;
 			overflow: auto;
 			gap: 30px;
 		}
 	}
-	&__steps{
+
+	&__steps {
 		@media (max-width: $sm - 1) {
 			grid-template-columns: 100%;
 		}
 	}
-	&__row{
+
+	&__row {
 		display: flex;
 		align-items: center;
 		gap: 15px;
 		@media (max-width: $sm - 1) {
 			flex-shrink: 0;
 		}
-		&-icon{
+
+		&-icon {
 			width: 37px;
 			height: 37px;
 			flex-shrink: 0;
 			position: relative;
-			.lazy-img-wrap{
+
+			.lazy-img-wrap {
 				position: absolute;
 				inset: 0;
-				img{
+
+				img {
 					width: 100%;
 					height: 100%;
 					object-fit: contain;
 				}
 			}
 		}
-		&-number{
+
+		&-number {
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -124,26 +141,29 @@
 	}
 }
 
-.service-device{
+.service-device {
 	margin-bottom: 100px;
 	@media (max-width: $sm - 1) {
 		margin-bottom: 60px;
 	}
 
 }
-.service-slider{
-	.device-card{
+
+.service-slider {
+	.device-card {
 		height: 100%;
 		width: 100%;
 	}
-	&__slider{
-		&:not(.is-overflow){
-			.splide__arrows{
+
+	&__slider {
+		&:not(.is-overflow) {
+			.splide__arrows {
 				display: none;
 			}
 		}
-		.splide__track{
-			@media (min-width: $md){
+
+		.splide__track {
+			@media (min-width: $md) {
 				padding-top: 5px;
 				padding-bottom: 20px;
 			}
@@ -151,7 +171,7 @@
 	}
 }
 
-.service-product{
+.service-product {
 	display: grid;
 	grid-template-columns: 35% auto;
 	gap: 60px;
@@ -163,7 +183,7 @@
 		grid-template-columns: 100%;
 	}
 
-	&__img{
+	&__img {
 		padding: 50px;
 		border: 1px solid $a5;
 		max-height: 530px;
@@ -182,42 +202,48 @@
 			height: 344px;
 			padding: 30px;
 		}
-		.lazy-img-wrap{
+
+		.lazy-img-wrap {
 			position: absolute;
 			inset: 50px;
 			@media (max-width: $sm - 1) {
 				inset: 30px;
 			}
-			img{
+
+			img {
 				width: 100%;
 				height: 100%;
 				object-fit: contain;
 			}
 		}
 	}
-	&__content{
+
+	&__content {
 		display: flex;
 		flex-direction: column;
 		gap: 20px;
 
 	}
-	&__desc{
 
-		&-add{
+	&__desc {
+
+		&-add {
 			display: flex;
 			gap: 10px;
 			margin-top: 20px;
 			fill: $accent;
 		}
 
-		p{
+		p {
 			margin-bottom: 10px;
 			line-height: 1.5;
 
 		}
-		ul{
+
+		ul {
 			margin-bottom: 25px;
 			line-height: 1.5;
+
 			li {
 				position: relative;
 				padding: 0 0 0 20px;
@@ -227,6 +253,7 @@
 				@media (max-width: $md - 1) {
 					padding-left: 16px;
 				}
+
 				&:not(:last-child) {
 					margin-bottom: 8px;
 				}
@@ -247,36 +274,42 @@
 			}
 		}
 	}
-	&__table{
+
+	&__table {
 
 		max-width: 580px;
-		&.expand{
-			.service-product__table-row{
+
+		&.expand {
+			.service-product__table-row {
 				display: flex;
 			}
 		}
-		&-title{
+
+		&-title {
 			font-weight: 600;
 			margin-bottom: 15px;
 		}
-		&-row{
+
+		&-row {
 			font-size: 0.8675rem;
 			display: flex;
 			@media (max-width: $md - 1) {
 				flex-direction: column;
 			}
 
-			&:not(:last-child){
+			&:not(:last-child) {
 				margin-bottom: 5px;
 			}
-			.prop{
+
+			.prop {
 				color: #444444;
 				flex-grow: 1;
 				position: relative;
 				display: flex;
 				line-height: 1.6;
 				flex-shrink: 0;
-				&:after{
+
+				&:after {
 					content: '';
 					display: inline-block;
 					flex-grow: 1;
@@ -286,23 +319,26 @@
 					}
 				}
 			}
-			.val{
+
+			.val {
 				width: 300px;
 				flex-shrink: 0;
 			}
-			&:nth-child(n + 5){
+
+			&:nth-child(n + 5) {
 				display: none;
 			}
 		}
-		&-more{
-			display: flex!important;
+
+		&-more {
+			display: flex !important;
 			color: $accent;
 			margin-top: 8px;
 		}
 
 	}
 
-	&__req{
+	&__req {
 		display: flex;
 		gap: 15px;
 		padding: 25px;
@@ -310,34 +346,38 @@
 		margin-top: auto;
 		@media (max-width: $md - 1) {
 			flex-wrap: wrap;
-					}
+		}
 		@media (max-width: $sm - 1) {
 			flex-direction: column;
 			padding: 20px;
 		}
-		&-img{
+
+		&-img {
 			width: 63px;
 			height: 73px;
 			flex-shrink: 0;
 		}
-		&-content{
+
+		&-content {
 			width: calc(100% - 63px - 15px);
 			@media (max-width: $sm - 1) {
 				width: auto;
 			}
 			//flex-grow: 1;
-			h4{
+			h4 {
 				font-size: 1.25rem;
 				font-weight: 600;
 				margin-bottom: 7px;
 			}
-			p{
+
+			p {
 				color: #444444;
 				line-height: 1.5;
 				font-size: .8rem;
 			}
 		}
-		&-btn{
+
+		&-btn {
 			align-self: flex-end;
 			flex-shrink: 0;
 			@media (max-width: $md - 1) {
@@ -350,22 +390,123 @@
 
 // 1199.75
 @media (max-width: $lg) {
-  .services {
-    &__grid {
-      grid-template-columns: repeat(2,1fr);
-    }
-  }
+	.services {
+		&__grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
 }
+
 // 991.75
-@media (max-width: $md) {}
+@media (max-width: $md) {
+}
+
 // 767.75
-@media (max-width: $sm) {}
+@media (max-width: $sm) {
+}
+
 // 600.75
 @media (max-width: $xs) {
-  .services {
-    &__grid {
-      grid-template-columns: repeat(1,1fr);
-	    gap: 15px;
-    }
-  }
+	.services {
+		&__grid {
+			grid-template-columns: repeat(1, 1fr);
+			gap: 15px;
+		}
+	}
+}
+
+.services-product__grid {
+	display: grid;
+	grid-template-columns: 2fr 1fr 1fr;
+	gap: 20px;
+	padding-bottom: 50px;
+	@media (max-width: $md - 1) {
+		grid-template-columns: 1fr;
+	}
+	@media (max-width: $sm - 1) {
+		gap: 10px;
+		padding-bottom: 30px;
+	}
+}
+
+.s-block {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	gap: 20px;
+
+	&:first-child {
+		@media (min-width: $sm) {
+			.s-card__img {
+				width: 200px;
+				height: 200px;
+			}
+		}
+	}
+
+	&:nth-child(2) {
+		@media (max-width: $md - 1) {
+			display: grid;
+			grid-template-columns:	1fr 1fr;
+		}
+		@media (max-width: $sm - 1) {
+			grid-template-columns: 1fr;
+			gap: 10px;
+		}
+	}
+
+	&:last-child {
+		@media (min-width: $sm) {
+			.s-card {
+				padding-bottom: 20px;
+				gap: 5px;
+			}
+			.s-card__img {
+				width: 145px;
+				height: 172px;
+			}
+		}
+	}
+
+}
+
+.s-card {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	padding: 40px 30px 40px;
+	border-radius: 15px;
+	background-color: #F6ECC9;
+	height: 100%;
+	@media (max-width: $sm - 1) {
+		padding: 20px;
+	}
+
+	&--v2 {
+		background-color: #F6E4DB;
+	}
+
+	&__title {
+		font-size: 26px;
+		max-width: 310px;
+		font-weight: 600;
+	}
+
+	&__text {
+		font-size: 18px;
+	}
+
+	&__img {
+		margin-top: auto;
+		@media (max-width: $sm - 1) {
+			height: 150px;
+		}
+		margin-left: auto;
+
+		img {
+			height: 100%;
+			object-fit: contain;
+		}
+
+	}
 }
