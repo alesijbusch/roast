@@ -48,9 +48,16 @@
 		margin: 35px 0 24px;
 		flex-wrap: wrap;
 
-		.product-block {
+		.product-block,
+		.product-card-wrap{
 			width: 100%;
 			max-width: 384px;
+			@media (max-width: $md - 1) {
+				@media (min-width: $xs) {
+					max-width: 330px;
+				}
+
+			}
 		}
 
 		@media (max-width: $sm - 1) {
