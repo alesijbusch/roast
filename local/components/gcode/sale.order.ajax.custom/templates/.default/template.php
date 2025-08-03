@@ -247,7 +247,9 @@ switch (LANGUAGE_ID) {
 
 $this->addExternalCss("/html/components-template/form-mixin/style.css");
 $this->addExternalCss("/html/components-template/cart/style.css");
-$this->addExternalJs("/html/components-template/cart/script.min.js");
+if(!$_REQUEST['ORDER_ID']){
+    $this->addExternalJs("/html/components-template/cart/script.min.js");
+}
 
 function getDivisibleHour(): int
 {
@@ -298,7 +300,7 @@ if ($request->get('ORDER_ID') <> '') {
         'noPhoto' => '/upload/default.png',
     ];
     ?>
-    <div class="cart" x-data='saleOrderAjax(<?= \Bitrix\Main\Web\Json::encode($jsParams) ?>)'>
+    <div class="cart"  x-data='saleOrderAjax(<?= \Bitrix\Main\Web\Json::encode($jsParams) ?>)'>
         <div class="rowblock">
             <div class="rowblock__left">
                 <div class="cart-form__block" :class="{'collapse': !expand.products}">
@@ -417,9 +419,14 @@ if ($request->get('ORDER_ID') <> '') {
                         </div>
                     </template>
                 </div>
-                <form action="<?= POST_FORM_ACTION_URI ?>" method="POST" name="ORDER_FORM" class="cart-form"
+                <form action="<?= POST_FORM_ACTION_URI ?>" method="POST" name="ORDER_FORM" :class="mk && 'mk'" class="cart-form"
                       id="bx-soa-order-form" enctype="multipart/form-data" <? /* @submit="completeOrder($event)" */ ?>>
                     <?= bitrix_sessid_post(); ?>
+                    <input type="hidden" name="utm_source" value="">
+                    <input type="hidden" name="utm_medium" value="">
+                    <input type="hidden" name="utm_campaign" value="">
+                    <input type="hidden" name="utm_content" value="">
+                    <input type="hidden" name="utm_term" value="">
                     <input type="hidden" :name="params.ACTION_VARIABLE" :value="action">
                     <input type="hidden" name="BUYER_STORE" value="0">
                     <input type="hidden" name="PROFILE_ID" x-model="activeProfile.ID">

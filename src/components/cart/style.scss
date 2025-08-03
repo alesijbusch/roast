@@ -1231,3 +1231,32 @@ $xl: 1380px;
 		font-weight: 500;
 	}
 }
+
+.cart-form.mk{
+	.cart-form__delivery{
+		.cart-form-radio{
+			display: none;
+			&:first-of-type{
+				display: block;
+				.select__body-list{
+					li{
+						display: none;
+						&:first-of-type{
+							display: list-item;
+							padding-bottom: 0;
+						}
+					}
+				}
+			}
+		}
+
+	}
+	.cart-form__pay{
+		.cart-form-radio{
+			display: none;
+			&:last-of-type{
+				display: block;
+			}
+		}
+	}
+}

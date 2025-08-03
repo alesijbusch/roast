@@ -74,6 +74,7 @@ document.addEventListener('alpine:init', () => {
 			tempPoint : null,
 
 			modalPickup: null,
+			mk: false,
 			async init() {
 				const _this = this;
 				_this.root = this.$root;
@@ -234,6 +235,7 @@ document.addEventListener('alpine:init', () => {
 					_this.options.showPayedFromInnerBudget = total.PAYED_FROM_ACCOUNT_FORMATED && total.PAYED_FROM_ACCOUNT_FORMATED.length;
 				}
 				this.initMask();
+
 			},
 			initMask() {
 				Alpine.store('vendor').load('imask').then(() => {
@@ -332,7 +334,12 @@ document.addEventListener('alpine:init', () => {
 				const _deliveryList = [];
 				for (const [key, delivery] of Object.entries(rawData)) {
 					delivery.ID = Number(delivery.ID);
-					if (delivery['CHECKED'] === 'Y' && _this.activeDelivery['ID'] !== delivery['ID']) {
+
+					if(delivery['CALCULATE_ERRORS'] && _this.DELIVERY_ID == delivery['ID']){
+						_this.DELIVERY_ID = 0;
+						_this.activeDelivery = null;
+					}
+					else if (delivery['CHECKED'] === 'Y' && _this.activeDelivery['ID'] !== delivery['ID']) {
 						_this.activeDelivery = delivery;
 						_this.DELIVERY_ID = delivery.ID;
 
@@ -588,6 +595,10 @@ document.addEventListener('alpine:init', () => {
 					}
 					if (!_this.isCoffeExist) {
 						_this.isCoffeExist = !!_product.PROPERTY_STEPEN_POMOLA_VALUE;
+					}
+					if(Number(_product['PRODUCT_ID']) === 28746){
+						console.log('mk')
+						_this.mk = true
 					}
 
 					_product['IS_POMOL'] = false;
