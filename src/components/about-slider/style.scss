@@ -101,13 +101,21 @@
 		}
 
 		.splide__track .splide__slide{
-			border-color: #ACACAC;
+			border-color: #ffffff;
+			transition: all ease .3s;
+			&:hover {
+				@media (hover: hover) {
+					cursor: pointer;
+					border-color: #ACACAC;
+				}
+			}
 		}
 		.splide__track .splide__slide.is-active{
 			border-color: $accent;
 		}
 
 		.splide__arrow{
+			display: none;
 
 			border-radius: 0px;
 			height: 90px;

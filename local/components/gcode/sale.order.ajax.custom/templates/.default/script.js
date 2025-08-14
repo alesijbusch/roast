@@ -435,6 +435,7 @@ document.addEventListener('alpine:init', () => {
 			 * @param rawData
 			 */
 			prepareOrderProps(rawData) {
+				console.log(rawData)
 				const _this = this;
 				const _propsList = [];
 				let _address = false;
@@ -549,11 +550,11 @@ document.addEventListener('alpine:init', () => {
 				_this.orderPropsList = _propsList.sort((a, b) => a.SORT - b.SORT);
 
 
-				// if (_this.cityData) {
-				//     _this.$nextTick(function () {
-				//         _this.changeLocation(_this.cityData);
-				//     });
-				// }
+				if (_this.cityData) {
+				    _this.$nextTick(function () {
+				        _this.changeLocation(_this.cityData);
+				    });
+				}
 
 				setTimeout(() => {
 					if (_this.addressDataHidden['COORDINATES'] && _this.addressDataHidden['COORDINATES']['VALUE'][0] !== '') {

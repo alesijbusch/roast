@@ -17,7 +17,7 @@ window.addEventListener("load", function () {
 				console.log(container)
 
 				let main = new Splide(item.querySelector('.about-slider__main'), {
-
+					type: 'loop',
 					lazy: 'sequential',
 					// rewind: true,
 					pagination: false,
@@ -26,7 +26,8 @@ window.addEventListener("load", function () {
 				});
 
 				let thumbnails = new Splide(item.querySelector('.about-slider__thumbnail'), {
-					fixedWidth: 135,
+					type: 'loop',
+					fixedWidth: 133,
 					lazy: 'sequential',
 					fixedHeight: 90,
 					gap: 10,
@@ -39,7 +40,7 @@ window.addEventListener("load", function () {
 							fixedHeight: 55,
 						},
 						600: {
-							fixedWidth: 60,
+							fixedWidth: 6,
 							fixedHeight: 40,
 							gap: 5
 						},

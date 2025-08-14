@@ -221,6 +221,17 @@
 		max-width: 1140px;
 	}
 }
+.modal-comment{
+	.modal-close{
+		fill: #666666;
+		&:hover {
+			@media (hover: hover) {
+				cursor: pointer;
+				fill: $accent;
+			}
+		}
+	}
+}
 
 .modal-one-click {
 	&__product {
