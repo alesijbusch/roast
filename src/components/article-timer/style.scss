@@ -75,10 +75,11 @@
 		opacity: .5;
 
 		&:hover {
-			color: $accent;
+			color: #C28A6A;
+			opacity: 1;
 
 			svg {
-				fill: $accent;
+				fill: #C28A6A;
 			}
 		}
 

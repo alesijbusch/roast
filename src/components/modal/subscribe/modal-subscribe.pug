@@ -1,0 +1,17 @@
++modal({
+	id: 'modal-subscribe',
+	mod: 'modal-comment modal-subscribe modal-wide',
+	title: false,
+	header: false
+})
+
+	.m-sub
+		.m-sub__left
+			.m-sub__title Подписка оформлена!
+			.m-sub__text
+				p Вы будете получать свежие новости и обновления на ваш email. 
+				p Вы можете отказаться от рассылки в любой момент.
+			.m-sub__btn.btn(data-dismiss="modal")
+				span Отлично
+		.m-sub__right
+			img(src=SITE_TEMPLATE_PATH + 'images/m-subs.jpg')

@@ -71,6 +71,7 @@
 			position: relative;
 			background-color: #909090;
 			transition: none;
+			overflow: hidden;
 			//transition: width ease .3s, transform .2s linear;
 			@media (max-width: $sm - 1) {
 				width: 4px;
@@ -84,7 +85,8 @@
 				bottom: 0;
 				border-radius: 100px;
 				left: 0;
-				right: 140%;
+				right: 0;
+				transform: translateX(-100%);
 				//opacity: 0;
 				//transition: all ease .3s;
 			}
@@ -97,8 +99,8 @@
 				}
 
 				&:before {
-					right: 40%;
-					transition: all ease .6s;
+					transform: translateX(0);
+					transition: all linear 5s;
 				}
 			}
 		}

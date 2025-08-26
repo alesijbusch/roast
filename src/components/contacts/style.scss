@@ -157,6 +157,10 @@ $xl: 1380px;
 	}
 	&-map {
 
+		span{
+			pointer-events: none;
+		}
+
 		color: $accent;
 		font-size: .875rem;
 

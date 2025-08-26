@@ -1,10 +1,16 @@
 window.addEventListener("load", function () {
+
+	let time = 5000
+
 	let splide = new Splide(".js-splide-banners", {
 		type: "loop",
 		arrows: false,
 		pagination: true,
 		perPage: 1,
 		perMove: 1,
+		autoplay: true, // Включаем автоплей
+		interval: time, // 5 секунд = 5000 миллисекунд
+		// pauseOnHover: true,
 		drag: true,
 		speed: 1000,
 		lazyLoad: "nearby",
@@ -13,7 +19,14 @@ window.addEventListener("load", function () {
 				arrows: false,
 			},
 		},
-	}).mount();
+	})
+	// splide.on( 'mounted', function () {
+	// 	document.querySelector('.js-splide-banners').style.setProperty('--transition', `all linear ${time/1000}s.` )
+	// } );
+
+		splide.mount();
+
+
 
 	let loadSlide = (names) => {
 		let activeSlides = document.querySelectorAll(`.js-splide-banners ${names}`);
@@ -85,24 +98,6 @@ window.addEventListener("load", function () {
 			});
 	}
 
-	// splideProduct.on("pagination:mounted", function (data) {
-
-	//   data.list.classList.add("splide__pagination--custom");
-
-	//   data.items.forEach(function (item, _, items) {
-	//     item.button.textContent = String(item.page + 1);
-	//     console.log(data);
-	//     console.log(String(items.length));
-	//     items.innerHTML = `<span>${String(items.length)}</span>`;
-
-	//   });
-
-	// });
-	// splideProduct.on("move", (ni, prev, dest) => {
-	//
-	// 	document.querySelector('.slider-product-page .item').innerHTML = ni + 1
-	//
-	// });
 
 	splideProduct.mount();
 });
