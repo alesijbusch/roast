@@ -1,5 +1,11 @@
 @import "src/assets/css/vars_mixins/vars_mixins";
 
+.wrapper{
+	.index-tabs{
+		padding-top: 0;
+	}
+}
+
 .product {
 	&__top {
 		display: flex;
