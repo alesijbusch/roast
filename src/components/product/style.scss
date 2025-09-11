@@ -1546,6 +1546,9 @@
 	.tip {
 		display: inline-block;
 		position: relative;
+		svg{
+			margin-left: 0;
+		}
 		&:hover {
 			
 				cursor: pointer;
