@@ -33,6 +33,7 @@ mixin lazy-video-youtube(args= {})
 .tabs-nav-v2(id="tabs")
 	.tabs-nav-v2__list
 		.tabs-nav-v2__item(:class="{'active': activeTab === 'text'}" @click="activeTab = 'text'") Описание
+		.tabs-nav-v2__item(:class="{'active': activeTab === 'props'}" @click="activeTab = 'props'") Характеристики
 		.tabs-nav-v2__item(:class="{'active': activeTab === 'reviews'}" @click="activeTab = 'reviews'") Отзывы (2)
 		.tabs-nav-v2__item(:class="{'active': activeTab === 'options'}" @click="activeTab = 'options'") Рецепты
 		.tabs-nav-v2__item(:class="{'active': activeTab === 'manufacturer'}" @click="activeTab = 'manufacturer'")  Информация о производителе
@@ -65,6 +66,29 @@ mixin lazy-video-youtube(args= {})
 			p Смешав базовую Бразилию с насыщенной и яркой Колумбией Киндио, двумя самыми знаменитыми регионами Эфиопии — Иргачиф и Сидамо мы добились яркого с цветочным нотами аромата, богатого вкуса какао, орехов, с нотами сладкого цитруса и сухофруктов. А благородная робуста мытой обработки Индии Парчмент объединила все вкусы и добавила обволакивающую текстуру напитку с лёгким оттенком дорогой кубинской сигары!
 			p Эта смесь идеально подойдет для всех типов кофемашин! Яркий и сочный эспрессо, миндальный сладкий капучино и изысканный американо!
 			p Также хорошо раскрывается при заваривании в гейзерной кофеварке и джезве.
+	// Характеристики
+	.tabs-container-v2__item(:class="{'hidden': activeTab !== 'props'}")
+		.p-props
+			.p-prop
+				.p-prop__cell.prop(style="background-image: url(images/line.png);") Вкусовые дескрипторы
+				.p-prop__cell.val Красный апельсин, Урюк, Фундук и еще что-то если большой текст. Текст идет вниз, но полоска прибивается к верху на значение высоты текста
+
+			.p-prop
+				.p-prop__cell.prop(style="background-image: url(images/line.png);") Оценка Q-грейдеров
+					<div class="tip"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
+					<circle cx="7.61523" cy="7.5" r="6.75" stroke="#D9D9D9" stroke-width="1.5"></circle>
+					<line x1="7.5957" y1="5.96594" x2="7.5957" y2="11.3353" stroke="#ACACAC" stroke-width="1.5"></line>
+					<line x1="7.5957" y1="3.6648" x2="7.5957" y2="5.19889" stroke="#ACACAC" stroke-width="1.5"></line>
+					</svg>
+					<div class="tip__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum nulla provident eveniet numquam vitae quisquam.</div>
+					</div>
+				.p-prop__cell.val 82.75
+			.p-prop
+				.p-prop__cell.prop(style="background-image: url(images/line.png);") Степень обжарки
+				.p-prop__cell.val Темная
+			.p-prop
+				.p-prop__cell.prop(style="background-image: url(images/line.png);") Характеристика
+				.p-prop__cell.val Значение
 	// Отзывы
 	.tabs-container-v2__item(:class="{'hidden': activeTab !== 'reviews'}")
 		.p-tab-review(x-data="{isOpenedAddComment: false}")
