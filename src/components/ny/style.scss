@@ -1,0 +1,53 @@
+@import "src/assets/css/vars_mixins/vars_mixins";
+
+.ny-page{
+	--c-red: #840000;
+	--c-dark: #461B0C;
+	--c-sec: #FFECD1;
+
+
+
+	.h2{
+		font-size: 48px;
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+	.h3{
+		font-size: 34px;
+		font-weight: 700;
+		line-height: 1.1;
+		text-transform: uppercase;
+	}
+	.h4{
+		font-size: 27px;
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+
+	.page-top__header{
+		color: var(--c-dark);
+
+	}
+}
+
+.section{
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.ny-hero{
+	color: var(--c-dark);
+	//max-width: 1311px;
+	//margin: 0 auto;
+	padding-bottom: 120px;
+	&__img{
+		display: block;
+		aspect-ratio: 3.43;
+		max-width: 1500px;
+		margin: 0 auto;
+	}
+	&__bottom{
+		margin-top: 32px;
+		text-align: right;
+	}
+}

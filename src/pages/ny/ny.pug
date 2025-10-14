@@ -1,0 +1,33 @@
+extends ../../layout/layout
+
+block vars
+	- var pageTitle = 'Новый год'
+	- var pageBodyClass = 'ny-page'
+	- var dir = './'
+
+
+block premain
+
+
+block main
+	.container
+		.page-top
+			+breadcrumbs({
+				content2: 'Оформление заказа',
+				href_content2: '',
+				content3: ''
+			})
+			.page-top__header
+				h1.h3 новогодние<br>корпоративные подарки
+	include ../../components/ny/ny
+
+block pageModal
+
+block componentsCriticalStyles
+	+componentsCriticalStyles-includer()
+block vendorScripts
+	+vendorScripts-includer()
+block componentsStyles
+	+style-includer()
+block componentsScripts
+	+componentsScripts-includer()
