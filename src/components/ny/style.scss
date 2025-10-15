@@ -11,17 +11,26 @@
 		font-size: 48px;
 		font-weight: 700;
 		text-transform: uppercase;
+		@media (max-width: $lg - 1) {
+			font-size: 24px;
+		}
 	}
 	.h3{
 		font-size: 34px;
 		font-weight: 700;
 		line-height: 1.1;
 		text-transform: uppercase;
+		@media (max-width: $lg - 1) {
+			font-size: 26px;
+		}
 	}
 	.h4{
 		font-size: 27px;
 		font-weight: 700;
 		text-transform: uppercase;
+		@media (max-width: $lg - 1) {
+			font-size: 16px;
+		}
 	}
 
 	.page-top__header{
@@ -30,9 +39,199 @@
 	}
 }
 
+.sections{
+
+	//background-image: url("/html/images/ny-bg.svg");
+	//background-repeat: no-repeat;
+	//background-size:  100% auto;
+}
+
 .section{
 	font-size: 20px;
 	font-weight: 700;
+	position: relative;
+	mask-repeat: no-repeat;
+	mask-size: cover;
+	@media (max-width: $lg - 1) {
+		font-size: 16px;
+	}
+
+
+	&--red{
+		background-color: var(--c-red);
+		padding: 120px 0;
+		color: var(--c-sec);
+		@media (max-width: $lg - 1) {
+			padding: 60px 0;
+		}
+		@media (max-width: $sm - 1) {
+			padding: 30px 0 60px;
+		}
+
+	}
+	&--sec{
+		background-color: var(--c-sec);
+		padding: 120px 0;
+		color: var(--c-red);
+		@media (max-width: $lg - 1) {
+			padding: 60px 0;
+		}
+		@media (max-width: $sm - 1) {
+			padding: 30px 0;
+		}
+	}
+	&-1{
+		z-index: 2;
+		&__img{
+			position: absolute;
+			left: 20px;
+			top: 0;
+			transform: translateY(-100%) rotate(-10deg);
+			width: clamp(180px, 15vw, 320px);
+			aspect-ratio: 1.45;
+			z-index: 3;
+			@media (max-width: $sm - 1) {
+				display: none;
+			}
+		}
+		&:before{
+			//background-color: var(--c-red);
+			content: '';
+			position: absolute;
+			left: 0;
+			right: 0;
+			height: 120px;
+			top: 0;
+			transform: translateY(-75%);
+			z-index: 2;
+			background-repeat: no-repeat;
+			background-size: 100% 120px;
+			background-image: url("/html/images/ny-1-top.png");
+			@media (max-width: $sm - 1) {
+				transform: translateY(-95%);
+			}
+		}
+		&:after{
+			//background-color: var(--c-red);
+			content: '';
+			position: absolute;
+			left: 0;
+			right: 0;
+			height: 120px;
+			bottom: 0;
+			transform: translateY(80%);
+			z-index: 2;
+			background-repeat: no-repeat;
+			background-size: 100% 120px;
+			background-image: url("/html/images/ny-1-bot.png");
+		}
+
+	}
+	&-3{
+		z-index: 2;
+		&:before{
+			//background-color: var(--c-red);
+			content: '';
+			position: absolute;
+			left: 0;
+			right: 0;
+			height: 120px;
+			top: 0;
+			transform: translateY(-100%);
+			z-index: 2;
+			background-repeat: no-repeat;
+			background-size: 100% 120px;
+			background-image: url("/html/images/ny-3-top.png");
+		}
+		&:after{
+			//background-color: var(--c-red);
+			content: '';
+			position: absolute;
+			left: 0;
+			right: 0;
+			height: 120px;
+			bottom: 0;
+			transform: translateY(50%);
+			z-index: 2;
+			background-repeat: no-repeat;
+			background-size: 100% 120px;
+			background-image: url("/html/images/ny-3-bot.png");
+			@media (max-width: $sm - 1) {
+				background-size: 100% 86px;
+				height: 86px;
+			}
+		}
+
+	}
+	&-4{
+		z-index: 2;
+		@media (max-width: $lg - 1) {
+			padding-bottom: 140px;
+		}
+
+		&:before{
+			//background-color: var(--c-red);
+			content: '';
+			position: absolute;
+			left: 0;
+			right: 0;
+			height: 130px;
+			top: 0;
+			transform: translateY(-65%);
+			z-index: 2;
+			background-repeat: no-repeat;
+			background-size: 100% 140px;
+			background-image: url("/html/images/ny-4-top.png");
+			@media (max-width: $sm - 1) {
+				transform: translateY(-100%);
+			}
+		}
+
+	}
+	&-2{
+		padding: 160px 0;
+		@media (max-width: $lg - 1) {
+			padding: 120px 0;
+		}
+	}
+	&-p{
+		padding: 120px 0;
+		color: var(--c-dark);
+		overflow: hidden;
+		@media (max-width: $lg - 1) {
+			padding: 100px 0 20px;
+		}
+		&__img{
+			width: clamp(100px, 10vw, 200px);
+			aspect-ratio: 1;
+			position: absolute;
+			right: 120px;
+			top: 0;
+			z-index: 3;
+			@media (max-width: $xs - 1) {
+				display: none;
+			}
+		}
+	}
+	@media (max-width: $sm - 1) {
+		&:before{
+			height: 60px;
+			background-size: 100% 80px;
+		}
+
+	}
+}
+
+.ny-bg{
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	img{
+		position: absolute;
+		width: 100%;
+		height: auto;
+		object-fit: cover;
+	}
 }
 
 .ny-hero{
@@ -45,9 +244,224 @@
 		aspect-ratio: 3.43;
 		max-width: 1500px;
 		margin: 0 auto;
+		@media (max-width: $xs - 1) {
+
+		}
 	}
 	&__bottom{
 		margin-top: 32px;
 		text-align: right;
+	}
+
+
+}
+
+.ny-block{
+	position: relative;
+	z-index: 2;
+	display: grid;
+	grid-auto-flow: column;
+	gap: 80px;
+	align-items: center;
+	@media (max-width: $lg - 1) {
+		grid-auto-flow: row;
+		justify-items: center;
+		gap: 40px;
+	}
+
+	&__img{
+		width: 422px;
+		position: relative;
+		aspect-ratio: 0.85;
+		@media (max-width: $lg - 1) {
+			width: 230px;
+		}
+		img{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+	}
+
+	&__content{
+		@media (max-width: $lg - 1) {
+			max-width: 400px;
+			order: 2;
+		}
+		.h3{
+			margin-bottom: 20px;
+		}
+		p{
+			&:not(:last-child){
+				margin-bottom: 16px;
+			}
+		}
+		.ny-btn{
+			margin-top: 70px;
+			@media (max-width: $lg - 1) {
+				margin-top: 40px;
+				width: 100%;
+			}
+
+		}
+	}
+}
+
+.ny-present{
+	color: var(--c-red);
+	display: grid;
+	grid-template-columns: 1fr auto;
+	@media (max-width: $md - 1) {
+		grid-template-columns: 1fr;
+	}
+	&__left{
+		.h3{
+			margin-bottom: 50px;
+			@media (max-width: $lg - 1) {
+				margin-bottom: 40px;
+			}
+		}
+	}
+
+	&__img{
+		width: clamp(250px, 25vw, 500px);
+		margin-top: auto;
+		transform: translateY(120px);
+		@media (max-width: $lg - 1) {
+			transform: none;
+			margin-left: auto;
+		}
+		@media (max-width: $sm - 1) {
+			width: 160px;
+		}
+
+	}
+
+	&__item{
+
+		display: grid;
+		grid-template-columns: 98px 1fr;
+		gap: 40px;
+		margin-bottom: 70px;
+		@media (max-width: $md - 1) {
+			grid-template-columns: 1fr;
+			gap: 16px;
+			margin-bottom: 40px;
+		}
+		svg{
+			width: 98px;
+			height: 98px;
+			@media (max-width: $md - 1) {
+				width: 52px;
+				height: 52px;
+			}
+		}
+	}
+	&__content{
+		max-width: 500px;
+	}
+
+}
+
+.ny-form{
+	.h3{
+		margin-bottom: 50px;
+		@media (max-width: $lg - 1) {
+			margin-bottom: 20px;
+		}
+	}
+	p{
+		max-width: 800px;
+	}
+
+	&__grid{
+		margin-top: 70px;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 70px;
+		@media (max-width: $lg - 1) {
+			gap: 32px;
+			margin-top: 40px;
+		}
+		@media (max-width: $xs - 1) {
+			grid-template-columns: 1fr;
+			gap: 16px;
+			margin-top: 24px;
+		}
+	}
+	.form-control{
+		height: 52px;
+		border-radius: 14px;
+		background-color: #E0D5C6;
+		color: #ADA393;
+		font-size: 20px;
+		@media (max-width: $lg - 1) {
+			height: 50px;
+		}
+		@media (max-width: $lg - 1) {
+			font-size: 16px;
+		}
+		&::placeholder{
+			color: #ADA393;
+			font-size: 20px;
+			@media (max-width: $lg - 1) {
+				font-size: 16px;
+			}
+		}
+	}
+
+	&__img{
+		width: clamp(190px, 16vw, 320px);
+		aspect-ratio: 1.45;
+		position: absolute;
+		right: 70px;
+		bottom: 40px;
+		transform: rotate(-140deg);
+		@media (max-width: $lg - 1) {
+			bottom: 20px;
+		}
+		@media (max-width: $xs - 1) {
+			width: 120px;
+			right: 20px;
+		}
+
+		//@media (max-width: $sm - 1) {
+		//	display: none;
+		//}
+	}
+}
+
+.ny-btn{
+	height: 58px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: uppercase;
+	font-size: 27px;
+	line-height: 1;
+	font-weight: 700;
+	padding: 6px 45px;
+	transition: all ease .3s;
+	border-radius: 100px;
+	@media (max-width: $lg - 1) {
+		height: 48px;
+		font-size: 16px;
+		padding: 6px 32px;
+	}
+	&:hover {
+		@media (hover: hover) {
+			cursor: pointer;
+			color: var(--c-sec);
+			background-color: #000000;
+		}
+	}
+	&--red{
+		background-color: var(--c-red);
+		color: var(--c-sec);
+	}
+	&--sec{
+		background-color: var(--c-sec);
+		color: var(--c-red);
 	}
 }

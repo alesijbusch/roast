@@ -18,8 +18,9 @@ window.addEventListener("load", function () {
 					let slidesCount =
 						el.target.querySelectorAll(".splide__slide").length;
 
+
 					new Splide(el.target, {
-						type: "slide",
+						type: el.target.closest('.index-tabs__inner') ? "loop" : "slide",
 						pagination: false,
 						perPage: 3,
 						perMove: 1,
