@@ -1,5 +1,12 @@
 @import "src/assets/css/vars_mixins/vars_mixins";
 
+
+body:has(.catalog){
+	.index-tabs{
+		padding-top: 0;
+	}
+}
+
 .catalog {
   padding-bottom: 110px;
   .search-field .form-control {

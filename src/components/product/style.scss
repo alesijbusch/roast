@@ -673,6 +673,13 @@
 				color: #444444;
 				width: 50%;
 
+				position: relative;
+				&:hover {
+					@media (hover: hover) {
+
+						z-index: 5;
+					}
+				}
 				span {
 					padding-right: 8px;
 					background-color: #fff;
@@ -696,6 +703,39 @@
 				font-style: normal;
 				font-weight: 300;
 				line-height: 23px;
+			}
+		}
+
+		.tip{
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			transform: translateY(2px);
+			background-color: #fff;
+
+
+			svg{
+				margin-left: 0;
+			}
+			&__text{
+				z-index: 12;
+				transition: none;
+				max-width: 300px;
+				color: #ffffff;
+				left: 4px;
+				transform: translateX(-10%);
+				font-size: 14px;
+				padding: 20px;
+				border-radius: 15px;
+				width: 100vw;
+				background-color: #242424;
+				@media (max-width: $xs - 1) {
+					max-width: calc(min(250px, 75vw));
+					font-size: 13px;
+					top: auto;
+					bottom: 130%;
+					transform: translateX(-40%);
+				}
 			}
 		}
 	}
