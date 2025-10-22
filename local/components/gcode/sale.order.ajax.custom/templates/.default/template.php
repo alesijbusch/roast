@@ -636,7 +636,7 @@ if ($request->get('ORDER_ID') <> '') {
                                                 </template>
                                             </div>
 
-                                            <template x-if="[1, 5].includes(delivery.ID) && timeForOnlinePay">
+                                            <template x-if="DELIVERY_ID == delivery.ID && isTimeForOnlinePay">
                                                 <div class="form-group cart-time-picker">
                                                     <label class="form-control-label" :for="timeForOnlinePay.CODE"
                                                            x-html="timeForOnlinePay.REQUIRED === 'Y' ? timeForOnlinePay.NAME + `<span class='label-required'>*</span>` : timeForOnlinePay.NAME"></label>

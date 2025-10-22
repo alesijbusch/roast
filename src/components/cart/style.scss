@@ -718,6 +718,24 @@ $xl: 1380px;
 					}
 				}
 			}
+
+			.in-stock{
+				font-size: 12px;
+			}
+
+			&:has(.outin-stock){
+				margin-bottom: 18px;
+				&:last-of-type{
+					margin-bottom: 36px;
+				}
+				span.outin-stock{
+					position: absolute;
+					left: 0;
+					top: calc(100% + 2px);
+					font-size: 12px;
+					white-space: normal;
+				}
+			}
 		}
 
 		&-submit {
