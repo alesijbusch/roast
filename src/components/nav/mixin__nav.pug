@@ -88,7 +88,7 @@ mixin nav(args= {})
 									| Назад
 								a(href="#").nav-lvl2-title=item.title
 									+icon('i-arrow-right')(style="width: 7px;height:12px")
-							ul.nav-lvl2-list
+							ul.nav-lvl2-list(class=item.list.length > 14 && 'nav-lvl2-list--v3' class=item.list.length > 7 && item.list.length <= 14 &&  'nav-lvl2-list--v2')
 								each item2, index in item.list
 									li.nav-lvl2-item(
 										x-data="{ open2: false }"

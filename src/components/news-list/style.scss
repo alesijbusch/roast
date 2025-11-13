@@ -5,6 +5,36 @@
 		padding-bottom: 60px;
 	}
 }
+
+.catalog-news{
+	padding-bottom: 80px;
+	@media (max-width: $sm - 1) {
+		padding-bottom: 40px;
+	}
+	.news-list{
+		margin-top: 24px;
+		@media (max-width: $lg - 1) {
+			overflow: auto;
+			display: flex;
+			margin: 24px -32px 0;
+			padding: 0 32px;
+			scrollbar-width: none;
+		}
+		@media (max-width: $md - 1) {
+			margin: 24px -20px 0;
+			padding: 0 20px;
+		}
+		@media (max-width: $sm - 1) {
+			margin-top: 16px;
+		}
+	}
+	.news-card-wrap{
+		flex-shrink: 0;
+		@media (max-width: $lg - 1) {
+			max-width: 320px;
+		}
+	}
+}
 .news-list {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;

@@ -1,0 +1,38 @@
++include-style('news-list')
+
+-
+	var items = [
+		{
+			img: 'service-1.png',
+			title: 'Свежий взгляд на наш интернет-магазин!',
+			btn: 'Заказать услугу'
+		}, {
+			img: 'service-2.png',
+			title: 'Свежий взгляд на наш интернет-магазин!',
+			btn: 'Заказать услугу'
+		},
+		{
+			img: 'service-3.png',
+			title: 'Что лучше: коляска-люлька или коляска-трансформер',
+			btn: 'Подробнее'
+		},
+
+	]
+
+section.catalog-news
+	.container
+		h3.section-title
+
+			a.section-title__link( href="/catalog/")
+				span Статьи
+				span.icon-wrap
+					<svg class="icon" style="height:12px;width:12px;"><use xlink:href="/html/images/sprite.svg#i-arrow-right"></use></svg>
+
+
+		.news-list
+			each item in items
+				.news-card-wrap
+					+news-card({
+						title: item.title,
+						img: item.img
+					})

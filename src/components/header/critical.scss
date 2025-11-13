@@ -157,11 +157,13 @@ body.overflow {
 			z-index: 2;
 			//top: calc(100% + 8px);
 			top: 25px;
-			left: 0;
+			left: 50%;
+			transform: translateX(-50%);
 			background: #fff;
 			background: var(--card_bg_black);
 			text-align: left;
 			box-shadow: 0 5px 30px rgba(34, 34, 34, 0.1);
+
 		}
 
 		.nav-lvl2-list {
@@ -169,14 +171,23 @@ body.overflow {
 			background: var(--card_bg_black);
 			text-align: left;
 			box-shadow: 0 5px 30px rgba(34, 34, 34, 0.1);
-			max-width: 450px;
+			max-width: 560px;
 			min-width: 190px;
 			padding: 8px 20px 8px 20px;
 			border-radius: 8px;
+			column-gap: 32px;
+			&--v2{
+				column-count: 2;
+			}
+			&--v3{
+				column-count: 3;
+			}
+
 		}
 
 		.nav-lvl2-item {
 			position: relative;
+			min-width: 180px;
 		}
 
 		.nav-lvl2-item:hover .nav-lvl3 {
@@ -189,14 +200,15 @@ body.overflow {
 		}
 
 		.nav-lvl2-link {
-			font-size: 13px;
+			font-size: 15px;
 			line-height: normal;
 			color: $basic_black;
 			display: block;
 			padding: 7px 0;
-			white-space: nowrap;
-			overflow: hidden;
-			text-overflow: ellipsis;
+			white-space: normal;
+			//white-space: nowrap;
+			//overflow: hidden;
+			//text-overflow: ellipsis;
 			cursor: pointer;
 
 			&:hover {
